@@ -40,6 +40,51 @@ body {
   margin: 0 auto;
 }
 
+/* ============ SITE NAVIGATION ============ */
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    margin: 0 auto 2rem;
+    max-width: 1200px;
+}
+.site-nav .nav-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: var(--black);
+    background: var(--white);
+    border: var(--border) solid var(--black);
+    box-shadow: 3px 3px 0px var(--black);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s, color 0.12s;
+    cursor: pointer;
+}
+.site-nav .nav-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--black);
+    background: var(--yellow);
+}
+.site-nav .nav-link.active {
+    background: var(--black);
+    color: var(--yellow);
+    cursor: default;
+}
+.site-nav .nav-link.active:hover {
+    transform: none;
+    box-shadow: 3px 3px 0px var(--black);
+}
+@media (max-width: 768px) {
+    .site-nav { gap: 0.35rem; padding: 0.6rem 0.8rem; }
+    .site-nav .nav-link { font-size: 0.65rem; padding: 0.4em 0.65em; border-width: 2px; box-shadow: 2px 2px 0px var(--black); }
+}
+
 /* ============ HEADER ============ */
 .header {
   text-align: center;
@@ -323,6 +368,16 @@ tr:nth-child(even) td { background: #FDFCF7; }
 <body>
 
 <div class="container">
+
+  <!-- SITE NAV -->
+  <nav class="site-nav">
+    <a href="../index.html" class="nav-link">🏠 Guide</a>
+    <a href="glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="cheat-sheet.html" class="nav-link active">📋 Cheat Sheet</a>
+    <a href="quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+  </nav>
 
   <!-- ===== HEADER ===== -->
   <div class="header">

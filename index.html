@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <title>Meteora DLMM: The Complete Guide</title>
     <style>
 :root {
@@ -39,6 +40,105 @@ body {
     line-height: 1.7;
     font-size: 11pt;
 }
+
+/* ============ SITE NAVIGATION ============ */
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    margin: 0 auto 1.5rem;
+    max-width: 1100px;
+}
+.site-nav .nav-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: var(--fg);
+    background: var(--card-bg);
+    border: 3px solid var(--fg);
+    box-shadow: 3px 3px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s, color 0.12s;
+    cursor: pointer;
+}
+.site-nav .nav-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--fg);
+    background: var(--yellow);
+}
+.site-nav .nav-link.active {
+    background: var(--fg);
+    color: var(--yellow);
+    cursor: default;
+}
+.site-nav .nav-link.active:hover {
+    transform: none;
+    box-shadow: 3px 3px 0px var(--fg);
+}
+
+/* Resources section */
+.resources-section {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background: var(--card-bg);
+    border: 3px solid var(--fg);
+    box-shadow: 5px 5px 0px var(--fg);
+}
+.resources-section h2 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.3em;
+    border-bottom: 3px solid var(--fg);
+    display: inline-block;
+}
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.8rem;
+}
+.resource-card {
+    display: block;
+    text-decoration: none;
+    color: var(--fg);
+    padding: 0.8rem 1rem;
+    border: 3px solid var(--fg);
+    box-shadow: 3px 3px 0px var(--fg);
+    background: var(--card-bg);
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+.resource-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--fg);
+}
+.resource-card .rc-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+}
+.resource-card .rc-title {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+.resource-card .rc-desc {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    line-height: 1.35;
+}
+.resource-card.accent-yellow { border-left: 6px solid var(--yellow); }
+.resource-card.accent-red    { border-left: 6px solid var(--red); }
+.resource-card.accent-blue   { border-left: 6px solid var(--blue); }
+.resource-card.accent-green  { border-left: 6px solid var(--green); }
+.resource-card.accent-purple { border-left: 6px solid var(--purple); }
 
 /* Lang toggle */
 .lang-toggle-wrap {
@@ -262,6 +362,10 @@ pre code { background: none; padding: 0; }
     pre { font-size: 0.7rem; padding: 0.6em 0.8em; }
     blockquote { margin: 0.8em 0; padding: 0.4em 0.8em; border-left-width: 3px; }
     .footer { font-size: 0.7rem; padding: 1rem; }
+    .site-nav { gap: 0.35rem; padding: 0.8rem 1rem; }
+    .site-nav .nav-link { font-size: 0.65rem; padding: 0.4em 0.7em; border-width: 2px; box-shadow: 2px 2px 0px var(--fg); }
+    .resources-grid { grid-template-columns: 1fr; }
+    .resources-section { padding: 1rem 1.2rem; margin: 1.5rem auto; }
 }
 
 @media (max-width: 480px) {
@@ -280,10 +384,79 @@ pre code { background: none; padding: 0; }
     .lang-toggle-wrap { display: none; }
     .lang-en, .lang-id { display: block !important; }
 }
+
+/* ===== KEY TAKEAWAY BOX ===== */
+.key-takeaway {
+    border: 3px solid var(--yellow);
+    border-left: 8px solid var(--yellow);
+    background: rgba(255, 215, 0, 0.06);
+    padding: 1rem 1.5rem;
+    margin: 1.5em 0 1em;
+    box-shadow: 4px 4px 0px rgba(26,26,26,0.1);
+}
+.key-takeaway h2 {
+    font-size: 0.82rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: none !important;
+    margin: 0 0 0.5em !important;
+    color: #B8860B;
+    display: block !important;
+}
+.key-takeaway p { margin-bottom: 0.3em; }
+.key-takeaway p strong { color: var(--fg); }
+
+/* ===== CHAPTER NAVIGATION ===== */
+.chapter-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding: 0.6em 0;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.chapter-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.4em 1em;
+    border: 2px solid var(--fg);
+    background: var(--bg);
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    box-shadow: 3px 3px 0px var(--fg);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+.chapter-nav a:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--fg);
+}
+
+/* ===== TOC LINKS ===== */
+.toc-list li a {
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 600;
+}
+.toc-list li a:hover {
+    background: var(--yellow);
+    padding: 0.1em 0.3em;
+    margin: -0.1em -0.3em;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .chapter-nav a { font-size: 0.75rem; padding: 0.35em 0.8em; }
+    .key-takeaway { padding: 0.8rem 1rem; margin: 1em 0; }
+    .key-takeaway h2 { font-size: 0.72rem !important; }
+}
 </style>
 </head>
 <body class="show-en">
-    <header class="hero">
+    <header class="hero" id="top">
         <h1>Meteora DLMM<br>The Complete Guide</h1>
         <p class="subtitle lang-en">From Budi's bus terminal to your first liquidity position — a story-driven journey through DeFi's most capital-efficient protocol.</p>
         <p class="subtitle lang-id">Dari terminal bus Budi ke posisi likuiditas pertama lo — perjalanan story-driven melalui protokol DeFi paling capital-efficient.</p>
@@ -296,8 +469,54 @@ pre code { background: none; padding: 0; }
             </div>
         </div>
     </header>
-    
-    
+
+    <!-- SITE NAV -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-link active">🏠 Guide</a>
+        <a href="extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+        <a href="extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+        <a href="extras/quiz.html" class="nav-link">🧠 Quiz</a>
+        <a href="extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+        <a href="extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    </nav>
+
+    <div class="toc-section">
+        <h2 class="lang-en">📚 Table of Contents</h2>
+        <h2 class="lang-id">📚 Daftar Isi</h2>
+        <ol class="toc-list">
+            <li class="lang-en"><a href="#00-prologue"><span class="toc-num">00</span> Prologue: The Tweet That Started It All</a></li>
+            <li class="lang-id"><a href="#00-prologue"><span class="toc-num">00</span> Prolog: Tweet yang Memulai Semuanya</a></li>
+            <li class="lang-en"><a href="#01-what-is-liquidity"><span class="toc-num">01</span> What Happens When You Want to Trade Something</a></li>
+            <li class="lang-id"><a href="#01-what-is-liquidity"><span class="toc-num">01</span> Apa yang Terjadi Ketika Lo Pengen Trading Sesuatu</a></li>
+            <li class="lang-en"><a href="#02-the-middleman"><span class="toc-num">02</span> The Person Who's Always There</a></li>
+            <li class="lang-id"><a href="#02-the-middleman"><span class="toc-num">02</span> Orang yang Selalu Ada</a></li>
+            <li class="lang-en"><a href="#03-spread-as-business"><span class="toc-num">03</span> The Spread as a Business</a></li>
+            <li class="lang-id"><a href="#03-spread-as-business"><span class="toc-num">03</span> Spread Sebagai Bisnis</a></li>
+            <li class="lang-en"><a href="#04-computer-middleman"><span class="toc-num">04</span> What If the Middleman Was a Computer Program?</a></li>
+            <li class="lang-id"><a href="#04-computer-middleman"><span class="toc-num">04</span> Gimana Kalau Middleman-nya Program Komputer?</a></li>
+            <li class="lang-en"><a href="#05-constant-product"><span class="toc-num">05</span> The Constant Product Formula</a></li>
+            <li class="lang-id"><a href="#05-constant-product"><span class="toc-num">05</span> Rumus Constant Product</a></li>
+            <li class="lang-en"><a href="#06-where-money-comes-from"><span class="toc-num">06</span> Where the Money Comes From</a></li>
+            <li class="lang-id"><a href="#06-where-money-comes-from"><span class="toc-num">06</span> Dari Mana Duitnya Berasal</a></li>
+            <li class="lang-en"><a href="#07-hidden-cost"><span class="toc-num">07</span> The Hidden Cost of Providing Liquidity</a></li>
+            <li class="lang-id"><a href="#07-hidden-cost"><span class="toc-num">07</span> Biaya Tersembunyi Menyediakan Likuiditas</a></li>
+            <li class="lang-en"><a href="#08-why-solana"><span class="toc-num">08</span> Why Solana? The Engine Beneath</a></li>
+            <li class="lang-id"><a href="#08-why-solana"><span class="toc-num">08</span> Kenapa Solana? Mesin di Baliknya</a></li>
+            <li class="lang-en"><a href="#09-big-idea"><span class="toc-num">09</span> The Big Idea: Concentrating Liquidity</a></li>
+            <li class="lang-id"><a href="#09-big-idea"><span class="toc-num">09</span> Ide Besar: Mengkonsentrasikan Likuiditas</a></li>
+            <li class="lang-en"><a href="#10-enter-meteora"><span class="toc-num">10</span> Enter Meteora: DLMM Explained</a></li>
+            <li class="lang-id"><a href="#10-enter-meteora"><span class="toc-num">10</span> Masuk Meteora: DLMM Dijelaskan</a></li>
+            <li class="lang-en"><a href="#11-how-dlmm-different"><span class="toc-num">11</span> How DLMM Is Fundamentally Different</a></li>
+            <li class="lang-id"><a href="#11-how-dlmm-different"><span class="toc-num">11</span> Gimana DLMM Berbeda Secara Fundamental</a></li>
+            <li class="lang-en"><a href="#12-lp-strategies"><span class="toc-num">12</span> LP Strategies: From Chill to Aggressive</a></li>
+            <li class="lang-id"><a href="#12-lp-strategies"><span class="toc-num">12</span> Strategi LP: Dari Santai ke Agresif</a></li>
+            <li class="lang-en"><a href="#13-step-by-step"><span class="toc-num">13</span> Your First DLMM Position: Step by Step</a></li>
+            <li class="lang-id"><a href="#13-step-by-step"><span class="toc-num">13</span> Posisi DLMM Pertama Lo: Step by Step</a></li>
+            <li class="lang-en"><a href="#14-measuring-profit"><span class="toc-num">14</span> Monitoring, Exit, and Measuring Profit Honestly</a></li>
+            <li class="lang-id"><a href="#14-measuring-profit"><span class="toc-num">14</span> Monitoring, Exit, dan Ngukur Profit dengan Jujur</a></li>
+        </ol>
+    </div>
+
         <div class="chapter" id="00-prologue">
             <div class="lang-en"><h1>Prologue: The Tweet That Started It All</h1>
 <hr />
@@ -384,9 +603,11 @@ Day 5: finally, someone shows up, inspects the phone, pays Rp 11.5 million. Done
 <p>A market with high liquidity attracts more traders. More traders means more liquidity. It's a virtuous cycle.</p>
 <p>A market with low liquidity scares people away. Nobody wants to be stuck holding something they can't sell. It's a death spiral.</p>
 <p>Crypto, despite all the technology and noise, is fundamentally about this same problem. How do you create a market where people can trade digital assets as easily as buying rice at a pasar?</p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <p><strong>Liquidity = ease of trading.</strong></p>
 <p>You can now explain what "liquid" and "illiquid" mean. Write it down somewhere. This is your first building block.</p>
+</div>
 <hr />
 <p><em>Next: Who provides this liquidity? Who is the person that says "I'll always be here to trade with you"?</em></p></div>
             <div class="lang-id"><h1>Bab 1: Apa yang Terjadi Ketika Lo Pengen Trading Sesuatu</h1>
@@ -427,9 +648,11 @@ Hari 5: akhirnya, ada yang dateng, ngecek HP-nya, bayar Rp 11,5 juta. Beres.</p>
 <p>Pasar dengan likuiditas tinggi narik lebih banyak trader. Lebih banyak trader berarti lebih banyak likuiditas. Ini siklus yang saling menguatkan.</p>
 <p>Pasar dengan likuiditas rendah bikin orang takut. Gak ada yang mau nyangkut megang sesuatu yang gak bisa dijual. Ini death spiral.</p>
 <p>Crypto, terlepas dari semua teknologi dan kebisingannya, pada dasarnya soal masalah yang sama ini. Gimana caranya bikin pasar di mana orang bisa trading aset digital semudah beli beras di pasar?</p>
-<h2>Satu Konsep yang Harus Diinget</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Harus Diinget</h2>
 <p><strong>Likuiditas = kemudahan trading.</strong></p>
 <p>Lo sekarang udah bisa jelasin arti "liquid" dan "illiquid." Catet di suatu tempat deh. Ini batu bata pertama lo.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Siapa yang nyediain likuiditas ini? Siapa orang yang bilang "gue bakal selalu di sini buat trading sama lo"?</em></p></div>
         </div>
@@ -532,12 +755,14 @@ They pocket the difference: Rp 400,000.</p>
 </tbody>
 </table>
 <p>In every case, the pattern is the same: someone maintains inventory on both sides, quotes two prices (buy and sell), and profits from the spread.</p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <p><strong>A market maker = someone who is always ready to buy AND sell, profiting from the gap between those two prices (the spread).</strong></p>
 <p>You now understand:
 1. What liquidity is (Chapter 1)
 2. Who provides it (this chapter)</p>
 <p>Two building blocks. Let's build the third.</p>
+</div>
 <hr />
 <p><em>Next: How big should the spread be? How much can a market maker actually earn? And what's the risk?</em></p></div>
             <div class="lang-id"><h1>Bab 2: Orang yang Selalu Ada</h1>
@@ -637,12 +862,14 @@ Mereka kantongin selisihnya: Rp 400.000.</p>
 </tbody>
 </table>
 <p>Di setiap kasus, polanya sama: seseorang megang inventori di kedua sisi, ngasih dua harga (beli dan jual), dan untung dari spread.</p>
-<h2>Satu Konsep yang Harus Diinget</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Harus Diinget</h2>
 <p><strong>Market maker = orang yang selalu siap beli DAN jual, untung dari gap antara dua harga itu (spread).</strong></p>
 <p>Lo sekarang udah paham:
 1. Apa itu likuiditas (Bab 1)
 2. Siapa yang nyediain (bab ini)</p>
 <p>Dua batu bata. Yuk bangun yang ketiga.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Seberapa gede seharusnya spread? Berapa banyak yang bisa didapetin market maker? Dan apa risikonya?</em></p></div>
         </div>
@@ -835,8 +1062,10 @@ scares buyers)  turnover = hold longer)
 </tbody>
 </table>
 <p>The math is identical: <strong>Profit = Spread × Volume − Inventory Losses</strong></p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <p><strong>A market maker's business = spread width × trading volume, balanced against inventory risk.</strong> Every decision — how wide to set the spread, which assets to trade, how much inventory to hold — is about managing this tradeoff.</p>
+</div>
 <hr />
 <p><em>Next: What if we replaced Budi with a computer program? What would that program look like?</em></p></div>
             <div class="lang-id"><h1>Bab 3: Spread Sebagai Bisnis</h1>
@@ -1028,8 +1257,10 @@ pembeli)           = megang lebih lama)
 </tbody>
 </table>
 <p>Matematikanya identik: <strong>Profit = Spread × Volume − Kerugian Inventori</strong></p>
-<h2>Satu Konsep yang Harus Diinget</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Harus Diinget</h2>
 <p><strong>Bisnis market maker = lebar spread × volume trading, diseimbangkan dengan risiko inventori.</strong> Setiap keputusan — seberapa lebar spread dipasang, aset apa yang ditrading, berapa banyak inventori dipegang — semua soal ngatur tradeoff ini.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Gimana kalau kita ganti Budi dengan program komputer? Kayak apa tuh programnya?</em></p></div>
         </div>
@@ -1141,6 +1372,7 @@ Chapter 4: An AMM is a computer program that does a market maker&#39;s job
 <p>The AMM is the bridge between Budi's bus terminal and the world of DeFi. But we still haven't answered the central question:</p>
 <p><strong>What formula does the AMM actually use to set prices?</strong></p>
 <p>That's Chapter 5.</p>
+</div>
 <hr />
 <p><em>Next: The math inside the machine. Don't worry — it's simpler than you think.</em></p></div>
             <div class="lang-id"><h1>Bab 4: Gimana Kalau Middleman-nya Adalah Program Komputer?</h1>
@@ -1249,6 +1481,7 @@ Bab 4: AMM adalah program komputer yang ngerjain kerjaan market maker
 <p>AMM adalah jembatan antara terminal bus Budi dan dunia DeFi. Tapi kita masih belum jawab pertanyaan utamanya:</p>
 <p><strong>Formula apa yang sebenernya dipake AMM buat nentuin harga?</strong></p>
 <p>Itu Bab 5.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Matematika di dalam mesin. Tenang aja — ini lebih simpel dari yang lo kira.</em></p></div>
         </div>
@@ -1394,11 +1627,13 @@ Bab 4: AMM adalah program komputer yang ngerjain kerjaan market maker
 <li>If SOL enters the pool (someone sells), the SOL side gets heavier. To rebalance, USDC must decrease. Price of SOL goes DOWN.</li>
 </ul>
 <p>It's just a balancing act.</p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <blockquote>
 <p><strong>x × y = k</strong>: the constant product formula. It automatically sets prices so that buying pushes prices up and selling pushes prices down — exactly like a human market maker would, but run entirely by math.</p>
 </blockquote>
 <p>You now understand the engine that powers almost all of DeFi. The pool is the market. The formula is the price. No middleman required.</p>
+</div>
 <hr />
 <p><em>Next: The pool needs inventory. Where does it come from? And why would anyone provide it?</em></p></div>
             <div class="lang-id"><h1>Chapter 5: Matematika di Dalam Mesin</h1>
@@ -1541,11 +1776,13 @@ Bab 4: AMM adalah program komputer yang ngerjain kerjaan market maker
 <li>Kalau SOL masuk ke pool (orang jual), sisi SOL jadi lebih berat. Buat seimbang lagi, USDC harus berkurang. Harga SOL TURUN.</li>
 </ul>
 <p>Cuma permainan keseimbangan doang.</p>
-<h2>Satu Konsep yang Harus Diingat</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Harus Diingat</h2>
 <blockquote>
 <p><strong>x × y = k</strong>: rumus constant product. Dia otomatis nentuin harga supaya pembelian naikin harga dan penjualan nurunin harga — persis kayak market maker manusia, tapi dijalankan murni oleh matematika.</p>
 </blockquote>
 <p>Lo sekarang ngerti mesin yang ngejalanin hampir semua DeFi. Pool adalah pasarnya. Rumus adalah harganya. Gak perlu perantara.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Pool butuh inventaris. Dari mana datangnya? Dan kenapa ada yang mau nyediain?</em></p></div>
         </div>
@@ -1664,6 +1901,7 @@ When you want your money back, you withdraw your share of the pool — your orig
 </tbody>
 </table>
 <p>That third row — "you bear inventory risk" — is important enough to deserve its own chapter.</p>
+</div>
 <hr />
 <p><em>Next: The hidden cost of being an LP. Why "just deposit and earn" isn't the full picture.</em></p></div>
             <div class="lang-id"><h1>Chapter 6: Dari Mana Uangnya Datang?</h1>
@@ -1779,6 +2017,7 @@ Kalau lo mau duit lo balik, lo tarik bagian lo dari pool — aset awal lo plus f
 </tbody>
 </table>
 <p>Baris ketiga — "lo nanggung risiko inventaris" — cukup penting sampe pantes dapet chapter sendiri.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Biaya tersembunyi jadi LP. Kenapa "tinggal setor dan dapet" bukan gambaran lengkapnya.</em></p></div>
         </div>
@@ -2008,11 +2247,13 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 - <strong>Stable pairs</strong> (low IL, steady fees)
 - <strong>High-volume pairs</strong> (lots of fees to offset IL)
 - <strong>Short time horizons</strong> (less chance of big price moves)</p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <blockquote>
 <p><strong>Impermanent loss</strong> = the difference between what your assets are worth inside the pool vs what they'd be worth if you just held them. It grows as the price moves away from your entry point. Fees must outweigh it for you to profit.</p>
 </blockquote>
 <p>This is the single most important concept to understand before you become an LP. If you only remember one thing from this entire document, make it this: <strong>LPing is not free money. You are selling volatility and getting paid in fees.</strong></p>
+</div>
 <hr />
 <p><em>Next: We've been talking about pools in the abstract. Now let's look at a specific blockchain — why Solana? Why not Ethereum? What difference does the underlying technology make?</em></p></div>
             <div class="lang-id"><h1>Chapter 7: Biaya Tersembunyi — Impermanent Loss</h1>
@@ -2239,11 +2480,13 @@ Ketika harga SOL turun, pool beli SOL buat dorong harga balik naik.</p>
 - <strong>Pair stabil</strong> (IL rendah, fee stabil)
 - <strong>Pair volume tinggi</strong> (banyak fee buat nutup IL)
 - <strong>Time horizon pendek</strong> (lebih kecil kemungkinan pergerakan harga besar)</p>
-<h2>Satu Konsep yang Harus Diingat</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Harus Diingat</h2>
 <blockquote>
 <p><strong>Impermanent loss</strong> = selisih antara nilai aset lo di dalam pool vs nilai aset kalau lo cuma hold. Dia membesar seiring harga bergerak menjauh dari titik masuk lo. Fee harus ngalahin ini buat lo untung.</p>
 </blockquote>
 <p>Ini konsep paling penting yang harus lo ngerti sebelum jadi LP. Kalau lo cuma inget satu hal dari seluruh dokumen ini, inget ini: <strong>LPing bukan duit gratis. Lo lagi jual volatilitas dan dibayar pake fee.</strong></p>
+</div>
 <hr />
 <p><em>Selanjutnya: Kita udah ngomongin pool secara abstrak. Sekarang kita liat blockchain spesifik — kenapa Solana? Kenapa bukan Ethereum? Apa bedanya teknologi dasarnya?</em></p></div>
         </div>
@@ -2419,8 +2662,10 @@ Ketika harga SOL turun, pool beli SOL buat dorong harga balik naik.</p>
 <p><strong>Solana makes active LP strategies accessible to anyone with a phone and $20.</strong></p>
 </blockquote>
 <p>This is why the most innovative LP protocols — including Meteora DLMM — are being built on Solana, not Ethereum. The chain's architecture matches the strategy's requirements.</p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <p><strong>Transaction cost is a barrier to entry.</strong> On chains with high fees, only large capital can LP profitably. On Solana, near-zero fees mean anyone can participate — and that changes which LP strategies are viable.</p>
+</div>
 <hr />
 <p><em>Next: The big idea that makes LPing far more capital-efficient. Concentrated liquidity.</em></p></div>
             <div class="lang-id"><h1>Chapter 8: Kenapa Solana Ngubah Permainan</h1>
@@ -2593,8 +2838,10 @@ Ketika harga SOL turun, pool beli SOL buat dorong harga balik naik.</p>
 <p><strong>Solana bikin strategi LP aktif bisa diakses siapa aja dengan HP dan $20.</strong></p>
 </blockquote>
 <p>Ini kenapa protokol LP paling inovatif — termasuk Meteora DLMM — dibangun di Solana, bukan Ethereum. Arsitektur chain-nya cocok sama kebutuhan strateginya.</p>
-<h2>Satu Konsep yang Harus Diingat</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Harus Diingat</h2>
 <p><strong>Biaya transaksi adalah barrier to entry.</strong> Di chain dengan fee tinggi, cuma modal gede yang bisa LP dengan untung. Di Solana, fee hampir nol artinya siapa aja bisa ikut — dan itu ngubah strategi LP mana yang layak.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Ide besar yang bikin LPing jauh lebih capital-efficient. Concentrated liquidity.</em></p></div>
         </div>
@@ -2712,7 +2959,8 @@ Ketika harga SOL turun, pool beli SOL buat dorong harga balik naik.</p>
 <h2>The Solana Opportunity</h2>
 <p>On Solana, concentrated liquidity can actually be <em>managed actively</em> by regular people. You can adjust your range daily, claim fees hourly, compound continuously — all for fractions of a cent per action.</p>
 <p>This is why Meteora DLMM exists. It takes concentrated liquidity and pushes it further — with a design optimized for Solana's speed.</p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <blockquote>
 <p><strong>Concentrated liquidity</strong> = instead of spreading your money across all prices, you choose a specific price range where your capital is active. This makes your money work harder — but requires you to manage the position if prices move outside your range.</p>
 </blockquote>
@@ -2830,7 +3078,8 @@ Ketika harga SOL turun, pool beli SOL buat dorong harga balik naik.</p>
 <h2>Kesempatan Solana</h2>
 <p>Di Solana, concentrated liquidity bisa beneran <em>dikelola secara aktif</em> oleh orang biasa. Lo bisa sesuaikan range lo harian, klaim fee per jam, compound terus-menerus — semua cuma sepersekian sen per aksi.</p>
 <p>Ini kenapa Meteora DLMM ada. Dia ngambil concentrated liquidity dan ngedorong lebih jauh — dengan desain yang dioptimasi buat kecepatan Solana.</p>
-<h2>Satu Konsep yang Harus Diingat</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Harus Diingat</h2>
 <blockquote>
 <p><strong>Concentrated liquidity</strong> = alih-alih nyebar duit lo di semua harga, lo milih rentang harga spesifik di mana modal lo aktif. Ini bikin duit lo kerja lebih keras — tapi maksa lo buat ngelola posisi kalau harga gerak keluar dari range lo.</p>
 </blockquote>
@@ -3001,11 +3250,13 @@ Ketika harga SOL turun, pool beli SOL buat dorong harga balik naik.</p>
 <h2>Bins Are Grouped: Bin Arrays</h2>
 <p>Behind the scenes, bins are organized into groups of 70 called <strong>BinArrays.</strong> This is a technical optimization — you don't need to worry about it as a user, but it explains why you see certain limits in the UI.</p>
 <p>The default pool can handle trades across about 1,024 bin arrays (from index -512 to +511), covering a massive price range. For extreme cases, an extension mechanism handles bins far outside that range.</p>
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <blockquote>
 <p><strong>DLMM</strong> = concentrated liquidity organized into discrete price bins (like a ladder), with dynamic fees that rise during volatility and fall during calm markets.</p>
 </blockquote>
 <p>You put your liquidity into specific bins around the current price. Only the active bin processes trades. When it's drained, the ladder steps to the next bin. Your fees adapt to how crazy the market is.</p>
+</div>
 <hr />
 <p><em>Next: How is DLMM different from Uniswap V3 (the most famous concentrated liquidity protocol)? What makes it uniquely suited to Solana?</em></p></div>
             <div class="lang-id"><h1>Chapter 10: Masuk ke Meteora DLMM</h1>
@@ -3170,11 +3421,13 @@ $183.00  ← Bin 6
 <h2>Bin Dikelompokkan: Bin Array</h2>
 <p>Di belakang layar, bin diatur dalam kelompok berisi 70 yang disebut <strong>BinArray.</strong> Ini optimasi teknis — lo nggak perlu khawatir sebagai user, tapi ini ngejelasin kenapa lo liat batasan tertentu di UI.</p>
 <p>Pool default bisa nge-handle trade sekitar 1.024 bin array (dari indeks -512 sampai +511), mencakup rentang harga yang sangat besar. Buat kasus ekstrem, mekanisme ekstensi nge-handle bin yang jauh di luar rentang itu.</p>
-<h2>Satu Konsep yang Perlu Diingat</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Perlu Diingat</h2>
 <blockquote>
 <p><strong>DLMM</strong> = concentrated liquidity yang diatur jadi bin harga diskrit (kayak tangga), dengan dynamic fee yang naik pas volatilitas dan turun pas market tenang.</p>
 </blockquote>
 <p>Lo naruh likuiditas lo ke bin spesifik di sekitar harga saat ini. Cuma active bin yang memproses trade. Pas bin itu terkuras, tangga pindah ke bin berikutnya. Fee lo menyesuaikan seberapa gilanya market.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Gimana DLMM beda dari Uniswap V3 (protokol concentrated liquidity paling terkenal)? Apa yang bikin dia cocok banget buat Solana?</em></p></div>
         </div>
@@ -3903,12 +4156,14 @@ $183.00  ← Bin 6
 - There's hidden risk you're not seeing</p>
 <p>Sustainable returns come from genuine, consistent trading volume — not hype spikes.</p>
 <hr />
-<h2>One Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Concept to Take Away</h2>
 <p>Your strategy choice answers three questions simultaneously:
 - How much you'll earn (fee concentration)
 - How much you'll lose if price moves (IL exposure)
 - How much attention you'll need to pay (management frequency)</p>
 <p>There's no best strategy — only the strategy that matches your capital, your time, and your risk tolerance.</p>
+</div>
 <hr />
 <p><em>Next: Open the app. Let's actually do this. Step by step.</em></p></div>
             <div class="lang-id"><h1>Chapter 12: Strategi LP di Meteora</h1>
@@ -4149,12 +4404,14 @@ $183.00  ← Bin 6
 - Ada risiko tersembunyi yang nggak lo liat</p>
 <p>Return sustainable datang dari volume trading asli yang konsisten — bukan spike hype.</p>
 <hr />
-<h2>Satu Konsep yang Perlu Diingat</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep yang Perlu Diingat</h2>
 <p>Pilihan strategi lo ngejawab tiga pertanyaan sekaligus:
 - Seberapa banyak yang bakal lo dapet (konsentrasi fee)
 - Seberapa banyak yang bakal lo ilangin kalo harga gerak (exposure IL)
 - Seberapa banyak perhatian yang perlu lo kasih (frekuensi manajemen)</p>
 <p>Nggak ada strategi terbaik — cuma strategi yang cocok sama modal lo, waktu lo, dan toleransi risiko lo.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Buka aplikasinya. Ayo beneran lakuin ini. Step by step.</em></p></div>
         </div>
@@ -4399,6 +4656,7 @@ $183.00  ← Bin 6
 </code></pre></div>
 
 <p>This single habit — comparing your actual result to the "just hold" baseline — is what separates profitable LPs from those who lose money without understanding why.</p>
+</div>
 <hr />
 <p><em>Next: How do you track performance over time? What tools help? When do you know it's time to exit?</em></p></div>
             <div class="lang-id"><h1>Chapter 13: Walkthrough Step-by-Step</h1>
@@ -4640,6 +4898,7 @@ Kalo Z = W: lo balik modal di posisi, dapet ilmu
 </code></pre></div>
 
 <p>Kebiasaan satu ini — membandingkan hasil aktual lo ke baseline "cuma hold" — yang misahin LP profitable dari yang kehilangan duit tanpa ngerti kenapa.</p>
+</div>
 <hr />
 <p><em>Selanjutnya: Gimana cara lo track performa dari waktu ke waktu? Tools apa yang ngebantu? Kapan lo tau waktunya exit?</em></p></div>
         </div>
@@ -4922,11 +5181,13 @@ HODL Profit = HODL Value - Gross Deposit Value
 <li><strong>Scale up gradually</strong> — as you develop intuition, not before.</li>
 </ol>
 <hr />
-<h2>One Final Concept to Take Away</h2>
+<div class="key-takeaway">
+<h2>💡 One Final Concept to Take Away</h2>
 <p>There are no get-rich-quick strategies in LPing. There are only <strong>risk-adjusted returns.</strong> The question isn't "how much can I earn?" — it's "how much risk am I taking to earn that?"</p>
 <p>If someone shows you a screenshot of 1000% APR, ask: <em>"What was the impermanent loss? What's the HODL comparison? Is this sustainable or was this one good day in a month of losses?"</em></p>
 <p>The ones making real money in DeFi aren't chasing the highest numbers. They're tracking their PnL honestly, understanding their risks, and compounding steadily over time.</p>
 <p>Just like Budi at the bus terminal — showing up every day, managing inventory, earning the spread. No magic. Just math and consistency.</p>
+</div>
 <hr />
 <p><strong>Good luck. Start small. Track honestly. Stay curious.</strong></p></div>
             <div class="lang-id"><h1>Chapter 14: Monitoring, Exit, dan Ngukur Profit</h1>
@@ -5206,19 +5467,85 @@ Profit HODL = Nilai HODL - Nilai Deposit Kotor
 <li><strong>Scale up bertahap</strong> — seiring lo ngembangin intuisi, bukan sebelumnya.</li>
 </ol>
 <hr />
-<h2>Satu Konsep Terakhir yang Perlu Diingat</h2>
+<div class="key-takeaway">
+<h2>💡 Satu Konsep Terakhir yang Perlu Diingat</h2>
 <p>Nggak ada strategi cepet kaya di LPing. Yang ada cuma <strong>return yang disesuaikan risiko.</strong> Pertanyaannya bukan "seberapa banyak yang bisa gue dapet?" — tapi "seberapa banyak risiko yang gue ambil buat dapet itu?"</p>
 <p>Kalo seseorang nunjukin screenshot 1000% APR, tanya: <em>"Berapa impermanent loss-nya? Gimana perbandingan HODL-nya? Ini sustainable atau ini cuma satu hari bagus dalam sebulan kerugian?"</em></p>
 <p>Yang beneran bikin duit di DeFi bukan yang ngejar angka tertinggi. Mereka yang track PnL dengan jujur, ngerti risiko mereka, dan compounding secara stabil dari waktu ke waktu.</p>
 <p>Persis kayak Budi di terminal bus — datang setiap hari, ngatur inventaris, dapet spread. Nggak ada sihir. Cuma matematika dan konsistensi.</p>
+</div>
 <hr />
 <p><strong>Good luck. Mulai kecil. Track dengan jujur. Tetap penasaran.</strong></p></div>
         </div>
     
+    <!-- RESOURCES SECTION -->
+    <div class="resources-section lang-en">
+        <h2>🧰 Resources &amp; Tools</h2>
+        <div class="resources-grid">
+            <a href="extras/glossary-card.html" class="resource-card accent-yellow">
+                <div class="rc-icon">📖</div>
+                <div class="rc-title">Glossary</div>
+                <div class="rc-desc">35+ terms defined in plain language with chapter references</div>
+            </a>
+            <a href="extras/cheat-sheet.html" class="resource-card accent-red">
+                <div class="rc-icon">📋</div>
+                <div class="rc-title">Cheat Sheet</div>
+                <div class="rc-desc">Formulas, strategies, bin steps, IL table, risk rules</div>
+            </a>
+            <a href="extras/quiz.html" class="resource-card accent-blue">
+                <div class="rc-icon">🧠</div>
+                <div class="rc-title">Knowledge Quiz</div>
+                <div class="rc-desc">20 questions across all 14 chapters — test your LP knowledge</div>
+            </a>
+            <a href="extras/strategy-comparison.html" class="resource-card accent-green">
+                <div class="rc-icon">🎨</div>
+                <div class="rc-title">Strategy Comparison</div>
+                <div class="rc-desc">6 DLMM strategies side-by-side: risk, effort, APR, IL</div>
+            </a>
+            <a href="extras/quick-ref.html" class="resource-card accent-purple">
+                <div class="rc-icon">⚡</div>
+                <div class="rc-title">Quick Reference</div>
+                <div class="rc-desc">5 formulas, decision flowchart, mistakes, health check</div>
+            </a>
+        </div>
+    </div>
+    <div class="resources-section lang-id">
+        <h2>🧰 Sumber Daya &amp; Alat</h2>
+        <div class="resources-grid">
+            <a href="extras/glossary-card.html" class="resource-card accent-yellow">
+                <div class="rc-icon">📖</div>
+                <div class="rc-title">Glosarium</div>
+                <div class="rc-desc">35+ istilah dijelaskan dalam bahasa sederhana dengan referensi bab</div>
+            </a>
+            <a href="extras/cheat-sheet.html" class="resource-card accent-red">
+                <div class="rc-icon">📋</div>
+                <div class="rc-title">Cheat Sheet</div>
+                <div class="rc-desc">Rumus, strategi, bin steps, tabel IL, aturan risiko</div>
+            </a>
+            <a href="extras/quiz.html" class="resource-card accent-blue">
+                <div class="rc-icon">🧠</div>
+                <div class="rc-title">Kuis Pengetahuan</div>
+                <div class="rc-desc">20 pertanyaan dari semua 14 bab — uji pengetahuan LP lo</div>
+            </a>
+            <a href="extras/strategy-comparison.html" class="resource-card accent-green">
+                <div class="rc-icon">🎨</div>
+                <div class="rc-title">Perbandingan Strategi</div>
+                <div class="rc-desc">6 strategi DLMM berdampingan: risiko, usaha, APR, IL</div>
+            </a>
+            <a href="extras/quick-ref.html" class="resource-card accent-purple">
+                <div class="rc-icon">⚡</div>
+                <div class="rc-title">Referensi Cepat</div>
+                <div class="rc-desc">5 rumus, flowchart keputusan, kesalahan umum, health check</div>
+            </a>
+        </div>
+    </div>
+
     <div class="footer lang-en">
+        <a href="#top" style="display:block;margin-bottom:0.5em;color:var(--fg);font-weight:700;text-decoration:none;">↑ Back to Contents</a>
         Meteora DLMM: The Complete Guide — built for absolute beginners on Solana ♥
     </div>
     <div class="footer lang-id">
+        <a href="#top" style="display:block;margin-bottom:0.5em;color:var(--fg);font-weight:700;text-decoration:none;">↑ Kembali ke Daftar Isi</a>
         Meteora DLMM: Panduan Lengkap — dibuat untuk pemula absolut di Solana ♥
     </div>
     

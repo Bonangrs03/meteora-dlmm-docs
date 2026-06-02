@@ -1,31 +1,13 @@
 #!/usr/bin/env python3
-"""Rebuild Meteora DLMM HTML + PDF from source markdown files."""
+"""Rebuild Meteora DLMM HTML + PDF from source markdown files. Dual-language (EN/ID)."""
 
 import markdown
 from pathlib import Path
 
-ACTS_DIR = Path('/home/bonangrs03/meteora-dlmm-docs/acts')
+ACTS_EN_DIR = Path('/home/bonangrs03/meteora-dlmm-docs/acts')
+ACTS_ID_DIR = Path('/home/bonangrs03/meteora-dlmm-docs/acts-id')
 OUTPUT_HTML = Path('/home/bonangrs03/meteora-dlmm-docs/index.html')
 OUTPUT_PDF = Path('/home/bonangrs03/meteora-dlmm-docs/Meteora_DLMM_Docs_v2.pdf')
-
-# Chapter numbering
-CHAPTER_MAP = {
-    '00-prologue.md': ('00', 'Prologue: The Tweet That Started It All'),
-    '01-what-is-liquidity.md': ('01', 'Chapter 1: What Happens When You Want to Trade Something'),
-    '02-the-middleman.md': ('02', 'Chapter 2: The Person Who\'s Always There'),
-    '03-spread-as-business.md': ('03', 'Chapter 3: The Spread as a Business'),
-    '04-computer-middleman.md': ('04', 'Chapter 4: What If the Middleman Was a Computer Program?'),
-    '05-constant-product.md': ('05', 'Chapter 5: The Math Inside the Machine'),
-    '06-where-money-comes-from.md': ('06', 'Chapter 6: Where Does the Money Come From?'),
-    '07-hidden-cost.md': ('07', 'Chapter 7: The Hidden Cost — Impermanent Loss'),
-    '08-why-solana.md': ('08', 'Chapter 8: Why Solana Changes the Game'),
-    '09-big-idea.md': ('09', 'Chapter 9: Concentrated Liquidity — The Big Idea'),
-    '10-enter-meteora.md': ('10', 'Chapter 10: Enter Meteora DLMM'),
-    '11-how-dlmm-different.md': ('11', 'Chapter 11: How DLMM Is Different'),
-    '12-lp-strategies.md': ('12', 'Chapter 12: LP Strategies on Meteora'),
-    '13-step-by-step.md': ('13', 'Chapter 13: Step-by-Step Walkthrough'),
-    '14-measuring-profit.md': ('14', 'Chapter 14: Monitoring, Exiting, and Measuring Profit'),
-}
 
 CSS = """
 :root {
@@ -63,11 +45,49 @@ body {
     font-size: 11pt;
 }
 
+/* Lang toggle */
+.lang-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 0.8rem 0 0 0;
+}
+.lang-toggle {
+    display: inline-flex;
+    border: 3px solid var(--fg);
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--fg);
+}
+.lang-btn {
+    padding: 0.4em 1.4em;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    background: var(--fg);
+    color: var(--bg);
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.02em;
+}
+.lang-btn.active {
+    background: var(--yellow);
+    color: var(--fg);
+}
+.lang-btn:hover { opacity: 0.9; }
+
+/* Language visibility */
+.lang-en, .lang-id { display: none; }
+body.show-en .lang-en { display: block; }
+body.show-id .lang-id { display: block; }
+/* Default: show EN */
+body.show-en .lang-en { display: block; }
+
 /* Hero */
 .hero {
     background: var(--yellow);
     border-bottom: 3px solid var(--fg);
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 2rem 1.5rem;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -155,7 +175,6 @@ body {
 }
 
 p { margin-bottom: 0.8em; }
-
 strong { font-weight: 700; }
 em { font-style: italic; }
 
@@ -165,15 +184,9 @@ hr {
     margin: 1.2em 0;
 }
 
-/* Lists */
-ul, ol {
-    margin: 0.6em 0 0.8em 1.5em;
-}
-li {
-    margin-bottom: 0.25em;
-}
+ul, ol { margin: 0.6em 0 0.8em 1.5em; }
+li { margin-bottom: 0.25em; }
 
-/* Blockquotes */
 blockquote {
     border-left: 4px solid var(--yellow);
     margin: 1em 0;
@@ -183,7 +196,6 @@ blockquote {
 }
 blockquote p { margin-bottom: 0.3em; }
 
-/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -205,7 +217,6 @@ tbody td {
 }
 tbody tr:nth-child(odd) { background: rgba(0,0,0,0.02); }
 
-/* Code */
 pre {
     background: #F7F5ED;
     border: 2px solid var(--fg);
@@ -223,10 +234,7 @@ code {
     padding: 0.1em 0.3em;
     font-size: 0.9em;
 }
-pre code {
-    background: none;
-    padding: 0;
-}
+pre code { background: none; padding: 0; }
 
 .footer {
     text-align: center;
@@ -239,147 +247,94 @@ pre code {
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
-    @page {
-        margin: 1cm 1.2cm;
-    }
-
-    .hero {
-        padding: 1.5rem 1rem;
-    }
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-    .hero .subtitle {
-        font-size: 0.82rem;
-    }
-    .chapter-count {
-        font-size: 0.7rem;
-        padding: 0.25em 0.8em;
-    }
-
-    .chapter {
-        padding: 1.2rem 1rem;
-        margin-bottom: 1.5rem;
-        border-width: 2px;
-    }
-    .chapter h1 {
-        font-size: 1.25rem;
-    }
-    .chapter h2 {
-        font-size: 1.05rem;
-    }
-    .chapter h3 {
-        font-size: 0.95rem;
-    }
-
-    body {
-        font-size: 10.5pt;
-        line-height: 1.65;
-    }
-
-    p {
-        margin-bottom: 0.65em;
-    }
-
-    .toc-section {
-        margin: 1rem 0 2rem;
-    }
-    .toc-section h2 {
-        font-size: 1.2rem;
-    }
-    .toc-list li {
-        font-size: 0.8rem;
-        padding: 0.25rem 0;
-    }
-
-    /* Tables — scroll on mobile */
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-        font-size: 0.75rem;
-        -webkit-overflow-scrolling: touch;
-    }
-    thead th, tbody td {
-        padding: 0.35em 0.55em;
-    }
-
-    pre {
-        font-size: 0.7rem;
-        padding: 0.6em 0.8em;
-    }
-
-    blockquote {
-        margin: 0.8em 0;
-        padding: 0.4em 0.8em;
-        border-left-width: 3px;
-    }
-
-    .footer {
-        font-size: 0.7rem;
-        padding: 1rem;
-    }
+    @page { margin: 1cm 1.2cm; }
+    .hero { padding: 1.5rem 1rem 1rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero .subtitle { font-size: 0.82rem; }
+    .chapter-count { font-size: 0.7rem; padding: 0.25em 0.8em; }
+    .lang-btn { padding: 0.35em 1em; font-size: 0.78rem; }
+    .chapter { padding: 1.2rem 1rem; margin-bottom: 1.5rem; border-width: 2px; }
+    .chapter h1 { font-size: 1.25rem; }
+    .chapter h2 { font-size: 1.05rem; }
+    .chapter h3 { font-size: 0.95rem; }
+    body { font-size: 10.5pt; line-height: 1.65; }
+    p { margin-bottom: 0.65em; }
+    .toc-section { margin: 1rem 0 2rem; }
+    .toc-section h2 { font-size: 1.2rem; }
+    .toc-list li { font-size: 0.8rem; padding: 0.25rem 0; }
+    table { display: block; overflow-x: auto; white-space: nowrap; font-size: 0.75rem; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 0.35em 0.55em; }
+    pre { font-size: 0.7rem; padding: 0.6em 0.8em; }
+    blockquote { margin: 0.8em 0; padding: 0.4em 0.8em; border-left-width: 3px; }
+    .footer { font-size: 0.7rem; padding: 1rem; }
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding: 1.2rem 0.8rem;
-    }
-    .hero h1 {
-        font-size: 1.3rem;
-    }
-
-    .chapter {
-        padding: 1rem 0.8rem;
-    }
-    .chapter h1 {
-        font-size: 1.15rem;
-    }
-
-    body {
-        font-size: 10pt;
-    }
-
-    table {
-        font-size: 0.68rem;
-    }
-
-    ul, ol {
-        margin-left: 1.2em;
-    }
+    .hero { padding: 1.2rem 0.8rem 0.8rem; }
+    .hero h1 { font-size: 1.3rem; }
+    .lang-btn { padding: 0.3em 0.8em; font-size: 0.72rem; }
+    .chapter { padding: 1rem 0.8rem; }
+    .chapter h1 { font-size: 1.15rem; }
+    body { font-size: 10pt; }
+    table { font-size: 0.68rem; }
+    ul, ol { margin-left: 1.2em; }
 }
+
+/* PDF: show both languages (no JS) */
+@media print {
+    .lang-toggle-wrap { display: none; }
+    .lang-en, .lang-id { display: block !important; }
+}
+"""
+
+LANG_JS = """
+<script>
+(function() {
+    function setLang(lang) {
+        document.body.className = 'show-' + lang;
+        localStorage.setItem('meteora-lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(function(b) {
+            b.classList.toggle('active', b.dataset.lang === lang);
+        });
+    }
+    var saved = localStorage.getItem('meteora-lang') || 'en';
+    setLang(saved);
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+        b.addEventListener('click', function() { setLang(this.dataset.lang); });
+    });
+})();
+</script>
 """
 
 def build_html():
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'codehilite'])
     
-    # Read all act files
-    act_files = sorted(ACTS_DIR.glob('*.md'))
+    act_files = sorted(ACTS_EN_DIR.glob('*.md'))
     chapters_html = []
     toc_entries = []
     
     for f in act_files:
-        content = f.read_text()
-        html_body = md.convert(content)
+        # English
+        content_en = f.read_text()
+        html_en = md.convert(content_en)
         
-        num, title = CHAPTER_MAP[f.name]
-        toc_entries.append(f'<li><span class="toc-num">{num}</span> {title}</li>')
+        # Indonesian
+        f_id = ACTS_ID_DIR / f.name
+        content_id = f_id.read_text() if f_id.exists() else content_en
+        html_id = md.convert(content_id)
         
-        # Wrap in chapter div
+        num = f.stem[:2]
+        
+        # Wrap in chapter div with both languages
         chapter_id = f.stem
         chapters_html.append(f'''
         <div class="chapter" id="{chapter_id}">
-            {html_body}
+            <div class="lang-en">{html_en}</div>
+            <div class="lang-id">{html_id}</div>
         </div>''')
     
-    # Build TOC
-    toc_html = f'''
-    <div class="toc-section">
-        <h2>Table of Contents</h2>
-        <ol class="toc-list">
-            {chr(10).join(toc_entries)}
-        </ol>
-    </div>'''
+    # Build TOC (EN only for print/PDF)
+    toc_html = ''
     
     # Full document
     full_html = f'''<!DOCTYPE html>
@@ -390,20 +345,31 @@ def build_html():
     <title>Meteora DLMM: The Complete Guide</title>
     <style>{CSS}</style>
 </head>
-<body>
+<body class="show-en">
     <header class="hero">
         <h1>Meteora DLMM<br>The Complete Guide</h1>
-        <p class="subtitle">From Budi's bus terminal to your first liquidity position — a story-driven journey through DeFi's most capital-efficient protocol.</p>
-        <span class="chapter-count">15 CHAPTERS</span>
+        <p class="subtitle lang-en">From Budi's bus terminal to your first liquidity position — a story-driven journey through DeFi's most capital-efficient protocol.</p>
+        <p class="subtitle lang-id">Dari terminal bus Budi ke posisi likuiditas pertama lo — perjalanan story-driven melalui protokol DeFi paling capital-efficient.</p>
+        <span class="chapter-count lang-en">15 CHAPTERS</span>
+        <span class="chapter-count lang-id">15 BAB</span>
+        <div class="lang-toggle-wrap">
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+                <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+            </div>
+        </div>
     </header>
-    
-    {toc_html}
     
     {chr(10).join(chapters_html)}
     
-    <div class="footer">
+    <div class="footer lang-en">
         Meteora DLMM: The Complete Guide — built for absolute beginners on Solana ♥
     </div>
+    <div class="footer lang-id">
+        Meteora DLMM: Panduan Lengkap — dibuat untuk pemula absolut di Solana ♥
+    </div>
+    
+    {LANG_JS}
 </body>
 </html>'''
     
@@ -421,7 +387,6 @@ def convert_to_pdf():
     if result.returncode != 0:
         print(f"ERROR: {result.stderr}")
         return False
-    # Print warnings but don't fail
     for line in result.stderr.strip().split('\n'):
         if line.strip():
             print(f"  [weasyprint] {line.strip()}")
@@ -429,7 +394,7 @@ def convert_to_pdf():
 
 
 if __name__ == '__main__':
-    print("Building HTML from markdown...")
+    print("Building dual-language HTML from markdown...")
     build_html()
     print("\nConverting to PDF...")
     if convert_to_pdf():

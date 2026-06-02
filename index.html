@@ -40,11 +40,49 @@ body {
     font-size: 11pt;
 }
 
+/* Lang toggle */
+.lang-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 0.8rem 0 0 0;
+}
+.lang-toggle {
+    display: inline-flex;
+    border: 3px solid var(--fg);
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--fg);
+}
+.lang-btn {
+    padding: 0.4em 1.4em;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    background: var(--fg);
+    color: var(--bg);
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.02em;
+}
+.lang-btn.active {
+    background: var(--yellow);
+    color: var(--fg);
+}
+.lang-btn:hover { opacity: 0.9; }
+
+/* Language visibility */
+.lang-en, .lang-id { display: none; }
+body.show-en .lang-en { display: block; }
+body.show-id .lang-id { display: block; }
+/* Default: show EN */
+body.show-en .lang-en { display: block; }
+
 /* Hero */
 .hero {
     background: var(--yellow);
     border-bottom: 3px solid var(--fg);
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 2rem 1.5rem;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -132,7 +170,6 @@ body {
 }
 
 p { margin-bottom: 0.8em; }
-
 strong { font-weight: 700; }
 em { font-style: italic; }
 
@@ -142,15 +179,9 @@ hr {
     margin: 1.2em 0;
 }
 
-/* Lists */
-ul, ol {
-    margin: 0.6em 0 0.8em 1.5em;
-}
-li {
-    margin-bottom: 0.25em;
-}
+ul, ol { margin: 0.6em 0 0.8em 1.5em; }
+li { margin-bottom: 0.25em; }
 
-/* Blockquotes */
 blockquote {
     border-left: 4px solid var(--yellow);
     margin: 1em 0;
@@ -160,7 +191,6 @@ blockquote {
 }
 blockquote p { margin-bottom: 0.3em; }
 
-/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -182,7 +212,6 @@ tbody td {
 }
 tbody tr:nth-child(odd) { background: rgba(0,0,0,0.02); }
 
-/* Code */
 pre {
     background: #F7F5ED;
     border: 2px solid var(--fg);
@@ -200,10 +229,7 @@ code {
     padding: 0.1em 0.3em;
     font-size: 0.9em;
 }
-pre code {
-    background: none;
-    padding: 0;
-}
+pre code { background: none; padding: 0; }
 
 .footer {
     text-align: center;
@@ -214,186 +240,66 @@ pre code {
     color: #888;
 }
 
-/* Key Takeaway Box */
-.takeaway-box {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    border: 3px solid var(--yellow);
-    border-left: 8px solid var(--yellow);
-    background: #FFF9E6;
-    padding: 1rem 1.3rem;
-    margin: 1.5rem 0 0.3rem 0;
-    page-break-inside: avoid;
-}
-.takeaway-box .takeaway-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-    margin-top: 0.05rem;
-    line-height: 1;
-}
-.takeaway-box .takeaway-label {
-    font-size: 0.65rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--fg);
-    opacity: 0.5;
-    display: block;
-    margin-bottom: 0.25rem;
-}
-.takeaway-box .takeaway-content p {
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin: 0;
-    line-height: 1.5;
-}
-
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
-    @page {
-        margin: 1cm 1.2cm;
-    }
-
-    .hero {
-        padding: 1.5rem 1rem;
-    }
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-    .hero .subtitle {
-        font-size: 0.82rem;
-    }
-    .chapter-count {
-        font-size: 0.7rem;
-        padding: 0.25em 0.8em;
-    }
-
-    .chapter {
-        padding: 1.2rem 1rem;
-        margin-bottom: 1.5rem;
-        border-width: 2px;
-    }
-    .chapter h1 {
-        font-size: 1.25rem;
-    }
-    .chapter h2 {
-        font-size: 1.05rem;
-    }
-    .chapter h3 {
-        font-size: 0.95rem;
-    }
-
-    body {
-        font-size: 10.5pt;
-        line-height: 1.65;
-    }
-
-    p {
-        margin-bottom: 0.65em;
-    }
-
-    .toc-section {
-        margin: 1rem 0 2rem;
-    }
-    .toc-section h2 {
-        font-size: 1.2rem;
-    }
-    .toc-list li {
-        font-size: 0.8rem;
-        padding: 0.25rem 0;
-    }
-
-    /* Tables — scroll on mobile */
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-        font-size: 0.75rem;
-        -webkit-overflow-scrolling: touch;
-    }
-    thead th, tbody td {
-        padding: 0.35em 0.55em;
-    }
-
-    pre {
-        font-size: 0.7rem;
-        padding: 0.6em 0.8em;
-    }
-
-    blockquote {
-        margin: 0.8em 0;
-        padding: 0.4em 0.8em;
-        border-left-width: 3px;
-    }
-
-    .footer {
-        font-size: 0.7rem;
-        padding: 1rem;
-    }
+    @page { margin: 1cm 1.2cm; }
+    .hero { padding: 1.5rem 1rem 1rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero .subtitle { font-size: 0.82rem; }
+    .chapter-count { font-size: 0.7rem; padding: 0.25em 0.8em; }
+    .lang-btn { padding: 0.35em 1em; font-size: 0.78rem; }
+    .chapter { padding: 1.2rem 1rem; margin-bottom: 1.5rem; border-width: 2px; }
+    .chapter h1 { font-size: 1.25rem; }
+    .chapter h2 { font-size: 1.05rem; }
+    .chapter h3 { font-size: 0.95rem; }
+    body { font-size: 10.5pt; line-height: 1.65; }
+    p { margin-bottom: 0.65em; }
+    .toc-section { margin: 1rem 0 2rem; }
+    .toc-section h2 { font-size: 1.2rem; }
+    .toc-list li { font-size: 0.8rem; padding: 0.25rem 0; }
+    table { display: block; overflow-x: auto; white-space: nowrap; font-size: 0.75rem; -webkit-overflow-scrolling: touch; }
+    thead th, tbody td { padding: 0.35em 0.55em; }
+    pre { font-size: 0.7rem; padding: 0.6em 0.8em; }
+    blockquote { margin: 0.8em 0; padding: 0.4em 0.8em; border-left-width: 3px; }
+    .footer { font-size: 0.7rem; padding: 1rem; }
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding: 1.2rem 0.8rem;
-    }
-    .hero h1 {
-        font-size: 1.3rem;
-    }
+    .hero { padding: 1.2rem 0.8rem 0.8rem; }
+    .hero h1 { font-size: 1.3rem; }
+    .lang-btn { padding: 0.3em 0.8em; font-size: 0.72rem; }
+    .chapter { padding: 1rem 0.8rem; }
+    .chapter h1 { font-size: 1.15rem; }
+    body { font-size: 10pt; }
+    table { font-size: 0.68rem; }
+    ul, ol { margin-left: 1.2em; }
+}
 
-    .chapter {
-        padding: 1rem 0.8rem;
-    }
-    .chapter h1 {
-        font-size: 1.15rem;
-    }
-
-    body {
-        font-size: 10pt;
-    }
-
-    table {
-        font-size: 0.68rem;
-    }
-
-    ul, ol {
-        margin-left: 1.2em;
-    }
+/* PDF: show both languages (no JS) */
+@media print {
+    .lang-toggle-wrap { display: none; }
+    .lang-en, .lang-id { display: block !important; }
 }
 </style>
 </head>
-<body>
+<body class="show-en">
     <header class="hero">
         <h1>Meteora DLMM<br>The Complete Guide</h1>
-        <p class="subtitle">From Budi's bus terminal to your first liquidity position — a story-driven journey through DeFi's most capital-efficient protocol.</p>
-        <span class="chapter-count">15 CHAPTERS</span>
+        <p class="subtitle lang-en">From Budi's bus terminal to your first liquidity position — a story-driven journey through DeFi's most capital-efficient protocol.</p>
+        <p class="subtitle lang-id">Dari terminal bus Budi ke posisi likuiditas pertama lo — perjalanan story-driven melalui protokol DeFi paling capital-efficient.</p>
+        <span class="chapter-count lang-en">15 CHAPTERS</span>
+        <span class="chapter-count lang-id">15 BAB</span>
+        <div class="lang-toggle-wrap">
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+                <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+            </div>
+        </div>
     </header>
     
     
-    <div class="toc-section">
-        <h2>Table of Contents</h2>
-        <ol class="toc-list">
-            <li><span class="toc-num">00</span> Prologue: The Tweet That Started It All</li>
-<li><span class="toc-num">01</span> Chapter 1: What Happens When You Want to Trade Something</li>
-<li><span class="toc-num">02</span> Chapter 2: The Person Who's Always There</li>
-<li><span class="toc-num">03</span> Chapter 3: The Spread as a Business</li>
-<li><span class="toc-num">04</span> Chapter 4: What If the Middleman Was a Computer Program?</li>
-<li><span class="toc-num">05</span> Chapter 5: The Math Inside the Machine</li>
-<li><span class="toc-num">06</span> Chapter 6: Where Does the Money Come From?</li>
-<li><span class="toc-num">07</span> Chapter 7: The Hidden Cost — Impermanent Loss</li>
-<li><span class="toc-num">08</span> Chapter 8: Why Solana Changes the Game</li>
-<li><span class="toc-num">09</span> Chapter 9: Concentrated Liquidity — The Big Idea</li>
-<li><span class="toc-num">10</span> Chapter 10: Enter Meteora DLMM</li>
-<li><span class="toc-num">11</span> Chapter 11: How DLMM Is Different</li>
-<li><span class="toc-num">12</span> Chapter 12: LP Strategies on Meteora</li>
-<li><span class="toc-num">13</span> Chapter 13: Step-by-Step Walkthrough</li>
-<li><span class="toc-num">14</span> Chapter 14: Monitoring, Exiting, and Measuring Profit</li>
-        </ol>
-    </div>
-    
-    
         <div class="chapter" id="00-prologue">
-            <h1>Prologue: The Tweet That Started It All</h1>
+            <div class="lang-en"><h1>Prologue: The Tweet That Started It All</h1>
 <hr />
 <p>You saw a tweet.</p>
 <p>Someone posted a screenshot of their Meteora DLMM dashboard. Numbers were green. Percentages had three digits. Someone in the replies said <em>"this is the most capital-efficient way to LP on Solana."</em></p>
@@ -414,19 +320,33 @@ pre code {
 <p>Each chapter introduces <strong>exactly one new concept.</strong> By the end, you'll have 14 new ideas in your toolkit — all connected, all earned.</p>
 <p>If a chapter feels obvious, good. That means the previous ones did their job. If it feels confusing, stop and re-read the previous chapter. The confusion is almost always a missing link from earlier, not a problem with the current chapter.</p>
 <p>Ready? Let's start with the most basic question:</p>
-<p><em>What even is "liquidity"?</em></p>
-
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>This document builds exactly one new concept per chapter. If you ever feel confused, stop and re-read the previous chapter — the missing link is always there.</p>
-                </div>
-            </div>
+<p><em>What even is "liquidity"?</em></p></div>
+            <div class="lang-id"><h1>Prolog: Tweet yang Memulai Semuanya</h1>
+<hr />
+<p>Lo lihat sebuah tweet.</p>
+<p>Seseorang nge-post screenshot dashboard Meteora DLMM mereka. Angka-angkanya hijau. Persentasenya tiga digit. Ada yang nge-reply: <em>"ini cara paling capital-efficient buat LP di Solana."</em></p>
+<p>Lo gatau "LP" itu apa. Lo gatau "capital-efficient" itu apa. Lo apalagi gatau "DLMM" itu apa.</p>
+<p>Tapi lo tau peluang cuan ketika lo melihatnya.</p>
+<h2>Apa yang Akan Dokumen Ini Lakukan</h2>
+<p>Ini bukan whitepaper. Ini bukan referensi teknis buat developer.</p>
+<p>Ini adalah sebuah <strong>cerita</strong>.</p>
+<p>Cerita yang dimulai dari sesuatu yang lo udah paham — jualan barang, beli barang, konsep "selalu ada orang yang siap trading sama lo" — dan berakhir dengan lo dengan pede buka posisi likuiditas pertama lo di Meteora.</p>
+<p>Setiap konsep baru dapet babnya sendiri. Gak ada jargon tanpa analogi. Gak ada matematika tanpa cerita.</p>
+<h2>Apa yang TIDAK Akan Dokumen Ini Lakukan</h2>
+<ul>
+<li><strong>Gak akan bikin lo jadi developer Solidity/Rust.</strong> Kita di sini buat <em>make</em> protokolnya, bukan bikin.</li>
+<li><strong>Gak akan jamin profit.</strong> Siapa pun yang ngaku begitu pasti bohong. LP itu strategi dengan risiko, dan kita bakal bahas itu dengan jujur.</li>
+<li><strong>Gak akan nganggep lo udah tau apa-apa.</strong> Kalau ada sesuatu yang belum dijelasin, itu karena memang belum diperkenalkan. Sabar ya. Bab-bab ini saling membangun.</li>
+</ul>
+<h2>Cara Baca Dokumen Ini</h2>
+<p>Setiap bab memperkenalkan <strong>tepat satu konsep baru.</strong> Begitu selesai, lo bakal punya 14 ide baru di toolkit lo — semuanya nyambung, semuanya lo dapetin dengan usaha sendiri.</p>
+<p>Kalau sebuah bab terasa obvious, bagus. Itu artinya bab-bab sebelumnya udah menjalankan tugasnya. Kalau terasa membingungkan, berhenti dan baca ulang bab sebelumnya. Kebingungan hampir selalu karena ada mata rantai yang kelewat dari bab sebelumnya, bukan masalah di bab yang sedang lo baca.</p>
+<p>Udah siap? Yuk mulai dari pertanyaan paling dasar:</p>
+<p><em>Apa sih sebenernya "likuiditas" itu?</em></p></div>
         </div>
 
         <div class="chapter" id="01-what-is-liquidity">
-            <h1>Chapter 1: What Happens When You Want to Trade Something</h1>
+            <div class="lang-en"><h1>Chapter 1: What Happens When You Want to Trade Something</h1>
 <hr />
 <h2>The Phone Problem</h2>
 <p>You have an iPhone. You want to sell it. You post it on an online marketplace: <em>"iPhone 15, like new, Rp 12 million."</em></p>
@@ -468,19 +388,54 @@ Day 5: finally, someone shows up, inspects the phone, pays Rp 11.5 million. Done
 <p><strong>Liquidity = ease of trading.</strong></p>
 <p>You can now explain what "liquid" and "illiquid" mean. Write it down somewhere. This is your first building block.</p>
 <hr />
-<p><em>Next: Who provides this liquidity? Who is the person that says "I'll always be here to trade with you"?</em></p>
-
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>Liquidity = ease of trading. High liquidity means you can buy or sell instantly; low liquidity means you wait. Everything in DeFi builds on this.</p>
-                </div>
-            </div>
+<p><em>Next: Who provides this liquidity? Who is the person that says "I'll always be here to trade with you"?</em></p></div>
+            <div class="lang-id"><h1>Bab 1: Apa yang Terjadi Ketika Lo Pengen Trading Sesuatu</h1>
+<hr />
+<h2>Masalah HP</h2>
+<p>Lo punya iPhone. Lo pengen jual. Lo pasang di marketplace online: <em>"iPhone 15, like new, Rp 12 juta."</em></p>
+<p>Sekarang lo nunggu.</p>
+<p>Hari 1: sepi.
+Hari 2: ada yang nge-chat — <em>"Masih ada?"</em> Lo bales langsung. Dia baca. Gak ada respon.
+Hari 3: orang lain nawar Rp 8 juta. Lo tolak.
+Hari 5: akhirnya, ada yang dateng, ngecek HP-nya, bayar Rp 11,5 juta. Beres.</p>
+<p><strong>Butuh 5 hari buat lo ngubah HP lo jadi duit.</strong></p>
+<p>Sekarang bayangin lo butuh duit itu <em>besok.</em> Lo bakal kesusahan. HP itu punya nilai — lo tau harganya sekitar Rp 12 juta — tapi lo gak bisa akses nilai itu dengan cepat tanpa ngambil deal jelek.</p>
+<h2>Friksi = Illikuiditas</h2>
+<p>Nunggu, ketidakpastian, <em>gap antara "gue pengen jual" sama "gue beneran kejual"</em> — friksi itu punya nama.</p>
+<p>Namanya <strong>illikuiditas.</strong></p>
+<p>Sebuah aset disebut <strong>illiquid</strong> ketika susah buat ditrading dengan cepat di harga yang wajar. HP lo tadi illiquid. Rumah itu illiquid (butuh berbulan-bulan buat kejual). Lukisan langka itu illiquid (nyari pembeli susah).</p>
+<p>Kebalikannya adalah <strong>likuiditas.</strong></p>
+<p>Sebuah aset disebut <strong>liquid</strong> ketika lo bisa trading hampir instan, kapan aja, tanpa ngeganggu harganya terlalu banyak.</p>
+<h2>Contoh Buku Teks: Pasar vs Mall</h2>
+<p>Masuk ke pasar tradisional di Indonesia. Lo pengen beli 1 kg beras. Pedagang kasih harga. Lo bayar. Lo pulang bawa beras. Semua cuma butuh 30 detik. Beras di pasar itu <strong>liquid.</strong></p>
+<p>Sekarang masuk ke toko elektronik spesialis. Lo pengen beli amplifier vintage yang super spesifik. Tokonya mungkin gak punya. Mungkin harus pesen dulu dari kota lain. Butuh seminggu. Amplifier itu <strong>illiquid.</strong></p>
+<p>Perhatiin sesuatu yang penting: <strong>pedagang beras dan toko elektronik sama-sama toko.</strong> Keduanya jualan barang. Tapi yang satu bisa ngelayani lo instan, yang satu lagi gak bisa. Bedanya bukan di <em>barang yang dijual</em> — tapi di <strong>ketersediaan partner trading.</strong></p>
+<h2>Likuiditas = Selalu Ada yang Siap Trading</h2>
+<p>Pedagang beras punya karung beras gede di belakang. Mereka <em>selalu</em> siap jual beras ke lo. Dan kalau lo dateng bawa beras buat dijual ke <em>mereka</em>, mereka mungkin bakal beli juga (dengan harga beda, tapi tetep dibeli).</p>
+<p>Itu aja. Itu inti idenya.</p>
+<blockquote>
+<p><strong>Likuiditas</strong> = seberapa gampang lo bisa beli atau jual sesuatu tanpa nunggu.</p>
+</blockquote>
+<ul>
+<li>Likuiditas tinggi: saham perusahaan gede (lo bisa beli atau jual dalam hitungan detik selama jam bursa)</li>
+<li>Likuiditas menengah: mobil bekas (beberapa hari sampe seminggu)</li>
+<li>Likuiditas rendah: rumah (berbulan-bulan)</li>
+<li>Gak ada likuiditas: baju pengantin custom lo (harus nyari satu pembeli spesifik, atau gak ada sama sekali)</li>
+</ul>
+<h2>Kenapa Ini Penting</h2>
+<p>Setiap pasar keuangan di dunia — saham, forex, crypto, komoditas — hidup atau mati karena likuiditas.</p>
+<p>Pasar dengan likuiditas tinggi narik lebih banyak trader. Lebih banyak trader berarti lebih banyak likuiditas. Ini siklus yang saling menguatkan.</p>
+<p>Pasar dengan likuiditas rendah bikin orang takut. Gak ada yang mau nyangkut megang sesuatu yang gak bisa dijual. Ini death spiral.</p>
+<p>Crypto, terlepas dari semua teknologi dan kebisingannya, pada dasarnya soal masalah yang sama ini. Gimana caranya bikin pasar di mana orang bisa trading aset digital semudah beli beras di pasar?</p>
+<h2>Satu Konsep yang Harus Diinget</h2>
+<p><strong>Likuiditas = kemudahan trading.</strong></p>
+<p>Lo sekarang udah bisa jelasin arti "liquid" dan "illiquid." Catet di suatu tempat deh. Ini batu bata pertama lo.</p>
+<hr />
+<p><em>Selanjutnya: Siapa yang nyediain likuiditas ini? Siapa orang yang bilang "gue bakal selalu di sini buat trading sama lo"?</em></p></div>
         </div>
 
         <div class="chapter" id="02-the-middleman">
-            <h1>Chapter 2: The Person Who's Always There</h1>
+            <div class="lang-en"><h1>Chapter 2: The Person Who's Always There</h1>
 <hr />
 <h2>The Midnight Trader</h2>
 <p>It's 2 AM. You suddenly remember you need to convert some US dollars to Rupiah. You open your banking app, and... it works. Instantly. The rate is displayed, you accept it, the money moves.</p>
@@ -584,19 +539,116 @@ They pocket the difference: Rp 400,000.</p>
 2. Who provides it (this chapter)</p>
 <p>Two building blocks. Let's build the third.</p>
 <hr />
-<p><em>Next: How big should the spread be? How much can a market maker actually earn? And what's the risk?</em></p>
-
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>A market maker is someone who is always ready to buy AND sell, profiting from the gap between those two prices — the spread. They are the "always there" counterparty in every market.</p>
-                </div>
-            </div>
+<p><em>Next: How big should the spread be? How much can a market maker actually earn? And what's the risk?</em></p></div>
+            <div class="lang-id"><h1>Bab 2: Orang yang Selalu Ada</h1>
+<hr />
+<h2>Trader Tengah Malam</h2>
+<p>Jam 2 pagi. Lo tiba-tiba inget harus nukar dolar AS ke Rupiah. Lo buka aplikasi banking lo, dan... langsung bisa. Instan. Kurs ditampilin, lo setuju, duitnya pindah.</p>
+<p>Lo trading sama siapa jam 2 pagi?</p>
+<p>Bukan orang lain kayak lo, yang kebetulan melek di jam aneh juga pengen trading mata uang. Itu <strong>market maker.</strong></p>
+<h2>Apa yang Market Maker Lakukan</h2>
+<p>Market maker adalah seseorang (atau sesuatu) yang berdiri di tengah pasar dan bilang:</p>
+<blockquote>
+<p><em>"Gue bakal beli dari siapa pun yang pengen jual, dan gue bakal jual ke siapa pun yang pengen beli — </em><em>setiap saat.</em><em>"</em></p>
+</blockquote>
+<p>Mereka gak peduli lo siapa. Mereka gak peduli jam berapa. Mereka punya inventori di kedua sisi, dan mereka selalu buka buat bisnis.</p>
+<p>Bayangin loket penukaran mata uang di bandara. Jam 6 pagi, pesawat lo baru mendarat, dan lo butuh mata uang lokal. Loketnya buka. Mereka beli dolar lo dan jual Rupiah ke lo. Mereka gak kenal lo. Gak perlu. Mereka market maker buat mata uang di bandara itu.</p>
+<h2>Janji Dua Sisi</h2>
+<p>Seorang market maker bikin dua janji sekaligus:</p>
+<table>
+<thead>
+<tr>
+<th>Janji</th>
+<th>Artinya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bid</strong></td>
+<td>"Gue bakal BELI dari lo di harga ini"</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>"Gue bakal JUAL ke lo di harga ini"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bid</strong> selalu sedikit lebih rendah dari <strong>ask.</strong></p>
+<p>Kenapa? Karena gap itu cara market maker dibayar.</p>
+<h2>Spread: Profit Mereka</h2>
+<p>Kita kasih angka ya:</p>
+<ul>
+<li>Market maker bilang: <em>"Gue BELI 1 USD dari lo seharga Rp 15.800"</em> (ini BID)</li>
+<li>Market maker bilang: <em>"Gue JUAL 1 USD ke lo seharga Rp 16.200"</em> (ini ASK)</li>
+<li>Gap-nya: Rp 400</li>
+</ul>
+<p>Kalau lo jual $1.000 ke mereka, mereka bayar lo Rp 15.800.000.
+Kalau orang lain langsung beli $1.000 dari mereka, mereka terima Rp 16.200.000.
+Mereka kantongin selisihnya: Rp 400.000.</p>
+<p>Selisih itu — gap antara harga beli dan harga jual mereka — namanya <strong>spread.</strong></p>
+<blockquote>
+<p><strong>Spread</strong> = selisih antara harga bid dan harga ask. Itu pendapatan market maker.</p>
+</blockquote>
+<h2>Ini Bukan Penipuan</h2>
+<p>Mungkin lo mikir: <em>"Lah, mereka cuma ngambil untung dari setiap transaksi dong?"</em></p>
+<p>Tapi coba liat dari sisi mereka:</p>
+<ul>
+<li>Mereka harus megang inventori. Kalau gak ada yang beli untuk sementara, duit mereka nyangkut.</li>
+<li>Mereka nanggung risiko harga. Gimana kalau tiba-tiba dolar jatuh dan inventori mereka jadi lebih murah dari harga beli?</li>
+<li>Mereka ngasih layanan beneran: lo bisa trading instan jam 2 pagi. Kenyamanan itu ada nilainya.</li>
+</ul>
+<p>Spread adalah harga yang lo bayar buat <strong>eksekusi instan.</strong> Lo bisa nunggu sampe ketemu orang lain yang pengen trading kebalikannya di waktu yang persis sama — tapi itu bisa butuh berjam-jam, berhari-hari, atau selamanya.</p>
+<h2>Market Maker di Kehidupan Nyata</h2>
+<p>Lo ketemu market maker terus-terusan tanpa sadar:</p>
+<table>
+<thead>
+<tr>
+<th>Tempat</th>
+<th>Market Maker-nya</th>
+<th>Yang Mereka Trading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loket penukaran mata uang</td>
+<td>Operator loket</td>
+<td>USD ↔ IDR</td>
+</tr>
+<tr>
+<td>Bursa saham</td>
+<td>Perusahaan kayak Citadel, Jane Street</td>
+<td>Saham</td>
+</tr>
+<tr>
+<td>Marketplace online</td>
+<td>Power seller yang selalu punya stok</td>
+<td>Barang fisik</td>
+</tr>
+<tr>
+<td>Penjual pulsa</td>
+<td>Penjual dengan saldo gede</td>
+<td>Pulsa</td>
+</tr>
+<tr>
+<td>Exchange crypto</td>
+<td>Exchange terpusat (Binance, Coinbase)</td>
+<td>Pair crypto</td>
+</tr>
+</tbody>
+</table>
+<p>Di setiap kasus, polanya sama: seseorang megang inventori di kedua sisi, ngasih dua harga (beli dan jual), dan untung dari spread.</p>
+<h2>Satu Konsep yang Harus Diinget</h2>
+<p><strong>Market maker = orang yang selalu siap beli DAN jual, untung dari gap antara dua harga itu (spread).</strong></p>
+<p>Lo sekarang udah paham:
+1. Apa itu likuiditas (Bab 1)
+2. Siapa yang nyediain (bab ini)</p>
+<p>Dua batu bata. Yuk bangun yang ketiga.</p>
+<hr />
+<p><em>Selanjutnya: Seberapa gede seharusnya spread? Berapa banyak yang bisa didapetin market maker? Dan apa risikonya?</em></p></div>
         </div>
 
         <div class="chapter" id="03-spread-as-business">
-            <h1>Chapter 3: The Spread as a Business</h1>
+            <div class="lang-en"><h1>Chapter 3: The Spread as a Business</h1>
 <hr />
 <h2>The Pulsa Seller at the Bus Terminal</h2>
 <p>There's a man named Budi who sells phone credit at a busy bus terminal in Jakarta.</p>
@@ -786,19 +838,204 @@ scares buyers)  turnover = hold longer)
 <h2>One Concept to Take Away</h2>
 <p><strong>A market maker's business = spread width × trading volume, balanced against inventory risk.</strong> Every decision — how wide to set the spread, which assets to trade, how much inventory to hold — is about managing this tradeoff.</p>
 <hr />
-<p><em>Next: What if we replaced Budi with a computer program? What would that program look like?</em></p>
+<p><em>Next: What if we replaced Budi with a computer program? What would that program look like?</em></p></div>
+            <div class="lang-id"><h1>Bab 3: Spread Sebagai Bisnis</h1>
+<hr />
+<h2>Penjual Pulsa di Terminal Bus</h2>
+<p>Ada seorang bapak namanya Budi yang jualan pulsa di terminal bus yang ramai di Jakarta.</p>
+<p>Dia beli pulsa secara grosir dari provider:
+- <strong>Harga modal dia:</strong> Rp 9.800 per voucher Rp 10.000</p>
+<p>Dia jual ke penumpang:
+- <strong>Harga jual dia:</strong> Rp 10.200 per voucher Rp 10.000</p>
+<p>Spread-nya Rp 400. Itu seluruh model bisnisnya.</p>
+<h2>Keseharian Budi</h2>
+<table>
+<thead>
+<tr>
+<th>Waktu</th>
+<th>Pelanggan</th>
+<th>Voucher Terjual</th>
+<th>Pendapatan (Spread × Qty)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pagi (6-10)</td>
+<td>Ramai banget</td>
+<td>150</td>
+<td>Rp 60.000</td>
+</tr>
+<tr>
+<td>Siang (10-2)</td>
+<td>Sepi</td>
+<td>40</td>
+<td>Rp 16.000</td>
+</tr>
+<tr>
+<td>Sore (2-6)</td>
+<td>Stabil</td>
+<td>90</td>
+<td>Rp 36.000</td>
+</tr>
+<tr>
+<td>Malam (6-10)</td>
+<td>Ramai banget</td>
+<td>140</td>
+<td>Rp 56.000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>420</strong></td>
+<td><strong>Rp 168.000</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Budi dapet sekitar Rp 168.000 per hari cuma dari spread. Lumayan lah buat jualan pulsa di terminal.</p>
+<p>Tapi coba kita liat lebih deket apa yang bikin ini berhasil — dan apa yang bisa ngerusak.</p>
+<h2>Tiga Hal yang Menentukan Profit Budi</h2>
+<h3>1. Spread (Lebar)</h3>
+<p>Kalau Budi ngelebarin spread-nya — beli di Rp 9.500, jual di Rp 10.500 — dia dapet Rp 1.000 per voucher, bukan Rp 400.</p>
+<p>Tapi ada masalah: penumpang bakal sadar. Penjual pulsa di seberang terminal jual di Rp 10.100. Pelanggan Budi pindah ke sana.</p>
+<p><strong>Spread lebih lebar = lebih banyak profit per transaksi, tapi lebih sedikit transaksi.</strong></p>
+<h3>2. Volume Trading (Berapa Banyak Transaksi)</h3>
+<p>Kalau terminal bus tiba-tiba dapet penumpang dua kali lipat, Budi jual voucher dua kali lipat. Spread-nya gak berubah, tapi volumenya dobel. Penghasilan hariannya dobel.</p>
+<p><strong>Lebih banyak volume = lebih banyak profit, dengan spread yang sama.</strong></p>
+<h3>3. Risiko Inventori</h3>
+<p>Budi nyimpen voucher pulsa senilai Rp 5.000.000 di tasnya. Itu inventori dia.</p>
+<p>Suatu hari, provider ngumumin promosi: pulsa sekarang Rp 8.000 per voucher buat semua orang. Inventori Budi yang Rp 5.000.000 tiba-tiba nilainya turun. Dia bayar Rp 9.800 buat voucher yang sekarang cuma bernilai Rp 8.000 di pasar terbuka. Itu namanya <strong>rugi.</strong></p>
+<blockquote>
+<p><strong>Risiko inventori</strong> = bahaya bahwa nilai barang yang lo pegang turun ketika lo lagi megang.</p>
+</blockquote>
+<h2>Ketegangan Mendasar Jadi Market Maker</h2>
+<p>Budi menghadapi tradeoff tiga arah yang konstan:</p>
+<div class="codehilite"><pre><span></span><code>         SPREAD LEBIH LEBAR
+               ↑
+              / \
+             /   \
+            /     \
+VOLUME LEBIH       RISIKO INVENTORI
+SEDIKIT            LEBIH BESAR
+(harga lebih       (spread lebih lebar =
+tinggi menakuti    perputaran lebih lambat
+pembeli)           = megang lebih lama)
+</code></pre></div>
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>A market maker's business = spread width × trading volume, balanced against inventory risk. Every decision — spread, assets, inventory — is about managing this tradeoff.</p>
-                </div>
-            </div>
+<p>Setiap market maker sepanjang sejarah — dari Budi di terminal bus sampe perusahaan trading terbesar di Wall Street — menghadapi segitiga yang persis sama ini.</p>
+<h2>Apa yang Bikin Pasar Jadi "Bagus"</h2>
+<p>Pasar yang bagus buat market maker punya:</p>
+<table>
+<thead>
+<tr>
+<th>Faktor</th>
+<th>Kenapa membantu</th>
+<th>Terminal Budi?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Volume alami tinggi</strong></td>
+<td>Banyak transaksi tanpa perlu ngelebarin spread</td>
+<td>✓ (terminal ramai)</td>
+</tr>
+<tr>
+<td><strong>Harga aset stabil</strong></td>
+<td>Risiko inventori lebih kecil</td>
+<td>✓ (harga pulsa stabil)</td>
+</tr>
+<tr>
+<td><strong>Kompetisi wajar</strong></td>
+<td>Jaga spread tetap adil tapi gak setipis silet</td>
+<td>✓ (satu kompetitor, bukan dua puluh)</td>
+</tr>
+<tr>
+<td><strong>Overhead rendah</strong></td>
+<td>Lebih banyak profit yang disimpen per transaksi</td>
+<td>✓ (cuma modal tas dan kursi)</td>
+</tr>
+</tbody>
+</table>
+<h2>Apa yang Bikin Pasar Jadi "Jelek"</h2>
+<table>
+<thead>
+<tr>
+<th>Faktor</th>
+<th>Kenapa merugikan</th>
+<th>Contoh dunia nyata</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Volume rendah</strong></td>
+<td>Harus ngelebarin spread buat survive, yang makin matiin volume</td>
+<td>Jualan koleksi langka</td>
+</tr>
+<tr>
+<td><strong>Aset volatil</strong></td>
+<td>Nilai inventori naik-turun liar</td>
+<td>Trading memecoin baru</td>
+</tr>
+<tr>
+<td><strong>Terlalu banyak kompetisi</strong></td>
+<td>Spread keperes sampe hampir nol</td>
+<td>Pair mata uang mayor (EUR/USD)</td>
+</tr>
+<tr>
+<td><strong>Overhead tinggi</strong></td>
+<td>Harus dapet cukup buat nutup biaya sebelum profit</td>
+<td>Jalanin toko fisik</td>
+</tr>
+</tbody>
+</table>
+<h2>Dari Budi ke Miliaran</h2>
+<p>Ini yang gila: perusahaan keuangan terbesar di dunia beroperasi dengan prinsip yang persis sama kayak Budi.</p>
+<p>Citadel Securities, salah satu firma market-making terbesar secara global, nanganin sekitar 27% dari seluruh volume trading saham AS. Model bisnis mereka? Beli di bid, jual di ask, kantongin spread — jutaan kali per hari.</p>
+<p>Permainan yang sama. Skala yang beda.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Budi</th>
+<th>Citadel Securities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aset</td>
+<td>Voucher pulsa</td>
+<td>Saham</td>
+</tr>
+<tr>
+<td>Volume harian</td>
+<td>420 transaksi</td>
+<td>~7 miliar lembar saham</td>
+</tr>
+<tr>
+<td>Spread per transaksi</td>
+<td>Rp 400</td>
+<td>Pecahan sen</td>
+</tr>
+<tr>
+<td>Dapet duit karena...</td>
+<td>Spread × Volume</td>
+<td>Spread × Volume</td>
+</tr>
+<tr>
+<td>Risiko</td>
+<td>Perubahan harga provider</td>
+<td>Harga saham anjlok</td>
+</tr>
+</tbody>
+</table>
+<p>Matematikanya identik: <strong>Profit = Spread × Volume − Kerugian Inventori</strong></p>
+<h2>Satu Konsep yang Harus Diinget</h2>
+<p><strong>Bisnis market maker = lebar spread × volume trading, diseimbangkan dengan risiko inventori.</strong> Setiap keputusan — seberapa lebar spread dipasang, aset apa yang ditrading, berapa banyak inventori dipegang — semua soal ngatur tradeoff ini.</p>
+<hr />
+<p><em>Selanjutnya: Gimana kalau kita ganti Budi dengan program komputer? Kayak apa tuh programnya?</em></p></div>
         </div>
 
         <div class="chapter" id="04-computer-middleman">
-            <h1>Chapter 4: What If the Middleman Was a Computer Program?</h1>
+            <div class="lang-en"><h1>Chapter 4: What If the Middleman Was a Computer Program?</h1>
 <hr />
 <h2>Budi Has a Problem</h2>
 <p>Remember Budi from Chapter 3? He's doing well. But he's exhausted. Standing at the bus terminal 14 hours a day. He has to be physically present for every single trade.</p>
@@ -905,19 +1142,119 @@ Chapter 4: An AMM is a computer program that does a market maker&#39;s job
 <p><strong>What formula does the AMM actually use to set prices?</strong></p>
 <p>That's Chapter 5.</p>
 <hr />
-<p><em>Next: The math inside the machine. Don't worry — it's simpler than you think.</em></p>
+<p><em>Next: The math inside the machine. Don't worry — it's simpler than you think.</em></p></div>
+            <div class="lang-id"><h1>Bab 4: Gimana Kalau Middleman-nya Adalah Program Komputer?</h1>
+<hr />
+<h2>Budi Punya Masalah</h2>
+<p>Masih inget Budi dari Bab 3? Dia lumayan sukses. Tapi dia capek banget. Berdiri di terminal bus 14 jam sehari. Dia harus hadir secara fisik buat setiap transaksi.</p>
+<p>Suatu malam, Budi punya ide: <em>"Gimana kalau gue bikin program komputer yang ngerjain kerjaan gue?"</em></p>
+<p>Dia nelpon ponakannya, seorang programmer.</p>
+<p>"Dengerin," kata Budi. "Gue butuh program yang ngegantiin gue. Programnya harus ngelakuin tepat tiga hal:"</p>
+<ol>
+<li><strong>Megang inventori</strong> — programnya harus megang pulsa dan duit, kayak yang gue lakuin.</li>
+<li><strong>Nentuin harga</strong> — programnya harus tau harga beli dan jual yang harus dipasang.</li>
+<li><strong>Eksekusi transaksi</strong> — ketika ada yang pengen trading, programnya jalanin otomatis.</li>
+</ol>
+<p>Ponakannya mikir sebentar. "Yang pertama dan ketiga gampang. Yang susah itu nomor 2 — gimana programnya tau harga apa yang harus dipasang?"</p>
+<h2>Satu Aturan yang Dibutuhin Program</h2>
+<p>Budi ngejelasin instingnya: <em>"Ketika banyak orang beli dari gue, gue pelan-pelan naikin harga. Ketika banyak orang jual ke gue, gue pelan-pelan turunin harga. Gue gak mikir — gue cuma ngerasain keramaiannya."</em></p>
+<p>Ponakannya nerjemahin ini ke logika kode:</p>
+<div class="codehilite"><pre><span></span><code>Kalau seseorang BELI dari program:
+    → Inventori aset di program TURUN
+    → Jadi program harus NAIKIN harga sedikit
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>An AMM (Automated Market Maker) is a computer program that replaces a human market maker — using math instead of gut feeling to set prices, running 24/7, never tired, never emotional.</p>
-                </div>
-            </div>
+Kalau seseorang JUAL ke program:
+    → Inventori aset di program NAIK
+    → Jadi program harus TURUNIN harga sedikit
+</code></pre></div>
+
+<p>Ini masuk akal. Kalau semua orang pengen beli pulsa dari mesin, pulsa jadi makin langka di dalam mesin. Harga naik. Kalau semua orang jual pulsa ke mesin, mesin kebanjiran pulsa. Harga turun.</p>
+<p><strong>Ini persis cara kerja pasar keuangan beneran.</strong> Saham Apple naik ketika lebih banyak yang pengen beli daripada jual. Turun ketika lebih banyak yang pengen jual daripada beli. Mesin cuma memformalkan ini ke dalam kode.</p>
+<h2>Automated Market Maker (AMM)</h2>
+<p>Program ini — robot yang megang inventori, nentuin harga secara algoritmik, dan trading otomatis — namanya <strong>Automated Market Maker,</strong> atau <strong>AMM.</strong></p>
+<blockquote>
+<p><strong>AMM</strong> = program komputer yang bertindak sebagai market maker, pake matematika (bukan penilaian manusia) buat nentuin harga.</p>
+</blockquote>
+<p>Alih-alih Budi berdiri di terminal bikin keputusan berdasarkan feeling, kita punya program yang jalan 24/7, memproses transaksi instan, gak pernah capek, gak pernah bikin kesalahan emosional.</p>
+<h2>Perbedaan Kunci: Siapa yang Nentuin Harga?</h2>
+<table>
+<thead>
+<tr>
+<th>Pasar Tradisional (Bursa Saham)</th>
+<th>Automated Market Maker (DeFi)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pembeli dan penjual pasang order</td>
+<td>Gak ada order. Cuma pool aset.</td>
+</tr>
+<tr>
+<td>Order book yang mencocokkan</td>
+<td>Formula yang ngitung harga.</td>
+</tr>
+<tr>
+<td>Harga = di mana supply ketemu demand</td>
+<td>Harga = kata formula, berdasarkan seberapa banyak yang ada di pool.</td>
+</tr>
+<tr>
+<td>Butuh banyak partisipan buat berfungsi</td>
+<td>Bisa jalan cuma dengan SATU penyedia aset.</td>
+</tr>
+</tbody>
+</table>
+<p>Poin terakhir ini revolusioner. Exchange tradisional butuh banyak pembeli DAN banyak penjual buat berfungsi. Tanpa cukup partisipan, order book kosong dan trading macet.</p>
+<p>AMM bisa jalan dengan satu orang aja yang deposit aset. Formulanya nanganin price discovery. Artinya <strong>lo bisa bikin pasar yang berfungsi buat aset apapun, kapan aja, dengan setup yang hampir gak ada.</strong></p>
+<h2>Tradeoff-nya</h2>
+<p>Tentu aja, Budi si manusia punya kelebihan:</p>
+<table>
+<thead>
+<tr>
+<th>Budi (Manusia)</th>
+<th>AMM (Program)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bisa nyesuaiin sama berita dan kejadian</td>
+<td>Cuma ngikutin formulanya</td>
+</tr>
+<tr>
+<td>Bisa nolak transaksi mencurigakan</td>
+<td>Trading sama siapa aja, selalu</td>
+</tr>
+<tr>
+<td>Capek, butuh tidur</td>
+<td>Jalan selamanya</td>
+</tr>
+<tr>
+<td>Bikin kesalahan karena feeling</td>
+<td>Nol kesalahan penilaian</td>
+</tr>
+<tr>
+<td>Gak bisa scale di luar satu lokasi</td>
+<td>Bisa ngelayani seluruh internet</td>
+</tr>
+</tbody>
+</table>
+<p>Buat crypto, yang global, 24/7, dan murni digital, model AMM itu pas banget. Gak tidur. Gak ada batasan negara. Gak ada hari sakit.</p>
+<h2>Di Mana Kita Sekarang</h2>
+<p>Sejauh ini, kita udah bangun:</p>
+<div class="codehilite"><pre><span></span><code>Bab 1: Likuiditas = kemudahan trading
+Bab 2: Market maker nyediain likuiditas, untung dari spread
+Bab 3: Profit = spread × volume − risiko inventori
+Bab 4: AMM adalah program komputer yang ngerjain kerjaan market maker
+</code></pre></div>
+
+<p>AMM adalah jembatan antara terminal bus Budi dan dunia DeFi. Tapi kita masih belum jawab pertanyaan utamanya:</p>
+<p><strong>Formula apa yang sebenernya dipake AMM buat nentuin harga?</strong></p>
+<p>Itu Bab 5.</p>
+<hr />
+<p><em>Selanjutnya: Matematika di dalam mesin. Tenang aja — ini lebih simpel dari yang lo kira.</em></p></div>
         </div>
 
         <div class="chapter" id="05-constant-product">
-            <h1>Chapter 5: The Math Inside the Machine</h1>
+            <div class="lang-en"><h1>Chapter 5: The Math Inside the Machine</h1>
 <hr />
 <h2>The Simplest Possible Formula</h2>
 <p>The AMM needs one rule to set prices. Remember Budi's instinct: <em>when people buy, price goes up. When people sell, price goes down.</em></p>
@@ -1063,19 +1400,158 @@ Chapter 4: An AMM is a computer program that does a market maker&#39;s job
 </blockquote>
 <p>You now understand the engine that powers almost all of DeFi. The pool is the market. The formula is the price. No middleman required.</p>
 <hr />
-<p><em>Next: The pool needs inventory. Where does it come from? And why would anyone provide it?</em></p>
+<p><em>Next: The pool needs inventory. Where does it come from? And why would anyone provide it?</em></p></div>
+            <div class="lang-id"><h1>Chapter 5: Matematika di Dalam Mesin</h1>
+<hr />
+<h2>Rumus Paling Sederhana</h2>
+<p>AMM butuh satu aturan buat nentuin harga. Inget insting Budi: <em>kalau orang beli, harga naik. Kalau orang jual, harga turun.</em></p>
+<p>Rumus AMM paling terkenal — yang nge-launch industri triliunan dolar — nangkep ini pake matematika SMP:</p>
+<blockquote>
+<p><strong>x × y = k</strong></p>
+</blockquote>
+<p>Udah. Itu rumusnya.</p>
+<p>Yuk kita bongkar.</p>
+<h2>Arti x, y, dan k</h2>
+<p>Bayangin sebuah pool yang isinya dua aset: <strong>SOL</strong> (cryptocurrency) dan <strong>USDC</strong> (dolar digital, selalu ~Rp 16.000-an).</p>
+<table>
+<thead>
+<tr>
+<th>Variabel</th>
+<th>Artinya</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>x</strong></td>
+<td>Jumlah SOL di pool</td>
+<td>10 SOL</td>
+</tr>
+<tr>
+<td><strong>y</strong></td>
+<td>Jumlah USDC di pool</td>
+<td>2.000 USDC</td>
+</tr>
+<tr>
+<td><strong>k</strong></td>
+<td>x × y — angka ini GAK PERNAH berubah</td>
+<td>10 × 2.000 = <strong>20.000</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Pool mulai dengan 10 SOL dan 2.000 USDC. k = 20.000.</p>
+<p><strong>Tugas pool:</strong> jagain supaya x × y = 20.000, apapun trade yang terjadi.</p>
+<h2>Sebuah Trade: Beli SOL dari Pool</h2>
+<p>Lo datang dan bilang: <em>"Gue mau beli 1 SOL dari pool ini. Berapa USDC yang harus gue bayar?"</em></p>
+<p>Sebelum trade lo:
+- x = 10 SOL, y = 2.000 USDC
+- Harga 1 SOL = y / x = 2.000 / 10 = <strong>$200 per SOL</strong></p>
+<p>Sekarang lo ambil 1 SOL keluar. Pool bakal punya 9 SOL tersisa. Tapi k harus tetep 20.000.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Setelah</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="n">SOL</span>
+<span class="w">         </span><span class="n">x</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.000</span>
+<span class="w">         </span><span class="mi">9</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.000</span>
+<span class="w">         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span>
+<span class="w">         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.222</span><span class="o">,</span><span class="mi">22</span><span class="w"> </span><span class="n">USDC</span>
+</code></pre></div>
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>x × y = k — the constant product formula. It automatically adjusts prices: buying pushes prices up, selling pushes them down. Pure math, no human needed. This is the engine inside every AMM.</p>
-                </div>
-            </div>
+<p>Jadi y berubah dari 2.000 ke 2.222,22. Artinya <strong>lo harus setor 222,22 USDC</strong> buat ngambil 1 SOL.</p>
+<p>Lo bayar 222,22 USDC buat 1 SOL. Harga "aslinya" tadi 200 USDC. Lo bayar lebih mahal.</p>
+<p><strong>Harga naik karena lo beli.</strong> Insting Budi, sekarang diformalin dalam matematika.</p>
+<h2>Trade ke Arah Sebaliknya: Jual SOL</h2>
+<p>Sekarang orang lain datang dan jual 1 SOL ke pool.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Sebelum</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="n">SOL</span><span class="o">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.222</span><span class="o">,</span><span class="mi">22</span><span class="w"> </span><span class="n">USDC</span><span class="o">,</span><span class="w"> </span><span class="n">harga</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.222</span><span class="o">,</span><span class="mi">22</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="err">≈</span><span class="w"> </span><span class="n">$246</span><span class="o">,</span><span class="mi">91</span>
+<span class="n">Setelah</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">SOL</span>
+<span class="w">         </span><span class="mi">10</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.000</span>
+<span class="w">         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.000</span><span class="w"> </span><span class="n">USDC</span>
+</code></pre></div>
+
+<p>Pool ngasih mereka 222,22 USDC buat 1 SOL mereka. Harga turun. Persis kayak kata Budi.</p>
+<h2>Hal Penting yang Baru Lo Lihat</h2>
+<p>Coba bandingin harganya:</p>
+<table>
+<thead>
+<tr>
+<th>Aksi</th>
+<th>Harga Sebelum</th>
+<th>Harga Setelah</th>
+<th>Arah</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orang BELI SOL</td>
+<td>$200</td>
+<td>$246,91</td>
+<td>📈 Naik</td>
+</tr>
+<tr>
+<td>Orang JUAL SOL</td>
+<td>$246,91</td>
+<td>$200</td>
+<td>📉 Turun</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rumusnya otomatis nyesuain harga berdasarkan supply dan demand.</strong> Gak ada manusia. Gak ada order book. Gak ada lelang. Cuma x × y = k.</p>
+<h2>Kenapa Ini Indah</h2>
+<p>Rumus ini punya sifat-sifat yang bikin dia sempurna buat pasar otomatis:</p>
+<ol>
+<li><strong>Selalu bekerja.</strong> Separah apapun orang mau trade, rumusnya selalu ngasih harga.</li>
+<li><strong>Gak pernah habis.</strong> Lo bisa terus trading selamanya — harganya cuma makin ekstrim aja.</li>
+<li><strong>Bisa diprediksi.</strong> Lo bisa ngitung persis apa yang lo dapet sebelum trade.</li>
+<li><strong>Ada "slippage".</strong> Trade gede ngegeser harga lebih banyak dari trade kecil. Ini mirip pasar beneran.</li>
+</ol>
+<p>Poin terakhir penting. Nih contohnya:</p>
+<table>
+<thead>
+<tr>
+<th>Ukuran Trade</th>
+<th>SOL Dibeli</th>
+<th>USDC Dibayar</th>
+<th>Harga Efektif per SOL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kecil</td>
+<td>0,1 SOL</td>
+<td>~19,61 USDC</td>
+<td>~$196</td>
+</tr>
+<tr>
+<td>Sedang</td>
+<td>1 SOL</td>
+<td>~222,22 USDC</td>
+<td>~$222</td>
+</tr>
+<tr>
+<td>Gede</td>
+<td>5 SOL</td>
+<td>~2.000 USDC</td>
+<td>~$400</td>
+</tr>
+</tbody>
+</table>
+<p>Trade makin gede, harga makin buruk. Ini namanya <strong>price impact</strong> atau <strong>slippage.</strong> Cara AMM ngelindungin diri biar gak dikuras.</p>
+<h2>Pool sebagai Jungkat-Jungkit</h2>
+<p>Nih cara intuitif buat mikirin x × y = k:</p>
+<p>Bayangin jungkat-jungkit dengan SOL di satu sisi dan USDC di sisi lain. Jungkat-jungkitnya harus selalu seimbang di "berat" konstan (k).</p>
+<ul>
+<li>Kalau SOL keluar dari pool (orang beli), sisi SOL jadi lebih ringan. Buat seimbang lagi, USDC harus nambah. Artinya harga SOL (USDC/SOL) NAIK.</li>
+<li>Kalau SOL masuk ke pool (orang jual), sisi SOL jadi lebih berat. Buat seimbang lagi, USDC harus berkurang. Harga SOL TURUN.</li>
+</ul>
+<p>Cuma permainan keseimbangan doang.</p>
+<h2>Satu Konsep yang Harus Diingat</h2>
+<blockquote>
+<p><strong>x × y = k</strong>: rumus constant product. Dia otomatis nentuin harga supaya pembelian naikin harga dan penjualan nurunin harga — persis kayak market maker manusia, tapi dijalankan murni oleh matematika.</p>
+</blockquote>
+<p>Lo sekarang ngerti mesin yang ngejalanin hampir semua DeFi. Pool adalah pasarnya. Rumus adalah harganya. Gak perlu perantara.</p>
+<hr />
+<p><em>Selanjutnya: Pool butuh inventaris. Dari mana datangnya? Dan kenapa ada yang mau nyediain?</em></p></div>
         </div>
 
         <div class="chapter" id="06-where-money-comes-from">
-            <h1>Chapter 6: Where Does the Money Come From?</h1>
+            <div class="lang-en"><h1>Chapter 6: Where Does the Money Come From?</h1>
 <hr />
 <h2>The Pool Needs Stuff</h2>
 <p>The AMM pool we built in Chapter 5 held 10 SOL and 2,000 USDC. That inventory came from somewhere.</p>
@@ -1189,19 +1665,126 @@ When you want your money back, you withdraw your share of the pool — your orig
 </table>
 <p>That third row — "you bear inventory risk" — is important enough to deserve its own chapter.</p>
 <hr />
-<p><em>Next: The hidden cost of being an LP. Why "just deposit and earn" isn't the full picture.</em></p>
-
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>An LP (Liquidity Provider) deposits assets into a pool and earns a share of all trading fees. Your money works while you sleep — but you also bear the inventory risk. That risk has a name: impermanent loss.</p>
-                </div>
-            </div>
+<p><em>Next: The hidden cost of being an LP. Why "just deposit and earn" isn't the full picture.</em></p></div>
+            <div class="lang-id"><h1>Chapter 6: Dari Mana Uangnya Datang?</h1>
+<hr />
+<h2>Pool Butuh Barang</h2>
+<p>Pool AMM yang kita bangun di Chapter 5 isinya 10 SOL dan 2.000 USDC. Inventaris itu datang dari suatu tempat.</p>
+<p>Di dunia Budi, Budi pake uang sendiri buat beli inventaris. Dia keluarin Rp 5.000.000 dari tabungan buat beli voucher pulsa. Dia nanggung semua risiko, dan dia ngantongin semua untung.</p>
+<p>Tapi pool crypto beda. Inventarisnya gak datang dari satu orang. Datangnya dari <strong>siapa aja yang mau ikut.</strong></p>
+<h2>Liquidity Provider (LP)</h2>
+<p><strong>Liquidity provider</strong> (disingkat LP) adalah orang yang nyetor asetnya ke pool AMM supaya pool punya inventaris buat trading.</p>
+<blockquote>
+<p><strong>LP</strong> = lo, nyetor token lo ke pool supaya AMM bisa berfungsi sebagai market maker.</p>
+</blockquote>
+<p>Imbalannya, lo dapet bagian dari fee setiap trade yang terjadi di pool itu.</p>
+<h2>Gimana Cara Kerjanya, Step by Step</h2>
+<p>Anggap lo punya 1 SOL dan 200 USDC. Lo liat ada pool SOL-USDC.</p>
+<p><strong>Step 1: Lo setor.</strong>
+Lo masukin 1 SOL dan 200 USDC ke pool. Pool sekarang punya inventaris lebih banyak.</p>
+<p><strong>Step 2: Pool pake aset lo.</strong>
+Trader datang dan trading di pool. Setiap trade bayar fee kecil (biasanya 0,3% atau kurang).</p>
+<p><strong>Step 3: Lo dapet bagian lo.</strong>
+Kalau setoran lo mewakili 10% dari total pool, lo dapet 10% dari semua fee yang terkumpul.</p>
+<p><strong>Step 4: Lo bisa tarik kapan aja.</strong>
+Kalau lo mau duit lo balik, lo tarik bagian lo dari pool — aset awal lo plus fee yang udah lo kumpulin.</p>
+<h2>Contoh Nyata</h2>
+<p>Kita lacak pake angka:</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Status Pool</th>
+<th>Bagian Lo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pool mulai</td>
+<td>10 SOL + 2.000 USDC</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Lo setor</td>
+<td>1 SOL + 200 USDC</td>
+<td>1/11 = 9,09% dari pool</td>
+</tr>
+<tr>
+<td>Pool sekarang</td>
+<td>11 SOL + 2.200 USDC</td>
+<td>—</td>
+</tr>
+<tr>
+<td>100 trade terjadi</td>
+<td>Fee terkumpul: ~10 USDC</td>
+<td>Bagian lo: ~0,91 USDC</td>
+</tr>
+<tr>
+<td>Lo tarik</td>
+<td>Lo dapet balik bagian lo</td>
+<td>1 SOL + ~200,91 USDC</td>
+</tr>
+</tbody>
+</table>
+<p>Lo dapet ~0,91 USDC cuma karena ninggalin aset di pool. Bukan jumlah yang mengubah hidup, tapi bayangin ini jalan setahun dengan ribuan trade per hari.</p>
+<h2>Kenapa Ini Bagus Buat Pool?</h2>
+<p>Pool butuh kedalaman. Pool dengan 10 SOL gak bisa nanganin trade 5 SOL tanpa price impact gede (inget Chapter 5). Pool dengan 1.000 SOL bisa nanganin trade itu dengan mulus.</p>
+<p>Lebih banyak LP → pool lebih dalam → slippage lebih kecil → pengalaman trading lebih enak → lebih banyak trader → lebih banyak fee → LP makin senang.</p>
+<p>Ini siklus positif. Seluruh ekosistem DeFi jalan di atas ini.</p>
+<h2>Kenapa Ada yang Mau Ngelakuin Ini?</h2>
+<p>Tiga alasan:</p>
+<table>
+<thead>
+<tr>
+<th>Alasan</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dapet fee pasif</strong></td>
+<td>Aset lo kerja buat lo sementara lo tidur. Kayak bunga di rekening bank, tapi yield-nya datang dari trading fee, bukan dari pinjaman.</td>
+</tr>
+<tr>
+<td><strong>Dukung project yang lo percaya</strong></td>
+<td>LP awal yang nyediain likuiditas bikin token baru bisa ditradingin. Tanpa LP, token baru gak punya pasar.</td>
+</tr>
+<tr>
+<td><strong>Diversifikasi portofolio</strong></td>
+<td>Daripada cuma hold SOL, lo bisa manfaatin itu buat dapet yield tambahan.</td>
+</tr>
+</tbody>
+</table>
+<h2>Deal-nya: Apa yang Lo Kasih vs Apa yang Lo Dapet</h2>
+<table>
+<thead>
+<tr>
+<th>Lo KASIH</th>
+<th>Lo DAPET</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aset lo (SOL, USDC, dll.)</td>
+<td>Bagian dari semua trading fee</td>
+</tr>
+<tr>
+<td>Kemampuan lo buat jual kapan aja (aset terkunci di pool)</td>
+<td>Hak buat tarik kapan aja (gak ada masa lockup)</td>
+</tr>
+<tr>
+<td>Lo nanggung risiko inventaris</td>
+<td>Lo dapet yield pasif</td>
+</tr>
+</tbody>
+</table>
+<p>Baris ketiga — "lo nanggung risiko inventaris" — cukup penting sampe pantes dapet chapter sendiri.</p>
+<hr />
+<p><em>Selanjutnya: Biaya tersembunyi jadi LP. Kenapa "tinggal setor dan dapet" bukan gambaran lengkapnya.</em></p></div>
         </div>
 
         <div class="chapter" id="07-hidden-cost">
-            <h1>Chapter 7: The Hidden Cost — Impermanent Loss</h1>
+            <div class="lang-en"><h1>Chapter 7: The Hidden Cost — Impermanent Loss</h1>
 <hr />
 <h2>Back to Budi</h2>
 <p>Remember Budi's inventory risk from Chapter 3? He bought pulsa vouchers at Rp 9,800, and then the provider dropped the price to Rp 8,000. His inventory was suddenly worth less.</p>
@@ -1431,19 +2014,242 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 </blockquote>
 <p>This is the single most important concept to understand before you become an LP. If you only remember one thing from this entire document, make it this: <strong>LPing is not free money. You are selling volatility and getting paid in fees.</strong></p>
 <hr />
-<p><em>Next: We've been talking about pools in the abstract. Now let's look at a specific blockchain — why Solana? Why not Ethereum? What difference does the underlying technology make?</em></p>
-
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>Impermanent Loss = the difference between your pool value and what you'd have by just holding. It grows with every price movement. Trading fees must outweigh IL for you to actually profit as an LP.</p>
-                </div>
-            </div>
+<p><em>Next: We've been talking about pools in the abstract. Now let's look at a specific blockchain — why Solana? Why not Ethereum? What difference does the underlying technology make?</em></p></div>
+            <div class="lang-id"><h1>Chapter 7: Biaya Tersembunyi — Impermanent Loss</h1>
+<hr />
+<h2>Balik ke Budi</h2>
+<p>Inget risiko inventaris Budi dari Chapter 3? Dia beli voucher pulsa di Rp 9.800, terus provider turunin harga ke Rp 8.000. Inventarisnya tiba-tiba nilainya lebih rendah.</p>
+<p>LPing punya risiko yang persis sama. Tapi di DeFi, ada nama spesifiknya: <strong>impermanent loss.</strong></p>
+<h2>Apa Itu Impermanent Loss?</h2>
+<p>Impermanent loss terjadi ketika harga aset yang lo setor berubah relatif satu sama lain — dan perubahan itu bikin posisi lo bernilai <em>lebih rendah</em> dibanding kalau lo cuma hold asetnya secara terpisah.</p>
+<p>Biar konkret.</p>
+<h2>Skenarionya</h2>
+<p>Lo setor ke pool SOL-USDC:</p>
+<table>
+<thead>
+<tr>
+<th>Setoran Lo</th>
+<th>Jumlah</th>
+<th>Nilai USD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOL</td>
+<td>1 SOL</td>
+<td>$200 (di harga $200/SOL)</td>
+</tr>
+<tr>
+<td>USDC</td>
+<td>200 USDC</td>
+<td>$200</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>$400</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Pool berfungsi. Trade terjadi. Lo dapet sejumlah fee.</p>
+<p>Terus harga SOL naik 2× lipat. Sekarang $400 per SOL.</p>
+<p>Kalau lo cuma hold 1 SOL dan 200 USDC lo secara terpisah:</p>
+<table>
+<thead>
+<tr>
+<th>Aset</th>
+<th>Jumlah</th>
+<th>Nilai Baru</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOL</td>
+<td>1 SOL</td>
+<td>$400</td>
+</tr>
+<tr>
+<td>USDC</td>
+<td>200 USDC</td>
+<td>$200</td>
+</tr>
+<tr>
+<td><strong>Total kalau hold</strong></td>
+<td></td>
+<td><strong>$600</strong></td>
+</tr>
+</tbody>
+</table>
+<p>$600. Lo untung $200.</p>
+<p>Tapi lo gak hold terpisah — lo masukin aset lo ke pool. Kita liat apa yang terjadi di dalam pool.</p>
+<h2>Yang Dilakukan Pool Ketika SOL Naik 2×</h2>
+<p>Rumus pool adalah x × y = k. Ketika harga pasar SOL naik 2×, trader arbitrase buru-buru masuk. Mereka beli SOL dari pool (yang masih dihargain sekitar $200) dan jual di pasar terbuka di $400, ngantongin selisihnya.</p>
+<p>Pembelian ini ngerus SOL dari pool dan nambahin USDC. Setelah arbitrase selesai, pool rebalancing:</p>
+<table>
+<thead>
+<tr>
+<th>Aset Pool</th>
+<th>Sebelum (SOL di $200)</th>
+<th>Setelah (SOL di $400)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOL di pool</td>
+<td>10 SOL (dari semua LP)</td>
+<td>~7,07 SOL</td>
+</tr>
+<tr>
+<td>USDC di pool</td>
+<td>2.000 USDC</td>
+<td>~2.828 USDC</td>
+</tr>
+</tbody>
+</table>
+<p>Bagian lo (anggap 10%):</p>
+<table>
+<thead>
+<tr>
+<th>Bagian Lo</th>
+<th>Jumlah</th>
+<th>Nilai di $400/SOL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOL</td>
+<td>0,707 SOL</td>
+<td>$282,80</td>
+</tr>
+<tr>
+<td>USDC</td>
+<td>282,80 USDC</td>
+<td>$282,80</td>
+</tr>
+<tr>
+<td><strong>Total dari pool</strong></td>
+<td></td>
+<td><strong>$565,60</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Bandingin:</p>
+<table>
+<thead>
+<tr>
+<th>Skenario</th>
+<th>Nilai</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kalau lo cuma HOLD</td>
+<td>$600,00</td>
+</tr>
+<tr>
+<td>Kalau lo LP</td>
+<td>$565,60</td>
+</tr>
+<tr>
+<td><strong>Impermanent Loss</strong></td>
+<td><strong>$34,40 (5,7%)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Lo kehilangan $34,40 dibanding cuma hold. Itu impermanent loss.</p>
+<h2>Kenapa Disebut "Impermanent"?</h2>
+<p>Kerugiannya disebut <em>impermanent</em> karena belum terkunci sampai lo tarik. Kalau harga SOL balik ke $200, bagian pool lo balik ke 1 SOL + 200 USDC. Kerugiannya hilang. Sementara doang.</p>
+<p>Tapi kalau lo tarik saat harga masih $400? Kerugiannya jadi <strong>permanen.</strong></p>
+<h2>Matematika yang Kejam</h2>
+<p>Nih skala impermanent loss terhadap perubahan harga:</p>
+<table>
+<thead>
+<tr>
+<th>Perubahan Harga</th>
+<th>Impermanent Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1,25× (naik 25%)</td>
+<td>~0,6%</td>
+</tr>
+<tr>
+<td>1,5× (naik 50%)</td>
+<td>~2,0%</td>
+</tr>
+<tr>
+<td>2× (naik 100%)</td>
+<td>~5,7%</td>
+</tr>
+<tr>
+<td>3× (naik 200%)</td>
+<td>~13,4%</td>
+</tr>
+<tr>
+<td>5× (naik 400%)</td>
+<td>~25,5%</td>
+</tr>
+<tr>
+<td>10× (naik 900%)</td>
+<td>~42,5%</td>
+</tr>
+</tbody>
+</table>
+<p>Makin gede harga bergerak — ke arah MANAPUN — makin banyak yang lo hilangin dibanding cuma hold.</p>
+<h2>Model Mentalnya</h2>
+<p>Anggap pool AMM sebagai kekuatan yang <strong>melawan perubahan harga.</strong></p>
+<p>Ketika harga SOL naik, pool jual SOL (ke trader arbitrase) buat dorong harga balik turun.
+Ketika harga SOL turun, pool beli SOL buat dorong harga balik naik.</p>
+<p>Sebagai LP, lo ada di sisi yang salah dari setiap pergerakan harga besar. Pool secara otomatis "beli mahal dan jual murah" dari perspektif lo. Itu sumber impermanent loss.</p>
+<h2>Apa Fee Bisa Nutupin?</h2>
+<p>Ya — itu inti permainannya.</p>
+<p>Kalau lo dapet cukup fee untuk ngalahin impermanent loss, lo untung. Kalau nggak, mendingan lo cuma hold.</p>
+<table>
+<thead>
+<tr>
+<th>Skenario</th>
+<th>Fee Didapet</th>
+<th>Impermanent Loss</th>
+<th>Hasil Bersih</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pair stabil (USDC-USDT)</td>
+<td>5% APR</td>
+<td>~0%</td>
+<td>✅ Untung</td>
+</tr>
+<tr>
+<td>Volatilitas sedang (SOL-USDC)</td>
+<td>30% APR</td>
+<td>5,7% IL</td>
+<td>✅ Untung</td>
+</tr>
+<tr>
+<td>Volatilitas ekstrim (memecoin baru)</td>
+<td>200% APR</td>
+<td>42,5% IL</td>
+<td>❌ Rugi bersih</td>
+</tr>
+</tbody>
+</table>
+<p>Ini kenapa LP berpengalaman lebih milih:
+- <strong>Pair stabil</strong> (IL rendah, fee stabil)
+- <strong>Pair volume tinggi</strong> (banyak fee buat nutup IL)
+- <strong>Time horizon pendek</strong> (lebih kecil kemungkinan pergerakan harga besar)</p>
+<h2>Satu Konsep yang Harus Diingat</h2>
+<blockquote>
+<p><strong>Impermanent loss</strong> = selisih antara nilai aset lo di dalam pool vs nilai aset kalau lo cuma hold. Dia membesar seiring harga bergerak menjauh dari titik masuk lo. Fee harus ngalahin ini buat lo untung.</p>
+</blockquote>
+<p>Ini konsep paling penting yang harus lo ngerti sebelum jadi LP. Kalau lo cuma inget satu hal dari seluruh dokumen ini, inget ini: <strong>LPing bukan duit gratis. Lo lagi jual volatilitas dan dibayar pake fee.</strong></p>
+<hr />
+<p><em>Selanjutnya: Kita udah ngomongin pool secara abstrak. Sekarang kita liat blockchain spesifik — kenapa Solana? Kenapa bukan Ethereum? Apa bedanya teknologi dasarnya?</em></p></div>
         </div>
 
         <div class="chapter" id="08-why-solana">
-            <h1>Chapter 8: Why Solana Changes the Game</h1>
+            <div class="lang-en"><h1>Chapter 8: Why Solana Changes the Game</h1>
 <hr />
 <h2>The Cost of a Trade</h2>
 <p>Let's talk about something that sounds boring but changes everything: <strong>transaction fees.</strong></p>
@@ -1616,19 +2422,185 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <h2>One Concept to Take Away</h2>
 <p><strong>Transaction cost is a barrier to entry.</strong> On chains with high fees, only large capital can LP profitably. On Solana, near-zero fees mean anyone can participate — and that changes which LP strategies are viable.</p>
 <hr />
-<p><em>Next: The big idea that makes LPing far more capital-efficient. Concentrated liquidity.</em></p>
-
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>Transaction cost is a barrier to entry. Solana's near-zero fees (~$0.0002 per tx) make active LP management viable for everyone — not just whales. This is why Meteora DLMM exists on Solana.</p>
-                </div>
-            </div>
+<p><em>Next: The big idea that makes LPing far more capital-efficient. Concentrated liquidity.</em></p></div>
+            <div class="lang-id"><h1>Chapter 8: Kenapa Solana Ngubah Permainan</h1>
+<hr />
+<h2>Biaya Sebuah Trade</h2>
+<p>Ngobrolin sesuatu yang kedengerannya membosankan tapi ngubah segalanya: <strong>biaya transaksi.</strong></p>
+<p>Setiap kali orang trading di pool AMM, trade itu terjadi sebagai transaksi di blockchain. Dan blockchain ngecharge fee buat proses transaksi.</p>
+<p>Berapa besar fee itu nentuin <strong>siapa yang mampu jadi LP.</strong></p>
+<h2>Dua Dunia</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ethereum</th>
+<th>Solana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fee per trade</strong></td>
+<td>$5–50 (kadang $100+)</td>
+<td>~$0,0002 (sepersekian sen)</td>
+</tr>
+<tr>
+<td><strong>Waktu konfirmasi</strong></td>
+<td>~12 detik</td>
+<td>~0,4 detik</td>
+</tr>
+<tr>
+<td><strong>Trade per detik</strong></td>
+<td>~15–30</td>
+<td>~3.000+ (teoritis)</td>
+</tr>
+<tr>
+<td><strong>Yang $1 bisa beli</strong></td>
+<td>Paling 0,2 trade</td>
+<td>~5.000 trade</td>
+</tr>
+</tbody>
+</table>
+<p>Ini bukan perbedaan kecil. Ini perbedaan <em>struktural</em> yang sepenuhnya ngubah siapa yang bisa ikut.</p>
+<h2>Kenapa Ini Penting Buat LP</h2>
+<p>Bayangin lo LP dengan $100 buat dideploy.</p>
+<p><strong>Di Ethereum:</strong>
+- Lo setor $100 lo ke pool.
+- Selama sebulan, bagian lo dapet $8 dalam fee. (return 8% — lumayan!)
+- Tapi pas lo mau tarik, rebalance, atau compound, transaksi itu cost $12 dalam gas.
+- Return bersih lo: $8 − $12 = <strong>−$4.</strong> Lo rugi.</p>
+<p><strong>Di Solana:</strong>
+- Lo setor $100 lo.
+- Lo dapet $8 dalam fee.
+- Lo compound penghasilan lo 10 kali, masing-masing cost $0,0002.
+- Return bersih lo: $8 − $0,002 = <strong>+$7,998.</strong></p>
+<p>Di Ethereum, LP kecil hancur karena fee. Di Solana, mereka bisa ikut dengan untung.</p>
+<h2>Matematika LP di Masing-masing Chain</h2>
+<p>Anggap lo mau aktif ngelola posisi LP — rebalancing, compounding, nyesuain price range:</p>
+<table>
+<thead>
+<tr>
+<th>Aksi</th>
+<th>Biaya Ethereum</th>
+<th>Biaya Solana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buka posisi</td>
+<td>$8</td>
+<td>$0,0002</td>
+</tr>
+<tr>
+<td>Rebalance (sesuain range)</td>
+<td>$8</td>
+<td>$0,0002</td>
+</tr>
+<tr>
+<td>Klaim fee</td>
+<td>$6</td>
+<td>$0,0002</td>
+</tr>
+<tr>
+<td>Compound (reinvest fee)</td>
+<td>$10</td>
+<td>$0,0002</td>
+</tr>
+<tr>
+<td>Tutup posisi</td>
+<td>$8</td>
+<td>$0,0002</td>
+</tr>
+<tr>
+<td><strong>Total per siklus</strong></td>
+<td><strong>$40</strong></td>
+<td><strong>$0,001</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Kalau lo ngelakuin ini mingguan, Ethereum cost lo $2.080/tahun dalam gas. Solana cost lo $0,05/tahun.</p>
+<h2>Concentrated Liquidity Butuh Manajemen Aktif</h2>
+<p>Nih koneksi kuncinya (kita bakal jelasin concentrated liquidity secara penuh di Chapter 9):</p>
+<p>Beberapa strategi LP maksa lo buat sering nyesuain posisi — mindahin price range pas pasar gerak, klaim dan reinvest fee, rebalance pas harga geser.</p>
+<p>Di Ethereum, cuma whales yang mampu ngelakuin ini. Fee rebalance $10 di posisi $10.000 itu 0,1% — nyebelin tapi bisa ditahan. Di posisi $200, itu 5% — bencana.</p>
+<p>Di Solana, fee-nya efektif nol. <strong>Siapa aja bisa aktif ngelola posisi LP mereka.</strong> Ini nge-demokratisasi seluruh kategori strategi yang sebelumnya cuma bisa diakses institusi dan whales.</p>
+<h2>Di Luar Fee: Arsitektur Solana</h2>
+<p>Fee rendah Solana bukan kebetulan. Ini datang dari pilihan desain fundamental:</p>
+<table>
+<thead>
+<tr>
+<th>Pilihan Desain</th>
+<th>Artinya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proof of History (PoH)</strong></td>
+<td>Jam built-in yang ngasih timestamp transaksi tanpa nunggu konsensus soal timing. Ngehilangin bottleneck besar.</td>
+</tr>
+<tr>
+<td><strong>Eksekusi paralel</strong></td>
+<td>Solana bisa proses ribuan transaksi secara bersamaan, bukan satu per satu. Kayak jalan tol 20 lajur vs jalan satu lajur.</td>
+</tr>
+<tr>
+<td><strong>Gak ada kongesti mempool</strong></td>
+<td>Di Ethereum, lo bidding lawan orang lain buat masukin transaksi lo. Di Solana, transaksi diproses begitu dateng.</td>
+</tr>
+</tbody>
+</table>
+<p>Hasilnya: Solana memproses lebih banyak transaksi dalam sehari dibanding Ethereum dalam setahun — dengan biaya yang jauh lebih kecil.</p>
+<h2>Ekosistemnya: Siapa yang di Solana?</h2>
+<p>Per pertengahan 2026, ekosistem DeFi Solana nyimpen sekitar $5,25 miliar dalam total value locked (TVL) dan memproses sekitar $1 miliar volume DEX per hari.</p>
+<table>
+<thead>
+<tr>
+<th>Protokol</th>
+<th>Peran</th>
+<th>Volume Harian (perkiraan)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Jupiter</strong></td>
+<td>Agregator DEX (nyari harga terbaik di semua pool)</td>
+<td>Ngerutekan mayoritas volume Solana</td>
+</tr>
+<tr>
+<td><strong>Raydium</strong></td>
+<td>AMM tradisional (constant product, kayak Uniswap V2)</td>
+<td>~$150M</td>
+</tr>
+<tr>
+<td><strong>Orca</strong></td>
+<td>AMM concentrated liquidity (kayak Uniswap V3)</td>
+<td>~$176M</td>
+</tr>
+<tr>
+<td><strong>Meteora</strong></td>
+<td>DLMM (concentrated liquidity berbasis bin)</td>
+<td>~$152M</td>
+</tr>
+</tbody>
+</table>
+<p>Meteora, protokol yang kita pelajari, adalah DEX terbesar ke-4 di Solana berdasarkan volume — dan dia berkembang lebih cepat dari kebanyakan karena desain uniknya.</p>
+<h2>Kenapa Solana + Concentrated Liquidity = Pasangan Sempurna</h2>
+<p>Strategi concentrated liquidity butuh:
+- Penyesuaian posisi yang sering (mindahin range)
+- Klaim fee dan reinvest yang sering
+- Kadang rebalancing harian atau bahkan per jam</p>
+<p>Semua ini mustahil di chain mahal buat orang biasa. Di Solana, ini remeh.</p>
+<blockquote>
+<p><strong>Solana bikin strategi LP aktif bisa diakses siapa aja dengan HP dan $20.</strong></p>
+</blockquote>
+<p>Ini kenapa protokol LP paling inovatif — termasuk Meteora DLMM — dibangun di Solana, bukan Ethereum. Arsitektur chain-nya cocok sama kebutuhan strateginya.</p>
+<h2>Satu Konsep yang Harus Diingat</h2>
+<p><strong>Biaya transaksi adalah barrier to entry.</strong> Di chain dengan fee tinggi, cuma modal gede yang bisa LP dengan untung. Di Solana, fee hampir nol artinya siapa aja bisa ikut — dan itu ngubah strategi LP mana yang layak.</p>
+<hr />
+<p><em>Selanjutnya: Ide besar yang bikin LPing jauh lebih capital-efficient. Concentrated liquidity.</em></p></div>
         </div>
 
         <div class="chapter" id="09-big-idea">
-            <h1>Chapter 9: Concentrated Liquidity — The Big Idea</h1>
+            <div class="lang-en"><h1>Chapter 9: Concentrated Liquidity — The Big Idea</h1>
 <hr />
 <h2>The Problem with Traditional AMMs</h2>
 <p>Remember x × y = k from Chapter 5? In that system, your liquidity is spread across ALL possible prices — from near-zero to near-infinity.</p>
@@ -1745,19 +2717,129 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <p><strong>Concentrated liquidity</strong> = instead of spreading your money across all prices, you choose a specific price range where your capital is active. This makes your money work harder — but requires you to manage the position if prices move outside your range.</p>
 </blockquote>
 <hr />
-<p><em>Next: Meteora DLMM — how does it implement concentrated liquidity differently from everyone else? What are "bins" and why do they matter?</em></p>
+<p><em>Next: Meteora DLMM — how does it implement concentrated liquidity differently from everyone else? What are "bins" and why do they matter?</em></p></div>
+            <div class="lang-id"><h1>Chapter 9: Concentrated Liquidity — Ide Besarnya</h1>
+<hr />
+<h2>Masalah dengan AMM Tradisional</h2>
+<p>Inget x × y = k dari Chapter 5? Di sistem itu, likuiditas lo nyebar di SEMUA harga yang mungkin — dari hampir nol sampe hampir tak terhingga.</p>
+<p>Nih gambaran buat pool SOL-USDC kita:</p>
+<div class="codehilite"><pre><span></span><code>Rentang harga yang likuiditas lo cover:
+├── $0,00001/SOL ← duit lo disini (gak guna)
+├── $1/SOL       ← duit lo disini (gak guna)
+├── $10/SOL      ← duit lo disini (gak guna)
+├── $50/SOL      ← duit lo disini (mungkin gak guna)
+├── $200/SOL ← ← ← trading beneran terjadi di SINI
+├── $500/SOL     ← duit lo disini (mayoritas gak guna)
+├── $5.000/SOL   ← duit lo disini (gak guna)
+└── $1.000.000/SOL ← duit lo disini (sepenuhnya gak guna)
+</code></pre></div>
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>Concentrated Liquidity = choosing a specific price range for your capital instead of spreading it everywhere. Far more capital-efficient, but requires active management when prices move outside your range.</p>
-                </div>
-            </div>
+<p>Mayoritas modal lo duduk di harga yang GAK ADA yang trading. Nganggur. Mubazir. Kayak markirin mobil lo di 100 tempat parkir padahal lo cuma butuh satu.</p>
+<h2>Insight-nya</h2>
+<p>Gimana kalau lo bisa bilang:</p>
+<blockquote>
+<p><em>"Gue cuma mau nyediain likuiditas antara </em><em>$180 dan $220 per SOL.</em><em> Di dalam range itu, gue fully active. Di luar range itu, gue gak nyediain likuiditas sama sekali."</em></p>
+</blockquote>
+<p>Sekarang duit lo terkonsentrasi di tempat trading beneran terjadi. Modal sama, dampak JAUH lebih gede.</p>
+<p>Ini namanya <strong>concentrated liquidity.</strong></p>
+<h2>Perbandingan Berdampingan</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AMM Tradisional (x × y = k)</th>
+<th>Concentrated Liquidity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rentang harga</td>
+<td>$0 sampe ∞</td>
+<td>Lo yang milih (misal, $180–$220)</td>
+</tr>
+<tr>
+<td>Duit lo duduk dimana</td>
+<td>Di mana-mana</td>
+<td>Cuma di range yang lo pilih</td>
+</tr>
+<tr>
+<td>Efisiensi modal</td>
+<td>Rendah</td>
+<td>Tinggi</td>
+</tr>
+<tr>
+<td>Penghasilan fee</td>
+<td>Terencer di semua harga</td>
+<td>Terkonsentrasi di tempat trading terjadi</td>
+</tr>
+<tr>
+<td>Manajemen dibutuhkan</td>
+<td>Gak ada</td>
+<td>Lo harus sesuaikan range kalau harga gerak</td>
+</tr>
+</tbody>
+</table>
+<h2>Tradeoff-nya</h2>
+<p>Concentrated liquidity ngasih lo lebih banyak penghasilan fee per dolar yang disetor — tapi ada konsekuensinya:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">AMM</span><span class="w"> </span><span class="nv">Tradisional</span>:<span class="w"> </span><span class="s2">&quot;Setel dan lupakan.&quot;</span><span class="w"> </span><span class="nv">Posisi</span><span class="w"> </span><span class="nv">lo</span><span class="w"> </span><span class="nv">selalu</span><span class="w"> </span><span class="nv">aktif</span>.
+<span class="w">                  </span><span class="nv">Membosankan</span>.<span class="w"> </span><span class="k">Return</span><span class="w"> </span><span class="nv">rendah</span>.<span class="w"> </span><span class="nv">Aman</span>.
+
+<span class="nv">Concentrated</span>:<span class="w">    </span><span class="s2">&quot;Posisi lo cuma aktif di range yang lo pilih.&quot;</span>
+<span class="w">                  </span><span class="nv">Seru</span>.<span class="w"> </span><span class="k">Return</span><span class="w"> </span><span class="nv">tinggi</span>.<span class="w"> </span><span class="nv">Butuh</span><span class="w"> </span><span class="nv">perhatian</span>.
+</code></pre></div>
+
+<p>Kalau harga SOL gerak keluar dari range $180–$220 lo, likuiditas lo berhenti dapet fee. Lo "out of range." Aset lo nganggur sampe harga balik — atau sampe lo sesuaikan range lo.</p>
+<h2>Visualisasinya</h2>
+<p>Bayangin lo di konser. Panggung adalah tempat aksinya.</p>
+<ul>
+<li><strong>AMM Tradisional:</strong> Duit lo nyebar di seluruh stadion — tempat parkir, stand konsesi, kursi paling atas, di mana-mana. Sebagian kecil doang yang deket panggung.</li>
+<li><strong>Concentrated liquidity:</strong> Duit lo dipaketin di baris depan, nempel ke panggung. Dampak maksimum per dolar.</li>
+</ul>
+<p>Tapi kalau band-nya pindah ke panggung lain? Lo harus fisik mindahin duit lo ke panggung baru. Itu biaya manajemennya.</p>
+<h2>Kenapa Ini Penting (Banget)</h2>
+<p>Kita kasih angka. Anggap sebuah pool ngelakuin $1 juta volume harian dan ngecharge 0,3% fee ($3.000/hari dalam fee).</p>
+<table>
+<thead>
+<tr>
+<th>Strategi</th>
+<th>Setoran Lo</th>
+<th>Porsi Likuiditas Aktif</th>
+<th>Fee Harian Didapet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tradisional (full range)</td>
+<td>$10.000</td>
+<td>0,01% (terencer)</td>
+<td>$0,30/hari</td>
+</tr>
+<tr>
+<td>Concentrated ($180–$220)</td>
+<td>$10.000</td>
+<td>10% (di range itu)</td>
+<td>$300/hari</td>
+</tr>
+</tbody>
+</table>
+<p>Setoran sama $10.000. <strong>Perbedaan 1.000× dalam penghasilan fee.</strong> Itu kekuatan konsentrasi.</p>
+<p>(Penghasilan dunia nyata gak seekstrim ini karena LP lain juga mengkonsentrasi, tapi prinsipnya berlaku.)</p>
+<h2>Uniswap V3: Pelopornya</h2>
+<p>Concentrated liquidity diperkenalkan ke DeFi oleh Uniswap V3 di Mei 2021. Ini ngubah segalanya. Tiba-tiba, LP bisa jauh lebih capital-efficient.</p>
+<p>Tapi Uniswap V3 dibangun di Ethereum, dengan semua masalah biaya gas yang kita bahas di Chapter 8. Manajemen aktif secara teori mungkin tapi secara praktik mahal.</p>
+<h2>Kesempatan Solana</h2>
+<p>Di Solana, concentrated liquidity bisa beneran <em>dikelola secara aktif</em> oleh orang biasa. Lo bisa sesuaikan range lo harian, klaim fee per jam, compound terus-menerus — semua cuma sepersekian sen per aksi.</p>
+<p>Ini kenapa Meteora DLMM ada. Dia ngambil concentrated liquidity dan ngedorong lebih jauh — dengan desain yang dioptimasi buat kecepatan Solana.</p>
+<h2>Satu Konsep yang Harus Diingat</h2>
+<blockquote>
+<p><strong>Concentrated liquidity</strong> = alih-alih nyebar duit lo di semua harga, lo milih rentang harga spesifik di mana modal lo aktif. Ini bikin duit lo kerja lebih keras — tapi maksa lo buat ngelola posisi kalau harga gerak keluar dari range lo.</p>
+</blockquote>
+<hr />
+<p><em>Selanjutnya: Meteora DLMM — gimana dia ngimplementasiin concentrated liquidity secara berbeda dari yang lain? Apa itu "bin" dan kenapa itu penting?</em></p></div>
         </div>
 
         <div class="chapter" id="10-enter-meteora">
-            <h1>Chapter 10: Enter Meteora DLMM</h1>
+            <div class="lang-en"><h1>Chapter 10: Enter Meteora DLMM</h1>
 <hr />
 <h2>The Next Evolution</h2>
 <p>We've built up, piece by piece:</p>
@@ -1925,19 +3007,180 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 </blockquote>
 <p>You put your liquidity into specific bins around the current price. Only the active bin processes trades. When it's drained, the ladder steps to the next bin. Your fees adapt to how crazy the market is.</p>
 <hr />
-<p><em>Next: How is DLMM different from Uniswap V3 (the most famous concentrated liquidity protocol)? What makes it uniquely suited to Solana?</em></p>
+<p><em>Next: How is DLMM different from Uniswap V3 (the most famous concentrated liquidity protocol)? What makes it uniquely suited to Solana?</em></p></div>
+            <div class="lang-id"><h1>Chapter 10: Masuk ke Meteora DLMM</h1>
+<hr />
+<h2>Evolusi Berikutnya</h2>
+<p>Kita udah bangun, selangkah demi selangkah:</p>
+<ul>
+<li>Chapter 5: Rumus AMM x × y = k — pool yang trading otomatis</li>
+<li>Chapter 9: Concentrated liquidity — naruh duit lo cuma di tempat yang penting</li>
+</ul>
+<p>Sekarang: gimana kalo kita ambil concentrated liquidity dan bangun ulang dari nol — khusus buat blockchain dengan fee hampir nol dan finalitas sub-detik?</p>
+<p>Itulah Meteora DLMM.</p>
+<h2>Kepanjangan DLMM</h2>
+<p><strong>D</strong>ynamic <strong>L</strong>iquidity <strong>M</strong>arket <strong>M</strong>aker.</p>
+<p>Setiap kata punya arti:</p>
+<table>
+<thead>
+<tr>
+<th>Kata</th>
+<th>Artinya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dynamic</strong></td>
+<td>Fee menyesuaikan kondisi market. Makin volatile = fee makin tinggi.</td>
+</tr>
+<tr>
+<td><strong>Liquidity</strong></td>
+<td>Ini soal nyediain aset buat trading — sama kayak Budi.</td>
+</tr>
+<tr>
+<td><strong>Market Maker</strong></td>
+<td>Gantiin perantara manusia dengan kode — sama kayak AMM.</td>
+</tr>
+</tbody>
+</table>
+<h2>Ide Inti: Bin</h2>
+<p>Inget gimana concentrated liquidity (Chapter 9) ngasih lo pilihan harga? DLMM ngambil ini lebih jauh dengan membagi rentang harga jadi langkah-langkah diskrit yang disebut <strong>bin.</strong></p>
+<p>Bayangin tangga. Setiap anak tangga adalah harga spesifik. Likuiditas lo duduk di anak tangga tertentu.</p>
+<div class="codehilite"><pre><span></span><code>Tangga Harga buat pool SOL-USDC:
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>DLMM = Discrete Liquidity Market Maker — concentrated liquidity organized into price bins (like rungs on a ladder) with dynamic fees that rise during volatility and fall during calm markets.</p>
-                </div>
-            </div>
+$180.00  ← Bin 0
+$180.50  ← Bin 1    (kalo bin step = 0.25%)
+$181.00  ← Bin 2
+$181.50  ← Bin 3
+$182.00  ← Bin 4     ← HARGA SAAT INI (Active Bin)
+$182.50  ← Bin 5
+$183.00  ← Bin 6
+  ...
+</code></pre></div>
+
+<p>Cuma SATU bin yang aktif dalam satu waktu — bin tempat harga market saat ini berada. Di situlah semua trading terjadi.</p>
+<h2>Yang Terjadi di Dalam Satu Bin</h2>
+<p>Ini yang mengejutkan: trade di dalam satu bin punya <strong>zero price impact.</strong></p>
+<p>Inget Chapter 5, setiap trade menggerakkan harga di AMM tradisional? Di sini nggak. Di dalam satu bin, harga tetap. Lo bisa trading sampai kapasitas bin itu habis di harga yang persis sama.</p>
+<p>Harga cuma berubah ketika satu bin terkuras habis dan active bin pindah ke bin berikutnya — kayak melangkah ke anak tangga berikutnya.</p>
+<p>Ini artinya DLMM ngasih harga lebih baik buat trader (nggak ada slippage buat trade kecil) sambil tetap melindungi LP (harga nggak bisa kabur dalam satu bin).</p>
+<h2>Bin Step</h2>
+<p>Jarak antar bin disebut <strong>bin step,</strong> diukur dalam basis points (bps).</p>
+<blockquote>
+<p>1 bp = 0.01%</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Bin Step</th>
+<th>Jarak Harga (di SOL $200)</th>
+<th>Paling Cocok Buat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 bps (0.01%)</td>
+<td>$0.02</td>
+<td>Pair stabil (USDC-USDT) — sangat ketat, sangat presisi</td>
+</tr>
+<tr>
+<td>10 bps (0.10%)</td>
+<td>$0.20</td>
+<td>Pair utama (SOL-USDC) — seimbang</td>
+</tr>
+<tr>
+<td>25 bps (0.25%)</td>
+<td>$0.50</td>
+<td>Volatilitas menengah</td>
+</tr>
+<tr>
+<td>100 bps (1%)</td>
+<td>$2.00</td>
+<td>Pair volatil — cakupan lebih luas</td>
+</tr>
+<tr>
+<td>400 bps (4%)</td>
+<td>$8.00</td>
+<td>Volatilitas ekstrem — rentang maksimum</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bin step lebih kecil = tangga lebih rapat, lebih presisi, capital efficiency lebih tinggi</strong> (kalo lo nebak rentang yang tepat).
+<strong>Bin step lebih besar = cakupan per bin lebih luas,</strong> lebih cocok buat aset volatil yang harganya gerak cepet.</p>
+<p>Ini pilihan yang lo buat pas nyediain likuiditas — dan ini salah satu keputusan paling penting.</p>
+<h2>Dynamic Fee: Harga yang Ngerti Market</h2>
+<p>Kebanyakan AMM narik fee tetap di setiap trade (0.3%, 1%, dll). Market lagi tenang atau kacau — fee sama aja.</p>
+<p>Fee DLMM itu <strong>dinamis.</strong> Ada dua komponen:</p>
+<h3>1. Base Fee (Selalu Dikenakan)</h3>
+<p>Fee minimum, ditetapkan pas pool dibuat. Tergantung bin step dan beberapa parameter pool. Anggap aja ini "harga dasar."</p>
+<h3>2. Variable Fee (Bonus Volatilitas)</h3>
+<p>Pas market lagi volatil — pas trade nyebrang banyak bin, pas harga gerak cepet — variable fee ikut naik. Pas market tenang lagi, dia turun balik ke nol.</p>
+<p><strong>Total Fee = Base Fee + Variable Fee</strong> (maksimal 10%)</p>
+<h3>Kenapa Ini Penting</h3>
+<table>
+<thead>
+<tr>
+<th>Kondisi Market</th>
+<th>Yang Terjadi ke Fee</th>
+<th>Alasannya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tenang, sideways</td>
+<td>Fee rendah (deket base)</td>
+<td>Narik lebih banyak volume trading</td>
+</tr>
+<tr>
+<td>Volatil, gerak cepet</td>
+<td>Fee tinggi (base + variable)</td>
+<td>Lindungin LP dari arbitrage</td>
+</tr>
+<tr>
+<td>Volatilitas ekstrem</td>
+<td>Fee sangat tinggi</td>
+<td>Kompensasi LP atas risiko impermanent loss</td>
+</tr>
+</tbody>
+</table>
+<p>Ini cerdas. Di keuangan tradisional, market maker melebarkan spread pas periode volatil. DLMM ngelakuin hal yang sama secara otomatis.</p>
+<p>Bayangin gini: pas market lagi tenang, toko lo buka dengan harga kompetitif. Pas badai datang dan semua orang panik, lo naikin harga karena melayani pelanggan jadi lebih berisiko. Masuk akal, kan?</p>
+<h2>Pengumpulan Fee: Lo Pilih Dibayar Pakai Apa</h2>
+<p>Pas lo dapet fee sebagai LP, DLMM ngasih dua pilihan:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Yang Lo Terima</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input Only</strong></td>
+<td>Fee dibagi antara dua token — lo dapet sebagian SOL dan sebagian USDC. Seimbang.</td>
+</tr>
+<tr>
+<td><strong>Only Y</strong></td>
+<td>Semua fee dibayar dalam quote token (USDC di pool SOL-USDC). Lo cuma ngumpulin USDC.</td>
+</tr>
+</tbody>
+</table>
+<p>Kenapa lo milih "Only Y"? Kalo lo yakin SOL bakal naik, lo mungkin pengen fee lo dalam USDC biar nggak dipaksa megang lebih banyak SOL di harga yang mungkin udah kemahalan. Atau mungkin lo cuma pengen pendapatan stablecoin yang predictable tanpa nambah exposure SOL lo.</p>
+<p>Detail kecil yang ngasih lo lebih banyak kontrol.</p>
+<h2>Bin Dikelompokkan: Bin Array</h2>
+<p>Di belakang layar, bin diatur dalam kelompok berisi 70 yang disebut <strong>BinArray.</strong> Ini optimasi teknis — lo nggak perlu khawatir sebagai user, tapi ini ngejelasin kenapa lo liat batasan tertentu di UI.</p>
+<p>Pool default bisa nge-handle trade sekitar 1.024 bin array (dari indeks -512 sampai +511), mencakup rentang harga yang sangat besar. Buat kasus ekstrem, mekanisme ekstensi nge-handle bin yang jauh di luar rentang itu.</p>
+<h2>Satu Konsep yang Perlu Diingat</h2>
+<blockquote>
+<p><strong>DLMM</strong> = concentrated liquidity yang diatur jadi bin harga diskrit (kayak tangga), dengan dynamic fee yang naik pas volatilitas dan turun pas market tenang.</p>
+</blockquote>
+<p>Lo naruh likuiditas lo ke bin spesifik di sekitar harga saat ini. Cuma active bin yang memproses trade. Pas bin itu terkuras, tangga pindah ke bin berikutnya. Fee lo menyesuaikan seberapa gilanya market.</p>
+<hr />
+<p><em>Selanjutnya: Gimana DLMM beda dari Uniswap V3 (protokol concentrated liquidity paling terkenal)? Apa yang bikin dia cocok banget buat Solana?</em></p></div>
         </div>
 
         <div class="chapter" id="11-how-dlmm-different">
-            <h1>Chapter 11: How DLMM Is Different</h1>
+            <div class="lang-en"><h1>Chapter 11: How DLMM Is Different</h1>
 <hr />
 <h2>Not Just Another Uniswap Clone</h2>
 <p>Uniswap V3 pioneered concentrated liquidity on Ethereum. It was revolutionary. But Meteora DLMM isn't a copy — it's a fundamentally different design that's built from the ground up for Solana.</p>
@@ -2177,19 +3420,252 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <li>LPing and trading converge (your position IS your strategy)</li>
 </ol>
 <hr />
-<p><em>Next: Now that we understand the tool, how do we use it? What LP strategies work on Meteora?</em></p>
-
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>DLMM's key innovations: discrete bins (zero slippage within a bin), dynamic fees (compensates you more when risk is higher), native limit orders, and resizable positions — all viable because Solana gas is near-zero.</p>
-                </div>
-            </div>
+<p><em>Next: Now that we understand the tool, how do we use it? What LP strategies work on Meteora?</em></p></div>
+            <div class="lang-id"><h1>Chapter 11: Gimana DLMM Beda</h1>
+<hr />
+<h2>Bukan Sekadar Kloningan Uniswap</h2>
+<p>Uniswap V3 mempelopori concentrated liquidity di Ethereum. Revolusioner. Tapi Meteora DLMM bukan kopian — ini desain yang fundamentally beda, dibangun dari nol buat Solana.</p>
+<p>Ini yang bikin mereka beda — dan kenapa ini penting buat lo sebagai LP.</p>
+<h2>Bin vs Tick: Diskrit vs Kontinu</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Uniswap V3</th>
+<th>Meteora DLMM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Representasi harga</strong></td>
+<td>"Tick" kontinu — gradien halus</td>
+<td>Bin diskrit — titik harga spesifik</td>
+</tr>
+<tr>
+<td><strong>Di dalam satu unit</strong></td>
+<td>Harga berubah setiap trade (constant product)</td>
+<td>Harga tetap sampai bin terkuras (constant sum)</td>
+</tr>
+<tr>
+<td><strong>Slippage</strong></td>
+<td>Setiap trade menggerakkan harga</td>
+<td>Zero slippage dalam satu bin</td>
+</tr>
+<tr>
+<td><strong>Mental model</strong></td>
+<td>"Gue nyediain likuiditas antara X dan Y"</td>
+<td>"Gue naruh likuiditas di anak tangga harga tertentu"</td>
+</tr>
+</tbody>
+</table>
+<p>Perbedaan ini kedengeran subtle tapi punya konsekuensi nyata. Di Uniswap V3, bahkan trade kecil sekalipun menggerakkan harga sedikit. Di DLMM, trade kecil dieksekusi di harga bin yang persis tanpa impact. Harga cuma bergerak pas bin dikosongkan — kayak nguras ember sebelum pindah ke ember berikutnya.</p>
+<p>Buat trader, ini artinya eksekusi lebih baik di order kecil. Buat LP, ini artinya modal lo dikerahkan dengan lebih predictable.</p>
+<h2>Dynamic Fee vs Static Fee</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Uniswap V3</th>
+<th>Meteora DLMM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Struktur fee</strong></td>
+<td>Tier fee tetap (0.05%, 0.3%, 1%)</td>
+<td>Base fee + variable fee</td>
+</tr>
+<tr>
+<td><strong>Adaptasi market</strong></td>
+<td>Nggak ada — tier fee dipilih sekali doang</td>
+<td>Fee naik pas volatilitas, turun pas tenang</td>
+</tr>
+<tr>
+<td><strong>Perlindungan LP</strong></td>
+<td>Fee sama terlepas kondisi market</td>
+<td>Fee lebih tinggi pas LP lagi lebih berisiko</td>
+</tr>
+</tbody>
+</table>
+<p>Ini mungkin inovasi DLMM yang paling penting. Fee tetap Uniswap V3 artinya lo dapet persentase yang sama entah market lagi tenang atau kacau — padahal lo ngambil risiko jauh lebih banyak pas kacau. DLMM ngompensasi lo lebih banyak pas lo ngambil lebih banyak risiko.</p>
+<h2>Limit Order Bawaan</h2>
+<p>Ini yang Uniswap V3 nggak punya: <strong>limit order built-in ke dalam posisi LP.</strong></p>
+<p>Di DLMM, kalo lo deposit likuiditas di satu bin di atas harga saat ini (semua quote token), posisi itu secara alami bertindak sebagai limit sell order. Kalo harga nyampe bin itu, quote token lo berubah jadi base token — persis kayak yang dilakukan limit order.</p>
+<p>Sama juga, satu bin di bawah harga saat ini (semua base token) bertindak sebagai limit buy order.</p>
+<table>
+<thead>
+<tr>
+<th>Fitur DLMM</th>
+<th>Padanan di Keuangan Tradisional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Satu bin di atas harga, semua USDC</td>
+<td>Limit sell order</td>
+</tr>
+<tr>
+<td>Satu bin di bawah harga, semua SOL</td>
+<td>Limit buy order</td>
+</tr>
+<tr>
+<td>Bin tersebar di sekitar harga</td>
+<td>Posisi LP (dapet fee)</td>
+</tr>
+</tbody>
+</table>
+<p>Ini artinya DLMM menggabungin dua hal yang terpisah di kebanyakan protokol DeFi: LPing dan limit order. Posisi LP lo <em>adalah</em> strategi trading lo.</p>
+<h2>Posisi yang Bisa Di-resize</h2>
+<p>Di Uniswap V3, posisi likuiditas lo adalah NFT (non-fungible token). Lo nggak bisa gampang nambah atau ngurangin — lo tutup dan buka yang baru.</p>
+<p>Di DLMM, posisi itu <strong>bisa di-resize.</strong> Lo bisa:</p>
+<ul>
+<li>Nambah lebih banyak likuiditas ke posisi yang udah ada</li>
+<li>Narik sebagian likuiditas lo tanpa nutup</li>
+<li>Nyetel ulang rentang bin lo tanpa mulai dari awal</li>
+<li>Support sampai 1.400 bin dalam satu posisi</li>
+</ul>
+<p>Ini penting buat manajemen aktif. Kalo lo pengen DCA (dollar-cost average) masuk ke posisi secara bertahap, atau keluar bertahap, DLMM support secara native.</p>
+<h2>Solana-Native: Account vs NFT</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Uniswap V3 (Ethereum)</th>
+<th>Meteora DLMM (Solana)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Representasi posisi</strong></td>
+<td>NFT ERC-721</td>
+<td>Solana account (PositionV2)</td>
+</tr>
+<tr>
+<td><strong>Biaya bikin posisi</strong></td>
+<td>$30–100+ gas</td>
+<td>~$0.0002</td>
+</tr>
+<tr>
+<td><strong>Biaya modifikasi posisi</strong></td>
+<td>$20–80+ gas</td>
+<td>~$0.0002</td>
+</tr>
+<tr>
+<td><strong>Manajemen aktif praktis</strong></td>
+<td>Cuma buat whale ($10K+)</td>
+<td>Bisa buat siapa aja ($20+)</td>
+</tr>
+</tbody>
+</table>
+<p>Ini keunggulan Solana yang kita bahas di Chapter 8, dibuat konkret. Desain protokol yang sama di Ethereum bakal nggak usable buat LP retail. Di Solana, accessible.</p>
+<h2>Liquidity Mining: Reward Bawaan</h2>
+<p>Pool DLMM bisa punya sampai dua reward token yang dibagiin ke LP, di atas trading fee. Ini built-in ke protokol, bukan ditempel belakangan.</p>
+<p>Contohnya, proyek token baru mungkin bikin pool DLMM dan nambahin token mereka sebagai reward buat insentif LP awal. Lo dapet trading fee DAN reward token.</p>
+<h2>Tradeoff: Program Closed-Source</h2>
+<p>Ada satu hal penting yang perlu lo tau: program inti DLMM di Solana (<code>lb_clmm</code>) itu <strong>nggak open source.</strong> SDK, dokumentasi, tools integrasi semuanya open — tapi program on-chain-nya sendiri closed.</p>
+<table>
+<thead>
+<tr>
+<th>Yang Open</th>
+<th>Yang Closed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript SDK (<code>@meteora-ag/dlmm</code>)</td>
+<td>Program on-chain inti</td>
+</tr>
+<tr>
+<td>Dokumentasi (docs.meteora.ag)</td>
+<td></td>
+</tr>
+<tr>
+<td>DAMM v2 program (protokol terkait)</td>
+<td></td>
+</tr>
+<tr>
+<td>Data API</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Ini nggak ngaruh ke lo sebagai LP — lo interaksi lewat interface yang udah diaudit dan didokumentasikan dengan baik. Tapi worth knowing. Tim maintain ini sebagai pilihan strategis, bukan kurang transparansi (SDK dan docs-nya komprehensif).</p>
+<h2>Rangkuman: DLMM vs Uniswap V3 Sekilas</h2>
+<table>
+<thead>
+<tr>
+<th>Dimensi</th>
+<th>Uniswap V3</th>
+<th>Meteora DLMM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blockchain</td>
+<td>Ethereum (dan L2)</td>
+<td>Solana</td>
+</tr>
+<tr>
+<td>Model harga</td>
+<td>Tick kontinu</td>
+<td>Bin diskrit</td>
+</tr>
+<tr>
+<td>Model fee</td>
+<td>Tier tetap</td>
+<td>Dinamis (base + variable)</td>
+</tr>
+<tr>
+<td>Limit order</td>
+<td>Nggak</td>
+<td>Iya, native</td>
+</tr>
+<tr>
+<td>Manajemen posisi</td>
+<td>Berbasis NFT, susah dimodifikasi</td>
+<td>Berbasis account, bisa di-resize</td>
+</tr>
+<tr>
+<td>Biaya transaksi</td>
+<td>Tinggi ($5–100)</td>
+<td>Hampir nol (~$0.0002)</td>
+</tr>
+<tr>
+<td>Manajemen aktif</td>
+<td>Wilayah whale</td>
+<td>Accessible buat retail</td>
+</tr>
+<tr>
+<td>Max bin/posisi</td>
+<td>N/A (konsep tick)</td>
+<td>1.400 bin</td>
+</tr>
+<tr>
+<td>Liquidity mining</td>
+<td>Lewat kontrak eksternal</td>
+<td>Built-in (2 reward token)</td>
+</tr>
+<tr>
+<td>Program inti</td>
+<td>Open source (GPL)</td>
+<td>Closed source</td>
+</tr>
+</tbody>
+</table>
+<h2>Artinya Buat Lo</h2>
+<p>DLMM ngambil ide concentrated liquidity dan ngoptimasi end-to-end buat Solana. Hasilnya protokol di mana:</p>
+<ol>
+<li>Posisi kecil viable (nggak ada gas yang ngerusak return lo)</li>
+<li>Manajemen aktif memungkinkan (nyetel tiap hari tanpa biaya)</li>
+<li>Fee mengompensasi lo buat risiko nyata (bukan rate flat)</li>
+<li>LPing dan trading menyatu (posisi lo ADALAH strategi lo)</li>
+</ol>
+<hr />
+<p><em>Selanjutnya: Sekarang kita udah ngerti alatnya, gimana cara makenya? Strategi LP apa yang jalan di Meteora?</em></p></div>
         </div>
 
         <div class="chapter" id="12-lp-strategies">
-            <h1>Chapter 12: LP Strategies on Meteora</h1>
+            <div class="lang-en"><h1>Chapter 12: LP Strategies on Meteora</h1>
 <hr />
 <h2>You Now Know the Tool</h2>
 <p>You understand:
@@ -2434,19 +3910,257 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 - How much attention you'll need to pay (management frequency)</p>
 <p>There's no best strategy — only the strategy that matches your capital, your time, and your risk tolerance.</p>
 <hr />
-<p><em>Next: Open the app. Let's actually do this. Step by step.</em></p>
+<p><em>Next: Open the app. Let's actually do this. Step by step.</em></p></div>
+            <div class="lang-id"><h1>Chapter 12: Strategi LP di Meteora</h1>
+<hr />
+<h2>Sekarang Lo Udah Ngerti Alatnya</h2>
+<p>Lo ngerti:
+- Apa itu likuiditas (Ch 1)
+- Apa yang dilakukan market maker (Ch 2-3)
+- Gimana AMM bekerja (Ch 4-5)
+- Dari mana duit LP berasal (Ch 6)
+- Biaya tersembunyi impermanent loss (Ch 7)
+- Kenapa Solana penting (Ch 8)
+- Concentrated liquidity (Ch 9)
+- Gimana bin DLMM dan dynamic fee bekerja (Ch 10)
+- Gimana DLMM beda dari alternatif (Ch 11)</p>
+<p>Sekarang: <strong>gimana cara lo beneran bikin duit dengannya?</strong></p>
+<h2>Spektrum Strategi</h2>
+<p>Strategi DLMM jatuh di spektrum dari "pasang dan lupakan" sampai "aktif ngatur tiap jam."</p>
+<div class="codehilite"><pre><span></span><code><span class="n">USAHA</span> <span class="n">RENDAH</span> <span class="err">←————————————————————————→</span> <span class="n">USAHA</span> <span class="n">TINGGI</span>
+   <span class="n">Wide</span><span class="o">/</span><span class="n">Chill</span>    <span class="n">Spot</span>    <span class="n">Curve</span>    <span class="n">Bid</span><span class="o">-</span><span class="n">Ask</span>    <span class="mi">20</span><span class="o">-</span><span class="n">Bin</span>   <span class="n">Dynamic</span> <span class="n">Vaults</span>
+</code></pre></div>
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>Your strategy choice answers three questions: how much you'll earn, how much you risk losing, and how much attention you'll need to pay. There's no best strategy — only the one matching your capital, time, and risk tolerance.</p>
-                </div>
-            </div>
+<p>Masing-masing punya profil risk-reward yang beda. Mari kita bahas satu-satu.</p>
+<hr />
+<h2>Strategi 1: Wide Range / "Chill"</h2>
+<p><strong>Apa itu:</strong> Sebar likuiditas lo di rentang harga yang sangat lebar (misal ±20-30% dari harga saat ini).</p>
+<p><strong>Cara kerjanya:</strong>
+- Lo pilih rentang lebar di sekitar harga saat ini
+- Likuiditas lo aktif selama harga tetap di rentang itu
+- Lo hampir nggak perlu ngecek</p>
+<p><strong>Paling cocok buat:</strong> Pair stabil (USDC-USDT), pair yang lo yakin bakal trading dalam rentang untuk waktu lama, atau kalo lo cuma pengen deposit dan lupakan.</p>
+<p><strong>Kelebihan:</strong>
+- Maintenance sangat rendah
+- Jarang keluar dari rentang
+- Starting point bagus buat pemula</p>
+<p><strong>Kekurangan:</strong>
+- Capital efficiency lebih rendah (duit lo tersebar tipis)
+- Fee yang didapat lebih rendah dari strategi terkonsentrasi
+- Tetep kena impermanent loss kalo harga gerak jauh</p>
+<p><strong>Analogi:</strong> Lo adalah toko yang jual segalanya dari Rp 1.000 sampai Rp 1.000.000. Kebanyakan pelanggan nggak bakal beli di ujung ekstrem, tapi toko lo selalu buka.</p>
+<hr />
+<h2>Strategi 2: Spot (Distribusi Seragam)</h2>
+<p><strong>Apa itu:</strong> Sebar likuiditas merata di rentang menengah (misal ±5-10%).</p>
+<p><strong>Cara kerjanya:</strong>
+- Lo pilih rentang di sekitar harga saat ini
+- Likuiditas didistribusiin seragam ke semua bin di rentang lo
+- Strategi default dan paling umum</p>
+<p><strong>Paling cocok buat:</strong> General purpose. Bagus pas lo nggak punya pandangan arah yang kuat. Strategi "gue rasa harganya bakal di sekitar sini."</p>
+<p><strong>Variasi:</strong>
+| Nama | Jumlah Bin | Lebar Rentang | Use Case |
+|------|-----------|-------------|----------|
+| Spot-Concentrated | 1-3 bin | Sangat ketat | Hampir pasti harga stabil |
+| Spot-Spread | 20-30 bin | Menengah | Pendekatan seimbang |
+| Spot-Wide | ~50 bin | Lebar | Lebih aman, kurang efisien |</p>
+<p><strong>Kelebihan:</strong> Simpel, versatile, seimbangin efisiensi dengan keamanan.
+<strong>Kekurangan:</strong> Nggak optimal buat kondisi market tertentu.</p>
+<hr />
+<h2>Strategi 3: Curve (Terkonsentrasi di Tengah)</h2>
+<p><strong>Apa itu:</strong> Sebagian besar likuiditas lo terkonsentrasi ketat di sekitar harga saat ini, dengan lebih sedikit di pinggiran.</p>
+<p><strong>Cara kerjanya:</strong>
+- Lo naruh likuiditas tebal persis di active bin
+- Likuiditas lebih sedikit di bin yang lebih jauh
+- Capital efficiency maksimum pas harga tetap deket tengah</p>
+<p><strong>Paling cocok buat:</strong> Pair stabil (USDC-USDT), atau pair apapun pas periode volatilitas sangat rendah.</p>
+<p><strong>Kelebihan:</strong>
+- Fee tertinggi pas harga tetap di rentang
+- Capital efficiency maksimum</p>
+<p><strong>Kekurangan:</strong>
+- Cepet keluar rentang kalo harga gerak
+- Butuh monitoring lebih sering
+- Impermanent loss paling parah kalo harga trending kuat</p>
+<p><strong>Analogi:</strong> Lo adalah coffee shop yang buka 24/7 tapi cuma nyajiin satu jenis kopi spesifik. Pas lingkungan sekitar pengen persis kopi itu, lo cuan gede. Pas selera berubah, lo sepi.</p>
+<hr />
+<h2>Strategi 4: Bid-Ask (Directional)</h2>
+<p><strong>Apa itu:</strong> Distribusi asimetris — lebih banyak likuiditas di satu sisi daripada sisi lainnya.</p>
+<p><strong>Cara kerjanya:</strong>
+- Kalo lo pikir harga bakal NAIK: naruh lebih banyak likuiditas di ATAS harga saat ini (jual pas naik)
+- Kalo lo pikir harga bakal TURUN: naruh lebih banyak likuiditas di BAWAH harga saat ini (beli pas turun)
+- Sisi yang lebih tipis tetep dapet sebagian fee</p>
+<p><strong>Paling cocok buat:</strong> Pas lo punya pandangan arah. Lo pengen ngumpulin satu aset atau keluar dari aset lain.</p>
+<p><strong>Kelebihan:</strong>
+- Bertindak sebagai DCA otomatis (dollar-cost averaging)
+- Lo dapet fee sambil nunggu harga target lo
+- Gabungin strategi trading dengan yield LP</p>
+<p><strong>Kekurangan:</strong>
+- Butuh penilaian market
+- Kalo lo salah soal arah, lo kehilangan peluang fee di sisi satunya</p>
+<p><strong>Analogi:</strong> Lo di pasar buah. Lo yakin harga mangga bakal naik minggu depan. Lo naruh lebih banyak ruang lapak lo buat beli mangga sekarang (di harga lebih rendah) sambil tetep jual sebagian dengan markup.</p>
+<hr />
+<h2>Strategi 5: Strategi 20-Bin (Meta Saat Ini)</h2>
+<p>Ini dapet perhatian khusus karena udah populer di komunitas Meteora LP per 2026.</p>
+<p><strong>Apa itu:</strong> Konfigurasi spesifik: rentang 20-bin dengan bin step lebih kecil (seringnya 20 bps atau kurang), targetnya capture fee frekuensi tinggi.</p>
+<p><strong>Cara kerjanya:</strong>
+- Lo pake sekitar 20 bin terpusat di sekitar harga saat ini
+- Bin step kecil artinya granularitas harga ketat
+- Idenya: tangkep banyak trade kecil dengan capital efficiency tinggi</p>
+<p><strong>Kenapa populer:</strong>
+- Keseimbangan bagus antara efisiensi dan keamanan rentang
+- Jalan baik buat pair volatilitas menengah
+- Diuji dan didiskusiin ekstensif oleh komunitas</p>
+<p><strong>Contoh nyata:</strong> Pas periode trading aktif, beberapa posisi 20-bin di pair volatil pernah nangkep fee harian mendekati 10% dari nilai posisi. Return ini TIDAK typical atau sustainable — terjadi pas burst pendek volume ekstrem — tapi nunjukin apa yang mungkin pas lo posisi dengan benar selama volatilitas.</p>
+<p><strong>Kendalanya:</strong> Periode return tinggi ini episodik. Posisi yang dapet 10% sehari mungkin dapet 0.3% di hari berikutnya.</p>
+<hr />
+<h2>Strategi 6: Single-Sided / DCA</h2>
+<p><strong>Apa itu:</strong> Deposit cuma SATU jenis token ke bin tertentu (atau rentang sempit).</p>
+<p><strong>Cara kerjanya:</strong>
+- Lo deposit cuma USDC ke bin di atas harga saat ini → bertindak sebagai limit sell order
+- Lo deposit cuma SOL ke bin di bawah harga saat ini → bertindak sebagai limit buy order
+- Pas harga nyampe bin lo, token lo berubah ke token satunya</p>
+<p><strong>Paling cocok buat:</strong> Ngumpulin aset di harga target tanpa mantengin chart. Atau keluar di harga target.</p>
+<p><strong>Kelebihan:</strong>
+- Entry/exit otomatis, bebas emosi
+- Nggak ada impermanent loss (lo cuma megang satu aset)
+- Lo dapet fee sambil limit order lo nunggu</p>
+<p><strong>Kekurangan:</strong>
+- Kalo harga nggak pernah nyampe bin lo, lo nggak dapet apa-apa
+- Opportunity cost: modal lo terikat, nggak available buat kegunaan lain</p>
+<hr />
+<h2>Gimana Cara Milih: Framework Keputusan</h2>
+<p>Tanyain diri lo pertanyaan ini:</p>
+<h3>1. Seberapa stabil pair ini?</h3>
+<table>
+<thead>
+<tr>
+<th>Tipe Pair</th>
+<th>Contoh</th>
+<th>Strategi Disarankan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stable-stable</td>
+<td>USDC-USDT</td>
+<td>Curve, rentang sangat ketat</td>
+</tr>
+<tr>
+<td>Pair utama</td>
+<td>SOL-USDC</td>
+<td>Spot spread (20-50 bin)</td>
+</tr>
+<tr>
+<td>Volatil</td>
+<td>Memecoin-USDC</td>
+<td>Wide, atau Bid-Ask</td>
+</tr>
+<tr>
+<td>Token baru</td>
+<td>Launch pool</td>
+<td>Sangat lebar, atau single-sided</td>
+</tr>
+</tbody>
+</table>
+<h3>2. Seberapa banyak waktu lo?</h3>
+<table>
+<thead>
+<tr>
+<th>Komitmen Waktu</th>
+<th>Strategi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cek seminggu sekali</td>
+<td>Wide / Chill</td>
+</tr>
+<tr>
+<td>Cek harian</td>
+<td>Spot</td>
+</tr>
+<tr>
+<td>Cek beberapa kali/hari</td>
+<td>Curve, Bid-Ask</td>
+</tr>
+<tr>
+<td>Monitor aktif</td>
+<td>20-Bin, Dynamic Vaults</td>
+</tr>
+</tbody>
+</table>
+<h3>3. Apa pandangan market lo?</h3>
+<table>
+<thead>
+<tr>
+<th>Pandangan</th>
+<th>Strategi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Bakal stay di rentang"</td>
+<td>Spot, Curve</td>
+</tr>
+<tr>
+<td>"Bakal naik"</td>
+<td>Bid-Ask (lebih banyak di atas harga saat ini)</td>
+</tr>
+<tr>
+<td>"Bakal turun"</td>
+<td>Bid-Ask (lebih banyak di bawah harga saat ini)</td>
+</tr>
+<tr>
+<td>"Gue pengen beli di harga X"</td>
+<td>Single-sided di bawah X</td>
+</tr>
+<tr>
+<td>"Gue pengen jual di harga Y"</td>
+<td>Single-sided di atas Y</td>
+</tr>
+<tr>
+<td>"Nggak tau"</td>
+<td>Wide / Chill</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Manajemen Risiko: Yang Nggak Bisa Ditawar</h2>
+<p>Sebelum lo deploy satu dolar pun:</p>
+<h3>1. Cek Total Fee yang Dihasilkan</h3>
+<p>Metrik paling penting, menurut LP Meteora berpengalaman: <strong>total fee yang udah dihasilkan pool secara historis.</strong></p>
+<p>Pool yang udah ngumpulin 500 SOL dalam cumulative fee jauh lebih terpercaya daripada yang cuma 5 SOL. Total fee rendah sering nunjukin volume asli rendah — atau lebih parah, volume palsu yang dirancang buat narik LP.</p>
+<blockquote>
+<p><strong>Rule of thumb:</strong> Jangan LP ke pool dengan total fee kurang dari 25 SOL.</p>
+</blockquote>
+<h3>2. Periksa Tokennya</h3>
+<p>Kalo lo LP ke token yang lo nggak terlalu kenal:</p>
+<ul>
+<li>Cek Rugcheck.xyz buat keamanan kontrak token</li>
+<li>Cek Bubblemaps buat konsentrasi supply (kalo 3 wallet megang 90% supply, kabur)</li>
+<li>Liat chart — apa ada riwayat trading nyata atau cuma pump?</li>
+<li>Cek channel sosial — apa ada komunitas nyata atau cuma bot?</li>
+</ul>
+<h3>3. Mulai Kecil</h3>
+<p>Posisi pertama lo harus jumlah yang lo rela kehilangan sepenuhnya. Anggap sebagai biaya belajar. Pelajari mekanismenya, observasi gimana fee ngumpul, alamin impermanent loss secara real-time — dengan duit yang nggak bakal nyakitin.</p>
+<h3>4. Jangan Kejar APR Ekstrem</h3>
+<p>Kalo pool nunjukin 1000% APR, tanya: kenapa? Biasanya karena:
+- Tokennya volatil dan lo bakal hancur kena IL
+- Volumenya temporer (hype peluncuran token)
+- Ada risiko tersembunyi yang nggak lo liat</p>
+<p>Return sustainable datang dari volume trading asli yang konsisten — bukan spike hype.</p>
+<hr />
+<h2>Satu Konsep yang Perlu Diingat</h2>
+<p>Pilihan strategi lo ngejawab tiga pertanyaan sekaligus:
+- Seberapa banyak yang bakal lo dapet (konsentrasi fee)
+- Seberapa banyak yang bakal lo ilangin kalo harga gerak (exposure IL)
+- Seberapa banyak perhatian yang perlu lo kasih (frekuensi manajemen)</p>
+<p>Nggak ada strategi terbaik — cuma strategi yang cocok sama modal lo, waktu lo, dan toleransi risiko lo.</p>
+<hr />
+<p><em>Selanjutnya: Buka aplikasinya. Ayo beneran lakuin ini. Step by step.</em></p></div>
         </div>
 
         <div class="chapter" id="13-step-by-step">
-            <h1>Chapter 13: Step-by-Step Walkthrough</h1>
+            <div class="lang-en"><h1>Chapter 13: Step-by-Step Walkthrough</h1>
 <hr />
 <blockquote>
 <p><strong>Reality check:</strong> This chapter describes the Meteora dApp interface conceptually. UIs change. Buttons move. The principles don't. If a specific button isn't where I describe it, look for the concept — "create position," "choose pool," "set range" — not the exact pixel location.</p>
@@ -2686,19 +4400,252 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 
 <p>This single habit — comparing your actual result to the "just hold" baseline — is what separates profitable LPs from those who lose money without understanding why.</p>
 <hr />
-<p><em>Next: How do you track performance over time? What tools help? When do you know it's time to exit?</em></p>
+<p><em>Next: How do you track performance over time? What tools help? When do you know it's time to exit?</em></p></div>
+            <div class="lang-id"><h1>Chapter 13: Walkthrough Step-by-Step</h1>
+<hr />
+<blockquote>
+<p><strong>Reality check:</strong> Chapter ini ngejelasin interface Meteora dApp secara konseptual. UI berubah. Tombol pindah. Prinsipnya nggak. Kalo tombol tertentu nggak ada di tempat yang gue sebutin, cari konsepnya — "bikin posisi," "pilih pool," "atur rentang" — bukan lokasi piksel tepatnya.</p>
+</blockquote>
+<hr />
+<h2>Step 0: Sebelum Lo Nyentuh Apa-Apa</h2>
+<p>Lo butuh tiga hal:</p>
+<table>
+<thead>
+<tr>
+<th>Apa</th>
+<th>Kenapa</th>
+<th>Gimana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wallet Solana</strong></td>
+<td>Buat nyimpen token lo dan tanda tangan transaksi</td>
+<td>Phantom, Solflare, atau Backpack wallet</td>
+</tr>
+<tr>
+<td><strong>Sedikit SOL</strong></td>
+<td>Buat bayar transaksi (~0.000005 SOL per transaksi)</td>
+<td>Beli di exchange, transfer ke wallet lo</td>
+</tr>
+<tr>
+<td><strong>Token buat LP</strong></td>
+<td>Aset yang bakal lo deposit ke pool</td>
+<td>SOL + USDC adalah pair paling umum</td>
+</tr>
+</tbody>
+</table>
+<p>Buat walkthrough ini, kita asumsiin lo LP ke pool SOL-USDC. Ini pair paling liquid di Solana dan starting point paling aman.</p>
+<h2>Step 1: Bikin/Dapet Wallet Solana</h2>
+<p>Kalo lo belum punya:</p>
+<ol>
+<li>Buka <a href="https://phantom.app">phantom.app</a> dan install browser extension (atau mobile app)</li>
+<li>Bikin wallet baru</li>
+<li><strong>Tulis seed phrase lo di kertas.</strong> Bukan screenshot. Bukan notes app. Kertas. Simpen di tempat aman.</li>
+<li>Set password kuat</li>
+</ol>
+<h2>Step 2: Isi Wallet Lo</h2>
+<ol>
+<li>Beli SOL dari exchange (exchange besar manapun jual SOL)</li>
+<li>Withdraw SOL ke alamat wallet lo (string panjang mulai huruf/angka — cari di Phantom di bagian "Receive" atau "Deposit")</li>
+<li>Opsional, swap sebagian SOL ke USDC pake Jupiter (jup.ag) di dalam wallet lo</li>
+</ol>
+<p><strong>Jumlah minimum buat mulai:</strong> Dengan $20-50 senilai SOL + USDC, lo bisa buka posisi LP kecil dan pelajari mekanismenya. Di Ethereum ini impossible karena gas fee. Di Solana, ini nyata.</p>
+<h2>Step 3: Navigasi ke Meteora</h2>
+<ol>
+<li>Buka <a href="https://app.meteora.ag">app.meteora.ag</a></li>
+<li>Connect wallet lo (klik "Connect Wallet" di kanan atas, pilih Phantom)</li>
+<li>Setujui koneksi di popup wallet lo</li>
+</ol>
+<h2>Step 4: Cari Pool Lo</h2>
+<p>Lo bakal liat interface Meteora dengan berbagai pool terdaftar. Buat posisi pertama lo:</p>
+<ol>
+<li>Klik tab <strong>"Pools"</strong> atau <strong>"DLMM"</strong></li>
+<li>Cari <strong>SOL-USDC</strong></li>
+<li>Lo bakal liat beberapa pool SOL-USDC dengan bin step beda (misal 5 bps, 20 bps, 50 bps)</li>
+</ol>
+<p><strong>Bin step mana yang dipilih buat posisi pertama lo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bin Step</th>
+<th>Artinya</th>
+<th>Rekomendasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 bps</td>
+<td>Sangat ketat, sangat efisien</td>
+<td>Skip dulu — terlalu agresif</td>
+</tr>
+<tr>
+<td>20 bps</td>
+<td>Menengah, pilihan populer</td>
+<td>Starting point bagus</td>
+</tr>
+<tr>
+<td>50 bps+</td>
+<td>Lebih lebar, lebih forgiving</td>
+<td>Aman buat pemula</td>
+</tr>
+</tbody>
+</table>
+<p>Pilih pool SOL-USDC dengan 20 atau 50 bps.</p>
+<h2>Step 5: Periksa Poolnya</h2>
+<p>Sebelum deposit, liat:</p>
+<ul>
+<li><strong>Harga saat ini:</strong> Lagi di harga berapa SOL sekarang?</li>
+<li><strong>Volume 24j:</strong> Seberapa banyak aktivitas trading? Lebih banyak volume = lebih banyak fee.</li>
+<li><strong>TVL (Total Value Locked):</strong> Seberapa banyak likuiditas udah ada di pool ini? TVL lebih tinggi artinya porsi fee pie lebih kecil buat lo, tapi juga lebih stabil.</li>
+<li><strong>Fee 24j:</strong> Berapa yang LP dapet kemarin?</li>
+<li><strong>APR:</strong> Estimasi return tahunan (ini fluktuatif — jangan terlalu fixated)</li>
+</ul>
+<h2>Step 6: Buka Posisi</h2>
+<ol>
+<li>Klik <strong>"Create Position"</strong> atau tombol <strong>"+"</strong></li>
+<li>Lo bakal liat chart dengan harga saat ini dan tangga bin</li>
+</ol>
+<h3>Step 6a: Pilih Strategi Lo</h3>
+<p>Interface Meteora ngasih preset:</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>Fungsinya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Spot</strong></td>
+<td>Distribusi merata di rentang yang lo pilih</td>
+</tr>
+<tr>
+<td><strong>Curve</strong></td>
+<td>Terkonsentrasi di sekitar harga saat ini</td>
+</tr>
+<tr>
+<td><strong>Bid-Ask</strong></td>
+<td>Lebih berat di satu sisi</td>
+</tr>
+</tbody>
+</table>
+<p>Buat posisi PERTAMA lo, pilih <strong>Spot</strong> dengan rentang menengah.</p>
+<h3>Step 6b: Atur Rentang Lo</h3>
+<ul>
+<li>Liat harga saat ini (anggep SOL lagi $200)</li>
+<li>Atur harga minimum lo (misal $180 — 10% di bawah harga saat ini)</li>
+<li>Atur harga maksimum lo (misal $220 — 10% di atas harga saat ini)</li>
+<li>Interface nunjukin berapa bin yang tercakup</li>
+</ul>
+<p><strong>Panduan lebar rentang:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lebar Rentang</th>
+<th>Level Risiko</th>
+<th>Maintenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>±2-5%</td>
+<td>Tinggi</td>
+<td>Cek harian</td>
+</tr>
+<tr>
+<td>±5-15%</td>
+<td>Menengah</td>
+<td>Cek setiap beberapa hari</td>
+</tr>
+<tr>
+<td>±20%+</td>
+<td>Rendah</td>
+<td>Cek mingguan</td>
+</tr>
+</tbody>
+</table>
+<h3>Step 6c: Masukin Jumlah Deposit Lo</h3>
+<ul>
+<li>Lo bisa deposit dua token sama banyak (butuh punya keduanya)</li>
+<li>Atau deposit satu token dan biarin interface yang handle swap (mungkin kena biaya kecil)</li>
+<li>Mulai kecil — total nilai $20-50 buat posisi pertama lo</li>
+</ul>
+<h2>Step 7: Review dan Konfirmasi</h2>
+<p>Sebelum pencet konfirmasi, cek:</p>
+<ol>
+<li><strong>Rentang harga:</strong> Udah sesuai yang lo mau?</li>
+<li><strong>Jumlah:</strong> Lo nyaman kehilangan ini kalo terjadi hal buruk?</li>
+<li><strong>Bin step dan fee:</strong> Struktur fee-nya masuk akal?</li>
+<li><strong>Estimasi APR:</strong> Apakah reasonable (bukan angka gila)?</li>
+</ol>
+<p>Kalo udah siap, klik <strong>"Create Position"</strong> atau <strong>"Deposit."</strong></p>
+<p>Wallet lo bakal minta lo setujui transaksi. Fee-nya sekitar ~0.000005 SOL (pecahan sen). Konfirmasi.</p>
+<h2>Step 8: Lo Sekarang LP</h2>
+<p>Posisi lo live. Lo bakal liat di dashboard Meteora lo dengan:</p>
+<ul>
+<li>Nilai posisi lo saat ini (dalam USD)</li>
+<li>Rentang (harga min-max)</li>
+<li>Fee yang belum diklaim (ini ngumpul real-time)</li>
+<li>Status: "In Range" (dapet fee) atau "Out of Range" (nggak dapet)</li>
+</ul>
+<h2>Step 9: Apa yang Dilakuin Selanjutnya</h2>
+<h3>Langsung:</h3>
+<ul>
+<li>Bookmark URL posisi lo atau screenshot alamat pool</li>
+<li>Catat harga SOL saat ini — ini titik referensi lo buat ngukur IL nanti</li>
+</ul>
+<h3>24 jam pertama:</h3>
+<ul>
+<li>Cek berapa fee yang udah lo dapet (bahkan di posisi $50, lo bakal liat pecahan sen ngumpul — itu duit beneran dari trade beneran)</li>
+<li>Observasi apakah posisi lo tetap in range</li>
+</ul>
+<h3>Minggu pertama:</h3>
+<ul>
+<li>Kalo harga mendekati batas rentang lo, pertimbangin buat nyetel (melebarin atau mindahin rentang lo)</li>
+<li>Klaim fee lo kalo pengen liat yield compound (atau biarin aja — mereka bakal tetap di pool)</li>
+</ul>
+<hr />
+<h2>Step 10: Ngatur Posisi Lo</h2>
+<h3>Cara Klaim Fee</h3>
+<ol>
+<li>Buka posisi lo</li>
+<li>Klik "Claim Fees" atau cari bagian fees</li>
+<li>Setujui transaksi di wallet lo</li>
+<li>Fee dikirim ke wallet lo</li>
+</ol>
+<h3>Cara Nyetel Rentang Lo</h3>
+<ol>
+<li>Buka posisi lo</li>
+<li>Klik "Edit" atau "Adjust Position"</li>
+<li>Geser slider rentang ke rentang baru yang lo mau</li>
+<li>Konfirmasi transaksi</li>
+</ol>
+<h3>Cara Nutup Posisi Lo</h3>
+<ol>
+<li>Buka posisi lo</li>
+<li>Klik "Close Position" atau "Withdraw"</li>
+<li>Lo bakal nerima bagian lo dari aset pool saat ini</li>
+<li>PENTING: Aset yang lo terima nggak bakal dalam rasio yang sama kayak pas lo deposit. Ini impermanent loss jadi permanent. Bandingin nilainya sama apa yang lo bakal punya kalo cuma hold.</li>
+</ol>
+<hr />
+<h2>Kebiasaan Paling Penting</h2>
+<p>Setiap kali lo nutup posisi, lakuin perhitungan ini:</p>
+<div class="codehilite"><pre><span></span><code>Yang gue terima pas nutup:    X SOL + Y USDC = $Z
+Yang gue bakal punya kalo cuma hold: SOL awal × harga SOL saat ini + USDC awal = $W
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>The single most important LP habit: every time you close a position, compare what you received to what you would have by just holding. This comparison is the truth serum of LPing — it tells you if you actually profited.</p>
-                </div>
-            </div>
+Kalo Z &gt; W: lo untung (fee melebihi IL)
+Kalo Z &lt; W: lo rugi (IL melebihi fee)
+Kalo Z = W: lo balik modal di posisi, dapet ilmu
+</code></pre></div>
+
+<p>Kebiasaan satu ini — membandingkan hasil aktual lo ke baseline "cuma hold" — yang misahin LP profitable dari yang kehilangan duit tanpa ngerti kenapa.</p>
+<hr />
+<p><em>Selanjutnya: Gimana cara lo track performa dari waktu ke waktu? Tools apa yang ngebantu? Kapan lo tau waktunya exit?</em></p></div>
         </div>
 
         <div class="chapter" id="14-measuring-profit">
-            <h1>Chapter 14: Monitoring, Exiting, and Measuring Profit</h1>
+            <div class="lang-en"><h1>Chapter 14: Monitoring, Exiting, and Measuring Profit</h1>
 <hr />
 <h2>The LP Lifecycle</h2>
 <p>LPing isn't "deposit and forget." It's a cycle:</p>
@@ -2981,19 +4928,317 @@ HODL Profit = HODL Value - Gross Deposit Value
 <p>The ones making real money in DeFi aren't chasing the highest numbers. They're tracking their PnL honestly, understanding their risks, and compounding steadily over time.</p>
 <p>Just like Budi at the bus terminal — showing up every day, managing inventory, earning the spread. No magic. Just math and consistency.</p>
 <hr />
-<p><strong>Good luck. Start small. Track honestly. Stay curious.</strong></p>
+<p><strong>Good luck. Start small. Track honestly. Stay curious.</strong></p></div>
+            <div class="lang-id"><h1>Chapter 14: Monitoring, Exit, dan Ngukur Profit</h1>
+<hr />
+<h2>Siklus Hidup LP</h2>
+<p>LPing itu bukan "deposit dan lupakan." Ini siklus:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">DEPOSIT</span><span class="w"> </span>→<span class="w"> </span><span class="nv">MONITOR</span><span class="w"> </span>→<span class="w"> </span><span class="nv">PUTUSIN</span><span class="w"> </span>→<span class="w"> </span><span class="ss">(</span><span class="nv">SETEL</span><span class="w"> </span><span class="nv">atau</span><span class="w"> </span><span class="k">EXIT</span><span class="ss">)</span><span class="w"> </span>→<span class="w"> </span><span class="nv">EVALUASI</span><span class="w"> </span>→<span class="w"> </span><span class="nv">DEPOSIT</span><span class="w"> </span><span class="nv">LAGI</span>
+</code></pre></div>
 
-            <div class="takeaway-box">
-                <span class="takeaway-icon">💡</span>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">KEY TAKEAWAY</span>
-                    <p>There are no get-rich-quick strategies in LPing — only risk-adjusted returns. The real money comes from tracking PnL honestly, understanding your risks, and compounding steadily. Just like Budi: show up, manage inventory, earn the spread.</p>
-                </div>
-            </div>
+<p>Chapter ini ngebahas tiga langkah tengah: monitor, putusin, bertindak.</p>
+<h2>Monitoring: Apa yang Harus Dipantau</h2>
+<h3>Cek Harian (30 detik)</h3>
+<p>Buka posisi lo. Tanya tiga pertanyaan:</p>
+<ol>
+<li><strong>Posisi gue in range?</strong> Kalo iya → dapet fee. Kalo nggak → nggak dapet. Simpel.</li>
+<li><strong>Seberapa deket harga ke batas rentang gue?</strong> Kalo mendekat, lo perlu putusin segera.</li>
+<li><strong>Berapa fee yang gue dapet hari ini?</strong> Bandingin ke nilai posisi. 0.1% harian = 36% annualized (kalo sustained).</li>
+</ol>
+<h3>Review Mingguan (5 menit)</h3>
+<table>
+<thead>
+<tr>
+<th>Metrik</th>
+<th>Yang Dicek</th>
+<th>Kenapa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PnL Posisi</strong></td>
+<td>Nilai saat ini vs nilai "cuma hold"</td>
+<td>Profit/rugi lo yang sebenernya</td>
+</tr>
+<tr>
+<td><strong>Fee APR</strong></td>
+<td>Fee minggu ini ÷ nilai posisi × 52</td>
+<td>Apakah yield-nya sustainable?</td>
+</tr>
+<tr>
+<td><strong>Tren harga</strong></td>
+<td>Apakah pair trending kuat ke satu arah?</td>
+<td>Mungkin perlu setel strategi</td>
+</tr>
+<tr>
+<td><strong>Tren volume</strong></td>
+<td>Volume trading naik atau turun?</td>
+<td>Naik = lebih banyak fee di depan. Turun = mungkin exit.</td>
+</tr>
+<tr>
+<td><strong>Besaran IL</strong></td>
+<td>Apa yang bakal lo punya kalo cuma hold?</td>
+<td>Jangan ngeboongin diri sendiri soal profitabilitas</td>
+</tr>
+</tbody>
+</table>
+<h3>Tools yang Ngebantu</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Fungsinya</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Meteora dApp</strong></td>
+<td>Dashboard posisi lo — sumber kebenaran</td>
+<td>app.meteora.ag</td>
+</tr>
+<tr>
+<td><strong>Birdeye</strong></td>
+<td>Chart harga token, volume, analytics</td>
+<td>birdeye.so</td>
+</tr>
+<tr>
+<td><strong>DEX Screener</strong></td>
+<td>Data DEX real-time, pair trending</td>
+<td>dexscreener.com</td>
+</tr>
+<tr>
+<td><strong>Jupiter</strong></td>
+<td>Harga swap terbaik, data routing</td>
+<td>jup.ag</td>
+</tr>
+<tr>
+<td><strong>Rugcheck</strong></td>
+<td>Verifikasi keamanan kontrak token</td>
+<td>rugcheck.xyz</td>
+</tr>
+<tr>
+<td><strong>GMGN</strong></td>
+<td>Tracking memecoin, analisis wallet</td>
+<td>gmgn.ai</td>
+</tr>
+</tbody>
+</table>
+<p>Buat LP simpel di pair utama kayak SOL-USDC, Meteora dApp + sesekali cek Birdeye udah cukup.</p>
+<hr />
+<h2>Keputusan: Kapan Harus Bertindak</h2>
+<h3>Skenario 1: Harga Mendekati Batas Atas Lo</h3>
+<div class="codehilite"><pre><span></span><code>Rentang lo: $180–$220
+Harga saat ini: $215 (97.7% rentang, mendekati puncak)
+</code></pre></div>
+
+<p><strong>Opsi:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tindakan</th>
+<th>Kapan Ngambilnya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nggak ngapa-ngapain</strong></td>
+<td>Lo yakin harga bakal tetap di rentang atau balik</td>
+</tr>
+<tr>
+<td><strong>Lebarin rentang ke atas</strong></td>
+<td>Lo pengen tetap in range dan terus dapet fee</td>
+</tr>
+<tr>
+<td><strong>Pindahin rentang ke atas</strong></td>
+<td>Lo yakin harga udah nemu level baru</td>
+</tr>
+<tr>
+<td><strong>Tutup posisi</strong></td>
+<td>Lo pikir tren bakal lanjut kuat dan IL bakal makin parah</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kalo lo nggak ngapa-ngapain dan harga naik di atas $220:</strong>
+- Posisi lo jadi "out of range"
+- Semua aset lo sekarang dalam USDC (lo secara efektif jual semua SOL lo di puncak rentang)
+- Lo dapet nol fee sampai harga turun lagi
+- Downside lo terlindungi (lo dalam stablecoin)</p>
+<h3>Skenario 2: Harga Mendekati Batas Bawah Lo</h3>
+<div class="codehilite"><pre><span></span><code>Rentang lo: $180–$220
+Harga saat ini: $185 (nyaris di rentang, mendekati bawah)
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Tindakan</th>
+<th>Kapan Ngambilnya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nggak ngapa-ngapain</strong></td>
+<td>Lo percaya sama aset jangka panjang, rela ngumpulin</td>
+</tr>
+<tr>
+<td><strong>Lebarin rentang ke bawah</strong></td>
+<td>Lo pengen tetap aktif dan terus dapet</td>
+</tr>
+<tr>
+<td><strong>Tutup posisi</strong></td>
+<td>Lo pikir downtrend bakal lanjut dan lo pengen motong rugi</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kalo lo nggak ngapa-ngapain dan harga turun di bawah $180:</strong>
+- Posisi keluar dari rentang
+- Semua aset berubah jadi SOL (lo beli lebih banyak SOL di harga menurun)
+- Lo sekarang 100% exposed ke pergerakan harga SOL
+- Lo nggak dapet fee</p>
+<h3>Skenario 3: Posisi Jauh di Luar Rentang</h3>
+<div class="codehilite"><pre><span></span><code>Lo buka di $200, rentang ±10%
+Harga sekarang $280 (40% di atas maksimum lo)
+Lo udah out of range selama 2 minggu
+</code></pre></div>
+
+<p>Lo punya tiga pilihan:</p>
+<ol>
+<li><strong>Nunggu.</strong> Kalo lo yakin harga bakal balik, posisi lo aktif lagi otomatis pas balik. Nggak perlu transaksi.</li>
+<li><strong>Tutup dan buka lagi.</strong> Withdraw, terima IL-nya, dan buka posisi baru di level harga saat ini. Ini mengkristalkan kerugian lo tapi bikin lo dapet fee lagi.</li>
+<li><strong>Setel posisi yang ada.</strong> Lebarin atau pindahin rentang lo buat mencakup harga saat ini. Posisi lo langsung aktif lagi.</li>
+</ol>
+<hr />
+<h2>Kapan Harus Exit: Red Flag</h2>
+<h3>Hard Exit (Tutup Langsung)</h3>
+<ul>
+<li><strong>Tokennya lagi rug-pull.</strong> Drop 90%+ tiba-tiba, likuiditas menghilang, wallet tim nge-dump. Jangan nunggu. Tutup.</li>
+<li><strong>Pool ditinggalin.</strong> Volume turun hampir nol, nggak ada trade berhari-hari. Modal lo nggak ngapa-ngapain.</li>
+<li><strong>Lo butuh duitnya.</strong> Dana LP harusnya "modal yang nggak lo butuhin dalam waktu dekat." Kalo hidup lagi butuh, exit.</li>
+</ul>
+<h3>Soft Exit (Pertimbangin Nutup)</h3>
+<ul>
+<li><strong>Fee APR turun di bawah 5% annualized</strong> selama lebih dari sebulan. Lo bisa dapet lebih banyak di tabungan dengan nol risiko.</li>
+<li><strong>IL udah tumbuh berminggu-minggu dan nggak nunjukin tanda balik.</strong> Tren adalah temen lo, sampai dia bukan.</li>
+<li><strong>Lo nemu peluang lebih baik.</strong> Modal harus ngalir ke return tertinggi yang disesuaikan risiko.</li>
+<li><strong>Total volume pool turun bulan ke bulan.</strong> Minat meredup.</li>
+</ul>
+<hr />
+<h2>Ngukur Profit Sebenernya</h2>
+<p>Ini skill paling penting dalam LPing, dan kebanyakan orang nggak ngelakuin.</p>
+<h3>Framework-nya</h3>
+<p>Track angka ini buat setiap posisi:</p>
+<table>
+<thead>
+<tr>
+<th>Metrik</th>
+<th>Cara Ngitung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nilai deposit kotor</strong></td>
+<td>Nilai token yang lo masukin (di harga waktu deposit)</td>
+</tr>
+<tr>
+<td><strong>Fee yang didapat</strong></td>
+<td>Akumulasi fee dari dashboard posisi</td>
+</tr>
+<tr>
+<td><strong>Nilai withdrawal saat ini</strong></td>
+<td>Nilai token yang bakal lo terima kalo lo tutup sekarang</td>
+</tr>
+<tr>
+<td><strong>Nilai HODL</strong></td>
+<td>Nilai kalo lo cuma hold token asli</td>
+</tr>
+</tbody>
+</table>
+<h3>Cuma Dua Angka yang Penting</h3>
+<div class="codehilite"><pre><span></span><code>Profit LP = Nilai Withdrawal Saat Ini - Nilai Deposit Kotor
+
+vs
+
+Profit HODL = Nilai HODL - Nilai Deposit Kotor
+</code></pre></div>
+
+<ul>
+<li>Kalo Profit LP &gt; Profit HODL → lo menang. LPing nambahin nilai.</li>
+<li>Kalo Profit LP &lt; Profit HODL → lo lebih baik nggak LPing.</li>
+<li>Kalo Profit LP negatif → lo kehilangan duit secara absolut.</li>
+</ul>
+<h3>Contoh Realistis</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">Deposit</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="n">SOL</span><span class="w"> </span><span class="o">(</span><span class="n">$100</span><span class="w"> </span><span class="n">pas</span><span class="w"> </span><span class="n">SOL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$200</span><span class="o">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">USDC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="n">$200</span>
+
+<span class="n">Setelah</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">bulan</span><span class="o">:</span>
+<span class="o">-</span><span class="w"> </span><span class="n">SOL</span><span class="w"> </span><span class="n">sekarang</span><span class="w"> </span><span class="n">$300</span><span class="w"> </span><span class="o">(+</span><span class="mi">50</span><span class="o">%)</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Posisi</span><span class="w"> </span><span class="n">berisi</span><span class="o">:</span><span class="w"> </span><span class="mf">0.38</span><span class="w"> </span><span class="n">SOL</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">115</span><span class="w"> </span><span class="n">USDC</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Nilai</span><span class="w"> </span><span class="n">withdrawal</span><span class="w"> </span><span class="n">saat</span><span class="w"> </span><span class="n">ini</span><span class="o">:</span><span class="w"> </span><span class="mf">0.38</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">$300</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">115</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$229</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Nilai</span><span class="w"> </span><span class="n">HODL</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">$300</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$250</span>
+
+<span class="n">Profit</span><span class="w"> </span><span class="n">LP</span><span class="o">:</span><span class="w"> </span><span class="n">$229</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="n">$29</span><span class="w"> </span><span class="o">(+</span><span class="mf">14.5</span><span class="o">%</span><span class="w"> </span><span class="n">dalam</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">bulan</span><span class="o">)</span>
+<span class="n">Profit</span><span class="w"> </span><span class="n">HODL</span><span class="o">:</span><span class="w"> </span><span class="n">$250</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="n">$50</span><span class="w"> </span><span class="o">(+</span><span class="mi">25</span><span class="o">%</span><span class="w"> </span><span class="n">dalam</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">bulan</span><span class="o">)</span>
+
+<span class="n">Verdict</span><span class="o">:</span><span class="w"> </span><span class="n">LPing</span><span class="w"> </span><span class="n">underperform</span><span class="w"> </span><span class="n">dibanding</span><span class="w"> </span><span class="n">hold</span><span class="o">.</span><span class="w"> </span><span class="n">IL</span><span class="w"> </span><span class="n">dari</span><span class="w"> </span><span class="n">kenaikan</span><span class="w"> </span><span class="n">SOL</span><span class="w"> </span><span class="mi">50</span><span class="o">%</span><span class="w"> </span><span class="n">ngebiayain</span><span class="w"> </span><span class="n">lebih</span><span class="w"> </span><span class="n">mahal</span><span class="w"> </span><span class="n">daripada</span><span class="w"> </span><span class="n">fee</span><span class="w"> </span><span class="n">yang</span><span class="w"> </span><span class="n">didapat</span><span class="o">.</span>
+</code></pre></div>
+
+<p>Ini bukan berarti LPing itu "gagal." Artinya: di market yang trending kuat, strategi LP terkonsentrasi underperform dibanding cuma megang aset yang naik. Tau ini ngebantu lo milih strategi yang cocok buat kondisi market.</p>
+<hr />
+<h2>Cek Kesehatan LP Bulanan</h2>
+<p>Sekali sebulan, tanya diri lo:</p>
+<ol>
+<li><strong>Apa gue track PnL gue dengan jujur?</strong> (Bandingin HODL, bukan cuma "fee keliatannya oke")</li>
+<li><strong>Apa strategi gue masih cocok buat kondisi market saat ini?</strong></li>
+<li><strong>Apa gue ngecek posisi gue di frekuensi yang tepat?</strong> (Terlalu jarang = kecolongan. Terlalu sering = overtrading.)</li>
+<li><strong>Apa fee yang gue dapet sepadan sama waktu yang gue habisin?</strong></li>
+<li><strong>Apa gue ngerti KENAPA posisi gue perform kayak gitu?</strong></li>
+</ol>
+<p>Pertanyaan #5 yang paling penting. Posisi profitable yang lo nggak ngerti lebih berbahaya daripada posisi rugi yang lo ngerti — karena yang profitable ngasih lo kepercayaan diri palsu.</p>
+<hr />
+<h2>Langkah Berikutnya Setelah Dokumen Ini</h2>
+<p>Lo udah nyelesaiin ceritanya. Dari Budi di terminal bus sampai posisi DLMM pertama lo di Solana.</p>
+<p>Ke mana dari sini:</p>
+<ol>
+<li><strong>Buka posisi tes kecil</strong> ($20-50). Alamin siklus hidup penuh.</li>
+<li><strong>Join komunitas LP Army</strong> (lparmy.com) — Discord LP Meteora tempat LP aktif sharing strategi.</li>
+<li><strong>Baca docs resmi</strong> (docs.meteora.ag) — sekarang lo udah punya fondasi konseptual, docs teknis bakal masuk akal.</li>
+<li><strong>Track posisi lo dengan jujur</strong> — bandingin HODL, setiap kali.</li>
+<li><strong>Scale up bertahap</strong> — seiring lo ngembangin intuisi, bukan sebelumnya.</li>
+</ol>
+<hr />
+<h2>Satu Konsep Terakhir yang Perlu Diingat</h2>
+<p>Nggak ada strategi cepet kaya di LPing. Yang ada cuma <strong>return yang disesuaikan risiko.</strong> Pertanyaannya bukan "seberapa banyak yang bisa gue dapet?" — tapi "seberapa banyak risiko yang gue ambil buat dapet itu?"</p>
+<p>Kalo seseorang nunjukin screenshot 1000% APR, tanya: <em>"Berapa impermanent loss-nya? Gimana perbandingan HODL-nya? Ini sustainable atau ini cuma satu hari bagus dalam sebulan kerugian?"</em></p>
+<p>Yang beneran bikin duit di DeFi bukan yang ngejar angka tertinggi. Mereka yang track PnL dengan jujur, ngerti risiko mereka, dan compounding secara stabil dari waktu ke waktu.</p>
+<p>Persis kayak Budi di terminal bus — datang setiap hari, ngatur inventaris, dapet spread. Nggak ada sihir. Cuma matematika dan konsistensi.</p>
+<hr />
+<p><strong>Good luck. Mulai kecil. Track dengan jujur. Tetap penasaran.</strong></p></div>
         </div>
     
-    <div class="footer">
+    <div class="footer lang-en">
         Meteora DLMM: The Complete Guide — built for absolute beginners on Solana ♥
     </div>
+    <div class="footer lang-id">
+        Meteora DLMM: Panduan Lengkap — dibuat untuk pemula absolut di Solana ♥
+    </div>
+    
+    
+<script>
+(function() {
+    function setLang(lang) {
+        document.body.className = 'show-' + lang;
+        localStorage.setItem('meteora-lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(function(b) {
+            b.classList.toggle('active', b.dataset.lang === lang);
+        });
+    }
+    var saved = localStorage.getItem('meteora-lang') || 'en';
+    setLang(saved);
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+        b.addEventListener('click', function() { setLang(this.dataset.lang); });
+    });
+})();
+</script>
+
 </body>
 </html>

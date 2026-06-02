@@ -1,0 +1,17 @@
+# Build artifacts
+*.pyc
+__pycache__/
+
+# PDF outputs (large, regeneratable)
+*.pdf
+
+# Old versions
+index_v1_backup.html
+
+# Python venv
+venv/
+.venv/
+
+# OS files
+.DS_Store
+Thumbs.db

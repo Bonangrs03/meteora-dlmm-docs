@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meteora DLMM — Knowledge Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #FFD700;
+  --red:    #FF5E5B;
+  --blue:   #5B8CFF;
+  --green:  #3DDC84;
+  --purple: #A855F7;
+  --pink:   #FF6FB5;
+  --orange: #FF8C42;
+  --teal:   #2DD4BF;
+  --white:  #FFFDF7;
+  --black:  #1A1A1A;
+  --border: 3px;
+  --slate:  #636E72;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #F0EDE0;
+  background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--black);
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.container { max-width: 800px; margin: 0 auto; }
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 1.5rem;
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 8px 8px 0px var(--black);
+}
+.header .emoji { font-size: 2.5rem; letter-spacing: 0.3em; margin-bottom: 0.3rem; }
+.header h1 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 2rem;
+  text-transform: uppercase; line-height: 1.15; letter-spacing: -0.02em;
+}
+.header h1 .y { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+.header h1 .r { color: var(--red); }
+.header h1 .b { color: var(--blue); }
+.header h1 .g { color: var(--green); }
+.header .subtitle {
+  margin-top: 0.6rem; font-weight: 700; font-size: 0.9rem;
+  color: var(--slate); text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* SCORE BAR */
+.score-bar {
+  display: flex; gap: 0.8rem; align-items: center; justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 5px 5px 0px var(--black);
+}
+.score-bar .score-box {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 1.3rem;
+  padding: 0.4rem 1.2rem;
+  border: var(--border) solid var(--black);
+  box-shadow: 3px 3px 0px var(--black);
+}
+.score-box.correct { background: var(--green); color: var(--black); }
+.score-box.wrong   { background: var(--red);   color: white; }
+.score-box.total   { background: var(--yellow); color: var(--black); }
+.score-box.percent { background: var(--purple); color: white; }
+.score-bar .label {
+  font-weight: 700; font-size: 0.75rem; text-transform: uppercase;
+}
+
+/* PROGRESS */
+.progress-wrap {
+  margin-bottom: 2rem; display: flex; gap: 0.25rem; flex-wrap: wrap; justify-content: center;
+}
+.progress-dot {
+  width: 26px; height: 26px;
+  border: 2px solid var(--black);
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 0.7rem;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--white);
+  cursor: default;
+  transition: transform 0.1s;
+}
+.progress-dot.active   { background: var(--yellow); box-shadow: 2px 2px 0px var(--black); }
+.progress-dot.correct-dot { background: var(--green); color: var(--black); }
+.progress-dot.wrong-dot   { background: var(--red); color: white; }
+
+/* QUESTION CARD */
+.question-card {
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 6px 6px 0px var(--black);
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: none;
+}
+.question-card.active-card { display: block; }
+
+.q-header {
+  display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.2rem;
+}
+.q-num {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 2.2rem;
+  background: var(--yellow);
+  border: var(--border) solid var(--black);
+  box-shadow: 3px 3px 0px var(--black);
+  padding: 0.2rem 0.8rem; min-width: 64px; text-align: center;
+}
+.q-chapter {
+  font-weight: 700; font-size: 0.75rem; text-transform: uppercase;
+  color: var(--slate); letter-spacing: 0.06em;
+}
+.q-text {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 800; font-size: 1.15rem; line-height: 1.4;
+}
+
+/* OPTIONS */
+.options { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.2rem; }
+.option {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border: var(--border) solid var(--black);
+  box-shadow: 4px 4px 0px var(--black);
+  cursor: pointer; font-weight: 600; font-size: 0.95rem;
+  background: var(--white);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.option:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--black);
+}
+.option .opt-letter {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 1rem;
+  width: 30px; height: 30px;
+  border: 2px solid var(--black);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; background: var(--yellow);
+}
+.option.selected { background: var(--yellow); }
+.option.correct-answer { background: var(--green); color: var(--black); }
+.option.wrong-answer { background: var(--red); color: white; }
+.option.disabled { pointer-events: none; opacity: 1; }
+
+/* EXPLANATION */
+.explanation {
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  border: var(--border) solid var(--black);
+  border-left: 6px solid var(--black);
+  background: #FFF9E6;
+  font-size: 0.9rem; line-height: 1.6;
+  display: none;
+}
+.explanation.show { display: block; }
+.explanation .exp-label {
+  font-weight: 800; text-transform: uppercase; font-size: 0.75rem;
+  letter-spacing: 0.06em; margin-bottom: 0.3rem;
+}
+.explanation.correct-exp { border-left-color: var(--green); background: #ECFDF5; }
+.explanation.wrong-exp   { border-left-color: var(--red); background: #FEF2F2; }
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex; gap: 0.6rem; margin-top: 1.2rem; flex-wrap: wrap;
+}
+.btn {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 800; font-size: 0.85rem; text-transform: uppercase;
+  padding: 0.7rem 1.4rem;
+  border: var(--border) solid var(--black);
+  box-shadow: 4px 4px 0px var(--black);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.03em;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--black); }
+.btn:active { transform: translate(0, 0); box-shadow: 2px 2px 0px var(--black); }
+.btn-primary { background: var(--yellow); color: var(--black); }
+.btn-success { background: var(--green); color: var(--black); }
+.btn-submit { background: var(--blue); color: white; }
+
+/* RESULTS */
+.results {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 8px 8px 0px var(--black);
+  margin-bottom: 2rem;
+}
+.results.show { display: block; }
+.results .big-emoji { font-size: 4rem; margin-bottom: 0.5rem; }
+.results h2 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 2rem; text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.results .final-score {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 3rem; margin: 0.5rem 0;
+}
+.results .grade {
+  display: inline-block;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900; font-size: 1.2rem; text-transform: uppercase;
+  padding: 0.5rem 2rem;
+  border: var(--border) solid var(--black);
+  box-shadow: 4px 4px 0px var(--black);
+  margin: 0.8rem 0 1.2rem;
+}
+.results .breakdown {
+  text-align: left; max-width: 400px; margin: 1rem auto;
+  font-size: 0.9rem; line-height: 2;
+}
+.results .breakdown span { font-weight: 700; }
+.results .reset-btn { margin-top: 1rem; }
+
+/* NAV */
+.nav-row {
+  display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center; margin-top: 2rem; padding: 1rem;
+  font-weight: 600; font-size: 0.8rem; color: var(--slate);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  body { padding: 0.8rem; }
+  .header h1 { font-size: 1.4rem; }
+  .q-text { font-size: 1rem; }
+  .option { font-size: 0.85rem; padding: 0.7rem; }
+  .score-bar { gap: 0.4rem; padding: 0.7rem; }
+  .score-box { font-size: 1rem; padding: 0.3rem 0.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="emoji">🧠⚡📚</div>
+  <h1><span class="y">Meteora</span> <span class="r">DLMM</span> <span class="b">Knowledge</span> <span class="g">Quiz</span></h1>
+  <div class="subtitle">20 Questions · All 14 Chapters · Test Your LP Knowledge</div>
+</div>
+
+<!-- SCORE BAR -->
+<div class="score-bar" id="scoreBar">
+  <div><div class="score-box correct" id="correctCount">0</div><div class="label">Correct</div></div>
+  <div><div class="score-box wrong" id="wrongCount">0</div><div class="label">Wrong</div></div>
+  <div><div class="score-box total" id="answeredCount">0</div><div class="label">Answered</div></div>
+  <div><div class="score-box percent" id="percentScore">—</div><div class="label">Score</div></div>
+</div>
+
+<!-- PROGRESS DOTS -->
+<div class="progress-wrap" id="progressWrap"></div>
+
+<!-- RESULTS (hidden initially) -->
+<div class="results" id="results">
+  <div class="big-emoji" id="resultEmoji">🏆</div>
+  <h2 id="resultTitle">Quiz Complete!</h2>
+  <div class="final-score" id="finalScore"></div>
+  <div class="grade" id="gradeBadge"></div>
+  <div class="breakdown" id="breakdown"></div>
+  <button class="btn btn-primary reset-btn" onclick="resetQuiz()">🔄 Retake Quiz</button>
+</div>
+
+<!-- QUESTIONS CONTAINER -->
+<div id="questionsContainer"></div>
+
+<!-- NAV -->
+<div class="nav-row" id="navRow">
+  <button class="btn btn-primary" id="prevBtn" onclick="prevQuestion()" style="display:none;">← Previous</button>
+  <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+  <button class="btn btn-submit" id="submitBtn" onclick="submitAnswers()" style="display:none;">📝 Submit All</button>
+</div>
+
+<div class="footer">Meteora DLMM Documentation Suite · Creative Extras · Quiz</div>
+
+</div>
+
+<script>
+// ─── QUESTIONS DATA ───────────────────────────────────────────
+const questions = [
+  {
+    id: 1,
+    chapter: "Prologue",
+    text: "What does the Prologue say this document will NOT do?",
+    options: [
+      "Teach you how to open a Meteora position",
+      "Make you a Solidity/Rust developer",
+      "Explain what liquidity means",
+      "Use analogies to teach concepts"
+    ],
+    correct: 1,
+    explanation: "The Prologue explicitly states: \"It won't make you a Solidity/Rust developer. We're here to <em>use</em> the protocol, not build it.\" The document is for LPs, not protocol developers."
+  },
+  {
+    id: 2,
+    chapter: "Chapter 1 — What Is Liquidity?",
+    text: "Which of these is the BEST definition of \"liquidity\"?",
+    options: [
+      "How much money you have in your bank account",
+      "The speed at which a blockchain processes transactions",
+      "The ease with which you can buy or sell something without waiting",
+      "The total value of all assets in a market"
+    ],
+    correct: 2,
+    explanation: "Chapter 1 defines liquidity as \"the ease with which you can buy or sell something without waiting.\" High liquidity = instant trading. Low liquidity = long waits and bad prices."
+  },
+  {
+    id: 3,
+    chapter: "Chapter 2 — The Market Maker",
+    text: "A market maker quotes TWO prices. What are they called?",
+    options: [
+      "Buy and Sell",
+      "High and Low",
+      "Spot and Futures",
+      "Bid and Ask"
+    ],
+    correct: 3,
+    explanation: "The Bid is the price the market maker will BUY from you. The Ask is the price they will SELL to you. The ask is always slightly higher — that gap is the spread."
+  },
+  {
+    id: 4,
+    chapter: "Chapter 3 — The Spread as a Business",
+    text: "What is the fundamental formula for a market maker's profit?",
+    options: [
+      "Profit = Price × Quantity",
+      "Profit = Spread × Volume − Inventory Losses",
+      "Profit = Fees − Gas Costs",
+      "Profit = Ask Price − Market Price"
+    ],
+    correct: 1,
+    explanation: "Chapter 3: \"Profit = Spread × Volume − Inventory Losses.\" The spread is how much you earn per trade. Volume is how many trades. But inventory losses (price drops while you're holding) subtract from profit."
+  },
+  {
+    id: 5,
+    chapter: "Chapter 4 — The Computer Middleman",
+    text: "What does AMM stand for?",
+    options: [
+      "Asset Market Maker",
+      "Algorithmic Money Manager",
+      "Automated Market Maker",
+      "Autonomous Matching Machine"
+    ],
+    correct: 2,
+    explanation: "AMM = Automated Market Maker. It's a computer program that acts as a market maker, using math (not human judgment) to set prices — running 24/7, never getting tired."
+  },
+  {
+    id: 6,
+    chapter: "Chapter 5 — The Constant Product Formula",
+    text: "In the formula x × y = k, what happens to k when someone trades with the pool?",
+    options: [
+      "k increases with every trade",
+      "k decreases with every trade",
+      "k stays constant — it NEVER changes",
+      "k changes only when fees are collected"
+    ],
+    correct: 2,
+    explanation: "The 'constant' in 'constant product' means k NEVER changes from trades. The pool adjusts x and y proportionally so x × y always equals k. Fees are the only thing that slowly increases k."
+  },
+  {
+    id: 7,
+    chapter: "Chapter 5 — Price Impact",
+    text: "Why do LARGER trades get WORSE prices in an AMM?",
+    options: [
+      "The AMM punishes whales with a penalty fee",
+      "Because the pool has a maximum trade size limit",
+      "Because bigger trades move x and y more, pushing price further from the starting point",
+      "Larger trades don't get worse prices — this is a myth"
+    ],
+    correct: 2,
+    explanation: "Since x × y must equal k, removing more tokens from one side forces a bigger rebalance. This is called slippage or price impact — the AMM's way of protecting itself from being drained."
+  },
+  {
+    id: 8,
+    chapter: "Chapter 6 — Where the Money Comes From",
+    text: "What do Liquidity Providers (LPs) earn in return for depositing their assets?",
+    options: [
+      "A fixed interest rate set by the protocol",
+      "A share of all trading fees from the pool",
+      "Newly minted tokens from inflation",
+      "A guaranteed monthly return"
+    ],
+    correct: 1,
+    explanation: "LPs earn a share of all trading fees proportional to their share of the pool. If you own 10% of the pool, you earn 10% of all fees. There is NO guaranteed return."
+  },
+  {
+    id: 9,
+    chapter: "Chapter 7 — Impermanent Loss",
+    text: "What causes impermanent loss?",
+    options: [
+      "Hackers draining the liquidity pool",
+      "Transaction fees being too high",
+      "The price of the two pool assets changing relative to each other",
+      "The pool running out of one token completely"
+    ],
+    correct: 2,
+    explanation: "Impermanent loss happens when asset prices change relative to each other. The AMM automatically rebalances (sells the rising asset, buys the falling one), which means you end up with less value than if you'd just held."
+  },
+  {
+    id: 10,
+    chapter: "Chapter 7 — IL Math",
+    text: "If the price of one asset in your LP position increases 5× (400% up), approximately how much impermanent loss would you experience?",
+    options: [
+      "~5.7%",
+      "~13.4%",
+      "~25.5%",
+      "~42.5%"
+    ],
+    correct: 2,
+    explanation: "The IL table in Chapter 7 shows: a 5× price change = ~25.5% impermanent loss. The more the price moves in EITHER direction, the more you lose compared to holding."
+  },
+  {
+    id: 11,
+    chapter: "Chapter 8 — Why Solana",
+    text: "Why is Solana particularly well-suited for active LP strategies like DLMM?",
+    options: [
+      "Solana has the highest TVL of any blockchain",
+      "Near-zero transaction fees make frequent rebalancing affordable for small LPs",
+      "Solana's smart contracts are written in Rust, which is faster",
+      "Solana pools automatically rebalance themselves"
+    ],
+    correct: 1,
+    explanation: "Near-zero fees (~$0.0002 per transaction) mean anyone can adjust their position daily, compound fees hourly, or rebalance frequently — impossible on high-fee chains like Ethereum where gas eats small LPs alive."
+  },
+  {
+    id: 12,
+    chapter: "Chapter 9 — Concentrated Liquidity",
+    text: "What is the main TRADEOFF of concentrated liquidity compared to traditional full-range AMMs?",
+    options: [
+      "Lower fee earnings but less risk",
+      "Higher fee earnings per dollar, but your position stops earning if price moves outside your range",
+      "Faster transactions but higher gas costs",
+      "Guaranteed profits but locked capital"
+    ],
+    correct: 1,
+    explanation: "Concentrated liquidity gives you much higher capital efficiency (more fees per dollar), but your position only earns while the price stays in your chosen range. If it goes out of range, you earn nothing until you adjust."
+  },
+  {
+    id: 13,
+    chapter: "Chapter 10 — DLMM Bins",
+    text: "What happens when a bin in a DLMM pool is fully drained by trades?",
+    options: [
+      "The pool shuts down and a new one is created",
+      "Nothing — the bin stays empty forever",
+      "The active bin shifts to the next price rung on the ladder",
+      "An emergency liquidity injection is triggered"
+    ],
+    correct: 2,
+    explanation: "DLMM organizes liquidity in discrete bins like a ladder. When one bin is drained, the active bin shifts to the next one — just like stepping to the next rung. This is why price only changes when a bin empties."
+  },
+  {
+    id: 14,
+    chapter: "Chapter 10 — Dynamic Fees",
+    text: "How do DLMM's dynamic fees respond to market conditions?",
+    options: [
+      "Fees are always 0.3% regardless of market conditions",
+      "Fees DECREASE when the market becomes volatile",
+      "Fees RISE during high volatility and fall back when markets calm down",
+      "Fees are randomly adjusted by an oracle"
+    ],
+    correct: 2,
+    explanation: "DLMM fees = Base Fee + Variable Fee. The variable fee rises when volatility increases (lots of bin crossings) and decays back when markets calm. This compensates LPs for the extra risk during chaotic periods."
+  },
+  {
+    id: 15,
+    chapter: "Chapter 11 — DLMM vs Uniswap V3",
+    text: "Which of these features does Meteora DLMM have that Uniswap V3 does NOT?",
+    options: [
+      "Concentrated liquidity",
+      "Support for multiple fee tiers",
+      "Native limit orders built into LP positions",
+      "An NFT-based position system"
+    ],
+    correct: 2,
+    explanation: "DLMM uniquely merges LPing with limit orders. A single bin above current price with all quote token acts as a limit sell. A single bin below with all base token acts as a limit buy. Uniswap V3 doesn't have this natively."
+  },
+  {
+    id: 16,
+    chapter: "Chapter 12 — LP Strategies",
+    text: "Which strategy is BEST suited for a stable pair like USDC-USDT?",
+    options: [
+      "Wide Range / Chill (spread wide, check rarely)",
+      "Curve (heavy concentration at current price, very tight range)",
+      "Bid-Ask (directional bet on one token)",
+      "Single-Sided DCA (accumulate one token)"
+    ],
+    correct: 1,
+    explanation: "For stable pairs like USDC-USDT where price barely moves, Curve strategy (tight concentration around current price) maximizes capital efficiency with minimal risk of going out of range."
+  },
+  {
+    id: 17,
+    chapter: "Chapter 12 — Risk Management",
+    text: "According to the document, what is the MINIMUM total fees a pool should have generated before you consider LPing into it?",
+    options: [
+      "1 SOL",
+      "10 SOL",
+      "25 SOL",
+      "100 SOL"
+    ],
+    correct: 2,
+    explanation: "Chapter 12's risk management rules: \"Don't LP into a pool with less than 25 SOL in total generated fees.\" Low total fees often indicate low genuine volume — or worse, fake volume designed to attract LPs."
+  },
+  {
+    id: 18,
+    chapter: "Chapter 13 — Step-by-Step",
+    text: "When closing a position, what is the most important habit to develop?",
+    options: [
+      "Checking the current SOL price before withdrawing",
+      "Comparing your actual result to the 'just hold' baseline",
+      "Waiting for fees to reach a round number before claiming",
+      "Closing positions only on weekends when gas is cheaper"
+    ],
+    correct: 1,
+    explanation: "Chapter 13: \"Every time you close a position, compare what you received to what you would have had by just holding. This single habit separates profitable LPs from those who lose money without understanding why.\""
+  },
+  {
+    id: 19,
+    chapter: "Chapter 14 — Measuring Profit",
+    text: "If your LP Profit is LESS than your HODL Profit, what does that mean?",
+    options: [
+      "You lost money in absolute terms",
+      "LPing underperformed simply holding the assets — you'd have been better off not LPing",
+      "The pool is about to be drained",
+      "You need to increase your position size"
+    ],
+    correct: 1,
+    explanation: "If LP Profit < HODL Profit, LPing underperformed holding. This doesn't mean you lost money absolutely (LP Profit could still be positive). It means the fees you earned didn't compensate for the impermanent loss."
+  },
+  {
+    id: 20,
+    chapter: "Chapter 14 — Final Takeaway",
+    text: "What is the document's final warning about DeFi returns?",
+    options: [
+      "Never LP with more than $100",
+      "Only LP on Solana, never on Ethereum",
+      "If someone shows 1000% APR, ask: what was the impermanent loss? Is this sustainable?",
+      "Always use the Curve strategy for maximum profit"
+    ],
+    correct: 2,
+    explanation: "The final chapter warns: \"If someone shows you a screenshot of 1000% APR, ask: 'What was the impermanent loss? What's the HODL comparison?'\" Sustainable returns come from genuine volume, not hype spikes."
+  }
+];
+
+// ─── STATE ────────────────────────────────────────────────────
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+let submitted = false;
+
+// ─── RENDER ───────────────────────────────────────────────────
+function renderAll() {
+  renderProgress();
+  renderQuestions();
+  renderScore();
+  renderNav();
+}
+
+function renderProgress() {
+  const wrap = document.getElementById('progressWrap');
+  wrap.innerHTML = questions.map((q, i) => {
+    let cls = '';
+    if (i === currentQ) cls = 'active';
+    if (submitted && answers[i] === q.correct) cls += ' correct-dot';
+    else if (submitted && answers[i] !== null && answers[i] !== q.correct) cls += ' wrong-dot';
+    return `<div class="progress-dot ${cls}" onclick="goToQuestion(${i})">${i + 1}</div>`;
+  }).join('');
+}
+
+function renderQuestions() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = questions.map((q, i) => {
+    const isActive = i === currentQ;
+    const answered = answers[i] !== null;
+    const isCorrect = submitted && answers[i] === q.correct;
+    const isWrong = submitted && answers[i] !== null && answers[i] !== q.correct;
+
+    let explClass = '';
+    let explStyle = '';
+    if (submitted && answered) {
+      explClass = 'show ' + (isCorrect ? 'correct-exp' : 'wrong-exp');
+    }
+
+    const expLabel = isCorrect ? '✅ CORRECT!' : (isWrong ? '❌ INCORRECT' : '📖 EXPLANATION');
+
+    return `
+    <div class="question-card ${isActive ? 'active-card' : ''}" id="qcard-${i}">
+      <div class="q-header">
+        <div class="q-num">${i + 1}</div>
+        <div>
+          <div class="q-chapter">${q.chapter}</div>
+          <div class="q-text">${q.text}</div>
+        </div>
+      </div>
+      <div class="options" id="options-${i}">
+        ${q.options.map((opt, oi) => {
+          let optCls = '';
+          if (answers[i] === oi) optCls = 'selected';
+          if (submitted) {
+            optCls += ' disabled';
+            if (oi === q.correct) optCls += ' correct-answer';
+            else if (answers[i] === oi && oi !== q.correct) optCls += ' wrong-answer';
+          }
+          const letters = ['A', 'B', 'C', 'D'];
+          return `<div class="option ${optCls}" onclick="selectAnswer(${i}, ${oi})">
+            <div class="opt-letter">${letters[oi]}</div>
+            <div>${opt}</div>
+          </div>`;
+        }).join('')}
+      </div>
+      <div class="explanation ${explClass}">
+        <div class="exp-label">${expLabel}</div>
+        ${q.explanation}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderScore() {
+  const answered = answers.filter(a => a !== null).length;
+  const correctCount = submitted ? answers.filter((a, i) => a === questions[i].correct).length : 0;
+  const wrongCount = submitted ? answered - correctCount : 0;
+  const pct = submitted && answered > 0 ? Math.round((correctCount / questions.length) * 100) : '—';
+
+  document.getElementById('correctCount').textContent = submitted ? correctCount : '—';
+  document.getElementById('wrongCount').textContent = submitted ? wrongCount : '—';
+  document.getElementById('answeredCount').textContent = answered;
+  document.getElementById('percentScore').textContent = submitted ? pct + '%' : '—';
+}
+
+function renderNav() {
+  document.getElementById('prevBtn').style.display = currentQ > 0 ? 'inline-block' : 'none';
+  document.getElementById('nextBtn').style.display = currentQ < questions.length - 1 ? 'inline-block' : 'none';
+  document.getElementById('submitBtn').style.display = !submitted ? 'inline-block' : 'none';
+}
+
+function renderResults() {
+  const answered = answers.filter(a => a !== null).length;
+  if (!submitted || answered < questions.length) {
+    document.getElementById('results').classList.remove('show');
+    return;
+  }
+
+  const correctCount = answers.filter((a, i) => a === questions[i].correct).length;
+  const pct = Math.round((correctCount / questions.length) * 100);
+
+  let emoji, title, grade, gradeBg;
+  if (pct >= 90) {
+    emoji = '🏆'; title = 'LP MASTER!'; grade = 'S-TIER'; gradeBg = 'var(--yellow)';
+  } else if (pct >= 75) {
+    emoji = '🌟'; title = 'Great Job!'; grade = 'A-TIER'; gradeBg = 'var(--green)';
+  } else if (pct >= 60) {
+    emoji = '👍'; title = 'Solid Effort!'; grade = 'B-TIER'; gradeBg = 'var(--blue)';
+  } else if (pct >= 40) {
+    emoji = '📚'; title = 'Keep Studying!'; grade = 'C-TIER'; gradeBg = 'var(--orange)';
+  } else {
+    emoji = '💪'; title = 'Time to Review!'; grade = 'NEEDS WORK'; gradeBg = 'var(--red)';
+  }
+
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('finalScore').textContent = correctCount + ' / ' + questions.length;
+  const gradeEl = document.getElementById('gradeBadge');
+  gradeEl.textContent = grade;
+  gradeEl.style.background = gradeBg;
+  gradeEl.style.color = (gradeBg === 'var(--yellow)' || gradeBg === 'var(--green)') ? 'var(--black)' : 'white';
+
+  document.getElementById('breakdown').innerHTML = `
+    <p><span>✅ Correct:</span> ${correctCount}</p>
+    <p><span>❌ Wrong:</span> ${questions.length - correctCount}</p>
+    <p><span>📊 Score:</span> ${pct}%</p>
+    <p><span>📖 Chapters covered:</span> All 14 + Prologue</p>
+  `;
+
+  document.getElementById('results').classList.add('show');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ─── ACTIONS ──────────────────────────────────────────────────
+function selectAnswer(qIdx, optIdx) {
+  if (submitted) return;
+  answers[qIdx] = optIdx;
+  renderAll();
+}
+
+function goToQuestion(i) {
+  currentQ = i;
+  renderAll();
+  document.getElementById('qcard-' + i).scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function nextQuestion() {
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderAll();
+    document.getElementById('qcard-' + currentQ).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderAll();
+    document.getElementById('qcard-' + currentQ).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function submitAnswers() {
+  const unanswered = answers.filter(a => a === null).length;
+  if (unanswered > 0 && !confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) {
+    return;
+  }
+
+  submitted = true;
+  renderAll();
+  renderResults();
+
+  // Hide submit, show all cards as scrollable
+  document.getElementById('submitBtn').style.display = 'none';
+  document.querySelectorAll('.question-card').forEach(c => c.classList.add('active-card'));
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetQuiz() {
+  answers = new Array(questions.length).fill(null);
+  submitted = false;
+  currentQ = 0;
+  document.getElementById('results').classList.remove('show');
+  renderAll();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── INIT ─────────────────────────────────────────────────────
+renderAll();
+</script>
+</body>
+</html>

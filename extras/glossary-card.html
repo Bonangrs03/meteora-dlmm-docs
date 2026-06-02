@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meteora DLMM Glossary — Terms Defined Simply</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #FFD700;
+  --red:    #FF5E5B;
+  --blue:   #5B8CFF;
+  --green:  #3DDC84;
+  --purple: #A855F7;
+  --pink:   #FF6FB5;
+  --orange: #FF8C42;
+  --teal:   #2DD4BF;
+  --white:  #FFFDF7;
+  --black:  #1A1A1A;
+  --border: 3px;
+  --slate:  #636E72;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #F0EDE0;
+  background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--black);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 2.5rem 2rem;
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 8px 8px 0px var(--black);
+}
+
+.header .emoji-row {
+  font-size: 2.5rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.5rem;
+}
+
+.header h1 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.header h1 .yellow { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+.header h1 .red    { color: var(--red); }
+.header h1 .blue   { color: var(--blue); }
+.header h1 .green  { color: var(--green); }
+.header h1 .purple { color: var(--purple); }
+
+.header .subtitle {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-top: 0.8rem;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.header .stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  padding: 0.4rem 1.2rem;
+  border: var(--border) solid var(--black);
+  box-shadow: 4px 4px 0px var(--black);
+}
+
+.stat-pill.yellow { background: var(--yellow); }
+.stat-pill.blue   { background: var(--blue); color: #fff; }
+.stat-pill.purple { background: var(--purple); color: #fff; }
+
+/* Search */
+.search-wrap {
+  margin-bottom: 2rem;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: var(--border) solid var(--black);
+  box-shadow: 6px 6px 0px var(--black);
+  background: var(--white);
+  outline: none;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.search-wrap input:focus {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--black);
+}
+
+.search-wrap input::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+
+/* Alphabet nav */
+.alphabet-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.alphabet-nav button {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  width: 36px; height: 36px;
+  border: 2px solid var(--black);
+  background: var(--white);
+  box-shadow: 3px 3px 0px var(--black);
+  cursor: pointer;
+  transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+  text-transform: uppercase;
+}
+
+.alphabet-nav button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--black);
+  background: var(--yellow);
+}
+
+/* Glossary term card */
+.term-card {
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 5px 5px 0px var(--black);
+  padding: 1.5rem 1.8rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.12s, box-shadow 0.12s;
+  position: relative;
+}
+
+.term-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px var(--black);
+}
+
+.term-card .term-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.term-card .emoji-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--black);
+  box-shadow: 3px 3px 0px var(--black);
+  background: #FFFDF7;
+}
+
+.term-card .term-name {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.term-card .alias {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--slate);
+  text-transform: uppercase;
+  margin-left: 0.4rem;
+}
+
+.term-card .definition {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin-bottom: 0.7rem;
+  color: #333;
+}
+
+.term-card .chapter-ref {
+  display: inline-block;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid var(--black);
+  box-shadow: 2px 2px 0px var(--black);
+  background: var(--yellow);
+}
+
+/* Color variants for chapter refs */
+.ch-ref-c1  { background: var(--red); color: #fff; }
+.ch-ref-c2  { background: var(--blue); color: #fff; }
+.ch-ref-c3  { background: var(--orange); }
+.ch-ref-c4  { background: var(--purple); color: #fff; }
+.ch-ref-c5  { background: var(--pink); color: #fff; }
+.ch-ref-c6  { background: var(--green); }
+.ch-ref-c7  { background: var(--red); color: #fff; }
+.ch-ref-c8  { background: var(--blue); color: #fff; }
+.ch-ref-c9  { background: var(--orange); }
+.ch-ref-c10 { background: var(--purple); color: #fff; }
+.ch-ref-c11 { background: var(--teal); }
+.ch-ref-c12 { background: var(--pink); color: #fff; }
+.ch-ref-c13 { background: var(--green); }
+.ch-ref-c14 { background: var(--yellow); }
+
+/* Back to top */
+.back-top {
+  display: block;
+  text-align: center;
+  margin: 3rem 0 1rem;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border: var(--border) solid var(--black);
+  box-shadow: 5px 5px 0px var(--black);
+  background: var(--yellow);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.back-top:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--black);
+}
+
+/* No results */
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 3rem;
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 5px 5px 0px var(--black);
+  margin-bottom: 2rem;
+}
+
+.no-results .big-emoji { font-size: 4rem; }
+.no-results h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.5rem; margin: 0.5rem 0; text-transform: uppercase; }
+.no-results p { font-weight: 500; color: #666; }
+
+/* Section letter header */
+.section-letter {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--black);
+  padding: 0.4rem 0;
+  border-bottom: 4px solid var(--black);
+  margin: 2rem 0 1rem;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: 5px 5px 0px var(--black);
+}
+
+.footer p {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* Hidden class for filtering */
+.hidden { display: none !important; }
+
+/* Mobile */
+@media (max-width: 600px) {
+  body { padding: 1rem; }
+  .header { padding: 1.5rem 1rem; }
+  .header h1 { font-size: 1.5rem; }
+  .term-card { padding: 1rem 1.2rem; }
+  .term-card .term-name { font-size: 1.1rem; }
+  .alphabet-nav { gap: 0.2rem; }
+  .alphabet-nav button { width: 30px; height: 30px; font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="emoji-row">📖 🔤 🧠 ⚡ 🎯</div>
+    <h1>
+      <span class="yellow">Meteora</span>
+      <span class="red">DLMM</span><br>
+      <span class="blue">Glossary</span>
+      <span class="green">of</span>
+      <span class="purple">Terms</span>
+    </h1>
+    <div class="subtitle">Every concept explained in plain language — no jargon without a definition</div>
+    <div class="stats">
+      <div class="stat-pill yellow">35 TERMS</div>
+      <div class="stat-pill blue">15 CHAPTERS</div>
+      <div class="stat-pill purple">ZERO JARGON</div>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <input type="text" id="glossarySearch" placeholder="🔍 Search for any term... (e.g. impermanent loss, bin, spread)" oninput="filterTerms()">
+  </div>
+
+  <!-- ALPHABET NAV -->
+  <div class="alphabet-nav" id="alphaNav"></div>
+
+  <!-- GLOSSARY TERMS -->
+  <div id="glossaryContainer">
+
+    <!-- Dynamic Liquidity Market Maker (DLMM) -->
+    <div class="term-card" data-letter="D" data-terms="DLMM Dynamic Liquidity Market Maker">
+      <div class="term-header">
+        <div class="emoji-icon">🔧</div>
+        <div>
+          <div class="term-name">DLMM <span class="alias">(Dynamic Liquidity Market Maker)</span></div>
+        </div>
+      </div>
+      <div class="definition">Meteora's reimagined AMM that divides price ranges into discrete <em>bins</em>, charges dynamic fees that rise with volatility, and lets you resize positions without closing them. Built from scratch for Solana's speed and low fees.</div>
+      <span class="chapter-ref ch-ref-c10">See Chapter 10</span>
+    </div>
+
+    <!-- Liquidity -->
+    <div class="term-card" data-letter="L" data-terms="liquidity liquid">
+      <div class="term-header">
+        <div class="emoji-icon">🔄</div>
+        <div><div class="term-name">Liquidity</div></div>
+      </div>
+      <div class="definition">The ease with which you can buy or sell something without waiting and without moving the price too much. Rice at a pasar is liquid (trades in seconds). A house is illiquid (takes months). In crypto, liquidity is what makes trading instant.</div>
+      <span class="chapter-ref ch-ref-c1">See Chapter 1</span>
+    </div>
+
+    <!-- Illiquidity -->
+    <div class="term-card" data-letter="I" data-terms="illiquidity illiquid">
+      <div class="term-header">
+        <div class="emoji-icon">🚫</div>
+        <div><div class="term-name">Illiquidity</div></div>
+      </div>
+      <div class="definition">The opposite of liquidity — when an asset is hard to trade quickly at a fair price. Your used iPhone takes days to sell. A rare painting takes months. The friction of waiting is illiquidity.</div>
+      <span class="chapter-ref ch-ref-c1">See Chapter 1</span>
+    </div>
+
+    <!-- Market Maker -->
+    <div class="term-card" data-letter="M" data-terms="market maker market-maker">
+      <div class="term-header">
+        <div class="emoji-icon">🏪</div>
+        <div><div class="term-name">Market Maker</div></div>
+      </div>
+      <div class="definition">A person (or program) that stands in the middle of a market and says: <em>"I will buy from anyone who wants to sell, and sell to anyone who wants to buy — at all times."</em> They hold inventory on both sides and profit from the spread.</div>
+      <span class="chapter-ref ch-ref-c2">See Chapter 2</span>
+    </div>
+
+    <!-- Bid -->
+    <div class="term-card" data-letter="B" data-terms="bid bid price">
+      <div class="term-header">
+        <div class="emoji-icon">📥</div>
+        <div><div class="term-name">Bid</div></div>
+      </div>
+      <div class="definition">The price at which a market maker is willing to <strong>buy</strong> from you. The bid is always slightly lower than the ask — that gap is how the market maker gets paid.</div>
+      <span class="chapter-ref ch-ref-c2">See Chapter 2</span>
+    </div>
+
+    <!-- Ask -->
+    <div class="term-card" data-letter="A" data-terms="ask ask price">
+      <div class="term-header">
+        <div class="emoji-icon">📤</div>
+        <div><div class="term-name">Ask</div></div>
+      </div>
+      <div class="definition">The price at which a market maker is willing to <strong>sell</strong> to you. Combined with the bid, the ask forms the two-sided promise every market maker makes.</div>
+      <span class="chapter-ref ch-ref-c2">See Chapter 2</span>
+    </div>
+
+    <!-- Spread -->
+    <div class="term-card" data-letter="S" data-terms="spread bid-ask spread">
+      <div class="term-header">
+        <div class="emoji-icon">↔️</div>
+        <div><div class="term-name">Spread</div></div>
+      </div>
+      <div class="definition">The gap between the bid price and the ask price. If a market maker buys at Rp 15,800 and sells at Rp 16,200, the spread is Rp 400. This is the market maker's revenue per round-trip trade.</div>
+      <span class="chapter-ref ch-ref-c2">See Chapters 2–3</span>
+    </div>
+
+    <!-- Inventory Risk -->
+    <div class="term-card" data-letter="I" data-terms="inventory risk inventory-risk">
+      <div class="term-header">
+        <div class="emoji-icon">⚠️</div>
+        <div><div class="term-name">Inventory Risk</div></div>
+      </div>
+      <div class="definition">The danger that the value of what you're holding goes down while you're holding it. Budi's pulsa stock lost value when the provider dropped prices. LPs face this whenever the token they hold declines relative to the other.</div>
+      <span class="chapter-ref ch-ref-c3">See Chapter 3</span>
+    </div>
+
+    <!-- Trading Volume -->
+    <div class="term-card" data-letter="T" data-terms="trading volume volume">
+      <div class="term-header">
+        <div class="emoji-icon">📊</div>
+        <div><div class="term-name">Trading Volume</div></div>
+      </div>
+      <div class="definition">How many trades happen over a period. More volume with the same spread = more profit. Budi selling 420 vouchers/day at Rp 400 spread makes Rp 168,000. Double the travelers = double the earnings without widening the spread.</div>
+      <span class="chapter-ref ch-ref-c3">See Chapter 3</span>
+    </div>
+
+    <!-- Automated Market Maker (AMM) -->
+    <div class="term-card" data-letter="A" data-terms="AMM automated market maker AMM">
+      <div class="term-header">
+        <div class="emoji-icon">🤖</div>
+        <div><div class="term-name">AMM <span class="alias">(Automated Market Maker)</span></div></div>
+      </div>
+      <div class="definition">A computer program that acts as a market maker — holding inventory, setting prices algorithmically, and executing trades 24/7. Instead of Budi standing at a terminal, you have code that never sleeps and never makes emotional mistakes.</div>
+      <span class="chapter-ref ch-ref-c4">See Chapter 4</span>
+    </div>
+
+    <!-- Constant Product Formula -->
+    <div class="term-card" data-letter="C" data-terms="constant product x*y=k x×y=k formula constant-product">
+      <div class="term-header">
+        <div class="emoji-icon">✖️</div>
+        <div><div class="term-name">Constant Product Formula <span class="alias">(x × y = k)</span></div></div>
+      </div>
+      <div class="definition">The foundational AMM formula: <strong>x × y = k</strong>, where x and y are the amounts of two assets in a pool and k never changes. When someone buys, x goes down so y must go up to keep k constant — automatically raising the price. Middle-school math that launched a trillion-dollar industry.</div>
+      <span class="chapter-ref ch-ref-c5">See Chapter 5</span>
+    </div>
+
+    <!-- Pool -->
+    <div class="term-card" data-letter="P" data-terms="pool liquidity pool">
+      <div class="term-header">
+        <div class="emoji-icon">🏊</div>
+        <div><div class="term-name">Liquidity Pool</div></div>
+      </div>
+      <div class="definition">A collection of two assets locked in a smart contract that powers an AMM. The pool is the inventory. Traders swap against it, LPs deposit into it, and the AMM formula keeps it balanced. <em>"Pool" = the shop. "LP" = the person who stocked the shelves.</em></div>
+      <span class="chapter-ref ch-ref-c5">See Chapter 5</span>
+    </div>
+
+    <!-- Slippage / Price Impact -->
+    <div class="term-card" data-letter="S" data-terms="slippage price impact price-impact">
+      <div class="term-header">
+        <div class="emoji-icon">📉</div>
+        <div><div class="term-name">Slippage <span class="alias">(Price Impact)</span></div></div>
+      </div>
+      <div class="definition">The difference between the expected price of a trade and the actual price you get — because your trade itself moves the price. Buying 1 SOL from a pool with 10 SOL causes a bigger price jump than buying from a pool with 1,000 SOL. Deeper pools = less slippage.</div>
+      <span class="chapter-ref ch-ref-c5">See Chapter 5</span>
+    </div>
+
+    <!-- Liquidity Provider (LP) -->
+    <div class="term-card" data-letter="L" data-terms="LP liquidity provider liquidity-provider">
+      <div class="term-header">
+        <div class="emoji-icon">💧</div>
+        <div><div class="term-name">Liquidity Provider <span class="alias">(LP)</span></div></div>
+      </div>
+      <div class="definition"><strong>You.</strong> Someone who deposits their tokens into a pool so the AMM has inventory to trade with. In return, you earn a share of every trading fee. LPing = lending your assets to the pool in exchange for passive income.</div>
+      <span class="chapter-ref ch-ref-c6">See Chapter 6</span>
+    </div>
+
+    <!-- Fee Earnings -->
+    <div class="term-card" data-letter="F" data-terms="fees fee earnings trading fees">
+      <div class="term-header">
+        <div class="emoji-icon">💰</div>
+        <div><div class="term-name">Fee Earnings</div></div>
+      </div>
+      <div class="definition">The income LPs earn from every trade in their pool. If the pool charges 0.3% per trade and you own 10% of the pool, you collect 0.03% of every trade's value. Fees are the LP's salary — the reason anyone provides liquidity in the first place.</div>
+      <span class="chapter-ref ch-ref-c6">See Chapter 6</span>
+    </div>
+
+    <!-- Impermanent Loss (IL) -->
+    <div class="term-card" data-letter="I" data-terms="impermanent loss IL impermanent-loss">
+      <div class="term-header">
+        <div class="emoji-icon">📛</div>
+        <div><div class="term-name">Impermanent Loss <span class="alias">(IL)</span></div></div>
+      </div>
+      <div class="definition">The LP's hidden cost: when one token's price changes relative to the other, your pool position becomes worth <em>less</em> than if you had just held the tokens separately. It's "impermanent" because the loss only crystallizes if you withdraw. Fees can offset IL — or not.</div>
+      <span class="chapter-ref ch-ref-c7">See Chapter 7</span>
+    </div>
+
+    <!-- Arbitrage -->
+    <div class="term-card" data-letter="A" data-terms="arbitrage arbitrageur arbing">
+      <div class="term-header">
+        <div class="emoji-icon">⚡</div>
+        <div><div class="term-name">Arbitrage</div></div>
+      </div>
+      <div class="definition">Buying an asset where it's cheap and instantly selling it where it's expensive — pocketing the difference risk-free. Arbitrageurs keep AMM prices in line with the broader market. They're not enemies of LPs; they're the mechanism that keeps the pool honest.</div>
+      <span class="chapter-ref ch-ref-c7">See Chapter 7</span>
+    </div>
+
+    <!-- Gas Fees -->
+    <div class="term-card" data-letter="G" data-terms="gas fees gas transaction fees tx fees">
+      <div class="term-header">
+        <div class="emoji-icon">⛽</div>
+        <div><div class="term-name">Gas Fees <span class="alias">(Transaction Fees)</span></div></div>
+      </div>
+      <div class="definition">The cost to process a transaction on a blockchain. On Ethereum: $5–$50 per trade. On Solana: ~$0.0002 per trade. This 250,000× difference is why small LPs can survive on Solana but get destroyed by fees on Ethereum.</div>
+      <span class="chapter-ref ch-ref-c8">See Chapter 8</span>
+    </div>
+
+    <!-- Solana -->
+    <div class="term-card" data-letter="S" data-terms="solana SOL">
+      <div class="term-header">
+        <div class="emoji-icon">☀️</div>
+        <div><div class="term-name">Solana</div></div>
+      </div>
+      <div class="definition">A high-speed blockchain with near-zero fees (~$0.0002/tx) and sub-second confirmation. It's the home of Meteora DLMM. Without Solana's speed and cheap transactions, concentrated liquidity strategies would be unprofitable for small LPs.</div>
+      <span class="chapter-ref ch-ref-c8">See Chapter 8</span>
+    </div>
+
+    <!-- Concentrated Liquidity -->
+    <div class="term-card" data-letter="C" data-terms="concentrated liquidity concentrated-liquidity CL">
+      <div class="term-header">
+        <div class="emoji-icon">🎯</div>
+        <div><div class="term-name">Concentrated Liquidity</div></div>
+      </div>
+      <div class="definition">The breakthrough idea: instead of spreading your money across ALL possible prices (from near-zero to infinity), you only provide liquidity in a chosen price range. Same capital, much more fee impact where trading actually happens. 1,000× efficiency gain — but you must manage the range.</div>
+      <span class="chapter-ref ch-ref-c9">See Chapter 9</span>
+    </div>
+
+    <!-- Price Range -->
+    <div class="term-card" data-letter="P" data-terms="price range range">
+      <div class="term-header">
+        <div class="emoji-icon">📏</div>
+        <div><div class="term-name">Price Range</div></div>
+      </div>
+      <div class="definition">In concentrated liquidity, the lower and upper price boundaries you choose. Your liquidity is active and earning fees only inside this range. Example: $180–$220 for SOL-USDC. If price moves outside, your position stops earning.</div>
+      <span class="chapter-ref ch-ref-c9">See Chapter 9</span>
+    </div>
+
+    <!-- Out of Range -->
+    <div class="term-card" data-letter="O" data-terms="out of range out-of-range">
+      <div class="term-header">
+        <div class="emoji-icon">😴</div>
+        <div><div class="term-name">Out of Range</div></div>
+      </div>
+      <div class="definition">When the market price moves outside your chosen price range. Your liquidity stops earning fees and your assets sit idle. You either wait for price to return, adjust your range, or close the position. "Out of range = your money is clocked out."</div>
+      <span class="chapter-ref ch-ref-c9">See Chapter 9</span>
+    </div>
+
+    <!-- Bin -->
+    <div class="term-card" data-letter="B" data-terms="bin bins">
+      <div class="term-header">
+        <div class="emoji-icon">🪜</div>
+        <div><div class="term-name">Bin</div></div>
+      </div>
+      <div class="definition">A discrete price step in DLMM's liquidity ladder. Think of a ladder where each rung is a specific price. Your liquidity sits on specific rungs. Inside a single bin, the price is <em>fixed</em> — trades within a bin have zero slippage. Price only moves when a bin is fully drained.</div>
+      <span class="chapter-ref ch-ref-c10">See Chapter 10</span>
+    </div>
+
+    <!-- Bin Step -->
+    <div class="term-card" data-letter="B" data-terms="bin step bin-step bps basis points">
+      <div class="term-header">
+        <div class="emoji-icon">📐</div>
+        <div><div class="term-name">Bin Step</div></div>
+      </div>
+      <div class="definition">The price gap between consecutive bins, measured in basis points (bps). A 20 bps bin step = 0.20% price change between bins. Smaller steps = tighter, more efficient, more management. Larger steps = wider, more forgiving, lower maintenance. 1 bps = 0.01%.</div>
+      <span class="chapter-ref ch-ref-c10">See Chapter 10</span>
+    </div>
+
+    <!-- Active Bin -->
+    <div class="term-card" data-letter="A" data-terms="active bin active-bin">
+      <div class="term-header">
+        <div class="emoji-icon">🟢</div>
+        <div><div class="term-name">Active Bin</div></div>
+      </div>
+      <div class="definition">The one bin where the current market price sits — and the only bin where trading happens. All other bins are inactive. When the active bin is drained, price moves to the next bin. "Only one rung of the ladder holds weight at a time."</div>
+      <span class="chapter-ref ch-ref-c10">See Chapter 10</span>
+    </div>
+
+    <!-- Dynamic Fees -->
+    <div class="term-card" data-letter="D" data-terms="dynamic fees dynamic-fees variable fees">
+      <div class="term-header">
+        <div class="emoji-icon">🌊</div>
+        <div><div class="term-name">Dynamic Fees</div></div>
+      </div>
+      <div class="definition">DLMM's fee model: base fee + variable surcharge that rises when volatility spikes and decays when markets are calm. Unlike fixed-fee AMMs, DLMM compensates LPs more when they're taking more risk. You earn higher fees during chaos, lower during calm.</div>
+      <span class="chapter-ref ch-ref-c11">See Chapter 11</span>
+    </div>
+
+    <!-- Limit Order -->
+    <div class="term-card" data-letter="L" data-terms="limit order limit-order">
+      <div class="term-header">
+        <div class="emoji-icon">🎯</div>
+        <div><div class="term-name">Limit Order</div></div>
+      </div>
+      <div class="definition">A "buy at this price or better" / "sell at this price or better" instruction. In DLMM, a single bin above current price (all quote token) acts as a limit sell order. A single bin below (all base token) acts as a limit buy. DLMM merges LPing and limit orders into one.</div>
+      <span class="chapter-ref ch-ref-c11">See Chapter 11</span>
+    </div>
+
+    <!-- Wide/Chill Strategy -->
+    <div class="term-card" data-letter="W" data-terms="wide chill wide-range wide range strategy">
+      <div class="term-header">
+        <div class="emoji-icon">😎</div>
+        <div><div class="term-name">Wide / Chill Strategy</div></div>
+      </div>
+      <div class="definition">Spread liquidity across a very wide price range (±20–30%). Lowest effort, rarely goes out of range, best for beginners and stablecoin pairs. Tradeoff: lower capital efficiency and lower fee earnings than concentrated strategies. "Set it and forget it."</div>
+      <span class="chapter-ref ch-ref-c12">See Chapter 12</span>
+    </div>
+
+    <!-- Spot Strategy -->
+    <div class="term-card" data-letter="S" data-terms="spot spot strategy uniform">
+      <div class="term-header">
+        <div class="emoji-icon">🎪</div>
+        <div><div class="term-name">Spot Strategy <span class="alias">(Uniform Distribution)</span></div></div>
+      </div>
+      <div class="definition">Spread liquidity evenly across a moderate range (±5–10%). Balanced approach: decent fee earnings, moderate maintenance. A solid middle-ground option for actively managed LP positions.</div>
+      <span class="chapter-ref ch-ref-c12">See Chapter 12</span>
+    </div>
+
+    <!-- Curve Strategy -->
+    <div class="term-card" data-letter="C" data-terms="curve curve strategy">
+      <div class="term-header">
+        <div class="emoji-icon">📈</div>
+        <div><div class="term-name">Curve Strategy</div></div>
+      </div>
+      <div class="definition">Concentrate more liquidity near the current price and progressively less toward the edges. Think of a bell curve. Good when you expect price to hover around current levels. Efficient use of capital near the active zone.</div>
+      <span class="chapter-ref ch-ref-c12">See Chapter 12</span>
+    </div>
+
+    <!-- Bid-Ask Strategy -->
+    <div class="term-card" data-letter="B" data-terms="bid-ask bid ask strategy">
+      <div class="term-header">
+        <div class="emoji-icon">📊</div>
+        <div><div class="term-name">Bid-Ask Strategy</div></div>
+      </div>
+      <div class="definition">Place heavy liquidity at two price points — one below (buy zone) and one above (sell zone) current price. Acts like a market maker's order book. Captures spread on both sides. Higher effort, higher potential returns.</div>
+      <span class="chapter-ref ch-ref-c12">See Chapter 12</span>
+    </div>
+
+    <!-- Single-Sided / 20-Bin Strategy -->
+    <div class="term-card" data-letter="S" data-terms="single-sided 20-bin single bin">
+      <div class="term-header">
+        <div class="emoji-icon">🎲</div>
+        <div><div class="term-name">Single-Sided / 20-Bin Strategy</div></div>
+      </div>
+      <div class="definition">Deploy liquidity only in one direction from current price (all above or all below). The 20-bin variant covers a small cluster. High risk, high reward — best when you have a strong directional conviction about where price is going.</div>
+      <span class="chapter-ref ch-ref-c12">See Chapter 12</span>
+    </div>
+
+    <!-- Wallet -->
+    <div class="term-card" data-letter="W" data-terms="wallet phantom solflare backpack">
+      <div class="term-header">
+        <div class="emoji-icon">👛</div>
+        <div><div class="term-name">Wallet</div></div>
+      </div>
+      <div class="definition">Your gateway to Solana — a browser extension (or mobile app) that holds your tokens and signs transactions. Phantom, Solflare, and Backpack are the most popular. Your wallet = your keys. Lose your seed phrase, lose everything.</div>
+      <span class="chapter-ref ch-ref-c13">See Chapter 13</span>
+    </div>
+
+    <!-- Seed Phrase -->
+    <div class="term-card" data-letter="S" data-terms="seed phrase seed-phrase recovery phrase mnemonic">
+      <div class="term-header">
+        <div class="emoji-icon">🔑</div>
+        <div><div class="term-name">Seed Phrase</div></div>
+      </div>
+      <div class="definition">A list of 12 or 24 words that is the master key to your wallet. Anyone with your seed phrase can access all your funds. Write it on paper, store it somewhere safe, NEVER screenshot it or store it digitally. "Paper beats pixels."</div>
+      <span class="chapter-ref ch-ref-c13">See Chapter 13</span>
+    </div>
+
+    <!-- bps (Basis Points) -->
+    <div class="term-card" data-letter="B" data-terms="bps basis point basis-points">
+      <div class="term-header">
+        <div class="emoji-icon">🔬</div>
+        <div><div class="term-name">Basis Points <span class="alias">(bps)</span></div></div>
+      </div>
+      <div class="definition">A unit equal to 0.01%. 100 bps = 1%. Used to describe bin steps (20 bps = 0.20% price gap between bins) and fee rates. Small number, big impact — a 5 bps vs 50 bps bin step is a 10× difference in price granularity.</div>
+      <span class="chapter-ref ch-ref-c13">See Chapter 13</span>
+    </div>
+
+    <!-- Position PnL -->
+    <div class="term-card" data-letter="P" data-terms="PnL profit loss position P&L">
+      <div class="term-header">
+        <div class="emoji-icon">📈</div>
+        <div><div class="term-name">Position PnL</div></div>
+      </div>
+      <div class="definition"><strong>Profit and Loss</strong> for your LP position. The real question: is your position worth more NOW than if you had just held the tokens? Fees earned minus impermanent loss minus gas costs = true PnL. Don't fool yourself — compare against "just holding."</div>
+      <span class="chapter-ref ch-ref-c14">See Chapter 14</span>
+    </div>
+
+    <!-- Fee APR -->
+    <div class="term-card" data-letter="F" data-terms="APR fee APR annualized yield">
+      <div class="term-header">
+        <div class="emoji-icon">📊</div>
+        <div><div class="term-name">Fee APR</div></div>
+      </div>
+      <div class="definition"><strong>Annual Percentage Rate</strong> — your fee earnings annualized. Formula: fees earned this week ÷ position value × 52. A 0.1% daily return = ~36% annualized. APR is a projection, not a guarantee. High APR today might be gone tomorrow.</div>
+      <span class="chapter-ref ch-ref-c14">See Chapter 14</span>
+    </div>
+
+    <!-- Rebalancing -->
+    <div class="term-card" data-letter="R" data-terms="rebalance rebalancing adjust">
+      <div class="term-header">
+        <div class="emoji-icon">🔄</div>
+        <div><div class="term-name">Rebalancing</div></div>
+      </div>
+      <div class="definition">Adjusting your LP position's price range or bin distribution when market conditions change. If SOL's price is heading toward your upper bound, you rebalance before it goes out of range. On Solana this costs fractions of a cent; on Ethereum it costs $8+.</div>
+      <span class="chapter-ref ch-ref-c14">See Chapter 14</span>
+    </div>
+
+    <!-- Compounding -->
+    <div class="term-card" data-letter="C" data-terms="compound compounding reinvest">
+      <div class="term-header">
+        <div class="emoji-icon">📈</div>
+        <div><div class="term-name">Compounding</div></div>
+      </div>
+      <div class="definition">Reinvesting your earned fees back into the pool so your position grows — and future earnings are calculated on a larger base. Compound daily = exponential growth. On Solana, you can compound 10 times a day for less than a penny total. On Ethereum, each compound costs $10.</div>
+      <span class="chapter-ref ch-ref-c14">See Chapter 14</span>
+    </div>
+
+    <!-- USDC -->
+    <div class="term-card" data-letter="U" data-terms="USDC stablecoin USDT">
+      <div class="term-header">
+        <div class="emoji-icon">💵</div>
+        <div><div class="term-name">USDC <span class="alias">(USD Coin)</span></div></div>
+      </div>
+      <div class="definition">A digital dollar — always worth ~$1. The most common quote token in DLMM pools. When you LP SOL-USDC, you're providing SOL (the volatile asset) and USDC (the stable asset). The stable side anchors your position.</div>
+      <span class="chapter-ref ch-ref-c5">See Chapter 5</span>
+    </div>
+
+    <!-- Jupiter -->
+    <div class="term-card" data-letter="J" data-terms="Jupiter jup.ag aggregator">
+      <div class="term-header">
+        <div class="emoji-icon">🪐</div>
+        <div><div class="term-name">Jupiter</div></div>
+      </div>
+      <div class="definition">Solana's dominant DEX aggregator — finds the best swap price across all pools. LP tool: use Jupiter to swap into the tokens you need before depositing. Also useful for checking if you'd get a better rate than your pool's current price.</div>
+      <span class="chapter-ref ch-ref-c13">See Chapters 13–14</span>
+    </div>
+
+  </div>
+
+  <!-- NO RESULTS -->
+  <div class="no-results" id="noResults">
+    <div class="big-emoji">🔍</div>
+    <h2>No Terms Found</h2>
+    <p>Try a different search — or scroll through the full list below.</p>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <a href="#" class="back-top" onclick="document.getElementById('glossarySearch').value='';filterTerms();window.scrollTo({top:0,behavior:'smooth'});return false;">⬆ Show All Terms</a>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>📖 Meteora DLMM Glossary • 35 Terms • 15 Chapters • 0 Jargon Left Unexplained</p>
+    <p style="margin-top:0.3rem; font-weight:500;">Built for the <em>Meteora DLMM Complete Guide</em> — app.meteora.ag</p>
+  </div>
+
+</div>
+
+<script>
+// Build alphabet nav
+(function() {
+  const container = document.getElementById('glossaryContainer');
+  const terms = container.querySelectorAll('.term-card');
+  const letters = new Set();
+  terms.forEach(t => { const l = t.dataset.letter; if(l) letters.add(l); });
+  const sorted = [...letters].sort();
+  const nav = document.getElementById('alphaNav');
+
+  // All button
+  const allBtn = document.createElement('button');
+  allBtn.textContent = 'ALL';
+  allBtn.style.width = '44px';
+  allBtn.style.background = 'var(--black)';
+  allBtn.style.color = 'var(--white)';
+  allBtn.onclick = function() {
+    document.getElementById('glossarySearch').value = '';
+    filterTerms();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  };
+  nav.appendChild(allBtn);
+
+  sorted.forEach(l => {
+    const btn = document.createElement('button');
+    btn.textContent = l;
+    btn.onclick = function() {
+      document.getElementById('glossarySearch').value = '';
+      // Show only terms starting with this letter
+      terms.forEach(t => {
+        if(t.dataset.letter === l) t.classList.remove('hidden');
+        else t.classList.add('hidden');
+      });
+      // Hide section headers we didn't add
+      document.getElementById('noResults').style.display = 'none';
+      // Scroll to first match
+      const firstMatch = container.querySelector('.term-card:not(.hidden)');
+      if(firstMatch) firstMatch.scrollIntoView({behavior: 'smooth', block: 'start'});
+    };
+    nav.appendChild(btn);
+  });
+})();
+
+function filterTerms() {
+  const query = document.getElementById('glossarySearch').value.toLowerCase().trim();
+  const terms = document.querySelectorAll('#glossaryContainer .term-card');
+  let visibleCount = 0;
+
+  terms.forEach(t => {
+    const searchData = t.dataset.terms || '';
+    const termName = (t.querySelector('.term-name')?.textContent || '').toLowerCase();
+    const definition = (t.querySelector('.definition')?.textContent || '').toLowerCase();
+    const fullText = searchData + ' ' + termName + ' ' + definition;
+
+    if(!query || fullText.includes(query)) {
+      t.classList.remove('hidden');
+      visibleCount++;
+    } else {
+      t.classList.add('hidden');
+    }
+  });
+
+  document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+}
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ import markdown
 from pathlib import Path
 
 ACTS_DIR = Path('/home/bonangrs03/meteora-dlmm-docs/acts')
-OUTPUT_HTML = Path('/home/bonangrs03/meteora-dlmm-docs/index_v2.html')
+OUTPUT_HTML = Path('/home/bonangrs03/meteora-dlmm-docs/index.html')
 OUTPUT_PDF = Path('/home/bonangrs03/meteora-dlmm-docs/Meteora_DLMM_Docs_v2.pdf')
 
 # Chapter numbering
@@ -236,6 +236,118 @@ pre code {
     font-size: 0.8rem;
     color: #888;
 }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    @page {
+        margin: 1cm 1.2cm;
+    }
+
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    .hero .subtitle {
+        font-size: 0.82rem;
+    }
+    .chapter-count {
+        font-size: 0.7rem;
+        padding: 0.25em 0.8em;
+    }
+
+    .chapter {
+        padding: 1.2rem 1rem;
+        margin-bottom: 1.5rem;
+        border-width: 2px;
+    }
+    .chapter h1 {
+        font-size: 1.25rem;
+    }
+    .chapter h2 {
+        font-size: 1.05rem;
+    }
+    .chapter h3 {
+        font-size: 0.95rem;
+    }
+
+    body {
+        font-size: 10.5pt;
+        line-height: 1.65;
+    }
+
+    p {
+        margin-bottom: 0.65em;
+    }
+
+    .toc-section {
+        margin: 1rem 0 2rem;
+    }
+    .toc-section h2 {
+        font-size: 1.2rem;
+    }
+    .toc-list li {
+        font-size: 0.8rem;
+        padding: 0.25rem 0;
+    }
+
+    /* Tables — scroll on mobile */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.75rem;
+        -webkit-overflow-scrolling: touch;
+    }
+    thead th, tbody td {
+        padding: 0.35em 0.55em;
+    }
+
+    pre {
+        font-size: 0.7rem;
+        padding: 0.6em 0.8em;
+    }
+
+    blockquote {
+        margin: 0.8em 0;
+        padding: 0.4em 0.8em;
+        border-left-width: 3px;
+    }
+
+    .footer {
+        font-size: 0.7rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.2rem 0.8rem;
+    }
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .chapter {
+        padding: 1rem 0.8rem;
+    }
+    .chapter h1 {
+        font-size: 1.15rem;
+    }
+
+    body {
+        font-size: 10pt;
+    }
+
+    table {
+        font-size: 0.68rem;
+    }
+
+    ul, ol {
+        margin-left: 1.2em;
+    }
+}
 """
 
 def build_html():
@@ -274,6 +386,7 @@ def build_html():
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meteora DLMM: The Complete Guide</title>
     <style>{CSS}</style>
 </head>

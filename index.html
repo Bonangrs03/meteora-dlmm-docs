@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meteora DLMM: The Complete Guide</title>
     <style>
 :root {
@@ -212,6 +213,153 @@ pre code {
     font-size: 0.8rem;
     color: #888;
 }
+
+/* Key Takeaway Box */
+.takeaway-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 3px solid var(--yellow);
+    border-left: 8px solid var(--yellow);
+    background: #FFF9E6;
+    padding: 1rem 1.3rem;
+    margin: 1.5rem 0 0.3rem 0;
+    page-break-inside: avoid;
+}
+.takeaway-box .takeaway-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+    line-height: 1;
+}
+.takeaway-box .takeaway-label {
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg);
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+.takeaway-box .takeaway-content p {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    @page {
+        margin: 1cm 1.2cm;
+    }
+
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    .hero .subtitle {
+        font-size: 0.82rem;
+    }
+    .chapter-count {
+        font-size: 0.7rem;
+        padding: 0.25em 0.8em;
+    }
+
+    .chapter {
+        padding: 1.2rem 1rem;
+        margin-bottom: 1.5rem;
+        border-width: 2px;
+    }
+    .chapter h1 {
+        font-size: 1.25rem;
+    }
+    .chapter h2 {
+        font-size: 1.05rem;
+    }
+    .chapter h3 {
+        font-size: 0.95rem;
+    }
+
+    body {
+        font-size: 10.5pt;
+        line-height: 1.65;
+    }
+
+    p {
+        margin-bottom: 0.65em;
+    }
+
+    .toc-section {
+        margin: 1rem 0 2rem;
+    }
+    .toc-section h2 {
+        font-size: 1.2rem;
+    }
+    .toc-list li {
+        font-size: 0.8rem;
+        padding: 0.25rem 0;
+    }
+
+    /* Tables — scroll on mobile */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.75rem;
+        -webkit-overflow-scrolling: touch;
+    }
+    thead th, tbody td {
+        padding: 0.35em 0.55em;
+    }
+
+    pre {
+        font-size: 0.7rem;
+        padding: 0.6em 0.8em;
+    }
+
+    blockquote {
+        margin: 0.8em 0;
+        padding: 0.4em 0.8em;
+        border-left-width: 3px;
+    }
+
+    .footer {
+        font-size: 0.7rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.2rem 0.8rem;
+    }
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .chapter {
+        padding: 1rem 0.8rem;
+    }
+    .chapter h1 {
+        font-size: 1.15rem;
+    }
+
+    body {
+        font-size: 10pt;
+    }
+
+    table {
+        font-size: 0.68rem;
+    }
+
+    ul, ol {
+        margin-left: 1.2em;
+    }
+}
 </style>
 </head>
 <body>
@@ -267,6 +415,14 @@ pre code {
 <p>If a chapter feels obvious, good. That means the previous ones did their job. If it feels confusing, stop and re-read the previous chapter. The confusion is almost always a missing link from earlier, not a problem with the current chapter.</p>
 <p>Ready? Let's start with the most basic question:</p>
 <p><em>What even is "liquidity"?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>This document builds exactly one new concept per chapter. If you ever feel confused, stop and re-read the previous chapter — the missing link is always there.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="01-what-is-liquidity">
@@ -313,6 +469,14 @@ Day 5: finally, someone shows up, inspects the phone, pays Rp 11.5 million. Done
 <p>You can now explain what "liquid" and "illiquid" mean. Write it down somewhere. This is your first building block.</p>
 <hr />
 <p><em>Next: Who provides this liquidity? Who is the person that says "I'll always be here to trade with you"?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>Liquidity = ease of trading. High liquidity means you can buy or sell instantly; low liquidity means you wait. Everything in DeFi builds on this.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="02-the-middleman">
@@ -421,6 +585,14 @@ They pocket the difference: Rp 400,000.</p>
 <p>Two building blocks. Let's build the third.</p>
 <hr />
 <p><em>Next: How big should the spread be? How much can a market maker actually earn? And what's the risk?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>A market maker is someone who is always ready to buy AND sell, profiting from the gap between those two prices — the spread. They are the "always there" counterparty in every market.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="03-spread-as-business">
@@ -615,6 +787,14 @@ scares buyers)  turnover = hold longer)
 <p><strong>A market maker's business = spread width × trading volume, balanced against inventory risk.</strong> Every decision — how wide to set the spread, which assets to trade, how much inventory to hold — is about managing this tradeoff.</p>
 <hr />
 <p><em>Next: What if we replaced Budi with a computer program? What would that program look like?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>A market maker's business = spread width × trading volume, balanced against inventory risk. Every decision — spread, assets, inventory — is about managing this tradeoff.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="04-computer-middleman">
@@ -726,6 +906,14 @@ Chapter 4: An AMM is a computer program that does a market maker&#39;s job
 <p>That's Chapter 5.</p>
 <hr />
 <p><em>Next: The math inside the machine. Don't worry — it's simpler than you think.</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>An AMM (Automated Market Maker) is a computer program that replaces a human market maker — using math instead of gut feeling to set prices, running 24/7, never tired, never emotional.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="05-constant-product">
@@ -876,6 +1064,14 @@ Chapter 4: An AMM is a computer program that does a market maker&#39;s job
 <p>You now understand the engine that powers almost all of DeFi. The pool is the market. The formula is the price. No middleman required.</p>
 <hr />
 <p><em>Next: The pool needs inventory. Where does it come from? And why would anyone provide it?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>x × y = k — the constant product formula. It automatically adjusts prices: buying pushes prices up, selling pushes them down. Pure math, no human needed. This is the engine inside every AMM.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="06-where-money-comes-from">
@@ -994,6 +1190,14 @@ When you want your money back, you withdraw your share of the pool — your orig
 <p>That third row — "you bear inventory risk" — is important enough to deserve its own chapter.</p>
 <hr />
 <p><em>Next: The hidden cost of being an LP. Why "just deposit and earn" isn't the full picture.</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>An LP (Liquidity Provider) deposits assets into a pool and earns a share of all trading fees. Your money works while you sleep — but you also bear the inventory risk. That risk has a name: impermanent loss.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="07-hidden-cost">
@@ -1228,6 +1432,14 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <p>This is the single most important concept to understand before you become an LP. If you only remember one thing from this entire document, make it this: <strong>LPing is not free money. You are selling volatility and getting paid in fees.</strong></p>
 <hr />
 <p><em>Next: We've been talking about pools in the abstract. Now let's look at a specific blockchain — why Solana? Why not Ethereum? What difference does the underlying technology make?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>Impermanent Loss = the difference between your pool value and what you'd have by just holding. It grows with every price movement. Trading fees must outweigh IL for you to actually profit as an LP.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="08-why-solana">
@@ -1405,6 +1617,14 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <p><strong>Transaction cost is a barrier to entry.</strong> On chains with high fees, only large capital can LP profitably. On Solana, near-zero fees mean anyone can participate — and that changes which LP strategies are viable.</p>
 <hr />
 <p><em>Next: The big idea that makes LPing far more capital-efficient. Concentrated liquidity.</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>Transaction cost is a barrier to entry. Solana's near-zero fees (~$0.0002 per tx) make active LP management viable for everyone — not just whales. This is why Meteora DLMM exists on Solana.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="09-big-idea">
@@ -1526,6 +1746,14 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 </blockquote>
 <hr />
 <p><em>Next: Meteora DLMM — how does it implement concentrated liquidity differently from everyone else? What are "bins" and why do they matter?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>Concentrated Liquidity = choosing a specific price range for your capital instead of spreading it everywhere. Far more capital-efficient, but requires active management when prices move outside your range.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="10-enter-meteora">
@@ -1698,6 +1926,14 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <p>You put your liquidity into specific bins around the current price. Only the active bin processes trades. When it's drained, the ladder steps to the next bin. Your fees adapt to how crazy the market is.</p>
 <hr />
 <p><em>Next: How is DLMM different from Uniswap V3 (the most famous concentrated liquidity protocol)? What makes it uniquely suited to Solana?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>DLMM = Discrete Liquidity Market Maker — concentrated liquidity organized into price bins (like rungs on a ladder) with dynamic fees that rise during volatility and fall during calm markets.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="11-how-dlmm-different">
@@ -1942,6 +2178,14 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 </ol>
 <hr />
 <p><em>Next: Now that we understand the tool, how do we use it? What LP strategies work on Meteora?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>DLMM's key innovations: discrete bins (zero slippage within a bin), dynamic fees (compensates you more when risk is higher), native limit orders, and resizable positions — all viable because Solana gas is near-zero.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="12-lp-strategies">
@@ -2191,6 +2435,14 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <p>There's no best strategy — only the strategy that matches your capital, your time, and your risk tolerance.</p>
 <hr />
 <p><em>Next: Open the app. Let's actually do this. Step by step.</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>Your strategy choice answers three questions: how much you'll earn, how much you risk losing, and how much attention you'll need to pay. There's no best strategy — only the one matching your capital, time, and risk tolerance.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="13-step-by-step">
@@ -2435,6 +2687,14 @@ When SOL price goes down, the pool buys SOL to push the price back up.</p>
 <p>This single habit — comparing your actual result to the "just hold" baseline — is what separates profitable LPs from those who lose money without understanding why.</p>
 <hr />
 <p><em>Next: How do you track performance over time? What tools help? When do you know it's time to exit?</em></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>The single most important LP habit: every time you close a position, compare what you received to what you would have by just holding. This comparison is the truth serum of LPing — it tells you if you actually profited.</p>
+                </div>
+            </div>
         </div>
 
         <div class="chapter" id="14-measuring-profit">
@@ -2722,6 +2982,14 @@ HODL Profit = HODL Value - Gross Deposit Value
 <p>Just like Budi at the bus terminal — showing up every day, managing inventory, earning the spread. No magic. Just math and consistency.</p>
 <hr />
 <p><strong>Good luck. Start small. Track honestly. Stay curious.</strong></p>
+
+            <div class="takeaway-box">
+                <span class="takeaway-icon">💡</span>
+                <div class="takeaway-content">
+                    <span class="takeaway-label">KEY TAKEAWAY</span>
+                    <p>There are no get-rich-quick strategies in LPing — only risk-adjusted returns. The real money comes from tracking PnL honestly, understanding your risks, and compounding steadily. Just like Budi: show up, manage inventory, earn the spread.</p>
+                </div>
+            </div>
         </div>
     
     <div class="footer">

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Guide Posisi Teknik Industri — Pertanyaan, Case Study, Cara Jawab</title>
+    <meta name="description" content="Lo dipanggil interview posisi IE. Ini pertanyaan yang bakal muncul: technical, case study, behavioral. Lengkap dengan cara jawab pake STAR dan contoh jawaban.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --yellow: #FFD700; --red: #FF5E5B; --blue: #5B8CFF; --green: #3DDC84;
+    --purple: #A855F7; --orange: #FF8C42; --teal: #2DD4BF; --pink: #FF6FB5;
+    --bg: #F0EDE0; --fg: #1A1A1A; --card-bg: #FFFDF7;
+    --ie-navy: #1B2A4A; --ie-orange: #F48120;
+    --int-red: #DC2626;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg); background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+    background-size: 24px 24px; color: var(--fg); line-height: 1.8;
+    font-size: 11pt; font-weight: 500;
+}
+.site-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding: 1rem 1.5rem; margin: 0 auto 0.5rem; max-width: 1100px; }
+.site-nav .nav-link { display: inline-block; padding: 0.5em 1em; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; text-decoration: none; color: var(--fg); background: var(--card-bg); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer; }
+.site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+.ti-subnav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding: 0.6rem 1rem; margin: 0 auto 2rem; max-width: 900px; }
+.ti-subnav .ti-link { display: inline-block; padding: 0.45em 1em; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; color: var(--fg); background: #E8ECF2; border: 3px solid var(--fg); box-shadow: 2px 2px 0px var(--fg); transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer; }
+.ti-subnav .ti-link:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px var(--fg); background: var(--yellow); }
+.ti-subnav .ti-link.active { background: var(--int-red); color: #fff; cursor: default; border-color: var(--int-red); }
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.hero { background: var(--int-red); color: var(--card-bg); border: 4px solid var(--fg); box-shadow: 8px 8px 0px var(--fg); padding: 3rem 2.5rem; margin-bottom: 3rem; text-align: center; }
+.hero h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.3; }
+.hero .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.3rem; }
+.hero .chapter-count { display: inline-block; background: var(--yellow); color: var(--fg); font-weight: 800; font-size: 0.75rem; padding: 0.3em 1.2em; border: 2px solid var(--fg); box-shadow: 2px 2px 0px var(--fg); margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.toc-section { max-width: 900px; margin: 0 auto 3rem; }
+.toc-section h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1rem; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+.toc-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 1rem; text-decoration: none; color: var(--fg); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); font-weight: 700; font-size: 0.85rem; transition: transform 0.12s, box-shadow 0.12s; }
+.toc-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.toc-num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.5rem; min-width: 42px; text-align: center; }
+.chapter { background: var(--card-bg); border: 3px solid var(--fg); box-shadow: 5px 5px 0px var(--fg); padding: 2rem 2.2rem; margin-bottom: 2.5rem; }
+.chapter h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1.2rem; padding-bottom: 0.4em; border-bottom: 3px solid var(--fg); display: inline-block; }
+.chapter h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 1.15rem; margin: 1.8em 0 0.6em; }
+.chapter h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 1rem; margin: 1.5em 0 0.5em; }
+.chapter p { margin-bottom: 0.9em; }
+.chapter ul, .chapter ol { margin: 0.5em 0 1em 1.5em; }
+.chapter li { margin-bottom: 0.4em; }
+.chapter strong { color: var(--int-red); }
+.chapter em { color: var(--ie-orange); font-style: normal; font-weight: 700; }
+.info-card { background: #FDFCF7; border: 3px solid var(--fg); box-shadow: 4px 4px 0px var(--fg); padding: 1.2rem 1.5rem; margin: 1.5em 0; }
+.info-card h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.95rem; margin: 0 0 0.5em; }
+.highlight { background: #FFF8E1; border: 3px solid var(--ie-orange); padding: 1.2rem 1.5rem; margin: 1.5em 0; box-shadow: 4px 4px 0px var(--ie-orange); }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5em 0; }
+.compare-box { padding: 1.2rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.compare-box.bad { background: #FFF0F0; border-left: 6px solid var(--red); }
+.compare-box.good { background: #F0FFF4; border-left: 6px solid var(--green); }
+.compare-box h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.9rem; margin-bottom: 0.5em; }
+.kw-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.85rem; }
+.kw-table th { background: var(--fg); color: var(--yellow); padding: 0.7em 1em; font-weight: 800; text-align: left; border: 2px solid var(--fg); }
+.kw-table td { padding: 0.6em 1em; border: 2px solid var(--fg); }
+.kw-table tr:nth-child(even) { background: #FDFCF7; } .kw-table tr:nth-child(odd) { background: var(--card-bg); }
+.step-list { list-style: none; margin-left: 0; }
+.step-list li { counter-increment: step; padding: 0.8rem 1rem 0.8rem 3.5rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); margin-bottom: 0.8rem; position: relative; background: var(--card-bg); }
+.step-list li::before { content: counter(step); font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.2rem; position: absolute; left: 1rem; top: 0.7rem; background: var(--fg); color: var(--yellow); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--fg); }
+.q-box { background: #FFF5F5; border: 3px solid var(--int-red); padding: 1rem 1.2rem; margin: 1em 0; border-radius: 0; }
+.q-box .q-label { font-weight: 900; color: var(--int-red); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.3em; }
+.q-box .q-text { font-weight: 700; margin-bottom: 0.6em; }
+.q-box .q-answer { font-size: 0.9rem; color: #444; }
+.back-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--yellow); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); padding: 0.5em 0.8em; font-weight: 900; cursor: pointer; text-decoration: none; color: var(--fg); font-size: 0.9rem; transition: transform 0.12s; }
+.back-top:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+@media (max-width: 768px) {
+    .hero { padding: 2rem 1.2rem; } .hero h1 { font-size: 1.3rem; }
+    .chapter { padding: 1.2rem 1rem; } .chapter h1 { font-size: 1.15rem; }
+    .toc-grid { grid-template-columns: 1fr; } .compare-grid { grid-template-columns: 1fr; }
+    .site-nav { gap: 0.3rem; padding: 0.4rem; } .site-nav .nav-link { font-size: 0.6rem; padding: 0.35em 0.5em; border-width: 2px; }
+    .ti-subnav { gap: 0.3rem; } .ti-subnav .ti-link { font-size: 0.65rem; padding: 0.35em 0.6em; border-width: 2px; }
+    body { font-size: 10pt; }
+}
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="../index.html" class="nav-link">🏠 Guide</a>
+    <a href="../extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="../extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+    <a href="../extras/quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="../extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="../extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    <a href="../seo-guide.html" class="nav-link">🔍 SEO Playbook</a>
+    <a href="../teknik-industri.html" class="nav-link">🏭 Teknik Industri</a>
+</nav>
+
+<nav class="ti-subnav">
+    <a href="../teknik-industri.html" class="ti-link">📚 Panduan Utama</a>
+    <a href="ppic-dari-nol.html" class="ti-link">📦 PPIC dari Nol</a>
+    <a href="cv-linkedin-ie.html" class="ti-link">📄 CV & LinkedIn</a>
+    <a href="interview-guide-ie.html" class="ti-link active">🎤 Interview Guide</a>
+    <a href="gaji-karir-ie.html" class="ti-link">💰 Gaji & Karir</a>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+    <h1>Interview Guide:<br>Posisi Teknik Industri</h1>
+    <p class="subtitle">Lo udah lolos screening. Sekarang lo dipanggil interview.</p>
+    <p class="subtitle">Ini pertanyaan yang BAKAL muncul. Dan gimana cara jawabnya.</p>
+    <span class="chapter-count">8 Chapter · Technical + Case Study + Behavioral · Story-Driven</span>
+</div>
+
+<div class="toc-section">
+    <h2>📚 Daftar Isi</h2>
+    <div class="toc-grid">
+        <a href="#01-sebelum" class="toc-card" style="background: var(--int-red); color: #fff;"><span class="toc-num">01</span> Sebelum Interview — Persiapan</a>
+        <a href="#02-struktur" class="toc-card" style="background: var(--blue); color: #fff;"><span class="toc-num">02</span> Struktur Interview IE</a>
+        <a href="#03-teknis" class="toc-card" style="background: var(--orange);"><span class="toc-num">03</span> Pertanyaan Teknis + Cara Jawab</a>
+        <a href="#04-case" class="toc-card" style="background: var(--green);"><span class="toc-num">04</span> Case Study + Problem Solving</a>
+        <a href="#05-behavioral" class="toc-card" style="background: var(--purple); color: #fff;"><span class="toc-num">05</span> Behavioral — Lo Sebagai Orang</a>
+        <a href="#06-tanya" class="toc-card" style="background: var(--teal);"><span class="toc-num">06</span> Pertanyaan yang Lo Ajukan ke Mereka</a>
+        <a href="#07-mistakes" class="toc-card" style="background: var(--pink);"><span class="toc-num">07</span> Mistakes yang Bikin Lo Gagal</a>
+        <a href="#08-simulasi" class="toc-card" style="background: var(--fg); color: var(--yellow);"><span class="toc-num">08</span> Simulasi Interview Lengkap</a>
+    </div>
+</div>
+
+<!-- 01 -->
+<section id="01-sebelum" class="chapter" style="border-left: 8px solid var(--int-red);">
+<h1>01. Sebelum Interview — Persiapan yang Beneran Ngaruh</h1>
+
+<p>Lo dapet email: "Kami mengundang Anda untuk interview posisi PPIC Staff pada hari Selasa, pukul 10.00."</p>
+
+<p>Mayoritas fresh grad: baca sekilas website perusahaan, siapin baju, dateng. <strong>Itu kurang.</strong></p>
+
+<h2>4 Hal yang Lo Riset Sebelum Interview</h2>
+
+<ol class="step-list">
+    <li><strong>Annual Report / Laporan Tahunan.</strong> Baca bagian "Operational Review" atau "Management Discussion." Cari: produk mereka apa, pabrik di mana, kapasitas produksi, tantangan yang mereka sebut. Lo bakal kedengeran kayak orang yang udah riset.</li>
+    <li><strong>LinkedIn interviewer lo.</strong> Cari nama yang interview lo. Liat background mereka: jurusan apa, karir di mana aja, berapa lama di posisi sekarang. Ini ngasih lo konteks — siapa yang lo ajak ngomong.</li>
+    <li><strong>Job description. Lagi.</strong> Baca ulang. Garis bawahi 5 keyword utama. Ini yang bakal mereka tanyain. Siapin 1 cerita per keyword.</li>
+    <li><strong>Pertanyaan buat mereka.</strong> Minimal 3. (Detail di Chapter 6.)</li>
+</ol>
+
+<div class="info-card">
+    <h3>👔 Dress Code — Pabrik vs Kantor</h3>
+    <p><strong>Interview di pabrik:</strong> Kemeja lengan panjang + celana bahan + sepatu pantofel. Jangan jas — lo bakal diajak plant tour, kepanasan, dan keliatan aneh. Safety shoes kadang disediakan. Bawa masker.</p>
+    <p><strong>Interview di kantor pusat / konsultan:</strong> Kemeja + jas optional + sepatu formal. Lebih konservatif.</p>
+    <p>Rule of thumb: tanya HR-nya. "Ada dress code tertentu untuk interview?" — pertanyaan simpel yang nunjukin lo profesional.</p>
+</div>
+</section>
+
+<!-- 02 -->
+<section id="02-struktur" class="chapter" style="border-left: 8px solid var(--blue);">
+<h1>02. Struktur Interview IE — Yang Bakal Terjadi</h1>
+
+<p>Interview posisi IE biasanya 2-3 tahap:</p>
+
+<table class="kw-table">
+    <thead><tr><th>Tahap</th><th>Durasi</th><th>Siapa</th><th>Yang Dinilai</th></tr></thead>
+    <tbody>
+        <tr><td><strong>HR Interview</strong></td><td>30-45 menit</td><td>HR / Talent Acquisition</td><td>Motivasi, culture fit, gaji ekspektasi, soft skills basic</td></tr>
+        <tr><td><strong>User Interview</strong></td><td>45-60 menit</td><td>PPIC Manager / Production Manager / Senior Engineer</td><td><strong>Technical skills, problem-solving, logic.</strong> Ini yang paling nentuin.</td></tr>
+        <tr><td><strong>Final / Direksi</strong> (kadang ada)</td><td>30 menit</td><td>Plant Manager / Head of Operations</td><td>Big picture thinking, potensi jangka panjang, leadership potential</td></tr>
+    </tbody>
+</table>
+
+<p>Di tahap User Interview, biasanya formatnya campuran:</p>
+<ul>
+    <li>10-15 menit: perkenalan + pertanyaan ringan (nawarin teh dulu, ngobrol santai)</li>
+    <li>15-20 menit: <strong>technical questions + case study</strong></li>
+    <li>10-15 menit: behavioral questions</li>
+    <li>5-10 menit: "Ada yang mau lo tanyain?"</li>
+</ul>
+
+<div class="highlight">
+    <strong>🧠 Mindset yang bener:</strong><br>
+    Ini bukan ujian. Ini <strong>percakapan.</strong> Lo lagi ngobrol sama calon partner kerja. Tunjukin lo ngerti, lo antusias, lo bisa mikir. Jangan kayak robot ngejawab textbook.<br><br>
+    Interviewer lo BUKAN nyari "orang yang tau semua jawaban." Mereka nyari: "Orang yang kalau dikasih masalah, dia bisa mikir. Dan kalau nggak tau, dia ngaku — tapi langsung nyari cara buat tau."
+</div>
+</section>
+
+<!-- 03 -->
+<section id="03-teknis" class="chapter" style="border-left: 8px solid var(--orange);">
+<h1>03. Pertanyaan Teknis + Cara Jawab</h1>
+
+<p>Ini pertanyaan yang paling sering muncul di interview IE. Gue kasih konteks kenapa mereka nanya ini, dan gimana cara jawab yang bikin lo keliatan NGERTI — bukan cuma HAFAL.</p>
+
+<div class="q-box">
+    <div class="q-label">🔧 PERTANYAAN #1</div>
+    <div class="q-text">"Coba jelaskan gimana cara lo ngurangin cycle time di line produksi."</div>
+    <div class="q-answer">
+        <strong>Kenapa mereka nanya:</strong> Mereka mau liat lo ngerti konsep process improvement — bukan cuma definisi.<br><br>
+        <strong>Cara jawab (pake kerangka):</strong><br>
+        "Pertama, saya akan <strong>observasi</strong> dulu — ngamatin line selama beberapa siklus, nyatet waktu tiap step.<br>
+        Kedua, saya bikin <strong>Value Stream Map</strong> simpel buat identifikasi bottleneck-nya di mana.<br>
+        Ketiga, saya analisa — apa penyebab bottleneck? Mesin lambat? Operator nunggu? Setup terlalu lama?<br>
+        Keempat, saya usulin solusi berdasarkan data — misalnya kalau setup-nya yang lama, coba SMED (Single-Minute Exchange of Die).<br>
+        Terakhir, setelah implementasi, saya <strong>ukur lagi</strong> — pastiin perbaikannya beneran ngaruh dan sustain."<br><br>
+        <strong>Kunci:</strong> Lo nunjukin pola pikir DMAIC tanpa nyebutin "saya pake DMAIC." Natural.
+    </div>
+</div>
+
+<div class="q-box">
+    <div class="q-label">🔧 PERTANYAAN #2</div>
+    <div class="q-text">"Apa bedanya Lean sama Six Sigma?"</div>
+    <div class="q-answer">
+        <strong>Kenapa mereka nanya:</strong> Cek pemahaman fundamental. Semua IE harus bisa bedain.<br><br>
+        <strong>Cara jawab:</strong><br>
+        "Lean fokus ke <strong>ngilangin waste</strong> — segala sesuatu yang nggak nambah value ke customer. Tools-nya: 5S, VSM, Kaizen, Kanban.<br>
+        Six Sigma fokus ke <strong>ngurangin variasi</strong> — bikin proses konsisten dan predictable. Tools-nya: DMAIC, control chart, capability analysis.<br>
+        Dua-duanya saling melengkapi. Lean bikin proses cepet. Six Sigma bikin proses akurat. Di industri, biasanya dipake bareng — Lean Six Sigma."
+    </div>
+</div>
+
+<div class="q-box">
+    <div class="q-label">🔧 PERTANYAAN #3</div>
+    <div class="q-text">"Gimana cara lo ngitung OEE? Dan apa yang lo lakuin kalau OEE rendah?"</div>
+    <div class="q-answer">
+        <strong>Cara jawab:</strong><br>
+        "OEE = Availability × Performance × Quality.<br>
+        Availability: berapa lama mesin beneran nyala dibanding yang direncanakan.<br>
+        Performance: kecepatan aktual vs kecepatan ideal mesin.<br>
+        Quality: output bagus vs total output (ngurangin reject).<br><br>
+        Kalau OEE rendah, saya breakdown dulu — rendahnya di komponen yang mana? Kalau availability rendah → banyak downtime. Saya analisa penyebab downtime (mesin rusak? setup lama? nunggu bahan?). Kalau performance rendah → kecepatan produksi di bawah standar. Kalau quality rendah → banyak reject.<br>
+        Baru dari situ saya tentuin improvement-nya."
+    </div>
+</div>
+
+<div class="q-box">
+    <div class="q-label">🔧 PERTANYAAN #4</div>
+    <div class="q-text">"Apa yang lo ngerti tentang PPIC? Coba jelasin flow-nya dari awal sampe akhir."</div>
+    <div class="q-answer">
+        <strong>Cara jawab (kayak cerita):</strong><br>
+        "PPIC itu otaknya pabrik. Flow-nya: Sales kasih forecast permintaan → PPIC bikin Master Production Schedule (MPS) → dari MPS, kita jalankan MRP buat ngitung kebutuhan bahan baku → kita cek stok → kalau kurang, PO ke supplier → bahan datang → kita release production order ke line → produksi jalan → barang jadi masuk gudang → kirim ke customer.<br>
+        Di setiap step itu, PPIC monitor: stok cukup? Jadwal sesuai? Ada bottleneck? Ada perubahan mendadak dari customer?"
+    </div>
+</div>
+
+<div class="q-box">
+    <div class="q-label">🔧 PERTANYAAN #5</div>
+    <div class="q-text">"Tools apa aja yang lo kuasai? Excel? Software lain?"</div>
+    <div class="q-answer">
+        <strong>Cara jawab (jujur tapi tunjukin growth mindset):</strong><br>
+        "Saya lumayan kuat di Excel — Pivot Table, VLOOKUP, SUMIFS, conditional formatting. Saya juga pernah pake Minitab buat pengolahan data statistik waktu kuliah. Saya belum punya pengalaman SAP, tapi saya udah baca-baca modul PP dan MM. Saya paham konsep BOM, production order, goods receipt. Saya yakin bisa belajar SAP dengan cepat kalau dikasih kesempatan."
+    </div>
+</div>
+</section>
+
+<!-- 04 -->
+<section id="04-case" class="chapter" style="border-left: 8px solid var(--green);">
+<h1>04. Case Study + Problem Solving</h1>
+
+<p>Ini bagian yang paling nentuin. Interviewer kasih lo skenario — dan lo harus mikir di tempat.</p>
+
+<div class="q-box">
+    <div class="q-label">📋 CASE STUDY #1 — Classic</div>
+    <div class="q-text">"Line 3 output-nya turun 15% dalam 2 minggu terakhir. Lo baru 2 bulan di sini. Apa yang lo lakuin?"</div>
+    <div class="q-answer">
+        <strong>Struktur jawab (4 langkah):</strong><br><br>
+        <strong>1. Cek data dulu:</strong> "Saya tarik data output harian 2 minggu terakhir + 4 minggu sebelumnya sebagai baseline. Saya cek: penurunan-nya gradual atau tiba-tiba? Terjadi di shift tertentu atau semua shift?"<br><br>
+        <strong>2. Ke lapangan:</strong> "Saya ke line 3. Ngamatin langsung. Ngobrol sama supervisor dan operator: ada perubahan? Mesin sering trouble? Bahan beda? Ada orang baru?"<br><br>
+        <strong>3. Analisa akar masalah:</strong> "Saya pake fishbone diagram (man, machine, method, material) + 5 Whys buat nemu root cause. Misalnya: output turun → kenapa? Karena sering berhenti → kenapa? Karena mesin A error → kenapa? Karena spare part X aus → kenapa? Karena preventive maintenance-nya telat 2 minggu."<br><br>
+        <strong>4. Usulin solusi:</strong> "Setelah nemu root cause, saya bikin rekomendasi: ganti spare part X, update jadwal PM, monitor 2 minggu ke depan. Saya presentasiin ke manager pake data Pareto — ini 3 penyebab terbesar, ini action plan-nya, ini estimasi impact-nya dalam Rupiah."
+    </div>
+</div>
+
+<div class="q-box">
+    <div class="q-label">📋 CASE STUDY #2 — Inventory Conflict</div>
+    <div class="q-text">"Stok bahan baku A habis. Supplier butuh 5 hari buat kirim. Tapi Sales udah janjiin customer kirim besok. Lo ngapain?"</div>
+    <div class="q-answer">
+        <strong>Struktur jawab:</strong><br><br>
+        "Pertama, saya pastiin dulu: stok di gudang beneran habis? Atau cuma di sistem aja? Kadang ada stok fisik yang belum di-input.<br><br>
+        Kalau beneran habis: saya cek, ada bahan substitusi? Atau formulasi alternatif yang disetujui Quality?<br><br>
+        Kalau nggak ada: saya kontak Purchasing — bisa nggak rush order? Supplier bisa percepat? Berapa biaya tambahannya?<br><br>
+        Sementara itu, saya ngomong ke Sales: 'Pak, kita ada kendala supply bahan A. Saya bisa kirim 60% besok, sisanya 5 hari lagi. Atau kita bisa tawarin produk alternatif B ke customer?'<br><br>
+        Intinya: saya nggak cuma bilang nggak bisa. Saya kasih opsi."
+    </div>
+</div>
+</section>
+
+<!-- 05 -->
+<section id="05-behavioral" class="chapter" style="border-left: 8px solid var(--purple);">
+<h1>05. Behavioral — Lo Sebagai Orang</h1>
+
+<p>Pertanyaan behavioral ngetes <strong>karakter dan soft skills</strong> lo. Semua jawaban pake <strong>STAR method</strong>: Situation → Task → Action → Result.</p>
+
+<table class="kw-table">
+    <thead><tr><th>Pertanyaan</th><th>Yang Mereka Cari</th><th>Contoh Cerita yang Lo Siapin</th></tr></thead>
+    <tbody>
+        <tr><td>"Ceritain situasi di mana lo harus ngatasin masalah yang lo nggak ngerti."</td><td>Problem-solving, resourcefulness, nggak gampang nyerah</td><td>Tugas akhir: lo nemu metode baru, lo nggak ngerti, lo belajar dari YouTube/jurnal, lo tanya dosen, lo coba-coba sampe bisa</td></tr>
+        <tr><td>"Ceritain konflik di tim dan gimana lo ngatasinnya."</td><td>Teamwork, komunikasi, maturity</td><td>Proyek kampus: ada anggota yang nggak kontribusi. Lo ngomong baik-baik, cari tau kenapa, bagi ulang tugas</td></tr>
+        <tr><td>"Ceritain kesalahan terbesar lo. Lo ngapain setelahnya?"</td><td>Self-awareness, akuntabilitas, belajar dari kesalahan</td><td>JANGAN bilang "saya perfeksionis." Ceritain kesalahan BENERAN: lo salah input data → impact → lo perbaiki proses biar nggak keulang</td></tr>
+        <tr><td>"Ceritain waktu lo harus persuasi orang yang nggak setuju sama ide lo."</td><td>Influence, komunikasi, data-driven argument</td><td>Lo usulin improvement ke dosen/teman. Mereka skeptical. Lo tunjukin data. Mereka setuju.</td></tr>
+        <tr><td>"Kenapa lo pilih Teknik Industri? Kenapa lo minat posisi ini?"</td><td>Motivasi genuine, bukan textbook</td><td>CERITA. "Waktu SMA gue penasaran kenapa pabrik bisa bikin ribuan produk sehari. Terus gue nemu TI..."</td></tr>
+        <tr><td>"Lo liat diri lo 5 tahun lagi di mana?"</td><td>Ambisi realistis, aligned dengan perusahaan</td><td>"Saya pengen dalemin PPIC dulu 2-3 tahun, terus berkembang ke supply chain management..."</td></tr>
+    </tbody>
+</table>
+
+<div class="highlight">
+    <strong>⚠️ Aturan STAR buat IE:</strong><br>
+    Situation + Task: 1 kalimat aja. Jangan panjang-panjang.<br>
+    <strong>Action: 60% dari jawaban lo.</strong> Detail apa yang LO lakuin.<br>
+    <strong>Result: SELALU dalamin angka.</strong> "Hasilnya efisiensi naik." → Jelek. "Hasilnya cycle time berkurang 12%, setara penghematan 80 jam kerja per bulan." → Bagus.<br>
+    Jangan bilang "KAMI." Bilang "SAYA." Interviewer mau tau kontribusi LO, bukan tim.
+</div>
+</section>
+
+<!-- 06 -->
+<section id="06-tanya" class="chapter" style="border-left: 8px solid var(--teal);">
+<h1>06. Pertanyaan yang Lo Ajukan ke Mereka</h1>
+
+<p>Ini yang paling sering disia-siain fresh grad. Interviewer: "Ada yang mau ditanyain?" Lo: "Hmm... nggak ada sih." <strong>Wrong.</strong></p>
+
+<p>Pertanyaan yang lo ajukan nunjukin <strong>cara mikir lo.</strong> Orang yang nanya hal bagus = orang yang mikirnya dalem.</p>
+
+<h2>5 Pertanyaan yang Bikin Lo Keliatan Cerdas</h2>
+
+<ol class="step-list">
+    <li><strong>"Kayak apa sih sehari-hari di posisi ini? Bisa diceritain rutinitasnya?"</strong><br>Ini nunjukin lo pengen ngerti realita, bukan cuma job desc. Plus lo dapet insider info tentang kerjaan lo nanti.</li>
+    <li><strong>"Apa tantangan terbesar yang lagi dihadepin tim/departemen ini sekarang?"</strong><br>Lo nunjukin lo mikirin bisnis. Bukan cuma "kapan gajian." Bonus: lo bisa langsung kepikiran "oh gue bisa bantu di situ."</li>
+    <li><strong>"Gimana budaya kerja di sini? Kolaborasi antar departemen kayak apa?"</strong><br>Lo nunjukin lo peduli sama working relationship. Plus jawabannya ngasih tau lo apakah ini tempat yang sehat atau toxic.</li>
+    <li><strong>"Kalau ada orang yang sukses di posisi ini, biasanya skill atau sifat apa yang dia punya?"</strong><br>Lo nunjukin growth mindset. Dan lo dapet blueprint buat sukses kalau diterima.</li>
+    <li><strong>"Ada training atau development program buat fresh grad di sini?"</strong><br>Lo nunjukin lo mau belajar. Perusahaan suka orang yang mau belajar. Tapi tanya ini di akhir, bukan di awal — jangan keliatan kayak lo cuma mau training doang.</li>
+</ol>
+
+<div class="info-card">
+    <h3>❌ Yang Jangan Ditanyain (Fresh Grad Sering Salah)</h3>
+    <ul><li>"Jam kerjanya fleksibel nggak?" → keliatan kayak lo males</li>
+    <li>"Cuti berapa hari?" → terlalu dini</li>
+    <li>"Bisa WFH nggak?" → untuk posisi pabrik, ini red flag besar</li>
+    <li>"Ada THR / bonus?" → nanti aja pas offering</li>
+    <li>Pertanyaan yang udah dijawab di website perusahaan → keliatan lo nggak riset</li></ul>
+</div>
+</section>
+
+<!-- 07 -->
+<section id="07-mistakes" class="chapter" style="border-left: 8px solid var(--pink);">
+<h1>07. Mistakes yang Bikin Lo Gagal (Padahal Lo Pinter)</h1>
+
+<table class="kw-table">
+    <thead><tr><th>Mistake</th><th>Kenapa Fatal</th><th>Benernya Gimana</th></tr></thead>
+    <tbody>
+        <tr><td>❌ Ngejawab kayak baca textbook</td><td>Keliatan hafalan, bukan pemahaman. Interviewer bisa bedain.</td><td>Pake bahasa lo sendiri. "Gini loh Pak, bayangin kayak..." — pake analogi.</td></tr>
+        <tr><td>❌ Nggak bisa diam. Ngisi setiap jeda</td><td>Keliatan nervous, kurang percaya diri.</td><td>Jeda 2-3 detik sebelum jawab itu NORMAL. Tarik napas. Mikir. Baru jawab.</td></tr>
+        <tr><td>❌ "Saya nggak tau" — terus berhenti</td><td>Jujur itu bagus. Tapi berhenti di situ? Nggak.</td><td>"Saya belum familiar dengan topik itu. Tapi kalo saya hadepin, saya akan..." — tunjukin HOW you'd figure it out.</td></tr>
+        <tr><td>❌ Ngomongin gaji di interview pertama</td><td>Keliatan cuma peduli duit. Belum nunjukin value.</td><td>Tunggu ditanya. Atau tanya di akhir: "Untuk role ini, kira-kira range budget-nya berapa ya?"</td></tr>
+        <tr><td>❌ Negatif tentang pengalaman sebelumnya</td><td>"Dosen saya killer." "Temen kelompok saya males." → Red flag attitute.</td><td>Reframe: "Saya belajar gimana manage ekspektasi di situasi sulit."</td></tr>
+        <tr><td>❌ Nanya benefit duluan sebelum nunjukin value</td><td>Interviewer mikir: "Ini anak maunya enak doang."</td><td>Benefit tanya pas offering. Saat interview, fokus ke perannya.</td></tr>
+    </tbody>
+</table>
+</section>
+
+<!-- 08 -->
+<section id="08-simulasi" class="chapter" style="border-left: 8px solid var(--fg);">
+<h1>08. Simulasi Interview PPIC — 8 Menit</h1>
+
+<p>Ini contoh interview posisi PPIC Staff yang realistis. Baca dialognya. Perhatiin polanya.</p>
+
+<div class="info-card">
+    <h3>🎬 Setting: Ruang meeting pabrik. Jam 10 pagi.</h3>
+    <p><strong>Interviewer:</strong> Pak Hendra (PPIC Manager) + Bu Rina (HR)</p>
+</div>
+
+<div class="q-box" style="background: #F0FFF4; border-color: var(--green);">
+    <div class="q-label" style="color: var(--green);">MENIT 0-2: Pembukaan</div>
+    <p><strong>Pak Hendra:</strong> "Jadi, ceritain sedikit tentang diri lo."</p>
+    <p><strong>Lo:</strong> "Saya Raka, fresh grad Teknik Industri dari Universitas X, IPK 3.4. Selama kuliah saya fokus di production planning dan supply chain. Waktu internship 3 bulan di PT Y, saya bantu tim PPIC bikin daily production report pake Excel dan Pivot Table. Saya juga tugas akhir tentang optimasi inventory — hasilnya bisa ngurangin safety stock 15% tanpa ningkatin risiko stockout. Saya tertarik posisi ini karena saya pengen dalemin PPIC langsung di lapangan."</p>
+    <p><em>(Perhatiin: ringkas, ada data, internship relevan, tugas akhir relevan, nunjukin motivasi.)</em></p>
+</div>
+
+<div class="q-box" style="background: #FFF0F0; border-color: var(--red);">
+    <div class="q-label" style="color: var(--red);">MENIT 2-4: Teknis</div>
+    <p><strong>Pak Hendra:</strong> "Lo ngerti MPS sama MRP?"</p>
+    <p><strong>Lo:</strong> "Ngerti, Pak. MPS itu Master Production Schedule — berapa banyak kita produksi per produk per minggu, biasanya horizon 1-3 bulan. MRP itu Material Requirements Planning — dari MPS, kita pecah: produk A butuh bahan apa aja, berapa, kapan harus tersedia. MRP butuh BOM (Bill of Materials) yang akurat dan data inventory yang real-time. Kalau salah satu aja nggak akurat, MRP-nya garbage in garbage out."</p>
+    <p><em>(Perhatiin: lo nggak cuma definisi. Lo tambahin insight tentang kenapa data itu penting.)</em></p>
+</div>
+
+<div class="q-box" style="background: #FFF8E1; border-color: var(--orange);">
+    <div class="q-label" style="color: var(--orange);">MENIT 4-6: Case Study</div>
+    <p><strong>Pak Hendra:</strong> "Gini deh. Misalnya lo di sini, terus tiba-tiba supplier utama lo ngasih kabar: bahan A telat 1 minggu karena trouble di pabrik mereka. Lo ngapain?"</p>
+    <p><strong>Lo:</strong> "Pertama, saya cek stok kita — cukup buat berapa hari? Kedua, saya kontak Purchasing — ada supplier alternatif? Ketiga, saya cek production schedule — produk mana yang paling urgent? Mungkin kita prioritaskan produk yang bahan-nya masih ada, sambil nunggu bahan A. Keempat, saya komunikasi ke Sales — kasih tau ada delay, ekspektasi kapan normal lagi."</p>
+    <p><em>(Perhatiin: lo nggak panik. Lo kasih langkah konkret. Sistematis.)</em></p>
+</div>
+
+<div class="q-box" style="background: #E3F2FD; border-color: var(--blue);">
+    <div class="q-label" style="color: var(--blue);">MENIT 6-8: Penutup</div>
+    <p><strong>Bu Rina:</strong> "Ada yang mau ditanyain?"</p>
+    <p><strong>Lo:</strong> "Ada, Bu. Saya penasaran: di sini, PPIC biasanya yang paling sering konflik sama departemen mana? Dan gimana cara ngatasinnya?"</p>
+    <p><strong>Pak Hendra:</strong> <em>(Tertawa)</em> "Wah, pertanyaan bagus. Sales. Pasti Sales. Mereka selalu minta lebih, kita yang nahan."</p>
+    <p><strong>Lo:</strong> "Di internship saya juga gitu. Saya belajar kasih opsi, bukan cuma bilang nggak bisa."</p>
+    <p><strong>Pak Hendra:</strong> <em>(Manggut)</em> "Bagus. Lo ngerti."</p>
+</div>
+
+<p style="text-align: center; margin-top: 3rem; font-weight: 700;">— End of Interview Guide —</p>
+<p style="text-align: center; color: var(--int-red); font-weight: 800;">🎤 Lo udah tau apa yang bakal ditanyain. Latihan ngomong di depan kaca. Gas.</p>
+</section>
+
+</div>
+<a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+</body>
+</html>

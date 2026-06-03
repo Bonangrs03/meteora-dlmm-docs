@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaji & Peta Karir Teknik Industri — Data Real 2026</title>
+    <meta name="description" content="Data gaji realistis untuk posisi IE di Indonesia: PPIC, Production Supervisor, Process Engineer, Supply Chain, Quality, Konsultan. Per industri, level, dan kota. Career trajectory visual.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --yellow: #FFD700; --red: #FF5E5B; --blue: #5B8CFF; --green: #3DDC84;
+    --purple: #A855F7; --orange: #FF8C42; --teal: #2DD4BF; --pink: #FF6FB5;
+    --bg: #F0EDE0; --fg: #1A1A1A; --card-bg: #FFFDF7;
+    --ie-navy: #1B2A4A; --ie-orange: #F48120;
+    --gold: #EAB308;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg); background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+    background-size: 24px 24px; color: var(--fg); line-height: 1.8;
+    font-size: 11pt; font-weight: 500;
+}
+.site-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding: 1rem 1.5rem; margin: 0 auto 0.5rem; max-width: 1100px; }
+.site-nav .nav-link { display: inline-block; padding: 0.5em 1em; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; text-decoration: none; color: var(--fg); background: var(--card-bg); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer; }
+.site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+.ti-subnav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding: 0.6rem 1rem; margin: 0 auto 2rem; max-width: 900px; }
+.ti-subnav .ti-link { display: inline-block; padding: 0.45em 1em; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; color: var(--fg); background: #E8ECF2; border: 3px solid var(--fg); box-shadow: 2px 2px 0px var(--fg); transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer; }
+.ti-subnav .ti-link:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px var(--fg); background: var(--yellow); }
+.ti-subnav .ti-link.active { background: var(--gold); color: var(--fg); cursor: default; border-color: var(--gold); }
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.hero { background: var(--gold); color: var(--fg); border: 4px solid var(--fg); box-shadow: 8px 8px 0px var(--fg); padding: 3rem 2.5rem; margin-bottom: 3rem; text-align: center; }
+.hero h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.3; }
+.hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.hero .chapter-count { display: inline-block; background: var(--fg); color: var(--gold); font-weight: 800; font-size: 0.75rem; padding: 0.3em 1.2em; border: 2px solid var(--fg); box-shadow: 2px 2px 0px var(--fg); margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.toc-section { max-width: 900px; margin: 0 auto 3rem; }
+.toc-section h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1rem; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+.toc-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 1rem; text-decoration: none; color: var(--fg); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); font-weight: 700; font-size: 0.85rem; transition: transform 0.12s, box-shadow 0.12s; }
+.toc-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.toc-num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.5rem; min-width: 42px; text-align: center; }
+.chapter { background: var(--card-bg); border: 3px solid var(--fg); box-shadow: 5px 5px 0px var(--fg); padding: 2rem 2.2rem; margin-bottom: 2.5rem; }
+.chapter h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1.2rem; padding-bottom: 0.4em; border-bottom: 3px solid var(--fg); display: inline-block; }
+.chapter h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 1.15rem; margin: 1.8em 0 0.6em; }
+.chapter h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 1rem; margin: 1.5em 0 0.5em; }
+.chapter p { margin-bottom: 0.9em; }
+.chapter ul, .chapter ol { margin: 0.5em 0 1em 1.5em; }
+.chapter li { margin-bottom: 0.4em; }
+.chapter strong { color: var(--ie-navy); }
+.info-card { background: #FDFCF7; border: 3px solid var(--fg); box-shadow: 4px 4px 0px var(--fg); padding: 1.2rem 1.5rem; margin: 1.5em 0; }
+.info-card h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.95rem; margin: 0 0 0.5em; }
+.highlight { background: #FFF8E1; border: 3px solid var(--gold); padding: 1.2rem 1.5rem; margin: 1.5em 0; box-shadow: 4px 4px 0px var(--gold); }
+.kw-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.85rem; }
+.kw-table th { background: var(--fg); color: var(--gold); padding: 0.7em 1em; font-weight: 800; text-align: left; border: 2px solid var(--fg); }
+.kw-table td { padding: 0.6em 1em; border: 2px solid var(--fg); }
+.kw-table tr:nth-child(even) { background: #FDFCF7; } .kw-table tr:nth-child(odd) { background: var(--card-bg); }
+.stat-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.5em 0; }
+.stat-box { flex: 1; min-width: 130px; padding: 1rem; text-align: center; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.stat-box .num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.6rem; }
+.stat-box .label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-top: 0.3em; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5em 0; justify-content: center; }
+.filter-btn { padding: 0.5em 1.2em; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; border: 3px solid var(--fg); background: var(--card-bg); box-shadow: 2px 2px 0px var(--fg); cursor: pointer; transition: transform 0.12s, background 0.12s; }
+.filter-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0px var(--fg); }
+.filter-btn.active { background: var(--fg); color: var(--gold); }
+.career-ladder { display: flex; flex-direction: column; gap: 0.5rem; margin: 1.5em 0; }
+.ladder-step { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1.2rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.ladder-year { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.2rem; min-width: 70px; text-align: center; }
+.ladder-info { flex: 1; }
+.ladder-info .role { font-weight: 800; }
+.ladder-info .range { font-size: 0.85rem; color: #666; }
+.ladder-salary { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--gold); }
+.industry-card { padding: 1.2rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); cursor: default; transition: transform 0.12s; }
+.industry-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.industry-card h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; margin-bottom: 0.4em; }
+.industry-card .salary-range { font-size: 0.9rem; color: #555; }
+.industry-card .salary-high { font-weight: 900; color: var(--gold); }
+.back-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--yellow); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); padding: 0.5em 0.8em; font-weight: 900; cursor: pointer; text-decoration: none; color: var(--fg); font-size: 0.9rem; transition: transform 0.12s; }
+.back-top:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.small-note { font-size: 0.75rem; color: #999; margin-top: 0.5em; }
+@media (max-width: 768px) {
+    .hero { padding: 2rem 1.2rem; } .hero h1 { font-size: 1.3rem; }
+    .chapter { padding: 1.2rem 1rem; } .chapter h1 { font-size: 1.15rem; }
+    .toc-grid { grid-template-columns: 1fr; } .stat-row { flex-direction: column; }
+    .site-nav { gap: 0.3rem; padding: 0.4rem; } .site-nav .nav-link { font-size: 0.6rem; padding: 0.35em 0.5em; border-width: 2px; }
+    .ti-subnav { gap: 0.3rem; } .ti-subnav .ti-link { font-size: 0.65rem; padding: 0.35em 0.6em; border-width: 2px; }
+    .ladder-step { flex-wrap: wrap; }
+    body { font-size: 10pt; }
+}
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="../index.html" class="nav-link">🏠 Guide</a>
+    <a href="../extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="../extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+    <a href="../extras/quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="../extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="../extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    <a href="../seo-guide.html" class="nav-link">🔍 SEO Playbook</a>
+    <a href="../teknik-industri.html" class="nav-link">🏭 Teknik Industri</a>
+</nav>
+
+<nav class="ti-subnav">
+    <a href="../teknik-industri.html" class="ti-link">📚 Panduan Utama</a>
+    <a href="ppic-dari-nol.html" class="ti-link">📦 PPIC dari Nol</a>
+    <a href="cv-linkedin-ie.html" class="ti-link">📄 CV & LinkedIn</a>
+    <a href="interview-guide-ie.html" class="ti-link">🎤 Interview Guide</a>
+    <a href="gaji-karir-ie.html" class="ti-link active">💰 Gaji & Karir</a>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+    <h1>Gaji & Peta Karir<br>Teknik Industri 2026</h1>
+    <p class="subtitle">Angka realistis. Bukan rumor. Bukan "katanya."</p>
+    <p class="subtitle">Lo tau berapa value lo di pasar. Lo tau 5 tahun lagi di mana.</p>
+    <span class="chapter-count">5 Chapter · Data-Driven · Interactive Filters</span>
+</div>
+
+<div class="toc-section">
+    <h2>📚 Daftar Isi</h2>
+    <div class="toc-grid">
+        <a href="#01-overview" class="toc-card" style="background: var(--gold);"><span class="toc-num">01</span> Gaji IE — Overview & Realita</a>
+        <a href="#02-per-posisi" class="toc-card" style="background: var(--blue); color: #fff;"><span class="toc-num">02</span> Gaji per Posisi & Level</a>
+        <a href="#03-per-industri" class="toc-card" style="background: var(--green);"><span class="toc-num">03</span> Gaji per Industri</a>
+        <a href="#04-trajectory" class="toc-card" style="background: var(--purple); color: #fff;"><span class="toc-num">04</span> Career Trajectory Visual</a>
+        <a href="#05-negosiasi" class="toc-card" style="background: var(--fg); color: var(--gold);"><span class="toc-num">05</span> Cara Negosiasi Gaji</a>
+    </div>
+</div>
+
+<!-- 01 -->
+<section id="01-overview" class="chapter" style="border-left: 8px solid var(--gold);">
+<h1>01. Gaji IE — Overview & Realita yang Lo Harus Tau</h1>
+
+<p>Mari lurusin dulu. Lo lulus TI. Lo mungkin bandingin gaji sama temen lo yang kerja di tech, data science, atau software engineer. Dan lo mikir: "Kok gue kecil ya?"</p>
+
+<div class="info-card">
+    <h3>📊 Realita yang Perlu Lo Tau</h3>
+    <p><strong>Tech (Software Engineer):</strong> Starting salary Rp8-15M. Tapi growth bisa plateau setelah 5-7 tahun kalau nggak spesialis. Cyclical — banyak layoff pas market turun.</p>
+    <p><strong>IE (Manufaktur):</strong> Starting salary Rp5-8M. Tapi <strong>karir stabil.</strong> Growth steady. Lo makin langka makin mahal. Plant Manager di FMCG bisa Rp50-80M/bulan. Tapi itu butuh 15+ tahun.</p>
+    <p><strong>Bottom line:</strong> Jangan kejar gaji awal. Kejar <strong>skill yang compounding.</strong> IE learn fundamentals of business — cara perusahaan bikin uang. Itu skill yang nilainya naik terus.</p>
+</div>
+
+<h2>Disclaimer Penting</h2>
+<div class="highlight">
+    <strong>⚠️ Semua angka di halaman ini adalah ESTIMASI berbasis riset.</strong><br>
+    Sumber: survey gaji (Jobstreet, Glints, LinkedIn), laporan tahunan perusahaan terbuka (untuk level manajerial), data BPS, dan wawancara informal dengan praktisi IE.<br><br>
+    <strong>Range gaji REAL sangat tergantung:</strong> lokasi (Jakarta vs Karawang vs Kalimantan), ukuran perusahaan (MNC vs lokal), performa interview, relasi, dan keberuntungan.<br><br>
+    Angka ini buat jadi <strong>patokan negosiasi</strong> — lo tau batas bawah dan batas atas. Jangan jadiin patokan kaku.
+</div>
+</section>
+
+<!-- 02 -->
+<section id="02-per-posisi" class="chapter" style="border-left: 8px solid var(--blue);">
+<h1>02. Gaji per Posisi & Level Pengalaman (2026)</h1>
+
+<p>Ini tabel gaji untuk posisi-posisi yang paling umum dimasukin IE fresh grad. Semua dalam <strong>Rupiah per bulan, gross (sebelum pajak).</strong></p>
+
+<table class="kw-table">
+    <thead><tr><th>Posisi</th><th>0-2 Tahun</th><th>2-5 Tahun</th><th>5-8 Tahun</th><th>8+ Tahun</th></tr></thead>
+    <tbody>
+        <tr>
+            <td><strong>PPIC Staff → Manager</strong></td>
+            <td>Rp5-7M</td><td>Rp7-12M</td><td>Rp12-20M</td><td>Rp20-35M</td>
+        </tr>
+        <tr>
+            <td><strong>Production Supervisor → Manager</strong></td>
+            <td>Rp6-8M</td><td>Rp8-15M</td><td>Rp15-25M</td><td>Rp25-45M</td>
+        </tr>
+        <tr>
+            <td><strong>Process / CI Engineer → Manager</strong></td>
+            <td>Rp6-9M</td><td>Rp9-16M</td><td>Rp16-28M</td><td>Rp28-50M</td>
+        </tr>
+        <tr>
+            <td><strong>Supply Chain Analyst → Manager</strong></td>
+            <td>Rp6-10M</td><td>Rp10-18M</td><td>Rp18-30M</td><td>Rp30-50M</td>
+        </tr>
+        <tr>
+            <td><strong>Quality Engineer → Manager</strong></td>
+            <td>Rp5-8M</td><td>Rp8-14M</td><td>Rp14-22M</td><td>Rp22-38M</td>
+        </tr>
+        <tr>
+            <td><strong>Management Trainee</strong></td>
+            <td>Rp8-15M</td><td colspan="3"><em>Setelah MT (1-2 thn) → Supervisory role, gaji sesuai posisi di atas</em></td>
+        </tr>
+        <tr>
+            <td><strong>Konsultan (Junior → Manager)</strong></td>
+            <td>Rp8-15M</td><td>Rp15-25M</td><td>Rp25-45M</td><td>Rp45M+</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Gaji Berdasarkan Kota (Multiplier)</h2>
+
+<div class="stat-row">
+    <div class="stat-box" style="background: #FFF8E1;">
+        <div class="num">1.0x</div>
+        <div class="label">JAKARTA<br>Baseline gaji</div>
+    </div>
+    <div class="stat-box" style="background: #F0FFF4;">
+        <div class="num">0.85x</div>
+        <div class="label">KARAWANG / BEKASI / CIKARANG<br>Kawasan industri utama</div>
+    </div>
+    <div class="stat-box" style="background: #E3F2FD;">
+        <div class="num">0.75x</div>
+        <div class="label">SURABAYA / SEMARANG<br>Kota industri kedua</div>
+    </div>
+    <div class="stat-box" style="background: #E8F5E9;">
+        <div class="num">1.3-1.5x</div>
+        <div class="label">KALIMANTAN / PAPUA<br>Mining & oil — lokasi remote</div>
+    </div>
+</div>
+</section>
+
+<!-- 03 -->
+<section id="03-per-industri" class="chapter" style="border-left: 8px solid var(--green);">
+<h1>03. Gaji per Industri — Siapa Bayar Paling Gede</h1>
+
+<p>Posisi sama. Industri beda. Gaji bisa beda 50-100%. Ini breakdown-nya:</p>
+
+<div class="stat-row">
+    <div class="industry-card" style="flex: 1; min-width: 200px; background: #E8F5E9;">
+        <h4>⛏️ Mining / Oil & Gas</h4>
+        <p class="salary-high">Rp10-18M (entry)</p>
+        <p class="salary-range">Paling tinggi. Tapi remote. Roster 4:2 atau 6:2. Cocok buat yg mau nabung cepet.</p>
+    </div>
+    <div class="industry-card" style="flex: 1; min-width: 200px; background: #F3E5F5;">
+        <h4>🧴 FMCG (Unilever, Nestle, P&G)</h4>
+        <p class="salary-high">Rp7-12M (entry)</p>
+        <p class="salary-range">Training bagus, jenjang karir jelas, culture solid. Recommended buat first job.</p>
+    </div>
+    <div class="industry-card" style="flex: 1; min-width: 200px; background: #FFF8E1;">
+        <h4>🚗 Otomotif</h4>
+        <p class="salary-high">Rp6-9M (entry)</p>
+        <p class="salary-range">Stabil. Toyota, Astra, Honda. Benefit oke. Proses matang.</p>
+    </div>
+</div>
+
+<div class="stat-row">
+    <div class="industry-card" style="flex: 1; min-width: 200px; background: #E3F2FD;">
+        <h4>📊 Konsultan Manajemen</h4>
+        <p class="salary-high">Rp8-15M (entry)</p>
+        <p class="salary-range">Gaji gede, jam kerja gila. Exit opportunity bagus. 2-3 tahun → lompat ke industri.</p>
+    </div>
+    <div class="industry-card" style="flex: 1; min-width: 200px; background: #FFF0F0;">
+        <h4>📦 E-Commerce / Tech Logistics</h4>
+        <p class="salary-high">Rp7-12M (entry)</p>
+        <p class="salary-range">Shopee, Gojek, Tokopedia. Supply chain + data. Culture startup.</p>
+    </div>
+    <div class="industry-card" style="flex: 1; min-width: 200px; background: #FFF8E1;">
+        <h4>💊 Pharma</h4>
+        <p class="salary-high">Rp6-9M (entry)</p>
+        <p class="salary-range">GMP ketat. Quality-focused. Stabil. Bagus buat karir panjang.</p>
+    </div>
+</div>
+
+<h2>Comparison: Gaji Entry Level per Industri</h2>
+<table class="kw-table">
+    <thead><tr><th>Industri</th><th>Entry 0-2yr</th><th>Mid 3-5yr</th><th>Senior 6-8yr</th><th>Manager 8+</th></tr></thead>
+    <tbody>
+        <tr><td>Mining / Oil & Gas</td><td>Rp10-18M</td><td>Rp18-30M</td><td>Rp30-55M</td><td>Rp55-100M</td></tr>
+        <tr><td>FMCG (Unilever, P&G)</td><td>Rp7-12M</td><td>Rp12-25M</td><td>Rp25-45M</td><td>Rp45-80M</td></tr>
+        <tr><td>Management Consulting</td><td>Rp8-15M</td><td>Rp15-25M</td><td>Rp25-45M</td><td>Rp45-100M+</td></tr>
+        <tr><td>E-commerce / Tech Log</td><td>Rp7-12M</td><td>Rp12-22M</td><td>Rp22-40M</td><td>Rp40-70M</td></tr>
+        <tr><td>Otomotif (Toyota, Astra)</td><td>Rp6-9M</td><td>Rp9-18M</td><td>Rp18-32M</td><td>Rp32-60M</td></tr>
+        <tr><td>Pharma</td><td>Rp6-9M</td><td>Rp9-16M</td><td>Rp16-28M</td><td>Rp28-50M</td></tr>
+        <tr><td>Manufaktur Lokal</td><td>Rp4-7M</td><td>Rp7-12M</td><td>Rp12-22M</td><td>Rp22-35M</td></tr>
+    </tbody>
+</table>
+
+<div class="info-card">
+    <h3>💡 Insight: Jangan Cuma Liat Gaji Awal</h3>
+    <p>FMCG gaji awal Rp7-12M. Mining Rp10-18M. Tapi di Mining lo di remote area. Di FMCG lo di Jakarta. Hitung <strong>disposable income</strong> — gaji dikurangi biaya hidup. Kadang gaji lebih kecil tapi lebih hemat = lebih banyak nabung.</p>
+    <p>Plus: FMCG training 2 tahun pertama itu nilainya RATUSAN JUTA. Lo nggak bayar. Tapi lo dapet skill, network, dan brand name di CV yang bisa lo jual nanti.</p>
+</div>
+</section>
+
+<!-- 04 -->
+<section id="04-trajectory" class="chapter" style="border-left: 8px solid var(--purple);">
+<h1>04. Career Trajectory Visual — 3 Jalur Utama</h1>
+
+<h2>Jalur A: Manufaktur (PPIC / Production)</h2>
+<div class="career-ladder">
+    <div class="ladder-step"><div class="ladder-year">0-2 thn</div><div class="ladder-info"><div class="role">PPIC Staff / Production Supervisor</div><div class="range">Ngatur jadwal, monitor stok, daily ops. Lo belajar fundamentals.</div></div><div class="ladder-salary">Rp5-8M</div></div>
+    <div class="ladder-step" style="background: #FFF8E1;"><div class="ladder-year">2-5 thn</div><div class="ladder-info"><div class="role">Senior PPIC / Production Superintendent</div><div class="range">Pegang tim kecil. Project improvement pertama. Mulai presentasi ke manajemen.</div></div><div class="ladder-salary">Rp8-15M</div></div>
+    <div class="ladder-step" style="background: #F0FFF4;"><div class="ladder-year">5-8 thn</div><div class="ladder-info"><div class="role">PPIC Manager / Production Manager</div><div class="range">Manage departemen. Budget Rp-milyaran. Lo bertanggung jawab ke Plant Manager.</div></div><div class="ladder-salary">Rp15-30M</div></div>
+    <div class="ladder-step" style="background: #E3F2FD;"><div class="ladder-year">8-12 thn</div><div class="ladder-info"><div class="role">Supply Chain Manager / Operations Manager</div><div class="range">Multi-department. Multi-site. Strategic decisions.</div></div><div class="ladder-salary">Rp30-55M</div></div>
+    <div class="ladder-step" style="background: #F3E5F5;"><div class="ladder-year">12+ thn</div><div class="ladder-info"><div class="role">Plant Manager / Operations Director</div><div class="range">P&L responsibility. Ratusan karyawan. Lo udah jadi "orang dalam" industri.</div></div><div class="ladder-salary">Rp50-100M+</div></div>
+</div>
+
+<h2>Jalur B: Konsultan Manajemen</h2>
+<div class="career-ladder">
+    <div class="ladder-step"><div class="ladder-year">0-2 thn</div><div class="ladder-info"><div class="role">Business Analyst / Junior Consultant</div><div class="range">Excel, PowerPoint, research. Kerja 60-80 jam/minggu.</div></div><div class="ladder-salary">Rp8-15M</div></div>
+    <div class="ladder-step" style="background: #FFF8E1;"><div class="ladder-year">2-4 thn</div><div class="ladder-info"><div class="role">Consultant / Senior Consultant</div><div class="range">Pegang workstream sendiri. Mulai ngadepin klien langsung.</div></div><div class="ladder-salary">Rp15-25M</div></div>
+    <div class="ladder-step" style="background: #F0FFF4;"><div class="ladder-year">4-7 thn</div><div class="ladder-info"><div class="role">Engagement Manager / Project Leader</div><div class="range">Manage tim. Manage klien. Revenue responsibility.</div></div><div class="ladder-salary">Rp25-50M</div></div>
+    <div class="ladder-step" style="background: #E3F2FD;"><div class="ladder-year">7+ thn</div><div class="ladder-info"><div class="role">Associate Partner → Partner</div><div class="range">Jualan proyek. Bawa revenue. Equity partner.</div></div><div class="ladder-salary">Rp50-150M+</div></div>
+</div>
+
+<h2>Jalur C: E-Commerce / Tech Supply Chain</h2>
+<div class="career-ladder">
+    <div class="ladder-step"><div class="ladder-year">0-2 thn</div><div class="ladder-info"><div class="role">Supply Chain Analyst / Ops Associate</div><div class="range">Data-driven. SQL, dashboard, process mapping. Culture startup.</div></div><div class="ladder-salary">Rp7-12M</div></div>
+    <div class="ladder-step" style="background: #FFF8E1;"><div class="ladder-year">2-4 thn</div><div class="ladder-info"><div class="role">Senior SC Analyst / Ops Lead</div><div class="range">Pegang kota/region sendiri. Manage warehouse ops, rider allocation, delivery SLA.</div></div><div class="ladder-salary">Rp12-22M</div></div>
+    <div class="ladder-step" style="background: #F0FFF4;"><div class="ladder-year">4-7 thn</div><div class="ladder-info"><div class="role">SC Manager / Ops Manager</div><div class="range">Multi-site. Design network. Strategic projects.</div></div><div class="ladder-salary">Rp22-40M</div></div>
+    <div class="ladder-step" style="background: #E3F2FD;"><div class="ladder-year">7+ thn</div><div class="ladder-info"><div class="role">Director of Ops / VP Supply Chain</div><div class="range">C-level minus one. National scope. Equity.</div></div><div class="ladder-salary">Rp40-90M</div></div>
+</div>
+</section>
+
+<!-- 05 -->
+<section id="05-negosiasi" class="chapter" style="border-left: 8px solid var(--fg);">
+<h1>05. Cara Negosiasi Gaji (Buat Fresh Grad)</h1>
+
+<p>Lo dapet offering. Deg-degan. "Gue minta lebih nggak ya? Nanti offeringnya ditarik gimana?"</p>
+
+<h2>Aturan #1: Fresh Grad ADA Ruang Negosiasi</h2>
+<p>Perusahaan udah ekspektasi fresh grad akan nego. Budget mereka biasanya ada range. Contoh: budget PPIC Staff Rp5-8M. Mereka offering Rp5.5M. Lo bisa minta Rp6.5M — masih dalam range.</p>
+
+<h2>Cara Ngomongnya (Script)</h2>
+
+<div class="info-card">
+    <h3>📞 Telepon / Email ke HR setelah dapet offering letter</h3>
+    <p>"Halo Bu. Terima kasih atas offering-nya. Saya sangat excited dengan kesempatan ini dan sudah pelajari detailnya.</p>
+    <p>Berdasarkan riset saya tentang standar industri untuk posisi ini di [lokasi], dan mempertimbangkan skill [sebut 1-2 skill relevan] yang saya bawa, saya ingin mendiskusikan kemungkinan di angka <strong>RpX</strong>.</p>
+    <p>Apakah ada ruang untuk penyesuaian di sana?"</p>
+    <p><em>Intinya: excited dulu, data dulu, baru minta. Bukan "kurang, tambahin dong."</em></p>
+</div>
+
+<h2>Selain Gaji — Benefit yang Bisa Lo Nego</h2>
+<table class="kw-table">
+    <thead><tr><th>Benefit</th><th>Estimasi Nilai</th><th>Kapan Lo Minta</th></tr></thead>
+    <tbody>
+        <tr><td>BPJS Kesehatan + Ketenagakerjaan</td><td>Wajib — perusahaan harus kasih</td><td>Auto include</td></tr>
+        <tr><td>Asuransi swasta (inpatient/outpatient)</td><td>Rp300K-1M/bln</td><td>Common di MNC</td></tr>
+        <tr><td>Tunjangan makan / transport</td><td>Rp500K-1.5M/bln</td><td>Common di pabrik</td></tr>
+        <tr><td>Training / sertifikasi</td><td>Rp5-20M/tahun</td><td>Tanya: "Ada budget pengembangan?"</td></tr>
+        <tr><td>Relocation assistance</td><td>Rp5-15M (one-time)</td><td>Kalau lo pindah kota</td></tr>
+        <tr><td>Lembur dibayar</td><td>1.5-2x hourly rate</td><td>Standard di manufaktur</td></tr>
+    </tbody>
+</table>
+
+<h2>Mindset: Lo Bukan Minta. Lo Lagi Transaksi.</h2>
+<div class="highlight">
+    <strong>💰 Lo jual SKILL. Perusahaan beli SKILL lo pake UANG.</strong><br><br>
+    Lo tau skill lo bernilai berapa → lo patok harga. Kalau mereka nggak sanggup → mereka bukan buyer yang tepat.<br><br>
+    Tapi inget: <strong>fresh grad jual POTENSI, bukan track record.</strong> Lo belum punya bukti. Jadi jangan minta gaji senior. Minta di upper range fresh grad — dan buktiin lo worth it di 6 bulan pertama.<br><br>
+    <strong>Rule of thumb negosiasi:</strong> Minta 15-25% di atas offering awal. Mereka expect lo nego. Kalau lo langsung terima tanpa nego, kadang mereka malah merasa "harusnya gue offering lebih rendah."
+</div>
+
+<p style="text-align: center; margin-top: 3rem; font-weight: 700;">— End of Gaji & Karir —</p>
+<p style="text-align: center; color: var(--gold); font-weight: 800;">💰 Lo tau harga lo sekarang. Jangan jual murah.</p>
+<p class="small-note" style="text-align: center;">Data estimasi per Juni 2026. Disusun dari survey industri, laporan tahunan, dan wawancara praktisi.</p>
+</section>
+
+</div>
+<a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+</body>
+</html>

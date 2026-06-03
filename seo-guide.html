@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO dari Nol: Playbook Buat Jalur Samping</title>
+    <meta name="description" content="Belajar SEO dari nol pake storytelling dan contoh nyata Jalur Samping. Dari Google buta sampe halaman lo muncul di search.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --yellow: #FFD700;
+    --red: #FF5E5B;
+    --blue: #5B8CFF;
+    --green: #3DDC84;
+    --purple: #A855F7;
+    --orange: #FF8C42;
+    --teal: #2DD4BF;
+    --pink: #FF6FB5;
+    --bg: #F0EDE0;
+    --fg: #1A1A1A;
+    --card-bg: #FFFDF7;
+    --jalsam-navy: #1E2A4A;
+    --jalsam-gold: #C9A84C;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    color: var(--fg);
+    line-height: 1.8;
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+/* Navigation */
+.site-nav {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.5rem; padding: 1rem 1.5rem;
+    margin: 0 auto 2rem; max-width: 1100px;
+}
+.site-nav .nav-link {
+    display: inline-block; padding: 0.5em 1em;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;
+    text-decoration: none; color: var(--fg); background: var(--card-bg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+    cursor: pointer;
+}
+.site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+.site-nav .nav-link.active:hover { transform: none; box-shadow: 3px 3px 0px var(--fg); }
+
+/* Container */
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+/* Hero */
+.hero {
+    background: var(--jalsam-navy);
+    color: var(--card-bg);
+    border: 4px solid var(--fg);
+    box-shadow: 8px 8px 0px var(--fg);
+    padding: 3rem 2.5rem; margin-bottom: 3rem; text-align: center;
+}
+.hero h1 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900; font-size: 2.2rem;
+    margin-bottom: 0.5rem; line-height: 1.3;
+}
+.hero .subtitle {
+    font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.3rem;
+}
+.hero .chapter-count {
+    display: inline-block; background: var(--jalsam-gold); color: var(--fg);
+    font-weight: 800; font-size: 0.75rem; padding: 0.3em 1.2em;
+    border: 2px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* TOC */
+.toc-section {
+    max-width: 900px; margin: 0 auto 3rem;
+}
+.toc-section h2 {
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1.4rem; margin-bottom: 1rem;
+}
+.toc-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem;
+}
+.toc-card {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.7rem 1rem; text-decoration: none; color: var(--fg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    font-weight: 700; font-size: 0.85rem; transition: transform 0.12s, box-shadow 0.12s;
+}
+.toc-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.toc-num {
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1.5rem; min-width: 42px; text-align: center;
+}
+
+/* Chapter */
+.chapter {
+    background: var(--card-bg);
+    border: 3px solid var(--fg);
+    box-shadow: 5px 5px 0px var(--fg);
+    padding: 2rem 2.2rem; margin-bottom: 2.5rem;
+}
+.chapter h1 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900; font-size: 1.6rem;
+    margin-bottom: 1.2rem; padding-bottom: 0.4em;
+    border-bottom: 3px solid var(--fg); display: inline-block;
+}
+.chapter h2 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 800; font-size: 1.15rem;
+    margin: 1.8em 0 0.6em; color: var(--fg);
+}
+.chapter h3 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    margin: 1.5em 0 0.5em;
+}
+.chapter p { margin-bottom: 0.9em; }
+.chapter ul, .chapter ol { margin: 0.5em 0 1em 1.5em; }
+.chapter li { margin-bottom: 0.4em; }
+.chapter strong { color: var(--jalsam-navy); }
+.chapter em { color: var(--jalsam-gold); font-style: normal; font-weight: 700; }
+
+/* Cards inside chapters */
+.info-card {
+    background: #FDFCF7; border: 3px solid var(--fg);
+    box-shadow: 4px 4px 0px var(--fg); padding: 1.2rem 1.5rem;
+    margin: 1.5em 0;
+}
+.info-card h3 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 800; font-size: 0.95rem; margin: 0 0 0.5em;
+}
+
+/* Comparison table */
+.compare-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5em 0;
+}
+.compare-box {
+    padding: 1.2rem; border: 3px solid var(--fg);
+    box-shadow: 3px 3px 0px var(--fg);
+}
+.compare-box.bad { background: #FFF0F0; border-left: 6px solid var(--red); }
+.compare-box.good { background: #F0FFF4; border-left: 6px solid var(--green); }
+.compare-box h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.9rem; margin-bottom: 0.5em; }
+
+/* Flow diagram */
+.flow-steps {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    margin: 1.5em 0; justify-content: center; font-size: 0.85rem;
+}
+.flow-step {
+    padding: 0.6em 1em; border: 3px solid var(--fg);
+    box-shadow: 3px 3px 0px var(--fg); font-weight: 700;
+    background: var(--card-bg);
+}
+.flow-arrow { font-size: 1.5rem; font-weight: 900; }
+
+/* Stats */
+.stat-row { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5em 0; }
+.stat-box {
+    flex: 1; min-width: 140px; padding: 1rem; text-align: center;
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+}
+.stat-box .num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.8rem; }
+.stat-box .label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+/* Steps */
+.step-list { list-style: none; margin-left: 0; }
+.step-list li {
+    counter-increment: step; padding: 1rem 1rem 1rem 4rem;
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    margin-bottom: 1rem; position: relative; background: var(--card-bg);
+}
+.step-list li::before {
+    content: counter(step);
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1.4rem; position: absolute; left: 1rem; top: 0.9rem;
+    background: var(--fg); color: var(--yellow); width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--fg);
+}
+
+/* Highlight box */
+.highlight {
+    background: #FFF8E1; border: 3px solid var(--jalsam-gold);
+    padding: 1.2rem 1.5rem; margin: 1.5em 0;
+    box-shadow: 4px 4px 0px var(--jalsam-gold);
+}
+.highlight strong { color: var(--jalsam-navy); }
+
+/* Pipeline diagram */
+.pipeline {
+    display: flex; flex-wrap: wrap; gap: 0; margin: 1.5em 0;
+    border: 3px solid var(--fg); box-shadow: 4px 4px 0px var(--fg);
+}
+.pipeline-box {
+    flex: 1; min-width: 120px; padding: 1rem; text-align: center;
+    border-right: 2px dashed var(--fg);
+}
+.pipeline-box:last-child { border-right: none; }
+.pipeline-box .icon { font-size: 2rem; margin-bottom: 0.3rem; }
+.pipeline-box .title { font-weight: 800; font-size: 0.85rem; }
+.pipeline-box .desc { font-size: 0.75rem; opacity: 0.7; margin-top: 0.3em; }
+
+/* Keyword example */
+.kw-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.85rem; }
+.kw-table th {
+    background: var(--fg); color: var(--yellow); padding: 0.7em 1em;
+    font-weight: 800; text-align: left; border: 2px solid var(--fg);
+}
+.kw-table td { padding: 0.6em 1em; border: 2px solid var(--fg); }
+.kw-table tr:nth-child(even) { background: #FDFCF7; }
+.kw-table tr:nth-child(odd) { background: var(--card-bg); }
+.tag {
+    display: inline-block; padding: 0.2em 0.7em; font-weight: 700; font-size: 0.7rem;
+    border: 2px solid var(--fg); text-transform: uppercase;
+}
+.tag.easy { background: var(--green); }
+.tag.medium { background: var(--yellow); }
+.tag.hard { background: var(--red); color: #fff; }
+
+/* Roadmap */
+.roadmap { margin: 1.5em 0; }
+.roadmap-phase {
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    padding: 1.2rem; margin-bottom: 1rem;
+}
+.roadmap-phase h3 {
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1rem; margin: 0 0 0.5em;
+}
+.roadmap-phase .timeline {
+    font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+    display: inline-block; padding: 0.2em 0.8em; background: var(--fg);
+    color: var(--yellow); margin-bottom: 0.8em;
+}
+
+/* Back to top */
+.back-top {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--yellow); border: 3px solid var(--fg);
+    box-shadow: 3px 3px 0px var(--fg); padding: 0.5em 0.8em;
+    font-weight: 900; cursor: pointer; text-decoration: none; color: var(--fg);
+    font-size: 0.9rem; transition: transform 0.12s, box-shadow 0.12s;
+}
+.back-top:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero { padding: 2rem 1.2rem; }
+    .hero h1 { font-size: 1.4rem; }
+    .hero .subtitle { font-size: 0.9rem; }
+    .chapter { padding: 1.2rem 1rem; }
+    .chapter h1 { font-size: 1.2rem; }
+    .chapter h2 { font-size: 1rem; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .pipeline { flex-direction: column; }
+    .pipeline-box { border-right: none; border-bottom: 2px dashed var(--fg); }
+    .pipeline-box:last-child { border-bottom: none; }
+    .site-nav { gap: 0.3rem; padding: 0.6rem; }
+    .site-nav .nav-link { font-size: 0.62rem; padding: 0.4em 0.6em; border-width: 2px; }
+    .flow-steps { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .kw-table { font-size: 0.7rem; }
+    .kw-table th, .kw-table td { padding: 0.4em 0.5em; }
+    .stat-row { flex-direction: column; }
+    body { font-size: 10pt; }
+}
+@media (max-width: 480px) {
+    .hero h1 { font-size: 1.2rem; }
+    .chapter { padding: 1rem 0.8rem; }
+    body { font-size: 9.5pt; }
+}
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="index.html" class="nav-link">🏠 Guide</a>
+    <a href="extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+    <a href="extras/quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    <a href="seo-guide.html" class="nav-link active">🔍 SEO Playbook</a>
+</nav>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+    <h1>SEO dari Nol:<br>Playbook Buat Jalur Samping</h1>
+    <p class="subtitle">Kenapa website lo sepi, gimana Google sebenernya kerja,</p>
+    <p class="subtitle">dan strategi lengkap biar produk lo ketemu orang yang nyari.</p>
+    <span class="chapter-count">9 Chapter · Story-Driven · Bahasa Lo/Gue</span>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-section">
+    <h2>📚 Daftar Isi</h2>
+    <div class="toc-grid">
+        <a href="#00-prologue" class="toc-card" style="background: var(--yellow);">
+            <span class="toc-num">00</span> Prolog: Lo Bangun Produk Bagus. Tapi Kok Sepi?
+        </a>
+        <a href="#01-what-is-seo" class="toc-card" style="background: var(--red); color: #fff;">
+            <span class="toc-num">01</span> Apa Itu SEO Sebenarnya?
+        </a>
+        <a href="#02-how-google-works" class="toc-card" style="background: var(--blue); color: #fff;">
+            <span class="toc-num">02</span> Gimana Google Bekerja?
+        </a>
+        <a href="#03-keywords" class="toc-card" style="background: var(--green);">
+            <span class="toc-num">03</span> Keywords — Kata Kunci Incaran
+        </a>
+        <a href="#04-onpage" class="toc-card" style="background: var(--purple); color: #fff;">
+            <span class="toc-num">04</span> On-Page SEO
+        </a>
+        <a href="#05-content" class="toc-card" style="background: var(--orange);">
+            <span class="toc-num">05</span> Content Strategy
+        </a>
+        <a href="#06-technical" class="toc-card" style="background: var(--teal);">
+            <span class="toc-num">06</span> Technical SEO
+        </a>
+        <a href="#07-backlinks" class="toc-card" style="background: var(--pink);">
+            <span class="toc-num">07</span> Backlinks
+        </a>
+        <a href="#08-plan" class="toc-card" style="background: var(--jalsam-navy); color: var(--jalsam-gold);">
+            <span class="toc-num">08</span> Full Plan Jalur Samping
+        </a>
+        <a href="#09-tools" class="toc-card" style="background: var(--fg); color: var(--yellow);">
+            <span class="toc-num">09</span> Tools Gratis
+        </a>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 00: PROLOGUE -->
+<!-- ============================================================ -->
+<section id="00-prologue" class="chapter" style="border-left: 8px solid var(--yellow);">
+<h1>00. Prolog: Lo Bangun Produk Bagus. Tapi Kok Sepi?</h1>
+
+<p>Bayangin lo abis berbulan-bulan bangun sesuatu.</p>
+
+<p>Lo bikin <strong>Jalur Samping</strong> — sebuah CV builder + reviewer pake AI. Orang upload CV PDF, dapet skor ATS, terus si "Mentor Jalsam" bantu optimasi section per section. Pengalaman kerja. Pendidikan. Skill. Ringkasan eksekutif. Semuanya dibedah kayak lo lagi coaching 1-on-1 sama HRD senior.</p>
+
+<p>Tool lo <em>solid</em>. Flow-nya rapi. UX-nya bagus. Payment udah jalan pake Mayar. Lo bahkan bikin case study Gita — fresh graduate yang CV-nya naik dari skor 52 jadi ATS-ready dalam 1 sesi.</p>
+
+<p>Terus lo launch.</p>
+
+<p>Dan... <strong>sepi</strong>.</p>
+
+<p>2 penjualan. Itu doang. Padahal harga cuma Rp19.000 — literally harga sekopi di cafe jaksel.</p>
+
+<div class="info-card">
+    <h3>🔍 Ini Bukan Karena Produk Lo Jelek</h3>
+    <p>Masalahnya satu: <strong>nggak ada yang bisa nemuin lo.</strong></p>
+    <p>Lo bangun toko di tengah hutan, terus bingung kok nggak ada pembeli. Harusnya lo bangun <em>jalan</em> dulu menuju toko lo. Nah, SEO itu jalannya.</p>
+</div>
+
+<p>Sekarang pertanyaan yang lebih penting:</p>
+
+<p><strong>Gimana caranya fresh graduate yang lagi panik nyari "template CV ATS" atau "cara bikin CV fresh graduate" di Google — nemu website lo?</strong></p>
+
+<p>Jawabannya: SEO.</p>
+
+<p>Dan di playbook ini, gue bakal jelasin SEO dari absolute zero. Bukan teori textbook. Bukan jargon marketing. Tapi praktek nyata pake <strong>Jalur Samping sebagai protagonis</strong>. Lo bakal ngerti:</p>
+
+<ul>
+    <li>Kenapa Google kayak <em>librarian</em> yang ngatur milyaran buku</li>
+    <li>Gimana caranya "nge-rank" — dan kenapa itu bukan magic</li>
+    <li>Keyword apa yang fresh graduate Indonesia beneran search</li>
+    <li>Gimana carousel Instagram lo bisa berubah jadi mesin traffic organik</li>
+    <li>Strategi lengkap 6 bulan biar jalursamping.com mulai kebanjiran visitor</li>
+</ul>
+
+<p>Gas.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- 01: WHAT IS SEO -->
+<!-- ============================================================ -->
+<section id="01-what-is-seo" class="chapter" style="border-left: 8px solid var(--red);">
+<h1>01. Apa Itu SEO Sebenarnya?</h1>
+
+<p>SEO = <strong>Search Engine Optimization</strong>. Artinya: <em>ngatur website lo biar Google (dan search engine lain) gampang nemuin dan nampilin halaman lo pas orang nyari sesuatu.</em></p>
+
+<p>Tapi definisi itu terlalu kering.</p>
+
+<p>Gini cara yang lebih manusiawi:</p>
+
+<div class="highlight">
+    <strong>SEO = Lo ngejawab pertanyaan yang orang udah ngetik di Google.</strong><br>
+    Bukan lo yang nyari customer. Tapi customer yang nyari LO.
+</div>
+
+<h2>Bayangin Google Itu Librarian Raksasa</h2>
+
+<p>Di perpustakaan ada milyaran buku. Setiap hari ada ribuan buku baru masuk. Seorang mahasiswa datang: "Saya butuh buku tentang cara bikin CV untuk fresh graduate."</p>
+
+<p>Sang pustakawan — kita panggil aja <em>Si Google</em> — langsung ngeliat ke rak-raknya. Dia tahu persis buku mana yang:</p>
+<ul>
+    <li>Judulnya cocok sama yang ditanyain</li>
+    <li>Isinya beneran ngebahas CV fresh graduate (bukan cuma keyword spam)</li>
+    <li>Direkomendasiin sama perpustakaan lain (backlinks)</li>
+    <li>Rapih, gampang dibaca, gak berantakan (technical quality)</li>
+</ul>
+
+<p>Si Google ngambil 10 buku terbaik. Ditaro di meja depan. Mahasiswa seneng. Pulang.</p>
+
+<p><strong>SEO itu kerjaan lo biar buku lo ada di 10 buku yang ditaro di meja depan itu.</strong></p>
+
+<h2>Apa yang BUKAN SEO</h2>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Bukan Ini</h4>
+        <p>"Tinggal pasang keyword banyak-banyak, nanti ranking sendiri."</p>
+        <p>"Beli backlink 1000 biji dari Fiverr."</p>
+        <p>"SEO itu hack. Sekali di-setup, jalan sendiri selamanya."</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Tapi Ini</h4>
+        <p>"Lo harus ngerti apa yang orang cari, terus bikinin konten yang beneran ngejawab."</p>
+        <p>"SEO itu compounding. Butuh 3-6 bulan mulai keliatan hasil. Tapi sekali ranking, traffic dateng terus tanpa lo sentuh."</p>
+    </div>
+</div>
+
+<h2>SEO vs Iklan vs Instagram</h2>
+
+<div class="stat-row">
+    <div class="stat-box" style="background: #FFF0F0;">
+        <div class="num" style="color: var(--red);">24 Jam</div>
+        <div class="label">Umur Instagram Post</div>
+    </div>
+    <div class="stat-box" style="background: #FFF8E1;">
+        <div class="num" style="color: var(--jalsam-gold);">Selama Iklan Aktif</div>
+        <div class="label">Umur FB Ads Traffic</div>
+    </div>
+    <div class="stat-box" style="background: #F0FFF4;">
+        <div class="num" style="color: var(--green);">2+ TAHUN</div>
+        <div class="label">Umur SEO Traffic</div>
+    </div>
+</div>
+
+<p>Instagram post lo: 24-48 jam exposure, terus tenggelam. SEO article lo: bisa ranking di page 1 Google selama <strong>2-5 tahun</strong>. Lo nulis sekali. Traffic dateng terus.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- 02: HOW GOOGLE WORKS -->
+<!-- ============================================================ -->
+<section id="02-how-google-works" class="chapter" style="border-left: 8px solid var(--blue);">
+<h1>02. Gimana Google Bekerja?</h1>
+
+<p>Ada 3 fase yang Google lakuin:</p>
+
+<div class="pipeline">
+    <div class="pipeline-box">
+        <div class="icon">🕷️</div>
+        <div class="title">1. CRAWL</div>
+        <div class="desc">Google datengin web lo, baca satu per satu halaman</div>
+    </div>
+    <div class="pipeline-box">
+        <div class="icon">🗄️</div>
+        <div class="title">2. INDEX</div>
+        <div class="desc">Google simpen konten lo di database raksasa-nya</div>
+    </div>
+    <div class="pipeline-box">
+        <div class="icon">🏆</div>
+        <div class="title">3. RANK</div>
+        <div class="desc">Pas ada yang search, Google mutusin: lo nomor berapa?</div>
+    </div>
+</div>
+
+<h2>Crawl: Google "Berkunjung" ke Website Lo</h2>
+
+<p>Google punya program namanya <strong>Googlebot</strong> — ini kayak spider otomatis yang 24/7 jalan-jalan dari satu link ke link lain di internet. Dia dateng ke jalursamping.com, baca halamannya, terus ngikutin link-link di dalamnya ke halaman lain.</p>
+
+<div class="info-card">
+    <h3>🔑 Kunci: Googlebot cuma bisa "jalan" lewat LINK</h3>
+    <p>Kalau halaman lo nggak di-link dari mana-mana — termasuk dari halaman lo sendiri — Googlebot nggak bakal nemu. Ini kenapa <strong>internal linking</strong> (nge-link dari artikel A ke artikel B) itu penting banget.</p>
+    <p>Sekarang jalursamping.com cuma punya 1 halaman. Googlebot dateng, baca 1 halaman, pulang. Gak ada link ke mana-mana. Gak ada alasan buat balik.</p>
+</div>
+
+<h2>Index: Google "Menyimpan" Konten Lo</h2>
+
+<p>Setelah baca halaman lo, Google nyimpen isinya di database namanya <strong>Google Index</strong>. Bayangin kayak perpustakaan digital — semua halaman yang pernah dikunjungi Googlebot disimpen di sini.</p>
+
+<p><strong>Yang bisa nge-block indexing:</strong></p>
+<ul>
+    <li>Meta tag <code>noindex</code> di HTML lo</li>
+    <li>Robots.txt yang nge-block akses</li>
+    <li>Halaman yang error (404, 500)</li>
+    <li>Konten yang terlalu tipis (cuma 1-2 kalimat)</li>
+</ul>
+
+<p>Sekarang jalursamping.com udah di-index kok (cek di search console). Tapi cuma 1 halaman. Google liat: "Oke, ini website tentang CV builder. Cuma 1 halaman. Gak terlalu berguna buat user. Taroh aja di rank rendah."</p>
+
+<h2>Rank: Google "Memutuskan Siapa Nomor 1"</h2>
+
+<p>Pas ada yang search "cara bikin CV ATS", Google liat ke index-nya. Ada 200.000 halaman yang relevan. Dia harus mutusin: <strong>10 mana yang paling layak ditampilin di page 1?</strong></p>
+
+<p>Faktor yang dipertimbangin Google:</p>
+
+<div class="stat-row">
+    <div class="stat-box">
+        <div class="num">#1</div>
+        <div class="label">RELEVANSI<br>Konten lo beneran ngejawab pertanyaan user?</div>
+    </div>
+    <div class="stat-box">
+        <div class="num">#2</div>
+        <div class="label">AUTHORITY<br>Website lo dipercaya? Ada yang nge-link ke lo?</div>
+    </div>
+    <div class="stat-box">
+        <div class="num">#3</div>
+        <div class="label">EXPERIENCE<br>Lo nunjukin pengalaman langsung? Atau cuma teori?</div>
+    </div>
+</div>
+
+<div class="highlight">
+    <strong>Ini kenapa Jalur Samping punya KEUNGGULAN.</strong><br>
+    Lo punya pengalaman nyata bantuin fresh graduate bikin CV. Lo punya case study Gita. Lo punya 13 carousel researched di Instagram. Konten lo punya <em>experience</em> yang website karir generik lainnya nggak punya. Tinggal nulisnya di website.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 03: KEYWORDS -->
+<!-- ============================================================ -->
+<section id="03-keywords" class="chapter" style="border-left: 8px solid var(--green);">
+<h1>03. Keywords — Kata Kunci yang Lo Incar</h1>
+
+<p>Keyword = <strong>kata-kata yang orang ketik di Google.</strong></p>
+
+<p>Ini basic tapi paling sering disalahpahami. Keyword bukan sesuatu yang lo "pasang" di website. Keyword adalah <em>jembatan antara masalah user dan konten lo.</em></p>
+
+<h2>Short-Tail vs Long-Tail Keywords</h2>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Short-Tail (Jangan Diincer Dulu)</h4>
+        <p><strong>"CV"</strong> — 100.000+ search/bulan</p>
+        <p>Kompetisi: sangat tinggi (Jobstreet, Glints, Kitalulus)</p>
+        <p>Search intent: gak jelas. Mau template? Mau jasa bikin CV? Mau definisi CV?</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Long-Tail (Ini Target Lo)</h4>
+        <p><strong>"cara bikin CV ATS friendly untuk fresh graduate"</strong> — 500-2000/bulan</p>
+        <p>Kompetisi: rendah-sedang</p>
+        <p>Search intent: jelas banget. Dia fresh grad, butuh CV ATS. Lo punya tool buat itu.</p>
+    </div>
+</div>
+
+<h2>Jenis-Jenis Search Intent</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Intent</th><th>Contoh Keyword</th><th>Yang User Mau</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Informational</strong></td>
+            <td>"apa itu ats", "berapa lama hr baca cv"</td>
+            <td>Pengetahuan. Belajar dulu.</td>
+        </tr>
+        <tr>
+            <td><strong>Commercial</strong></td>
+            <td>"cv ats friendly terbaik", "template cv gratis"</td>
+            <td>Bandingin. Mau download/try.</td>
+        </tr>
+        <tr>
+            <td><strong>Transactional</strong></td>
+            <td>"buat cv online", "jasa optimasi cv"</td>
+            <td>Siap bayar. Mending langsung ke tool lo.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Strategi buat Jalur Samping:</strong> Tangkep user di fase informational pake artikel. Dari artikel, arahkan ke tool lo buat conversion.</p>
+
+<h2>Keyword Research Sederhana Buat Jalur Samping</h2>
+
+<p>Lo gak perlu tools mahal. Berikut keyword yang udah gue petain dari konten existing lo:</p>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Konten Existing</th><th>Target Keyword</th><th>Volume/bulan</th><th>Difficulty</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>ATS-friendly CV Canva</td><td>"cv ats friendly adalah"</td><td>2.000-5.000</td><td><span class="tag medium">Medium</span></td></tr>
+        <tr><td>6 detik HR baca CV</td><td>"berapa lama hr baca cv"</td><td>500-1.500</td><td><span class="tag easy">Low</span></td></tr>
+        <tr><td>3 misteri recruitment</td><td>"rahasia lolos screening cv"</td><td>500-1.000</td><td><span class="tag easy">Low</span></td></tr>
+        <tr><td>1 pengalaman 3 CV</td><td>"cara nulis pengalaman di cv fresh graduate"</td><td>1.000-3.000</td><td><span class="tag medium">Medium</span></td></tr>
+        <tr><td>CV kurang relevan</td><td>"cv tidak sesuai lowongan"</td><td>500-1.500</td><td><span class="tag easy">Low</span></td></tr>
+        <tr><td>Template spin</td><td>"template cv ats gratis"</td><td>3.000-8.000</td><td><span class="tag hard">Hard</span></td></tr>
+        <tr><td>Apply 50+ CV sama</td><td>"lamar kerja 50 perusahaan tidak dipanggil"</td><td>1.000-2.000</td><td><span class="tag easy">Low</span></td></tr>
+        <tr><td>Toxic positivity karir</td><td>"semangat terus kata hr"</td><td>500-1.000</td><td><span class="tag easy">Low</span></td></tr>
+    </tbody>
+</table>
+
+<div class="highlight">
+    <strong>🚀 Quick win:</strong> Targetin keyword dengan difficulty LOW dulu. Ranking lebih cepet. Begitu mulai dapet traffic, confidence naik, lo bisa mulai incar yang medium.
+</div>
+
+<h2>Cara Riset Keyword Gratis</h2>
+
+<ol>
+    <li><strong>Google autocomplete:</strong> Mulai ngetik "cara bikin cv..." dan liat suggestion yang muncul. Itu keyword beneran yang orang search.</li>
+    <li><strong>"People also ask" box:</strong> Di hasil pencarian, ada kotak pertanyaan. Itu pertanyaan yang sering ditanyain user. Lo bisa jawab di artikel.</li>
+    <li><strong>Related searches di bawah:</strong> Scroll ke bawah hasil Google. Ada 8 keyword terkait. Goldmine gratis.</li>
+    <li><strong>Google Search Console:</strong> Pas udah dipasang, GSC nunjukin keyword apa yang udah mulai nampilin website lo. Lo bisa ekspansi dari situ.</li>
+</ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- 04: ON-PAGE SEO -->
+<!-- ============================================================ -->
+<section id="04-onpage" class="chapter" style="border-left: 8px solid var(--purple);">
+<h1>04. On-Page SEO — Yang Ada di Halaman Lo</h1>
+
+<p>On-page SEO = <strong>segala sesuatu yang lo kontrol langsung di halaman lo sendiri.</strong> Ini fondasi. Kalau ini salah, percuma backlink banyak-banyak.</p>
+
+<h2>Title Tag — Ini Headline yang Google Lihat</h2>
+
+<p>Title tag itu judul yang muncul di tab browser, dan yang paling gede di hasil pencarian Google. Ini sinyal paling kuat buat Google: "Halaman ini tentang apa?"</p>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Title Sekarang (jalursamping.com)</h4>
+        <p><code>Mentor Jalsam – CV ATS Optimizer</code></p>
+        <p>Masalah: gak ada keyword yang orang beneran search. "Mentor Jalsam" bukan keyword. "CV ATS Optimizer" terlalu generic.</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Title yang Dioptimasi</h4>
+        <p><code>CV ATS Friendly untuk Fresh Graduate — Audit Gratis, Optimasi Section per Section | Jalur Samping</code></p>
+        <p>Keyword: "CV ATS Friendly", "Fresh Graduate". Value proposition: audit gratis. Brand name di akhir.</p>
+    </div>
+</div>
+
+<p><strong>Aturan title tag:</strong></p>
+<ul>
+    <li>50-60 karakter (lebih dari itu kepotong di hasil search)</li>
+    <li>Keyword utama di depan</li>
+    <li>Nama brand di belakang (pakai separator | atau -)</li>
+    <li>Setiap halaman title-nya BEDA</li>
+</ul>
+
+<h2>Meta Description — Preview Text di Bawah Title</h2>
+
+<p>Gak langsung ngaruh ke ranking, tapi ngaruh ke <strong>CTR (Click-Through Rate)</strong>. Kalau description lo compelling, orang lebih mungkin klik.</p>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Description Sekarang</h4>
+        <p>"Perbaiki CV ATS-friendly bersama kami. Upload CV, dapatkan skor ATS, dan optimasi langsung."</p>
+        <p>Terlalu generic. Gak ada keyword spesifik. Gak nge-address pain point fresh graduate.</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Description yang Dioptimasi</h4>
+        <p>"Fresh graduate? CV lo sering di-ghosting HRD? Upload CV kamu, dapatkan skor ATS + analisis mendalam gratis. Mentor Jalsam bantu optimasi section per section — dari pengalaman kerja sampai ringkasan eksekutif."</p>
+    </div>
+</div>
+
+<h2>Heading Structure (H1 → H2 → H3)</h2>
+
+<p>Heading itu kayak daftar isi buku. Google pake heading buat ngerti struktur konten lo.</p>
+
+<div class="info-card">
+    <h3>📐 Satu Halaman, Satu H1</h3>
+    <p><strong>H1</strong> = judul utama halaman. Harus mengandung keyword utama. Satu halaman cuma boleh punya SATU H1.</p>
+    <p><strong>H2</strong> = sub-topik. Bisa banyak. Keyword-related.</p>
+    <p><strong>H3</strong> = detail di bawah H2.</p>
+    <p>Sekarang H1 di jalursamping.com: "CV Kamu Sering Di-Ghosting HRD?" — ini catchy tapi bukan keyword. Gak ada yang nyari "di-ghosting hrd" di Google.</p>
+</div>
+
+<h2>Internal Linking — Lem yang Ngegabungin Halaman Lo</h2>
+
+<p>Ini salah satu hal paling underrated di SEO. Internal link = link dari halaman A ke halaman B dalam website yang sama.</p>
+
+<p><strong>Kenapa penting:</strong></p>
+<ul>
+    <li>Googlebot pake link buat nemu halaman baru lo</li>
+    <li>Link ngalirin "authority" dari halaman yang udah ranking ke halaman baru</li>
+    <li>User bisa navigate konten lo lebih dalem (naikin dwell time)</li>
+</ul>
+
+<p>Sekarang jalursamping.com cuma 1 halaman. Zero internal link. Begitu lo punya 15 artikel, internal linking jadi critical.</p>
+
+<div class="highlight">
+    <strong>Contoh internal linking di Jalur Samping:</strong><br>
+    Artikel "Kenapa CV Canva Lo Gagal ATS" → link ke tool "/app/" dengan CTA "Mau tau skor CV lo sekarang? Audit gratis →"<br>
+    Artikel "Cara Nulis Pengalaman Kerja di CV" → link ke artikel "6 Detik HR Baca CV" karena relevan.<br>
+    Landing page root → link ke 3 artikel terbaru + link ke "/app/".
+</div>
+
+<h2>URL Structure</h2>
+
+<p>URL harus pendek, mengandung keyword, gampang dibaca manusia:</p>
+
+<ul>
+    <li>✅ <code>/blog/cv-ats-friendly-fresh-graduate/</code></li>
+    <li>✅ <code>/blog/cara-nulis-pengalaman-kerja-cv/</code></li>
+    <li>❌ <code>/?p=123</code></li>
+    <li>❌ <code>/2024/05/08/cv-tips-fresh-graduate-indonesia-terbaru/</code></li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- 05: CONTENT STRATEGY -->
+<!-- ============================================================ -->
+<section id="05-content" class="chapter" style="border-left: 8px solid var(--orange);">
+<h1>05. Content Strategy — Ini Jantungnya SEO</h1>
+
+<p>Lo bisa betulin semua technical SEO. Tapi kalau konten lo gak ngejawab pertanyaan user, lo gak bakal ranking. Content is the engine.</p>
+
+<h2>The Attraction Model: Konten → Tool → Sale</h2>
+
+<p>Ini model bisnis yang paling cocok buat Jalur Samping:</p>
+
+<div class="flow-steps">
+    <div class="flow-step" style="background: var(--yellow);">🔍 Orang search "cara bikin CV ATS" di Google</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--blue); color: #fff;">📝 Nyasar ke ARTIKEL lo</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--green);">🛠️ Klik CTA "Audit CV Gratis"</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--purple); color: #fff;">📊 Upload CV, dapet skor rendah</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--jalsam-gold);">💰 Bayar Rp19K buat optimasi penuh</div>
+</div>
+
+<p>Artikel = attraction. Tool = conversion. Lo gak jualan di artikel. Lo bantu. Trust dulu. Conversion belakangan.</p>
+
+<h2>Dari Carousel Instagram Jadi Artikel SEO</h2>
+
+<p>Ini keunggulan lo yang paling underutilized. Lo udah punya 13 carousel researched di Instagram. Masing-masing carousel itu:</p>
+
+<div class="info-card">
+    <h3>📊 Satu Carousel = Satu Artikel SEO</h3>
+    <p><strong>Slide 1 (Hook)</strong> → H1 artikel (keyword-rich headline)<br>
+    <strong>Slide 2 (Problem)</strong> → Intro artikel (pain point + statistik)<br>
+    <strong>Slide 3 (Insight)</strong> → Body artikel (deep explanation, 500-800 kata)<br>
+    <strong>Slide 4 (Solusi)</strong> → Actionable tips section<br>
+    <strong>Slide 5 (CTA)</strong> → CTA ke tool + affiliate link<br>
+    <strong>Caption IG (150 kata)</strong> → Meta description + social snippet</p>
+</div>
+
+<p><strong>Lo gak mulai dari nol.</strong> Konten lo udah 80% jadi. Tinggal ekspansi dari 5 slide singkat jadi artikel 800-1.500 kata yang deep.</p>
+
+<h2>Content Pillars — Empat Pilar Konten Jalur Samping</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Pilar</th><th>%</th><th>Target Keyword Theme</th><th>Contoh Artikel</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>🔍 SYSTEM HACKS</td><td>35%</td><td>"rahasia", "yang gak mereka bilang", "cara kerja"</td><td>"Ini Yang Gak Mereka Bilang: HR Cuma Baca CV Lo 6 Detik"</td></tr>
+        <tr><td>🛠️ CV SURGERY</td><td>30%</td><td>"cara bikin", "tutorial", "step by step", "contoh"</td><td>"Cara Nulis Pengalaman Kerja di CV Fresh Grad (Step by Step)"</td></tr>
+        <tr><td>💬 REAL TALK</td><td>20%</td><td>"pengalaman", "gue juga pernah", "susahnya"</td><td>"Gue Apply 50+ Perusahaan dan Cuma 2 yang Bales — Ini Pelajarannya"</td></tr>
+        <tr><td>🏆 WIN STORIES</td><td>15%</td><td>"berhasil", "lolos", "testimoni", "case study"</td><td>"Dari Skor CV 52 ke ATS-Ready: Perjalanan Gita dengan Mentor Jalsam"</td></tr>
+    </tbody>
+</table>
+
+<h2>Publishing Cadence</h2>
+
+<p>Konsistensi > volume. Better 1 artikel berkualitas per minggu daripada 10 artikel generic per bulan.</p>
+
+<div class="info-card">
+    <h3>📅 Jadwal Konten (Realistis)</h3>
+    <p><strong>Bulan 1-2:</strong> 2 artikel/minggu (dari carousel existing — cepet karena konten udah ada)<br>
+    <strong>Bulan 3-4:</strong> 1 artikel/minggu (dari request topics + keyword research baru)<br>
+    <strong>Bulan 5+:</strong> 1 artikel/2 minggu + update artikel lama yang mulai ranking</p>
+</div>
+
+<h2>E-E-A-T: Kenapa Voice Lo Itu Senjata</h2>
+
+<p>Google pake framework namanya <strong>E-E-A-T</strong> (Experience, Expertise, Authoritativeness, Trustworthiness) buat nilai kualitas konten. Ini aturan mainnya di 2026:</p>
+
+<div class="stat-row">
+    <div class="stat-box">
+        <div class="num" style="font-size: 1.2rem;">Experience</div>
+        <div class="label">"Gue pernah ngalamin" — cerita langsung, bukan textbook</div>
+    </div>
+    <div class="stat-box">
+        <div class="num" style="font-size: 1.2rem;">Expertise</div>
+        <div class="label">"Gue ngerti topik ini dalam" — depth, bukan surface</div>
+    </div>
+    <div class="stat-box">
+        <div class="num" style="font-size: 1.2rem;">Authority</div>
+        <div class="label">"Orang lain ngakuin gue" — backlinks, mentions</div>
+    </div>
+    <div class="stat-box">
+        <div class="num" style="font-size: 1.2rem;">Trust</div>
+        <div class="label">"Website lo aman, transparan" — HTTPS, privacy, real contact</div>
+    </div>
+</div>
+
+<div class="highlight">
+    <strong>Ini kenapa konten "lo/gue" lo itu competitive advantage.</strong><br>
+    Website karir lain nulis: "Curriculum vitae yang baik harus mencantumkan pengalaman kerja yang relevan..." (generic AI voice, zero experience).<br>
+    <br>
+    Lo nulis: "Gue ngerti rasanya. Lo buka Canva, pilih template paling aesthetic, masukin data diri, kirim ke 30 perusahaan. Terus... nggak ada yang bales. Gue juga pernah di posisi lo. Dan setelah gue bongkar cara kerja ATS..." (real experience, distinctive voice).<br>
+    <br>
+    <strong>Google makin pinter deteksi "real experience" vs "AI fluff."</strong> Lo punya real experience. Make it.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 06: TECHNICAL SEO -->
+<!-- ============================================================ -->
+<section id="06-technical" class="chapter" style="border-left: 8px solid var(--teal);">
+<h1>06. Technical SEO — Biar Google Gampang Baca Website Lo</h1>
+
+<p>Kalau on-page SEO itu tentang konten, technical SEO itu tentang <strong>infrastruktur</strong>. Ini hal-hal yang bikin Googlebot gampang (atau susah) baca website lo.</p>
+
+<h2>1. Page Speed</h2>
+
+<p>Google pake page speed sebagai ranking factor. User Indonesia mostly buka dari HP — mereka gak sabaran. Kalau halaman lo loading > 3 detik, mereka balik ke Google. Ini namanya <strong>pogo-sticking</strong> — Google liat user lo bounce cepet, terus nurunin ranking lo.</p>
+
+<div class="info-card">
+    <h3>🚀 Quick Wins Buat Page Speed (jalursamping.com)</h3>
+    <ul>
+        <li><strong>Gabungin 6 file CSS jadi 1:</strong> Sekarang lo load css/variables.css, css/base.css, css/components.css, css/sections.css, css/wizard.css, css/chat.css — 6 HTTP requests terpisah. Gabungin jadi 1 file.</li>
+        <li><strong>Inline critical CSS:</strong> CSS yang dibutuhin buat hero + above-fold content — masukin langsung di &lt;style&gt; di &lt;head&gt;. Sisanya load async.</li>
+        <li><strong>Buang no-cache headers:</strong> Sekarang lo pake Cache-Control: no-cache, no-store. Ini bikin Googlebot download ulang SELURUH halaman setiap visit. Ganti ke caching 1-7 hari untuk static assets.</li>
+        <li><strong>Resize gambar:</strong> cv-example-before.png — pastiin ukurannya sesuai display, bukan 4000px wide.</li>
+    </ul>
+</div>
+
+<h2>2. Mobile-Friendliness</h2>
+
+<p>70%+ traffic Indonesia dari HP. Google pake <strong>mobile-first indexing</strong> — artinya Google menilai website lo dari versi mobilenya, bukan desktop.</p>
+
+<p>Sekarang jalursamping.com udah ada viewport meta tag. Tapi tool CV builder-nya yang kompleks (wizard 7 step) harus di-test di HP beneran. Kalau ada button kegedean, text kepotong, atau flow susah di HP — user lo bakal bounce.</p>
+
+<h2>3. Sitemap & Robots.txt</h2>
+
+<p><strong>Sitemap</strong> = daftar semua halaman di website lo, format XML. Lo kasih ini ke Google biar dia tahu halaman mana aja yang perlu di-crawl.</p>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Sitemap Sekarang</h4>
+        <p>Cuma 1 URL. Google liat: "Oke, website ini kecil banget. Gak prioritas."</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Sitemap Ideal</h4>
+        <p>15-30 URL: root, /app/, /blog/, /blog/artikel1/, /blog/artikel2/, /template/, /tentang/... Google liat: "Ini website serius, isinya banyak."</p>
+    </div>
+</div>
+
+<p><strong>Robots.txt</strong> udah bener: <code>Allow: /</code>. Tapi nanti pastiin halaman-halaman penting gak ke-block.</p>
+
+<h2>4. Structured Data (Schema Markup)</h2>
+
+<p>Ini kode tambahan di HTML yang ngasih konteks ke Google tentang konten lo. Contoh:</p>
+
+<ul>
+    <li><strong>Article schema:</strong> buat semua blog post. Google bisa nampilin headline, author, tanggal publish di hasil search (rich snippet).</li>
+    <li><strong>Product schema:</strong> buat tool CV lo. Google bisa nampilin harga (Rp19.000), rating, availability.</li>
+    <li><strong>FAQ schema:</strong> kalau lo punya FAQ section, Google nampilin langsung pertanyaan + jawaban di hasil search.</li>
+    <li><strong>Breadcrumb schema:</strong> nampilin path navigasi (Home > Blog > Artikel).</li>
+</ul>
+
+<div class="highlight">
+    <strong>Prioritas:</strong> Article schema + Product schema dulu. Dua ini yang paling ngaruh ke klik dari search results. Bisa ningkatin CTR 5-15%.
+</div>
+
+<h2>5. HTTPS & Security</h2>
+
+<p>jalursamping.com udah HTTPS (good). Jangan pernah balik ke HTTP — Google langsung nurunin ranking.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- 07: BACKLINKS -->
+<!-- ============================================================ -->
+<section id="07-backlinks" class="chapter" style="border-left: 8px solid var(--pink);">
+<h1>07. Backlinks — "Rekomendasi" dari Website Lain</h1>
+
+<p>Backlink = <strong>link dari website lain ke website lo.</strong></p>
+
+<p>Di mata Google, setiap backlink itu kayak "vote" atau "rekomendasi". Website A nge-link ke website B = "Gue percaya website B punya konten yang bagus."</p>
+
+<p>Tapi gak semua backlink sama nilainya:</p>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Backlink Sampah</h4>
+        <p>Dari website gak jelas, gambling, blog comment spam, link farm Fiverr.</p>
+        <p>Google: "Ini manipulasi. Turunin ranking lo."</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Backlink Berkualitas</h4>
+        <p>Dari website yang relevan (karir, pendidikan, HR), punya traffic sendiri, kontennya bagus.</p>
+        <p>Google: "Ini website direkomendasiin. Naikin ranking sedikit."</p>
+    </div>
+</div>
+
+<h2>Cara Dapetin Backlinks Buat Jalur Samping (Realistis)</h2>
+
+<ol class="step-list">
+    <li>
+        <strong>Guest post di blog karir/HR.</strong> Lo tawarin nulis artikel tamu di blog karir Indonesia (Kitalulus, Glints, TopKarir, Kalibrr). Artikel-nya genuine — tips CV, pengalaman fresh grad, dsb. Di bio author-nya: "Founder Jalur Samping, CV mentoring platform."
+    </li>
+    <li>
+        <strong>Kolaborasi dengan career center kampus.</strong> Lo kontak BEM / career center universitas. Tawarin workshop CV gratis pake tool lo. Mereka nge-link ke website lo dari halaman acara.
+    </li>
+    <li>
+        <strong>Bikin resource yang layak di-link.</strong> Contoh: "Laporan Gaji Fresh Graduate Indonesia 2026" atau "CV ATS Score Calculator Gratis". Website lain bakal nge-link ke resource lo kalau berguna.
+    </li>
+    <li>
+        <strong>Jawab pertanyaan di Quora / Reddit / forum.</strong> Cari diskusi tentang CV, lamaran kerja, fresh graduate. Kasih jawaban bagus. Sisipin link ke artikel lo yang relevan. Tapi JANGAN spam — jawab dulu, link belakangan.
+    </li>
+    <li>
+        <strong>Daftarin di direktori startup/produk Indonesia.</strong> Ada direktori online untuk produk buatan Indonesia. Daftarin Jalur Samping. Biasanya dapet backlink gratis.
+    </li>
+</ol>
+
+<div class="info-card">
+    <h3>⚠️ Yang Gak Usah Dilakuin</h3>
+    <ul>
+        <li>❌ Beli backlink (Fiverr, PBN, link farm) — Google bisa detect, penalty</li>
+        <li>❌ Tukaran link massal ("lo link gue, gue link lo")</li>
+        <li>❌ Blog comment spam ("Nice post! Visit my website!")</li>
+        <li>❌ Backlink dari website gak relevan (gambling, pharma, adult)</li>
+    </ul>
+</div>
+
+<p><strong>Reality check:</strong> Di 3-6 bulan pertama, fokus lo itu konten, bukan backlinks. Artikel banyak + konten berkualitas → backlinks natural mulai dateng sendiri. Jangan kejar backlinks dari awal.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- 08: THE FULL PLAN -->
+<!-- ============================================================ -->
+<section id="08-plan" class="chapter" style="border-left: 8px solid var(--jalsam-navy);">
+<h1>08. The Full Jalur Samping SEO Plan</h1>
+
+<p>Ini roadmap konkret buat transformasi jalursamping.com dari "toko di hutan" jadi "mesin traffic + conversion."</p>
+
+<h2>Current State Audit</h2>
+
+<div class="stat-row">
+    <div class="stat-box" style="background: #FFF0F0;">
+        <div class="num" style="color: var(--red);">1</div>
+        <div class="label">Halaman terindex Google</div>
+    </div>
+    <div class="stat-box" style="background: #FFF0F0;">
+        <div class="num" style="color: var(--red);">0</div>
+        <div class="label">Artikel / Blog post</div>
+    </div>
+    <div class="stat-box" style="background: #FFF0F0;">
+        <div class="num" style="color: var(--red);">~0</div>
+        <div class="label">Traffic organik/bulan</div>
+    </div>
+    <div class="stat-box" style="background: #FFF8E1;">
+        <div class="num" style="color: var(--jalsam-gold);">13</div>
+        <div class="label">Carousel Instagram siap repurpose</div>
+    </div>
+    <div class="stat-box" style="background: #FFF8E1;">
+        <div class="num" style="color: var(--jalsam-gold);">9</div>
+        <div class="label">Request topics menunggu</div>
+    </div>
+</div>
+
+<h2>Fase 1: Foundation (Minggu 1-2)</h2>
+
+<div class="roadmap">
+    <div class="roadmap-phase" style="border-left: 6px solid var(--yellow);">
+        <span class="timeline">Minggu 1-2</span>
+        <h3>🧱 Setup Infrastruktur</h3>
+        <ul>
+            <li>Restruktur website: root jadi content hub, tool pindah ke /app/</li>
+            <li>Bikin /blog/ section + template artikel</li>
+            <li>Gabungin CSS jadi 1 file, buang no-cache headers</li>
+            <li>Fix sitemap, pasang structured data (Article + Product schema)</li>
+            <li>Fix meta tags (title, description) dengan keyword targeting</li>
+            <li>Bikin halaman /template/ (lead magnet: download template CV gratis)</li>
+        </ul>
+    </div>
+
+    <div class="roadmap-phase" style="border-left: 6px solid var(--orange);">
+        <span class="timeline">Minggu 1-2</span>
+        <h3>📝 Konten Awal: 5 Artikel dari Carousel</h3>
+        <ul>
+            <li>ATS-Friendly CV (keyword: "cv ats friendly adalah")</li>
+            <li>6 Detik HR Baca CV (keyword: "berapa lama hr baca cv")</li>
+            <li>Cara Nulis Pengalaman di CV (keyword: "cara nulis pengalaman di cv fresh graduate")</li>
+            <li>CV Tidak Sesuai Lowongan (keyword: "cv tidak sesuai lowongan")</li>
+            <li>Kenapa Apply 50+ Gak Dipanggil (keyword: "lamar kerja tidak dipanggil")</li>
+        </ul>
+    </div>
+</div>
+
+<h2>Fase 2: Content Expansion (Minggu 3-6)</h2>
+
+<div class="roadmap">
+    <div class="roadmap-phase" style="border-left: 6px solid var(--green);">
+        <span class="timeline">Minggu 3-6</span>
+        <h3>📝 8 Artikel Tambahan + Lead Magnet</h3>
+        <ul>
+            <li>Transform sisa carousel approved menjadi artikel SEO</li>
+            <li>Tulis 2 artikel baru dari request topics</li>
+            <li>Internal linking antar semua artikel</li>
+            <li>Setiap artikel ada CTA ke /app/</li>
+            <li>Halaman /template/ siap: 3-5 template CV ATS gratis (.docx)</li>
+            <li>Submit sitemap ke Google Search Console</li>
+        </ul>
+    </div>
+
+    <div class="roadmap-phase" style="border-left: 6px solid var(--blue);">
+        <span class="timeline">Minggu 4-6</span>
+        <h3>📊 Monitoring & Iterasi</h3>
+        <ul>
+            <li>Cek Google Search Console: keyword yang mulai muncul</li>
+            <li>Update artikel yang impressions tinggi tapi CTR rendah</li>
+            <li>Cek Clarity: user behavior di tool (di mana mereka drop off?)</li>
+            <li>Fix UX issues dari data Clarity</li>
+        </ul>
+    </div>
+</div>
+
+<h2>Fase 3: Distribution & Authority (Bulan 3-4)</h2>
+
+<div class="roadmap">
+    <div class="roadmap-phase" style="border-left: 6px solid var(--purple);">
+        <span class="timeline">Bulan 3-4</span>
+        <h3>🔗 Sebarin + Bangun Authority</h3>
+        <ul>
+            <li>Connect Instagram bio ke website ("Cek skor CV gratis → jalursamping.com")</li>
+            <li>Setiap carousel baru: mention artikel terkait di caption</li>
+            <li>Guest post 1-2 artikel di blog karir Indonesia</li>
+            <li>Kontak 3-5 career center kampus buat kolaborasi</li>
+            <li>Jawab pertanyaan di Quora/forum karir (natural, bukan spam)</li>
+        </ul>
+    </div>
+</div>
+
+<h2>Fase 4: Scale & Automate (Bulan 5-6+)</h2>
+
+<div class="roadmap">
+    <div class="roadmap-phase" style="border-left: 6px solid var(--jalsam-gold);">
+        <span class="timeline">Bulan 5+</span>
+        <h3>🚀 Scale</h3>
+        <ul>
+            <li>Cron job: 1 artikel baru per minggu dari request topics atau trending keyword</li>
+            <li>Update artikel lama: refresh data, tambah section baru, improve keyword density</li>
+            <li>Double down: artikel mana yang ranking? Bikin konten lebih dalem di topik itu</li>
+            <li>Ekspansi: tambahin halaman /interview-prep/ (keyword: "tips wawancara kerja")</li>
+            <li>Evaluasi monetisasi: kalau traffic udah 1.000+/bulan, test pricing baru, upsell, affiliate</li>
+        </ul>
+    </div>
+</div>
+
+<h2>Expected Timeline (Realistis)</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Bulan</th><th>Artikel Live</th><th>Traffic/bulan</th><th>Estimated Sales</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1-2</td><td>5-8</td><td>0-200</td><td>0-3</td></tr>
+        <tr><td>3-4</td><td>10-15</td><td>200-800</td><td>4-16</td></tr>
+        <tr><td>5-6</td><td>15-20</td><td>800-2.000</td><td>16-40</td></tr>
+        <tr><td>7-12</td><td>20-35</td><td>2.000-8.000</td><td>40-160</td></tr>
+    </tbody>
+</table>
+
+<div class="highlight">
+    <strong>💰 Revenue projection (konservatif):</strong><br>
+    Bulan 6: 40 sales × Rp19.000 = <strong>Rp760.000/bulan</strong> (udah balik modal domain + hosting).<br>
+    Bulan 12: 160 sales × Rp19.000 = <strong>Rp3.040.000/bulan</strong>.<br>
+    <br>
+    Plus: kalau lo punya upsell (template bundle Rp49K, interview prep Rp99K), revenue bisa 2-3x lipat. Plus affiliate income dari link broker saham/tools di artikel lo.
+</div>
+
+<h2>Yang Gak Berubah (Pertahanin)</h2>
+
+<p>Di tengah semua perubahan ini, ada hal yang JANGAN disentuh:</p>
+<ul>
+    <li><strong>Tool /app/ tetap existing.</strong> Jangan rewrite. Jangan ganti framework. Ini aset yang udah solid.</li>
+    <li><strong>Voice lo/gue di semua konten.</strong> Jangan tiba-tiba jadi formal. Itu differentiation lo.</li>
+    <li><strong>Instagram pipeline.</strong> Tetap jalan. Konten carousel = bahan baku artikel SEO.</li>
+    <li><strong>4 content pillars.</strong> Framework yang udah lo susun di brand guidelines. Gunakan.</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- 09: TOOLS -->
+<!-- ============================================================ -->
+<section id="09-tools" class="chapter" style="border-left: 8px solid var(--fg);">
+<h1>09. Tools Gratis yang Lo Butuhin</h1>
+
+<p>Lo gak perlu tools berbayar buat mulai. Ini semua gratis:</p>
+
+<div class="stat-row">
+    <div class="stat-box">
+        <div class="num" style="font-size: 1rem;">🔍</div>
+        <div class="label"><strong>Google Search Console</strong><br>Keyword yang mulai ranking, CTR, impressions, halaman error. WAJIB dipasang dari hari 1.</div>
+    </div>
+    <div class="stat-box">
+        <div class="num" style="font-size: 1rem;">📊</div>
+        <div class="label"><strong>Google Analytics 4</strong><br>Traffic, user behavior, conversion tracking. Udah terpasang di Jalur Samping.</div>
+    </div>
+    <div class="stat-box">
+        <div class="num" style="font-size: 1rem;">🎥</div>
+        <div class="label"><strong>Microsoft Clarity</strong><br>Session recording + heatmap gratis. Liat user lo ngapain di tool. Udah terpasang.</div>
+    </div>
+</div>
+
+<h2>Keyword Research Tools Gratis</h2>
+
+<ul>
+    <li><strong>Google Search Console</strong> — pas udah jalan, lo liat keyword yang mulai nampilin website lo. Ekspansi dari situ.</li>
+    <li><strong>Google autocomplete + "People also ask"</strong> — real keywords yang real orang search. Goldmine gratis.</li>
+    <li><strong>Ahrefs Webmaster Tools</strong> — free tier. Audit website, liat backlinks, keyword yang lo ranking.</li>
+    <li><strong>Google Trends</strong> — cek tren keyword. "cv ats" lagi naik atau turun? Cek di sini.</li>
+</ul>
+
+<h2>Technical SEO Tools</h2>
+
+<ul>
+    <li><strong>Google PageSpeed Insights</strong> — cek kecepatan website lo, dapet rekomendasi perbaikan spesifik.</li>
+    <li><strong>Google Mobile-Friendly Test</strong> — test apakah website lo enak dibuka di HP.</li>
+    <li><strong>Schema Markup Validator</strong> — cek apakah structured data lo udah bener.</li>
+    <li><strong>Ahrefs Webmaster Tools (site audit)</strong> — scan 100+ technical SEO issues gratis.</li>
+</ul>
+
+<h2>Content Tools</h2>
+
+<ul>
+    <li><strong>Jalur Samping brand guidelines</strong> — udah ada di repo. Voice, tone, taboo list, pillars. Pakai.</li>
+    <li><strong>Markdown editor (VS Code / Obsidian)</strong> — buat nulis artikel sebelum build ke HTML.</li>
+    <li><strong>build.py script</strong> — gue bikinin nanti. MD → HTML otomatis + update sitemap.</li>
+</ul>
+
+<div class="info-card">
+    <h3>⚡ Workflow Harian yang Realistis</h3>
+    <p><strong>Seminggu sekali (Sabtu/Minggu):</strong><br>
+    1. Buka Google Search Console → liat keyword baru yang muncul → catat<br>
+    2. Buka Clarity → liat 2-3 session recording → catat UX issues<br>
+    3. Kalau ada ide artikel baru, tulis di content/requests/<br>
+    4. Trigger 1 artikel baru (lu approve topik, gue tulis + build + deploy)</p>
+    <p><strong>Sebulan sekali:</strong><br>
+    Evaluasi: traffic naik/turun? Conversion rate berubah? Keyword baru ranking? Pivot kalau perlu.</p>
+</div>
+
+<p style="text-align: center; margin-top: 3rem; font-size: 1.1rem; font-weight: 700;">
+    — End of Playbook —
+</p>
+<p style="text-align: center; color: var(--jalsam-gold); font-weight: 800;">
+    🚀 Sekarang lo tau apa yang harus dilakuin. Gas eksekusi.
+</p>
+</section>
+
+</div>
+
+<a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+
+</body>
+</html>

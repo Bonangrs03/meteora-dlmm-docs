@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catatan Teknik Industri: dari Kampus ke Dunia Kerja</title>
+    <meta name="description" content="Panduan buat fresh graduate Teknik Industri yang gak tau apa-apa tentang dunia kerja. Dari kenapa perusahaan ada, lapisan industri, struktur bisnis, sampai lo sebenernya ngapain.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --yellow: #FFD700;
+    --red: #FF5E5B;
+    --blue: #5B8CFF;
+    --green: #3DDC84;
+    --purple: #A855F7;
+    --orange: #FF8C42;
+    --teal: #2DD4BF;
+    --pink: #FF6FB5;
+    --bg: #F0EDE0;
+    --fg: #1A1A1A;
+    --card-bg: #FFFDF7;
+    --ie-navy: #1B2A4A;
+    --ie-orange: #F48120;
+    --ie-teal: #0D9488;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    color: var(--fg); line-height: 1.8;
+    font-size: 11pt; font-weight: 500;
+}
+
+/* Navigation */
+.site-nav {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.5rem; padding: 1rem 1.5rem;
+    margin: 0 auto 2rem; max-width: 1100px;
+}
+.site-nav .nav-link {
+    display: inline-block; padding: 0.5em 1em;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;
+    text-decoration: none; color: var(--fg); background: var(--card-bg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+    cursor: pointer;
+}
+.site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+.site-nav .nav-link.active:hover { transform: none; box-shadow: 3px 3px 0px var(--fg); }
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+/* Hero */
+.hero {
+    background: var(--ie-navy);
+    color: var(--card-bg);
+    border: 4px solid var(--fg);
+    box-shadow: 8px 8px 0px var(--fg);
+    padding: 3rem 2.5rem; margin-bottom: 3rem; text-align: center;
+}
+.hero h1 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900; font-size: 2.2rem;
+    margin-bottom: 0.5rem; line-height: 1.3;
+}
+.hero .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.3rem; }
+.hero .chapter-count {
+    display: inline-block; background: var(--ie-orange); color: var(--fg);
+    font-weight: 800; font-size: 0.75rem; padding: 0.3em 1.2em;
+    border: 2px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* TOC */
+.toc-section { max-width: 900px; margin: 0 auto 3rem; }
+.toc-section h2 {
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1.4rem; margin-bottom: 1rem;
+}
+.toc-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem;
+}
+.toc-card {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.7rem 1rem; text-decoration: none; color: var(--fg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    font-weight: 700; font-size: 0.85rem; transition: transform 0.12s, box-shadow 0.12s;
+}
+.toc-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.toc-num {
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1.5rem; min-width: 42px; text-align: center;
+}
+
+/* Chapter */
+.chapter {
+    background: var(--card-bg);
+    border: 3px solid var(--fg);
+    box-shadow: 5px 5px 0px var(--fg);
+    padding: 2rem 2.2rem; margin-bottom: 2.5rem;
+}
+.chapter h1 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900; font-size: 1.6rem;
+    margin-bottom: 1.2rem; padding-bottom: 0.4em;
+    border-bottom: 3px solid var(--fg); display: inline-block;
+}
+.chapter h2 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 800; font-size: 1.15rem;
+    margin: 1.8em 0 0.6em; color: var(--fg);
+}
+.chapter h3 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    margin: 1.5em 0 0.5em;
+}
+.chapter p { margin-bottom: 0.9em; }
+.chapter ul, .chapter ol { margin: 0.5em 0 1em 1.5em; }
+.chapter li { margin-bottom: 0.4em; }
+.chapter strong { color: var(--ie-navy); }
+.chapter em { color: var(--ie-orange); font-style: normal; font-weight: 700; }
+
+/* Info card */
+.info-card {
+    background: #FDFCF7; border: 3px solid var(--fg);
+    box-shadow: 4px 4px 0px var(--fg); padding: 1.2rem 1.5rem;
+    margin: 1.5em 0;
+}
+.info-card h3 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 800; font-size: 0.95rem; margin: 0 0 0.5em;
+}
+
+/* Compare */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5em 0; }
+.compare-box { padding: 1.2rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.compare-box.bad { background: #FFF0F0; border-left: 6px solid var(--red); }
+.compare-box.good { background: #F0FFF4; border-left: 6px solid var(--green); }
+.compare-box h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.9rem; margin-bottom: 0.5em; }
+
+/* Flow */
+.flow-steps {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    margin: 1.5em 0; justify-content: center; font-size: 0.85rem;
+}
+.flow-step {
+    padding: 0.6em 1em; border: 3px solid var(--fg);
+    box-shadow: 3px 3px 0px var(--fg); font-weight: 700;
+    background: var(--card-bg);
+}
+.flow-arrow { font-size: 1.5rem; font-weight: 900; }
+
+/* Stats */
+.stat-row { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5em 0; }
+.stat-box {
+    flex: 1; min-width: 140px; padding: 1rem; text-align: center;
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+}
+.stat-box .num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.8rem; }
+.stat-box .label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+/* Highlight */
+.highlight {
+    background: #FFF8E1; border: 3px solid var(--ie-orange);
+    padding: 1.2rem 1.5rem; margin: 1.5em 0;
+    box-shadow: 4px 4px 0px var(--ie-orange);
+}
+
+/* Table */
+.kw-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.85rem; }
+.kw-table th {
+    background: var(--fg); color: var(--yellow); padding: 0.7em 1em;
+    font-weight: 800; text-align: left; border: 2px solid var(--fg);
+}
+.kw-table td { padding: 0.6em 1em; border: 2px solid var(--fg); }
+.kw-table tr:nth-child(even) { background: #FDFCF7; }
+.kw-table tr:nth-child(odd) { background: var(--card-bg); }
+
+/* List with steps */
+.step-list { list-style: none; margin-left: 0; }
+.step-list li {
+    counter-increment: step; padding: 1rem 1rem 1rem 4rem;
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    margin-bottom: 1rem; position: relative; background: var(--card-bg);
+}
+.step-list li::before {
+    content: counter(step);
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1.4rem; position: absolute; left: 1rem; top: 0.9rem;
+    background: var(--fg); color: var(--yellow); width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--fg);
+}
+
+/* Layers diagram */
+.layer-diagram { margin: 1.5em 0; }
+.layer-box {
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    padding: 1rem; margin-bottom: 0.5rem; text-align: center;
+    transition: transform 0.15s;
+}
+.layer-box:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.layer-box h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; margin-bottom: 0.2em; }
+.layer-box p { margin: 0; font-size: 0.85rem; }
+
+/* Roadmap phases */
+.roadmap { margin: 1.5em 0; }
+.roadmap-phase {
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    padding: 1.2rem; margin-bottom: 1rem;
+}
+.roadmap-phase h3 {
+    font-family: 'Red Hat Display', sans-serif; font-weight: 900;
+    font-size: 1rem; margin: 0 0 0.5em;
+}
+.roadmap-phase .timeline {
+    font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+    display: inline-block; padding: 0.2em 0.8em; background: var(--fg);
+    color: var(--yellow); margin-bottom: 0.8em;
+}
+
+/* Department grid */
+.dept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5em 0; }
+.dept-card {
+    padding: 1rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+}
+.dept-card h4 {
+    font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.9rem;
+    margin-bottom: 0.3em;
+}
+.dept-card .ie-fit { font-size: 0.75rem; font-weight: 700; margin-top: 0.5em; padding: 0.2em 0.5em; display: inline-block; border: 2px solid var(--fg); }
+
+/* Back to top */
+.back-top {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--yellow); border: 3px solid var(--fg);
+    box-shadow: 3px 3px 0px var(--fg); padding: 0.5em 0.8em;
+    font-weight: 900; cursor: pointer; text-decoration: none; color: var(--fg);
+    font-size: 0.9rem; transition: transform 0.12s, box-shadow 0.12s;
+}
+.back-top:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero { padding: 2rem 1.2rem; }
+    .hero h1 { font-size: 1.4rem; }
+    .hero .subtitle { font-size: 0.9rem; }
+    .chapter { padding: 1.2rem 1rem; }
+    .chapter h1 { font-size: 1.2rem; }
+    .chapter h2 { font-size: 1rem; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .compare-grid, .dept-grid { grid-template-columns: 1fr; }
+    .flow-steps { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .site-nav { gap: 0.3rem; padding: 0.6rem; }
+    .site-nav .nav-link { font-size: 0.62rem; padding: 0.4em 0.6em; border-width: 2px; }
+    .stat-row { flex-direction: column; }
+    .kw-table { font-size: 0.7rem; }
+    .kw-table th, .kw-table td { padding: 0.4em 0.5em; }
+    body { font-size: 10pt; }
+}
+@media (max-width: 480px) {
+    .hero h1 { font-size: 1.2rem; }
+    .chapter { padding: 1rem 0.8rem; }
+    body { font-size: 9.5pt; }
+}
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="index.html" class="nav-link">🏠 Guide</a>
+    <a href="extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+    <a href="extras/quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    <a href="seo-guide.html" class="nav-link">🔍 SEO Playbook</a>
+    <a href="teknik-industri.html" class="nav-link active">🏭 Teknik Industri</a>
+</nav>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Catatan Teknik Industri:<br>Dari Kampus ke Dunia Kerja</h1>
+    <p class="subtitle">Lo lulus TI. Tapi nggak ada yang ngajarin gimana dunia kerja sebenernya berjalan.</p>
+    <p class="subtitle">Ini catatan yang seharusnya lo dapet sebelum wisuda.</p>
+    <span class="chapter-count">9 Chapter · Storytelling · Bahasa Lo/Gue</span>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-section">
+    <h2>📚 Daftar Isi</h2>
+    <div class="toc-grid">
+        <a href="#00-prologue" class="toc-card" style="background: var(--yellow);">
+            <span class="toc-num">00</span> Prolog: Lo Lulus TI. Terus Ngapain?
+        </a>
+        <a href="#01-why-work" class="toc-card" style="background: var(--red); color: #fff;">
+            <span class="toc-num">01</span> Kenapa Ada yang Namanya "Kerja"?
+        </a>
+        <a href="#02-layers" class="toc-card" style="background: var(--blue); color: #fff;">
+            <span class="toc-num">02</span> Lapisan Industri — The Big Picture
+        </a>
+        <a href="#03-business" class="toc-card" style="background: var(--green);">
+            <span class="toc-num">03</span> Gimana Perusahaan Bekerja?
+        </a>
+        <a href="#04-orgstructure" class="toc-card" style="background: var(--purple); color: #fff;">
+            <span class="toc-num">04</span> Struktur Organisasi — Peta Kekuasaan
+        </a>
+        <a href="#05-money" class="toc-card" style="background: var(--orange);">
+            <span class="toc-num">05</span> Uang di Perusahaan
+        </a>
+        <a href="#06-ie-role" class="toc-card" style="background: var(--ie-teal); color: #fff;">
+            <span class="toc-num">06</span> Peran Teknik Industri Sebenarnya
+        </a>
+        <a href="#07-employer" class="toc-card" style="background: var(--pink);">
+            <span class="toc-num">07</span> Yang Employer Cari dari Lo
+        </a>
+        <a href="#08-career" class="toc-card" style="background: var(--ie-navy); color: var(--ie-orange);">
+            <span class="toc-num">08</span> Peta Karir Teknik Industri
+        </a>
+        <a href="#09-action" class="toc-card" style="background: var(--fg); color: var(--yellow);">
+            <span class="toc-num">09</span> Action Plan — Mulai Minggu Ini
+        </a>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 00: PROLOGUE -->
+<!-- ============================================================ -->
+<section id="00-prologue" class="chapter" style="border-left: 8px solid var(--yellow);">
+<h1>00. Prolog: Lo Lulus TI. Terus Ngapain?</h1>
+
+<p>Raka baru aja wisuda. Teknik Industri, IPK 3.4, kampus negeri di Jawa.</p>
+
+<p>Selama 4 tahun dia belajar: statistika industri, riset operasi, ergonomi, supply chain, pemrograman linier, simulasi sistem, makro ergonomi, PPIC... the whole package. Dia bisa ngerjain simplex method pake tabel. Dia bisa bikin peta kendali Shewhart. Dia hafal 7 waste-nya Toyota Production System.</p>
+
+<p>Tapi pas ngelamar kerja, dia blank.</p>
+
+<div class="info-card">
+    <h3>🤔 Pertanyaan yang Muncul di Kepala Raka</h3>
+    <p>"Gue ngelamar jadi apa?"<br>
+    "Ini perusahaan manufaktur... ngapain aja sih sebenernya?"<br>
+    "Supply chain itu departemen apa? Gue masuknya di mana?"<br>
+    "Kenapa perusahaan butuh tenaga kerja? Kenapa nggak robot semua?"<br>
+    "Gaji pertama gue berapa? Itu reasonable nggak?"<br>
+    "Apa bedanya kerja di FMCG, otomotif, sama konsultan?"</p>
+</div>
+
+<p>Dan yang paling nyebelin: <strong>nggak ada satu pun mata kuliah yang ngejawab pertanyaan-pertanyaan itu.</strong></p>
+
+<p>Kampus ngajarin lo cara ngitung. Bukan cara <em>ngerti</em>.</p>
+
+<p>Raka akhirnya curhat ke Mas Adit — senior TI yang sekarang udah jadi Plant Manager di perusahaan FMCG. 8 tahun pengalaman, udah lewatin 3 industri berbeda. Waktu Raka tanya, Mas Adit ketawa.</p>
+
+<p>"Santai, Rak. Gue juga dulu sama persis kayak lo. Nih gue jelasin dari nol. Bukan textbook. Tapi gimana dunia kerja beneran berjalan."</p>
+
+<p>Ini catatan dari obrolan itu. Buat Raka. Dan buat lo.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- 01: WHY WORK -->
+<!-- ============================================================ -->
+<section id="01-why-work" class="chapter" style="border-left: 8px solid var(--red);">
+<h1>01. Kenapa Ada yang Namanya "Kerja"?</h1>
+
+<p>Sebelum lo ngerti peran lo sebagai Industrial Engineer, lo harus ngerti dulu: <strong>kenapa sih perusahaan ada? Kenapa orang kerja? Kenapa ada uang?</strong></p>
+
+<p>Jawabannya simpel: <strong>karena manusia nggak bisa ngelakuin semuanya sendiri.</strong></p>
+
+<h2>Bayangin Lo Hidup di Zaman Nggak Ada Kerjaan</h2>
+
+<p>Lo pengen makan nasi goreng. Lo harus:</p>
+<ul>
+    <li>Nanem padi (6 bulan)</li>
+    <li>Panen, giling jadi beras</li>
+    <li>Cari ayam, sembelih, potong</li>
+    <li>Nanem bawang, cabai, sayur</li>
+    <li>Bikin kecap (fermentasi kedelai 3 bulan)</li>
+    <li>Bikin kompor, wajan, spatula</li>
+</ul>
+
+<p>Lo bakal kelaparan sebelum makan.</p>
+
+<p>Jadi manusia pintar-pintar: <strong>"Lo fokus nanem padi aja. Gue fokus masak. Dia fokus bikin wajan."</strong> Ini namanya <strong>spesialisasi</strong>. Ini fondasi peradaban modern.</p>
+
+<h2>Dari Spesialisasi ke Uang</h2>
+
+<p>Problemnya: gimana caranya petani dapet wajan dari pandai besi? Barter? "Gue kasih 10 kg beras, lo kasih 1 wajan." Ribet. Butuh coincidence of wants (kedua pihak harus saling butuh di waktu yang sama).</p>
+
+<p>Makanya manusia bikin <strong>uang</strong>. Uang itu cuma perantara. Lo kerja → dapet uang → tuker sama apa yang lo butuhin.</p>
+
+<div class="highlight">
+    <strong>Kesimpulan fundamental:</strong><br>
+    Uang = bukti bahwa lo udah ngasih value ke orang lain.<br>
+    Lo nggak "minta" gaji. Lo <em>tuker</em> kemampuan lo dengan uang perusahaan.<br>
+    Semakin langka dan berharga kemampuan lo → semakin gede value yang lo tuker → semakin gede gaji lo.
+</div>
+
+<h2>Dari Spesialisasi ke Perusahaan</h2>
+
+<p>Oke, tiap orang spesialis. Tapi gimana caranya 500 orang spesialis yang beda-beda skill-nya — engineer, akuntan, sales, operator mesin, supir forklift — kerja bareng untuk bikin SATU produk?</p>
+
+<p>Itulah kenapa <strong>perusahaan</strong> ada.</p>
+
+<div class="info-card">
+    <h3>🏢 Perusahaan = Mesin Koordinasi</h3>
+    <p>Perusahaan adalah wadah yang:</p>
+    <ul>
+        <li><strong>Ngumpulin</strong> orang-orang dengan skill berbeda</li>
+        <li><strong>Ngatur</strong> mereka supaya gerak ke arah yang sama</li>
+        <li><strong>Ngebagi</strong> hasil kerja mereka dalam bentuk gaji</li>
+        <li><strong>Ngangkut</strong> semua kerumitan koordinasi — lo tinggal fokus di satu peran</li>
+    </ul>
+    <p>Perusahaan ADA karena <strong>lebih murah dan efisien</strong> ngurusin koordinasi internal daripada lo transaksi sendiri-sendiri di pasar terbuka. Ini konsep dari Ronald Coase, Nobel Ekonomi 1991 — "The Nature of the Firm."</p>
+</div>
+
+<h2>Kenapa Perusahaan Mau Bayar Lo?</h2>
+
+<p>Simpel: <strong>karena lo ngasih value yang lebih gede dari gaji lo.</strong></p>
+
+<p>Perusahaan bayar lo Rp7 juta/bulan. Tapi output lo — efisiensi yang lo hasilin, cost saving yang lo temuin, proses yang lo perbaikin — harus lebih dari Rp7 juta. Kalau nggak, perusahaan rugi. Kalau rugi terus, perusahaan bangkrut. Kalau bangkrut, lo kehilangan kerjaan.</p>
+
+<p>Ini kenapa lo nggak boleh cuma "ngerjain tugas." Lo harus ngerti <strong>gimana value lo nyambung ke uang perusahaan.</strong></p>
+
+<div class="highlight">
+    <strong>💡 Realita yang nggak diajarin di kampus:</strong><br>
+    Lo bukan dibayar buat "pinter." Lo dibayar buat <em>ngurangin biaya</em> atau <em>naikin pendapatan</em> perusahaan.<br>
+    Industrial Engineer itu literally didesain buat dua hal itu. Itu kenapa lo valuable.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 02: LAYERS -->
+<!-- ============================================================ -->
+<section id="02-layers" class="chapter" style="border-left: 8px solid var(--blue);">
+<h1>02. Lapisan Industri — The Big Picture</h1>
+
+<p>Sebelum lo milih perusahaan mana yang lo lamar, lo harus ngerti dulu: <strong>ekonomi itu berlapis-lapis.</strong> Setiap lapisan punya karakter beda. Butuh IE dengan skill beda. Bayar beda.</p>
+
+<div class="layer-diagram">
+    <div class="layer-box" style="background: #E8F5E9; border-color: var(--green);">
+        <h4 style="color: var(--green);">🌿 LAPISAN PRIMER</h4>
+        <p><strong>Ngambil dari alam.</strong> Tambang, pertanian, perikanan, kehutanan, migas.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.3em;">Contoh: Freeport (tambang emas), Astra Agro (sawit), Pertamina (migas)</p>
+    </div>
+
+    <div class="layer-box" style="background: #E3F2FD; border-color: var(--blue);">
+        <h4 style="color: var(--blue);">🏭 LAPISAN SEKUNDER</h4>
+        <p><strong>Ngolah bahan mentah jadi barang jadi.</strong> Manufaktur, konstruksi, utilitas.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.3em;">Contoh: Toyota (otomotif), Indofood (FMCG), Unilever (consumer goods), Semen Indonesia</p>
+    </div>
+
+    <div class="layer-box" style="background: #FFF3E0; border-color: var(--orange);">
+        <h4 style="color: var(--orange);">🛎️ LAPISAN TERSIER</h4>
+        <p><strong>Ngasih jasa, bukan barang.</strong> Bank, retail, transportasi, logistik, rumah sakit, konsultan.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.3em;">Contoh: Gojek, Shopee (logistik), Bank Mandiri, McKinsey (konsultan)</p>
+    </div>
+
+    <div class="layer-box" style="background: #F3E5F5; border-color: var(--purple);">
+        <h4 style="color: var(--purple);">🧠 LAPISAN KUARTENER</h4>
+        <p><strong>Ngolah informasi dan pengetahuan.</strong> IT, R&amp;D, data analytics, fintech, pendidikan tinggi.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.3em;">Contoh: Traveloka, Tokopedia, Ruangguru, GoTo Financial</p>
+    </div>
+</div>
+
+<h2>Di Mana Industrial Engineer Berada?</h2>
+
+<div class="stat-row">
+    <div class="stat-box" style="background: #E3F2FD;">
+        <div class="num" style="color: var(--blue);">60-70%</div>
+        <div class="label">IE di SEKTOR SEKUNDER<br>Manufaktur — home base tradisional IE</div>
+    </div>
+    <div class="stat-box" style="background: #FFF3E0;">
+        <div class="num" style="color: var(--orange);">20-25%</div>
+        <div class="label">IE di SEKTOR TERSIER<br>Konsultan, logistik, bank (process improvement)</div>
+    </div>
+    <div class="stat-box" style="background: #F3E5F5;">
+        <div class="num" style="color: var(--purple);">5-10%</div>
+        <div class="label">IE di KUARTENER<br>Tech, data, supply chain software</div>
+    </div>
+    <div class="stat-box" style="background: #E8F5E9;">
+        <div class="num" style="color: var(--green);">5%</div>
+        <div class="label">IE di PRIMER<br>Mining, oil &amp; gas — gaji gede, lokasi remote</div>
+    </div>
+</div>
+
+<div class="info-card">
+    <h3>🔑 Insight Penting</h3>
+    <p>IE bukan cuma buat pabrik. <strong>IE = ilmu optimasi sistem.</strong> Selama ada sistem yang bisa di-optimasi (proses, orang, mesin, uang, data), di situ ada kerjaan IE.</p>
+    <p>Konsultan manajemen (McKinsey, BCG) suka IE grads karena lo diajarin <em>systems thinking</em>. Bank suka IE karena lo ngerti process improvement (Lean Six Sigma di back office). E-commerce suka IE karena lo ngerti supply chain dan logistik.</p>
+    <p>Jangan nge-box diri lo cuma ke pabrik.</p>
+</div>
+
+<h2>Supply Chain: Yang Nyambungin Semua Lapisan</h2>
+
+<p>Coba lo liat perjalanan satu botol sampo:</p>
+
+<div class="flow-steps">
+    <div class="flow-step" style="background: var(--green);">🌿 Primer<br>Minyak sawit,<br>bahan kimia</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--blue); color: #fff;">🏭 Sekunder<br>Pabrik Unilever<br>produksi sampo</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--orange);">🚛 Tersier<br>Distributor,<br>truk logistik</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--red); color: #fff;">🏪 Tersier<br>Supermarket,<br>warung</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--fg); color: var(--yellow);">🙋‍♂️ Konsumen<br>Lo beli<br>di Alfamart</div>
+</div>
+
+<p>Supply chain = <strong>rantai yang nyambungin semua lapisan industri.</strong> Sebagai IE, lo bisa kerja di titik MANA PUN di rantai ini. Pabrik (produksi). Distributor (logistik). Retail (inventory). Atau perusahaan yang bikin SOFTWARE buat ngatur rantai ini (SAP, Oracle).</p>
+
+<div class="highlight">
+    <strong>🧠 Mindset shift:</strong><br>
+    Jangan mikir "gue kerja di perusahaan X." Mikir: <strong>"gue ada di titik mana di supply chain ini?"</strong><br>
+    Posisi lo di supply chain nentuin: masalah apa yang lo hadepin, skills apa yang lo butuhin, dan value apa yang lo ciptain.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 03: BUSINESS PROCESS -->
+<!-- ============================================================ -->
+<section id="03-business" class="chapter" style="border-left: 8px solid var(--green);">
+<h1>03. Gimana Perusahaan Bekerja? (Business Process)</h1>
+
+<p>Semua perusahaan — dari Unilever sampe bengkel las pinggir jalan — punya pola yang sama. Ini fondasi yang lo harus ngerti sebelum lo ngerti peran lo.</p>
+
+<h2>The Universal Business Process</h2>
+
+<div class="flow-steps">
+    <div class="flow-step" style="background: var(--yellow);">📥 INPUT<br>Bahan baku<br>Tenaga kerja<br>Informasi</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--ie-orange);">⚙️ PROSES<br>Transformasi<br>Manufaktur<br>Perakitan</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--green);">📤 OUTPUT<br>Produk jadi<br>Jasa<br>Value</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--blue); color: #fff;">💰 FEEDBACK<br>Uang balik<br>Data penjualan<br>Komplain</div>
+    <span class="flow-arrow" style="font-size:1rem;">⟲</span>
+</div>
+
+<p>Ini disebut <strong>Input-Process-Output Model.</strong> Lo udah belajar ini di kuliah. Tapi di dunia nyata, begini aplikasinya:</p>
+
+<h2>Contoh: Pabrik Roti (Simpel Banget)</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Komponen</th><th>Di Pabrik Roti</th><th>Pertanyaan IE</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>INPUT</strong></td><td>Tepung, gula, telur, pekerja, listrik, resep</td><td>Berapa banyak tepung harus distok? Kapan harus beli lagi?</td></tr>
+        <tr><td><strong>PROSES</strong></td><td>Campur adonan → fermentasi → panggang → packing</td><td>Bottleneck di mana? Kenapa oven nunggu adonan?</td></tr>
+        <tr><td><strong>OUTPUT</strong></td><td>Roti dalam plastik, siap kirim</td><td>Berapa % roti yang cacat? Kapan target produksi nggak tercapai?</td></tr>
+        <tr><td><strong>FEEDBACK</strong></td><td>Uang dari toko, retur roti basi, komplain</td><td>Kenapa retur naik 5% bulan ini? Distribusi telat?</td></tr>
+    </tbody>
+</table>
+
+<p>Input-Process-Output model ini <strong>universal.</strong> Berlaku buat pabrik mie instan, hotel, rumah sakit, software house, gojek. Yang beda cuma "bahan baku"-nya. Di rumah sakit: input = pasien, proses = diagnosa + treatment, output = pasien sembuh.</p>
+
+<h2>Departemen-Departemen Kunci</h2>
+
+<p>Supaya IPO model di atas berjalan, perusahaan butuh departemen spesialis:</p>
+
+<div class="dept-grid">
+    <div class="dept-card" style="background: #FFF8E1;">
+        <h4>📦 Supply Chain / Procurement</h4>
+        <p>Ngestok bahan baku. Beli dari supplier. Negosiasi harga. Atur gudang.</p>
+        <span class="ie-fit" style="background: var(--green);">IE: ⭐⭐⭐⭐⭐ Home turf</span>
+    </div>
+    <div class="dept-card" style="background: #F0FFF4;">
+        <h4>🏭 Production / Operations</h4>
+        <p>Ngubah bahan jadi produk. Atur mesin, line, shift, output.</p>
+        <span class="ie-fit" style="background: var(--green);">IE: ⭐⭐⭐⭐⭐ Home turf</span>
+    </div>
+    <div class="dept-card" style="background: #FFF0F0;">
+        <h4>💰 Finance / Accounting</h4>
+        <p>Ngatur uang. Budget, cost, revenue. Gaji. Laporan keuangan.</p>
+        <span class="ie-fit" style="background: var(--yellow);">IE: ⭐⭐⭐ Cost analysis</span>
+    </div>
+    <div class="dept-card" style="background: #F3E5F5;">
+        <h4>📣 Sales / Marketing</h4>
+        <p>Ngabisin stok. Cari customer. Jaga hubungan sama toko/distributor.</p>
+        <span class="ie-fit" style="background: var(--yellow);">IE: ⭐⭐ Forecasting</span>
+    </div>
+    <div class="dept-card" style="background: #E3F2FD;">
+        <h4>👥 HR / People</h4>
+        <p>Nyari orang. Training. Gaji. Kontrak. Memecat (ugh).</p>
+        <span class="ie-fit" style="background: #ccc;">IE: ⭐ Kadang workforce planning</span>
+    </div>
+    <div class="dept-card" style="background: #FFF8E1;">
+        <h4>✅ Quality</h4>
+        <p>Memastikan produk nggak cacat. Standardisasi. Sertifikasi.</p>
+        <span class="ie-fit" style="background: var(--green);">IE: ⭐⭐⭐⭐⭐ Six Sigma, SPC</span>
+    </div>
+</div>
+
+<div class="highlight">
+    <strong>🎯 Di mana IE paling kuat?</strong><br>
+    <strong>Supply Chain, Production, Quality.</strong> Ini tiga departemen yang literally pake tools yang lo pelajarin di kampus: forecasting, inventory management, line balancing, statistical process control, Lean, Six Sigma.<br><br>
+    Tapi IE yang bagus juga bisa di Finance (cost reduction analytics) dan bahkan di Sales (sales &amp; operations planning — S&amp;OP). Jangan batasin diri lo.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 04: ORG STRUCTURE -->
+<!-- ============================================================ -->
+<section id="04-orgstructure" class="chapter" style="border-left: 8px solid var(--purple);">
+<h1>04. Struktur Organisasi — Peta Kekuasaan</h1>
+
+<p>Lo masuk perusahaan. Lo liat ada CEO, VP, Director, Manager, Supervisor, Staff. Siapa ngapain? Siapa yang berkuasa? Lo ngelapor ke siapa?</p>
+
+<h2>Kenapa Ada Hierarki?</h2>
+
+<p>Balik lagi ke masalah koordinasi. 500 orang nggak bisa bareng-bareng mutusin semuanya. Ada yang fokus mutusin arah strategis (CEO). Ada yang fokus eksekusi harian (operator). Ada yang di tengah nerjemahin strategi jadi taktik (manager).</p>
+
+<div class="layer-diagram">
+    <div class="layer-box" style="background: var(--ie-navy); color: #fff; border-color: var(--ie-navy);">
+        <h4>💼 STRATEGIC (C-Level)</h4>
+        <p><strong>CEO, CFO, COO.</strong> Mutusin: "Kita mau ekspansi ke pasar A atau efisiensi di pasar B?" Jangka waktu: 3-5 tahun ke depan.</p>
+    </div>
+    <div class="layer-box" style="background: #E3F2FD; border-color: var(--blue);">
+        <h4>📊 TACTICAL (VP, Director, Senior Manager)</h4>
+        <p><strong>Nerjemahin strategi ke rencana.</strong> "Kalau mau ekspansi, kita butuh pabrik baru di Karawang. Budget Rp200M. Timeline 18 bulan."</p>
+    </div>
+    <div class="layer-box" style="background: #FFF3E0; border-color: var(--orange);">
+        <h4>🛠️ OPERATIONAL (Manager, Supervisor, Staff)</h4>
+        <p><strong>Eksekusi harian.</strong> "Hari ini line 3 harus produksi 2.000 unit. Tadi ada downtime 20 menit. Kenapa?"</p>
+    </div>
+</div>
+
+<p><strong>Sebagai fresh grad IE, lo masuk di level OPERATIONAL.</strong> Lo nggak bakal disuruh bikin strategi 5 tahun. Lo bakal disuruh: "Tolong analisa kenapa output line 3 turun 8% minggu ini." Dan itu bagus — lo belajar dari bawah.</p>
+
+<h2>Yang Perlu Lo Tau Soal Office Politics</h2>
+
+<div class="info-card">
+    <h3>⚠️ Realita yang nggak diajarin di kampus</h3>
+    <p><strong>1. Departemen itu suka berantem.</strong> Production pengen output tinggi (biar target tercapai). Quality pengen output sempurna (biar nggak ada cacat). Dua-duanya valid. Dua-duanya konflik. IE sering jadi penengah — "Gimana caranya output tinggi TAPI kualitas tetep bagus?"</p>
+    <p><strong>2. Budget adalah senjata.</strong> Departemen dengan budget gede = power. Lo mau improve sesuatu? Pastiin lo ngerti siapa yang megang budget-nya.</p>
+    <p><strong>3. Manager lo adalah orang paling penting di karir lo.</strong> Bukan CEO. Bukan HR. Manager langsung lo. Dia yang nentuin lo dapet proyek bagus atau nggak. Dia yang ngasih penilaian kinerja. Dia yang bisa naikin atau ngehambat karir lo. Jagain hubungan ini.</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 05: MONEY -->
+<!-- ============================================================ -->
+<section id="05-money" class="chapter" style="border-left: 8px solid var(--orange);">
+<h1>05. Uang di Perusahaan — Dari Mana dan Ke Mana?</h1>
+
+<p>Ini bab yang paling underrated. Lo nggak mungkin ngerti kenapa efisiensi penting (core job IE) kalau lo nggak ngerti gimana uang mengalir di perusahaan.</p>
+
+<h2>Dua Cara Perusahaan Dapet Uang</h2>
+
+<div class="compare-grid">
+    <div class="compare-box good">
+        <h4>📈 REVENUE (Pendapatan)</h4>
+        <p><strong>Dari jualan produk/jasa.</strong></p>
+        <p>Revenue = Harga × Jumlah terjual</p>
+        <p>Revenue naik kalau: harga naik, atau jualan lebih banyak, atau keduanya.</p>
+        <p>Sales &amp; Marketing yang tanggung jawab di sini.</p>
+    </div>
+    <div class="compare-box bad">
+        <h4>📉 COST (Biaya)</h4>
+        <p><strong>Semua yang keluar buat bikin produk.</strong></p>
+        <p>Bahan baku, gaji, listrik, sewa pabrik, maintenance mesin, transportasi.</p>
+        <p>Production &amp; Supply Chain yang tanggung jawab di sini. <strong>DAN IE.</strong></p>
+    </div>
+</div>
+
+<h2>Rumus Paling Penting dalam Bisnis</h2>
+
+<div class="highlight">
+    <strong>💰 PROFIT = REVENUE — COST</strong><br><br>
+    Perusahaan bisa naikin profit lewat DUA jalan:<br>
+    1. Naikin revenue (jual lebih banyak, atau naikin harga) — susah, kompetitif<br>
+    2. <strong>Ngurangin cost</strong> (bikin lebih efisien) — INI KERJAAN LO<br><br>
+    Setiap rupiah yang lo hemat dari cost = langsung masuk ke profit. Revenue butuh effort marketing, sales, distribusi. Cost saving? Lo improve satu proses → impact langsung ke bottom line.
+</div>
+
+<h2>Fixed Cost vs Variable Cost</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Jenis</th><th>Definisi</th><th>Contoh</th><th>Kenapa IE harus peduli</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Fixed Cost</strong></td>
+            <td>Tetap, nggak peduli produksi berapa</td>
+            <td>Sewa pabrik, gaji manajer, asuransi</td>
+            <td>Lo naikin output → fixed cost per unit turun. Ini namanya <strong>economies of scale</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Variable Cost</strong></td>
+            <td>Naik-turun sesuai volume</td>
+            <td>Bahan baku, listrik mesin, lembur</td>
+            <td>Lo improve efisiensi → variable cost per unit turun → profit margin naik</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Contoh Konkrit: Kenapa Improvement 5% Itu Gede</h2>
+
+<div class="info-card">
+    <h3>📊 Pabrik Mie Instan — Angka Simpel</h3>
+    <p>Revenue: Rp500M/bulan<br>Cost: Rp450M/bulan<br><strong>Profit: Rp50M/bulan</strong></p>
+    <p>Skenario: Lo sebagai IE junior nemu cara ngurangin waste bahan baku 3%. Cost turun Rp13.5M/bulan.</p>
+    <p><strong>Profit baru: Rp63.5M/bulan.</strong> Naik 27%. Dari lo doang.</p>
+    <p>Manager lo liat angka itu. Tebak siapa yang cepet dipromosiin?</p>
+</div>
+
+<div class="highlight">
+    <strong>💡 Ini kenapa lo harus bisa "translate" kerjaan IE lo ke bahasa uang:</strong><br>
+    "Gue ngurangin cycle time 12 detik" → Manager: "Terus?"<br>
+    "Gue ngurangin cycle time 12 detik → output naik 200 unit/hari → revenue tambahan Rp180 juta/tahun" → Manager: "Bagus. Presentasiin ke direksi."<br><br>
+    <strong>Selalu kasih impact dalam RUPIAH. Bukan dalam technical metrics.</strong>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 06: IE ROLE -->
+<!-- ============================================================ -->
+<section id="06-ie-role" class="chapter" style="border-left: 8px solid var(--ie-teal);">
+<h1>06. Peran Teknik Industri Sebenarnya</h1>
+
+<p>Sekarang lo ngerti kenapa perusahaan ada, lapisan industri, business process, struktur organisasi, dan uang. Pertanyaan besarnya: <strong>lo ngapain di semua ini?</strong></p>
+
+<h2>IE Bukan Tentang Pabrik. IE Tentang SISTEM.</h2>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Yang Orang Kira</h4>
+        <p>"Teknik Industri = bikin pabrik efisien."<br>"IE = ngitung waktu baku pake stopwatch."<br>"IE cuma dibutuhin di manufaktur."</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Yang Sebenarnya</h4>
+        <p>"IE = ilmu merancang, memperbaiki, dan mengoptimasi SISTEM."<br>"Sistem bisa apa aja: produksi, supply chain, logistik, rumah sakit, perbankan, software."<br>"Tools-nya dipake di semua industri."</p>
+    </div>
+</div>
+
+<h2>7 Peran Klasik IE di Perusahaan</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Peran</th><th>Apa yang Dikerjain</th><th>IE Tools</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>1. Process Improvement</strong></td>
+            <td>Bikin proses lebih cepet, lebih murah, lebih sedikit waste</td>
+            <td>Lean, Six Sigma, Kaizen, VSM</td>
+        </tr>
+        <tr>
+            <td><strong>2. Production Planning</strong></td>
+            <td>Atur: kapan produksi, berapa banyak, di line mana</td>
+            <td>Forecasting, MRP, MPS, scheduling</td>
+        </tr>
+        <tr>
+            <td><strong>3. Inventory Control</strong></td>
+            <td>Ngestok bahan baku &amp; barang jadi pas — nggak kurang, nggak kebanyakan</td>
+            <td>EOQ, ROP, safety stock, ABC analysis</td>
+        </tr>
+        <tr>
+            <td><strong>4. Quality Engineering</strong></td>
+            <td>Memastikan produk konsisten dan sesuai standar</td>
+            <td>SPC, FMEA, control chart, capability analysis</td>
+        </tr>
+        <tr>
+            <td><strong>5. Supply Chain</strong></td>
+            <td>Ngatur aliran barang dari supplier → pabrik → customer</td>
+            <td>Network optimization, logistics, demand planning</td>
+        </tr>
+        <tr>
+            <td><strong>6. Cost Analysis</strong></td>
+            <td>Ngitung berapa biaya bikin satu produk, nyari celah hemat</td>
+            <td>Activity-based costing, cost-benefit analysis</td>
+        </tr>
+        <tr>
+            <td><strong>7. Facility Planning</strong></td>
+            <td>Ngerancang layout pabrik / gudang yang optimal</td>
+            <td>SLP, material flow analysis, simulasi</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Contoh Hari-Hari IE di Dunia Nyata</h2>
+
+<p><em>"Mas Adit, lo dulu pertama kali masuk kerja ngapain aja sih?"</em></p>
+
+<p>"Hari pertama gue: disuruh ngamatin line filling selama 8 jam. Cuma ngamatin. Nggak boleh ngomong. Nggak boleh ganggu."</p>
+
+<p>"Hari ketiga: gue presentasi ke supervisor. 'Pak, di line 3, operator filling sering nunggu pallet kosong rata-rata 45 detik per siklus. Sehari ada 400 siklus. Itu 5 jam waktu nunggu per hari. Kalau kita tambahin buffer conveyor di titik X, kita bisa hemat 3 jam downtime per hari.'"</p>
+
+<p>"Bulan ketiga: gue dikasih proyek pertama — ngurangin waste kemasan 2%. Target: hemat Rp80 juta per tahun. Gue pake pareto chart, nemu 3 penyebab terbesar. Solusi: adjustment mesin + retraining operator. Hasil: waste turun 4.2%. Hemat Rp168 juta. Bos gue senyum-senyum."</p>
+
+<div class="highlight">
+    <strong>🔑 Pola yang selalu berulang di kerjaan IE:</strong><br>
+    1. <strong>Observe</strong> — liat proses beneran, bukan cuma baca laporan<br>
+    2. <strong>Measure</strong> — ngumpulin data. Jam, jumlah, frekuensi<br>
+    3. <strong>Analyze</strong> — nemu root cause (pake pareto, fishbone, 5 whys)<br>
+    4. <strong>Improve</strong> — usulin solusi. Implementasi<br>
+    5. <strong>Control</strong> — pastiin perbaikan nggak balik lagi ke kondisi awal<br><br>
+    Ini siklus <strong>DMAIC</strong> (Define-Measure-Analyze-Improve-Control). Lo bakal pake ini terus-terusan.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 07: EMPLOYER -->
+<!-- ============================================================ -->
+<section id="07-employer" class="chapter" style="border-left: 8px solid var(--pink);">
+<h1>07. Yang Employer Sebenarnya Cari dari IE Fresh Grad</h1>
+
+<p>Spoiler: <strong>mereka nggak peduli IPK lo.</strong></p>
+
+<p>Maksud gue: IPK penting buat screening awal. Di atas 3.0, lo lolos filter HR. Tapi setelah lo dipanggil interview, yang mereka nilai bukan lagi IPK.</p>
+
+<div class="info-card">
+    <h3>📋 Yang Sebenarnya Dinilai Employer (berdasarkan riset + pengalaman)</h3>
+    <ol>
+        <li><strong>Problem-solving mindset (40%)</strong> — "Kalau lo dikasih masalah yang lo nggak tau jawabannya, lo ngapain?"</li>
+        <li><strong>Kemampuan belajar (25%)</strong> — "Lo nggak akan ngerti apa-apa pas masuk. Seberapa cepet lo belajar?"</li>
+        <li><strong>Komunikasi &amp; kerjasama (20%)</strong> — "Lo bisa jelasin ide lo ke operator pabrik? Ke direksi? Dua-duanya butuh bahasa berbeda."</li>
+        <li><strong>Kemauan turun ke lapangan (10%)</strong> — "Lo mau panas-panas di pabrik, atau cuma mau di ruangan AC?"</li>
+        <li><strong>IPK &amp; nilai teknis (5%)</strong> — "Oke, lo pinter. Tapi bukan ini yang bikin kita hire."</li>
+    </ol>
+</div>
+
+<h2>Skill Gap: Apa yang Kampus Ajari vs Apa yang Kerjaan Butuhin</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Skill</th><th>Diajarin di Kampus?</th><th>Butuh di Kerjaan?</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Hitung simplex method manual</td><td>✅ Sering banget</td><td>❌ Nggak pernah. Ada Excel/Solver.</td></tr>
+        <tr><td>Gambar peta kendali manual</td><td>✅ Sering</td><td>❌ Nggak pernah. Ada Minitab/SAP.</td></tr>
+        <tr><td>Excel (basic)</td><td>⚠️ Sedikit</td><td>✅✅✅ KRITICAL. 80% kerjaan IE ada di Excel.</td></tr>
+        <tr><td>Ngobrol sama operator pabrik</td><td>❌ Nggak ada</td><td>✅✅✅ KRITICAL. Lo nggak bisa improve tanpa ngomong.</td></tr>
+        <tr><td>Presentasi ke manajemen</td><td>❌ Jarang</td><td>✅✅ Penting. Ide lo useless kalau nggak bisa lo jual.</td></tr>
+        <tr><td>Nulis email profesional</td><td>❌ Nggak ada</td><td>✅ Penting. Komunikasi tertulis = 50% kerjaan.</td></tr>
+        <tr><td>Lean / Six Sigma praktis</td><td>⚠️ Teori</td><td>✅✅ Penting. Tapi lo belajar beneran di lapangan.</td></tr>
+        <tr><td>ERP software (SAP, Oracle)</td><td>❌ Nggak ada</td><td>✅✅ Penting. Tapi bisa dipelajarin pas masuk.</td></tr>
+    </tbody>
+</table>
+
+<div class="highlight">
+    <strong>🚀 Yang bisa lo lakuin SEKARANG buat nutup gap ini:</strong><br>
+    • Kuasai Excel sampe Pivot Table, VLOOKUP, dan macro dasar. Ini minimum.<br>
+    • Belajar SQL dasar (SELECT, JOIN, WHERE). Data udah jadi bahasa kedua IE modern.<br>
+    • Latihan ngejelasin konsep rumit dalam 3 kalimat (elevator pitch).<br>
+    • Baca laporan tahunan (annual report) perusahaan. Ngerti gimana perusahaan ngomongin diri mereka sendiri.<br>
+    • Magang. Atau kalau nggak sempet — kunjungan pabrik. Lo harus pernah liat proses beneran.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 08: CAREER -->
+<!-- ============================================================ -->
+<section id="08-career" class="chapter" style="border-left: 8px solid var(--ie-navy);">
+<h1>08. Peta Karir Teknik Industri</h1>
+
+<p>Lo nggak akan jadi direktur dalam 3 tahun. Tapi lo harus tau: <strong>dari titik lo sekarang, jalan apa aja yang ada?</strong></p>
+
+<h2>3 Jalur Karir Utama IE</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Jalur</th><th>Deskripsi</th><th>Gaji Awal</th><th>Gaji 5 Tahun</th><th>Cocok Buat</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>🏭 MANUFAKTUR</strong></td>
+            <td>Production Supervisor → Production Manager → Plant Manager → Operations Director</td>
+            <td>Rp5-8M</td>
+            <td>Rp12-22M</td>
+            <td>Lo yang suka turun ke lapangan, liat mesin, interaksi sama operator</td>
+        </tr>
+        <tr>
+            <td><strong>📊 KONSULTAN</strong></td>
+            <td>Business Analyst → Consultant → Senior Consultant → Engagement Manager → Partner</td>
+            <td>Rp7-15M</td>
+            <td>Rp20-40M</td>
+            <td>Lo yang suka problem-solving cepat, variety industri, presentasi ke C-level</td>
+        </tr>
+        <tr>
+            <td><strong>🔗 SUPPLY CHAIN</strong></td>
+            <td>Supply Chain Analyst → SC Manager → Regional SC Director → VP Supply Chain</td>
+            <td>Rp6-10M</td>
+            <td>Rp15-30M</td>
+            <td>Lo yang suka big picture: aliran barang dari hulu ke hilir, data-driven</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Plus: Jalur Alternatif yang Makin Populer</h2>
+
+<div class="dept-grid">
+    <div class="dept-card" style="background: #F3E5F5;">
+        <h4>📈 Data / Analytics</h4>
+        <p>IE + SQL + Python = Supply Chain Data Analyst. Demand makin gede.</p>
+    </div>
+    <div class="dept-card" style="background: #E3F2FD;">
+        <h4>💻 Tech / Product</h4>
+        <p>IE yang ngerti software. Product Manager di startup logistik / supply chain tech.</p>
+    </div>
+    <div class="dept-card" style="background: #FFF3E0;">
+        <h4>📦 E-Commerce Ops</h4>
+        <p>Shopee, Tokopedia, Gojek butuh IE buat atur gudang, logistik, dan rider allocation.</p>
+    </div>
+    <div class="dept-card" style="background: #E8F5E9;">
+        <h4>🏗️ Project Management</h4>
+        <p>IE bisa jadi project manager. Bikin pabrik baru. Implementasi sistem ERP.</p>
+    </div>
+</div>
+
+<h2>Fase Karir yang Realistis</h2>
+
+<div class="roadmap">
+    <div class="roadmap-phase" style="border-left: 6px solid var(--yellow);">
+        <span class="timeline">0-2 Tahun</span>
+        <h3>🎓 JUNIOR / STAFF — "The Learning Years"</h3>
+        <p>Lo nyerap semuanya. Jangan banyak nuntut. Tunjukin lo cepet belajar. Kuasai proses. Bangun reputasi sebagai "anak baru yang bisa diandelin."</p>
+    </div>
+    <div class="roadmap-phase" style="border-left: 6px solid var(--green);">
+        <span class="timeline">2-5 Tahun</span>
+        <h3>📊 SENIOR / SUPERVISOR — "The Proving Years"</h3>
+        <p>Lo udah ngerti sistem. Mulai dikasih proyek. Mulai megang tim kecil. Ini saatnya lo buktiin impact dalam RUPIAH. Portfolio proyek lo di sini nentuin lompatan selanjutnya.</p>
+    </div>
+    <div class="roadmap-phase" style="border-left: 6px solid var(--blue);">
+        <span class="timeline">5-8 Tahun</span>
+        <h3>👔 MANAGER — "The Leading Years"</h3>
+        <p>Lo ngatur departemen. Lo pertanggungjawabkan budget. Lo presentasi ke direksi. Skill teknis udah jadi baseline — sekarang leadership, komunikasi, dan strategic thinking yang jadi pembeda.</p>
+    </div>
+    <div class="roadmap-phase" style="border-left: 6px solid var(--purple);">
+        <span class="timeline">8+ Tahun</span>
+        <h3>🏢 SENIOR MANAGER / DIRECTOR — "The Vision Years"</h3>
+        <p>Lo nentuin arah. Lo mikirin 3-5 tahun ke depan. Lo ngatur manager-manager di bawah lo. Di titik ini, background IE lo jadi keunggulan karena lo ngerti sistem secara holistik.</p>
+    </div>
+</div>
+
+<div class="highlight">
+    <strong>⚠️ Reality check:</strong><br>
+    • Gaji pertama lo MUNGKIN lebih kecil dari temen lo yang kerja di tech. Wajar. Manufaktur mulai lebih rendah, tapi karir-nya stabil dan lo belajar fundamentals yang solid.<br>
+    • Pindah perusahaan setiap 2-4 tahun di awal karir itu NORMAL. Bahkan disaranin — lo dapet exposure industri berbeda.<br>
+    • Jangan cuma kejar gaji di 2 tahun pertama. Kejar <strong>pengalaman dan network.</strong> Itu yang bikin lo valuable di tahun ke-5.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 09: ACTION -->
+<!-- ============================================================ -->
+<section id="09-action" class="chapter" style="border-left: 8px solid var(--fg);">
+<h1>09. Action Plan — Mulai Minggu Ini</h1>
+
+<p>Raka duduk di depan Mas Adit. Udah 3 jam ngobrol. Kepalanya penuh. Tapi satu hal yang Mas Adit tekankan:</p>
+
+<p><em>"Semua yang gue ceritain nggak ada gunanya kalau lo nggak ngapa-ngapain."</em></p>
+
+<p>Ini yang Mas Adit suruh Raka lakuin. Dan ini juga yang gue suruh lo lakuin:</p>
+
+<h2>Minggu Ini: Kenali Medan</h2>
+
+<ol class="step-list">
+    <li>
+        <strong>Buka LinkedIn Jobs.</strong> Search "Industrial Engineer", "Process Engineer", "Supply Chain", "Production Supervisor", "PPIC", "Continuous Improvement". Jangan lamar dulu. Cuma BACA. Baca 50+ job description. Perhatiin: skill apa yang diminta berulang-ulang? Industri apa yang lagi banyak hiring? Gaji range berapa?
+    </li>
+    <li>
+        <strong>Download 1 laporan tahunan.</strong> Pick satu perusahaan manufaktur (Indofood, Unilever, Astra, Mayora). Baca laporan tahunannya. Skip angka-angkanya. Baca bagian "Operational Review" atau "Management Discussion." Ini ngajarin lo <em>gimana perusahaan ngomongin diri mereka sendiri.</em>
+    </li>
+    <li>
+        <strong>Bikin "Map" lo sendiri.</strong> Di mana lo sekarang? Industri apa yang lo incar? Jalur apa: manufaktur, supply chain, atau konsultan? Skills apa yang lo punya vs yang lo butuhin? Gap-nya apa?
+    </li>
+</ol>
+
+<h2>Bulan Ini: Bangun Fondasi</h2>
+
+<ol class="step-list">
+    <li>
+        <strong>Kuasai Excel.</strong> Bukan cuma SUM dan AVERAGE. Pivot Table, VLOOKUP (atau XLOOKUP), IF bertingkat, conditional formatting. Kalau bisa macro rekaman — nilai plus. Banyak free tutorial di YouTube.
+    </li>
+    <li>
+        <strong>Belajar SQL dasar.</strong> SELECT, FROM, WHERE, JOIN, GROUP BY. Gratis di W3Schools atau SQLZoo. 2-3 hari cukup buat basic.
+    </li>
+    <li>
+        <strong>Perbaiki CV lo.</strong> Jangan tulis "Bertanggung jawab terhadap...". Tulis: "Mengurangi defect rate dari 5.2% ke 2.1% dengan implementasi sistem inspeksi sampling." ANGKA. IMPACT. HASIL.
+    </li>
+</ol>
+
+<h2>3 Bulan Pertama Kerja (Kalau Udah Dapet)</h2>
+
+<ol class="step-list">
+    <li>
+        <strong>Bulan 1: Jangan banyak ngomong. Perhatiin.</strong> Pelajarin proses. Kenalan sama semua orang dari operator sampe manager. Catat semuanya. Jangan usulin improvement dulu — lo belum ngerti konteksnya.
+    </li>
+    <li>
+        <strong>Bulan 2: Mulai tanya "kenapa?"</strong> "Kenapa step ini butuh approval 3 level?" "Kenapa line 2 output-nya lebih rendah dari line 1?" Tapi HATI-HATI: tanya dengan nada belajar, bukan menantang. "Saya masih baru, boleh tau kenapa kita pake metode ini?"
+    </li>
+    <li>
+        <strong>Bulan 3: Cari 1 quick win.</strong> Satu improvement kecil yang lo bisa deliver sendiri. Nggak perlu gede. Cukup sesuatu yang measurable. Ini bangun reputasi lo buat proyek selanjutnya.
+    </li>
+</ol>
+
+<div class="highlight">
+    <strong>📌 Pesan terakhir Mas Adit buat Raka:</strong><br><br>
+    "Rak, lo pinter. Gue tau. Tapi yang paling penting sekarang bukan seberapa pinter lo. Tapi <em>seberapa cepet lo belajar, dan seberapa rendah hati lo buat ngakuin lo belum tau apa-apa.</em>"<br><br>
+    "Jangan malu jadi orang paling bodoh di ruangan. Seminggu pertama kerja, LO MEMANG orang paling bodoh di ruangan. Dan itu wajar. Yang penting: 6 bulan kemudian lo udah bukan yang paling bodoh."<br><br>
+    "Dan satu lagi — jangan lupa inget percakapan ini. Suatu hari nanti, kalau lo udah jadi manager, bakal ada anak baru kayak lo sekarang yang duduk di depan lo. Ceritain lagi ke dia. Itu cara lo bayar hutang."
+</div>
+
+<p style="text-align: center; margin-top: 3rem; font-size: 1.1rem; font-weight: 700;">
+    — End of Catatan Teknik Industri —
+</p>
+<p style="text-align: center; color: var(--ie-orange); font-weight: 800;">
+    🏭 Sekarang lo tau medannya. Gas bergerak.
+</p>
+</section>
+
+</div>
+
+<a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+
+</body>
+</html>

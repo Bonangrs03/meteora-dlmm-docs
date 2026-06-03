@@ -52,7 +52,23 @@ body {
 }
 .site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
 .site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
-.site-nav .nav-link.active:hover { transform: none; box-shadow: 3px 3px 0px var(--fg); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+
+/* TI Sub-nav */
+.ti-subnav {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
+    padding: 0.6rem 1rem; margin: 0 auto 2rem; max-width: 900px;
+}
+.ti-subnav .ti-link {
+    display: inline-block; padding: 0.45em 1em;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.02em;
+    text-decoration: none; color: var(--fg); background: #E8ECF2;
+    border: 3px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer;
+}
+.ti-subnav .ti-link:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px var(--fg); background: var(--yellow); }
+.ti-subnav .ti-link.active { background: var(--ie-navy); color: var(--ie-orange); cursor: default; border-color: var(--ie-navy); }
 
 .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
 
@@ -284,6 +300,12 @@ body {
     <a href="extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
     <a href="seo-guide.html" class="nav-link">🔍 SEO Playbook</a>
     <a href="teknik-industri.html" class="nav-link active">🏭 Teknik Industri</a>
+</nav>
+
+<nav class="ti-subnav">
+    <a href="teknik-industri.html" class="ti-link active">📚 Panduan Utama</a>
+    <a href="teknik-industri/ppic-dari-nol.html" class="ti-link">📦 PPIC dari Nol</a>
+    <a href="teknik-industri/cv-linkedin-ie.html" class="ti-link">📄 CV & LinkedIn</a>
 </nav>
 
 <div class="container">
@@ -807,6 +829,74 @@ body {
     4. <strong>Improve</strong> — usulin solusi. Implementasi<br>
     5. <strong>Control</strong> — pastiin perbaikan nggak balik lagi ke kondisi awal<br><br>
     Ini siklus <strong>DMAIC</strong> (Define-Measure-Analyze-Improve-Control). Lo bakal pake ini terus-terusan.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 06-B: JOB TITLE REALITY -->
+<!-- ============================================================ -->
+<section class="chapter" style="border-left: 8px solid var(--red); background: #FFF5F5;">
+<h1>⚠️ Reality Check: "Industrial Engineer" Bukan Nama Lowongan</h1>
+
+<p>Ini yang <strong>nggak ada yang ngasih tau lo di kampus.</strong></p>
+
+<p>Coba lo buka LinkedIn, Jobstreet, Glints. Search "Industrial Engineer". Hasilnya? <strong>Dikit banget.</strong> Mungkin 2-3 lowongan. Lo panik. "Jurusan gue nggak ada yang nyari."</p>
+
+<p><strong>Salah.</strong> Jurusan lo dicari BANYAK. Tapi namanya BUKAN "Industrial Engineer."</p>
+
+<h2>Kenapa "Industrial Engineer" Jarang Muncul di Lowongan?</h2>
+
+<div class="info-card">
+    <h3>🏷️ Perusahaan nyari FUNGSI, bukan GELAR</h3>
+    <p>HR nulis lowongan berdasarkan apa yang dikerjain, bukan jurusan kuliahnya. Mereka butuh "orang yang ngatur produksi" → namanya "Production Planner". Mereka butuh "orang yang improve proses" → namanya "Process Engineer" atau "Continuous Improvement Specialist".</p>
+    <p>Semua itu KERJAAN Industrial Engineer. Tapi nggak ada yang namanya "lowongan Industrial Engineer."</p>
+    <p>Lo harus tau <strong>nama-nama samaran ini</strong> biar lo bisa nemu lowongan yang sebenernya buat lo.</p>
+</div>
+
+<h2>Daftar Nama Alternatif yang Wajib Lo Search</h2>
+
+<table class="kw-table">
+    <thead>
+        <tr><th>Yang Lo Search</th><th>Ini Sebenernya</th><th>Seberapa Umum?</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>PPIC</strong> / Production Planner</td><td>Production Planning &amp; Inventory Control — ngatur jadwal produksi + stok</td><td>⭐⭐⭐⭐⭐ PALING UMUM</td></tr>
+        <tr><td><strong>Production Supervisor</strong></td><td>Ngawasin line produksi harian, manage operator, capai target output</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td><strong>Process Engineer</strong></td><td>Improve proses manufaktur, ngurangin waste, naikin efisiensi</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td><strong>Supply Chain Analyst</strong> / SC Specialist</td><td>Analisa aliran barang, forecast demand, optimasi distribusi</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td><strong>Quality Engineer</strong> / QA Engineer</td><td>Jamin kualitas produk, SPC, handling komplain, ISO</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td><strong>Continuous Improvement</strong> / CI Specialist</td><td>Lean, Six Sigma, Kaizen — murni improvement projects</td><td>⭐⭐⭐</td></tr>
+        <tr><td><strong>Production Engineer</strong></td><td>Support teknis produksi, troubleshoot mesin, optimasi line</td><td>⭐⭐⭐</td></tr>
+        <tr><td><strong>Lean Specialist</strong> / Lean Coordinator</td><td>Implementasi Toyota Production System, 5S, Kaizen events</td><td>⭐⭐</td></tr>
+        <tr><td><strong>Material Planner</strong></td><td>Ngestok bahan baku, PO ke supplier, jagain inventory level</td><td>⭐⭐⭐</td></tr>
+        <tr><td><strong>Demand Planner</strong></td><td>Forecasting permintaan pasar, koordinasi sama Sales &amp; Marketing</td><td>⭐⭐⭐</td></tr>
+        <tr><td><strong>Business Process Analyst</strong></td><td>Memetakan dan improve proses bisnis (bisa di bank, asuransi, tech)</td><td>⭐⭐⭐</td></tr>
+        <tr><td><strong>Management Trainee</strong> (Operations/SC)</td><td>Program akselerasi — rotasi 1-2 tahun, langsung jadi supervisor</td><td>⭐⭐⭐⭐</td></tr>
+    </tbody>
+</table>
+
+<h2>Cara Pake Tabel Ini Buat Nyari Kerja</h2>
+
+<ol class="step-list">
+    <li>
+        <strong>Buka 3-4 platform.</strong> LinkedIn Jobs, Jobstreet, Glints, Kalibrr.
+    </li>
+    <li>
+        <strong>Search 3-4 nama sekaligus.</strong> "PPIC", "Production Supervisor", "Process Engineer", "Supply Chain". Jangan cuma satu.
+    </li>
+    <li>
+        <strong>Baca job description-nya.</strong> Kalau deskripsinya ngomongin: "improve efficiency", "reduce waste", "plan production", "inventory management", "quality control", "cost reduction" — itu kerjaan IE. Lo qualified.
+    </li>
+    <li>
+        <strong>Cek requirements.</strong> Biasanya nulis: "Bachelor degree in Industrial Engineering, Mechanical Engineering, or related field." Ini konfirmasi.
+    </li>
+</ol>
+
+<div class="highlight">
+    <strong>🚀 Pro tip:</strong><br>
+    Di LinkedIn, search pake Boolean: <strong>"Industrial Engineering" OR "Teknik Industri" OR PPIC OR "Process Engineer" OR "Production Supervisor"</strong><br><br>
+    Lo bakal nemu 50-100x lebih banyak lowongan dibanding cuma search "Industrial Engineer" doang.<br><br>
+    Dan jangan lupa: <strong>filter Fresh Graduate / Entry Level.</strong> Banyak lowongan IE yang sebenernya entry-level tapi nggak dilabelin "fresh graduate." Lo harus manual filter.
 </div>
 </section>
 

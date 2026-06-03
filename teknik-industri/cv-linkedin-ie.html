@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV & LinkedIn untuk Teknik Industri — Template, Keyword, Strategi</title>
+    <meta name="description" content="CV fresh grad Teknik Industri jangan generic. Ini panduan bikin CV ATS-friendly + LinkedIn yang bikin recruiter DM lo duluan. Lengkap dengan before-after dan keyword list.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --yellow: #FFD700; --red: #FF5E5B; --blue: #5B8CFF; --green: #3DDC84;
+    --purple: #A855F7; --orange: #FF8C42; --teal: #2DD4BF; --pink: #FF6FB5;
+    --bg: #F0EDE0; --fg: #1A1A1A; --card-bg: #FFFDF7;
+    --ie-navy: #1B2A4A; --ie-orange: #F48120;
+    --cv-green: #059669;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg); background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+    background-size: 24px 24px; color: var(--fg); line-height: 1.8;
+    font-size: 11pt; font-weight: 500;
+}
+.site-nav {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.5rem; padding: 1rem 1.5rem; margin: 0 auto 0.5rem; max-width: 1100px;
+}
+.site-nav .nav-link {
+    display: inline-block; padding: 0.5em 1em; font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;
+    text-decoration: none; color: var(--fg); background: var(--card-bg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer;
+}
+.site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+
+.ti-subnav {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
+    padding: 0.6rem 1rem; margin: 0 auto 2rem; max-width: 900px;
+}
+.ti-subnav .ti-link {
+    display: inline-block; padding: 0.45em 1em;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.02em;
+    text-decoration: none; color: var(--fg); background: #E8ECF2;
+    border: 3px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer;
+}
+.ti-subnav .ti-link:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px var(--fg); background: var(--yellow); }
+.ti-subnav .ti-link.active { background: var(--cv-green); color: #fff; cursor: default; border-color: var(--cv-green); }
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.hero {
+    background: var(--cv-green); color: var(--card-bg);
+    border: 4px solid var(--fg); box-shadow: 8px 8px 0px var(--fg);
+    padding: 3rem 2.5rem; margin-bottom: 3rem; text-align: center;
+}
+.hero h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.3; }
+.hero .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.3rem; }
+.hero .chapter-count {
+    display: inline-block; background: var(--yellow); color: var(--fg);
+    font-weight: 800; font-size: 0.75rem; padding: 0.3em 1.2em;
+    border: 2px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.toc-section { max-width: 900px; margin: 0 auto 3rem; }
+.toc-section h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1rem; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+.toc-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 1rem; text-decoration: none; color: var(--fg); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); font-weight: 700; font-size: 0.85rem; transition: transform 0.12s, box-shadow 0.12s; }
+.toc-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.toc-num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.5rem; min-width: 42px; text-align: center; }
+.chapter { background: var(--card-bg); border: 3px solid var(--fg); box-shadow: 5px 5px 0px var(--fg); padding: 2rem 2.2rem; margin-bottom: 2.5rem; }
+.chapter h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1.2rem; padding-bottom: 0.4em; border-bottom: 3px solid var(--fg); display: inline-block; }
+.chapter h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 1.15rem; margin: 1.8em 0 0.6em; }
+.chapter h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 1rem; margin: 1.5em 0 0.5em; }
+.chapter p { margin-bottom: 0.9em; }
+.chapter ul, .chapter ol { margin: 0.5em 0 1em 1.5em; }
+.chapter li { margin-bottom: 0.4em; }
+.chapter strong { color: var(--cv-green); }
+.chapter em { color: var(--ie-orange); font-style: normal; font-weight: 700; }
+.info-card { background: #FDFCF7; border: 3px solid var(--fg); box-shadow: 4px 4px 0px var(--fg); padding: 1.2rem 1.5rem; margin: 1.5em 0; }
+.info-card h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.95rem; margin: 0 0 0.5em; }
+.highlight { background: #FFF8E1; border: 3px solid var(--ie-orange); padding: 1.2rem 1.5rem; margin: 1.5em 0; box-shadow: 4px 4px 0px var(--ie-orange); }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5em 0; }
+.compare-box { padding: 1.2rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.compare-box.bad { background: #FFF0F0; border-left: 6px solid var(--red); }
+.compare-box.good { background: #F0FFF4; border-left: 6px solid var(--green); }
+.compare-box h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.9rem; margin-bottom: 0.5em; }
+.kw-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.85rem; }
+.kw-table th { background: var(--fg); color: var(--yellow); padding: 0.7em 1em; font-weight: 800; text-align: left; border: 2px solid var(--fg); }
+.kw-table td { padding: 0.6em 1em; border: 2px solid var(--fg); }
+.kw-table tr:nth-child(even) { background: #FDFCF7; }
+.kw-table tr:nth-child(odd) { background: var(--card-bg); }
+.step-list { list-style: none; margin-left: 0; }
+.step-list li { counter-increment: step; padding: 0.8rem 1rem 0.8rem 3.5rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); margin-bottom: 0.8rem; position: relative; background: var(--card-bg); }
+.step-list li::before { content: counter(step); font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.2rem; position: absolute; left: 1rem; top: 0.7rem; background: var(--fg); color: var(--yellow); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--fg); }
+.cv-template {
+    background: #fff; border: 3px solid var(--fg); box-shadow: 4px 4px 0px var(--fg);
+    padding: 2rem; margin: 1.5em 0; font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
+}
+.cv-template .cv-name { font-family: 'Red Hat Display', sans-serif; font-size: 1.4rem; font-weight: 900; border-bottom: 3px solid var(--fg); padding-bottom: 0.3em; margin-bottom: 0.8em; }
+.cv-template .cv-section { font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin: 1.2em 0 0.5em; padding-bottom: 0.2em; border-bottom: 2px solid var(--fg); letter-spacing: 0.04em; }
+.cv-template .cv-bullets { margin: 0.3em 0; padding-left: 1.2em; }
+.cv-template .cv-bullets li { margin-bottom: 0.5em; line-height: 1.6; }
+.cv-before { background: #FFF5F5; }
+.cv-after { background: #F0FFF4; }
+.back-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--yellow); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); padding: 0.5em 0.8em; font-weight: 900; cursor: pointer; text-decoration: none; color: var(--fg); font-size: 0.9rem; transition: transform 0.12s; }
+.back-top:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+@media (max-width: 768px) {
+    .hero { padding: 2rem 1.2rem; } .hero h1 { font-size: 1.3rem; }
+    .chapter { padding: 1.2rem 1rem; } .chapter h1 { font-size: 1.15rem; }
+    .toc-grid { grid-template-columns: 1fr; } .compare-grid { grid-template-columns: 1fr; }
+    .site-nav { gap: 0.3rem; padding: 0.4rem; } .site-nav .nav-link { font-size: 0.6rem; padding: 0.35em 0.5em; border-width: 2px; }
+    .ti-subnav { gap: 0.3rem; } .ti-subnav .ti-link { font-size: 0.65rem; padding: 0.35em 0.6em; border-width: 2px; }
+    body { font-size: 10pt; }
+}
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="../index.html" class="nav-link">🏠 Guide</a>
+    <a href="../extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="../extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+    <a href="../extras/quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="../extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="../extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    <a href="../seo-guide.html" class="nav-link">🔍 SEO Playbook</a>
+    <a href="../teknik-industri.html" class="nav-link">🏭 Teknik Industri</a>
+</nav>
+
+<nav class="ti-subnav">
+    <a href="../teknik-industri.html" class="ti-link">📚 Panduan Utama</a>
+    <a href="ppic-dari-nol.html" class="ti-link">📦 PPIC dari Nol</a>
+    <a href="cv-linkedin-ie.html" class="ti-link active">📄 CV & LinkedIn</a>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+    <h1>CV & LinkedIn untuk<br>Teknik Industri</h1>
+    <p class="subtitle">CV generic = auto-reject. IE butuh CV yang ngomong pake ANGKA.</p>
+    <p class="subtitle">Plus: keyword ATS, LinkedIn optimization, dan strategi nyari kerja.</p>
+    <span class="chapter-count">6 Chapter · Before/After Examples · Template Siap Pakai</span>
+</div>
+
+<div class="toc-section">
+    <h2>📚 Daftar Isi</h2>
+    <div class="toc-grid">
+        <a href="#01-kenapa-beda" class="toc-card" style="background: var(--cv-green); color: #fff;"><span class="toc-num">01</span> Kenapa CV IE Harus Beda</a>
+        <a href="#02-struktur" class="toc-card" style="background: var(--blue); color: #fff;"><span class="toc-num">02</span> Struktur CV yang Bikin HR Berhenti Scroll</a>
+        <a href="#03-experience" class="toc-card" style="background: var(--orange);"><span class="toc-num">03</span> Cara Nulis Experience — Before/After</a>
+        <a href="#04-linkedin" class="toc-card" style="background: var(--purple); color: #fff;"><span class="toc-num">04</span> LinkedIn yang Bikin Recruiter DM Lo</a>
+        <a href="#05-keywords" class="toc-card" style="background: var(--teal);"><span class="toc-num">05</span> Keywords ATS Wajib di CV IE</a>
+        <a href="#06-search" class="toc-card" style="background: var(--fg); color: var(--yellow);"><span class="toc-num">06</span> Strategi Nyari Kerja</a>
+    </div>
+</div>
+
+<!-- 01 -->
+<section id="01-kenapa-beda" class="chapter" style="border-left: 8px solid var(--cv-green);">
+<h1>01. Kenapa CV Teknik Industri Harus Beda</h1>
+
+<p>Lo buka Canva. Pilih template aesthetic. Masukin data diri, riwayat pendidikan, skill. Export PDF. Kirim ke 30 perusahaan. <strong>Nggak ada yang bales.</strong></p>
+
+<p>Kenapa? Karena CV lo dibaca oleh dua entitas:</p>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>🤖 ATS (Applicant Tracking System)</h4>
+        <p>Software yang nge-scan CV lo SEBELUM dilihat manusia. Dia nyari keyword spesifik. Kalau nggak nemu → auto-reject.</p>
+        <p>Template Canva aesthetic sering pake text box & tabel yang ATS nggak bisa baca.</p>
+    </div>
+    <div class="compare-box good">
+        <h4>👤 HR Manager (setelah lolos ATS)</h4>
+        <p>Baca CV lo rata-rata <strong>6-7 detik.</strong> Dia scanning. Bukan membaca. Dia nyari: angka, impact, tools, relevansi.</p>
+        <p>Kalau 2 detik pertama nggak nemu apa yang dia cari → skip.</p>
+    </div>
+</div>
+
+<div class="highlight">
+    <strong>🎯 CV IE yang bagus = lolos ATS + bikin HR berhenti scroll dalam 3 detik.</strong><br><br>
+    Caranya: ANGKA di mana-mana. Bukan "bertanggung jawab terhadap." Tapi: "Mengurangi waste 12% → hemat Rp240 juta/tahun."<br><br>
+    Ini yang nggak diajarin di kampus. Semua CV fresh grad keliatan sama. Lo harus beda.
+</div>
+</section>
+
+<!-- 02 -->
+<section id="02-struktur" class="chapter" style="border-left: 8px solid var(--blue);">
+<h1>02. Struktur CV yang Bikin HR Berhenti Scroll</h1>
+
+<h2>CV IE Fresh Grad — Struktur Ideal</h2>
+
+<ol class="step-list">
+    <li><strong>Header:</strong> Nama, kontak (email, nomor WA, LinkedIn URL), kota domisili. <em>Jangan</em> kasih foto kecuali diminta. <em>Jangan</em> kasih info agama, status nikah, golongan darah — irrelevant.</li>
+    <li><strong>Professional Summary:</strong> 2-3 kalimat yang ngejelasin siapa lo dan value lo. Ini yang DIBACA PERTAMA. Pastiin kuat. (Lihat contoh di Chapter 3.)</li>
+    <li><strong>Education:</strong> Universitas, jurusan, IPK (kalau di atas 3.0). Tambahin mata kuliah relevan 3-5 biji — pilih yang nyambung ke lowongan.</li>
+    <li><strong>Experience / Projects:</strong> Ini <strong>jantung CV lo.</strong> Internship, tugas akhir, proyek kampus, organisasi. Format: <em>Action verb + tugas + IMPACT dalam angka.</em></li>
+    <li><strong>Skills:</strong> Hard skills (Excel, SAP, Minitab, Python, SQL, AutoCAD) + Soft skills (problem-solving, komunikasi, teamwork).</li>
+    <li><strong>Certifications / Training (opsional):</strong> Six Sigma Yellow Belt, Google Data Analytics, K3 umum, BNSP.</li>
+</ol>
+
+<div class="info-card">
+    <h3>⚠️ Yang HARUS Lo Buang dari CV</h3>
+    <ul>
+        <li>❌ "Hobi: membaca, traveling, fotografi" — nggak relevan kecuali lo lamar jadi travel blogger</li>
+        <li>❌ Skill bar chart (Photoshop 80%, Excel 90%) — nggak ada artinya, nggak kebaca ATS</li>
+        <li>❌ Template Canva 3 warna, 2 kolom, ada foto profil gede — susah dibaca ATS</li>
+        <li>❌ "Saya orang yang pekerja keras, disiplin, dan mampu bekerja dalam tim" — semua orang nulis ini</li>
+        <li>❌ CV lebih dari 1 halaman untuk fresh grad — lo belum punya pengalaman segitu banyak</li>
+    </ul>
+</div>
+
+<h2>Format CV yang Aman</h2>
+<p>Gunakan format <strong>satu kolom, hitam-putih, font standar</strong> (Arial/Calibri/Space Grotesk). Simpan sebagai PDF dengan nama: <code>CV_NamaLo_Posisi.pdf</code> — jangan <code>CV_FINAL_REVISI3.pdf</code>.</p>
+</section>
+
+<!-- 03 -->
+<section id="03-experience" class="chapter" style="border-left: 8px solid var(--orange);">
+<h1>03. Cara Nulis Experience — Before & After</h1>
+
+<p>Ini bagian paling penting dari CV lo. Dan ini bagian yang paling sering fresh grad salah.</p>
+
+<h2>Rumus: STAR-L (Situation, Task, Action, Result, Learning)</h2>
+
+<p>Tapi lo nggak perlu nulis panjang-panjang. Cukup: <strong>[Action verb] + [apa yang lo lakuin] + [IMPACT dalam ANGKA]</strong></p>
+
+<h2>Contoh #1: Internship di Pabrik</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM — Generic, Zero Impact</div>
+    <ul class="cv-bullets">
+        <li>Membantu tim produksi dalam kegiatan operasional sehari-hari</li>
+        <li>Melakukan pencatatan data produksi harian</li>
+        <li>Mengikuti proses quality control di line 2</li>
+        <li>Bertanggung jawab terhadap pengarsipan dokumen PPIC</li>
+    </ul>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH — Action + Impact + Angka</div>
+    <ul class="cv-bullets">
+        <li>Menganalisis data output 3 line produksi selama 6 minggu, mengidentifikasi bottleneck di proses filling yang menyebabkan <strong>downtime rata-rata 45 menit/hari</strong></li>
+        <li>Mengusulkan penambahan buffer conveyor yang <strong>mengurangi waktu tunggu 30%</strong> — potensi penghematan Rp120 juta/tahun</li>
+        <li>Membantu tim Quality menghitung OEE (Overall Equipment Effectiveness) line 2 — <strong>meningkat dari 72% menjadi 81%</strong> setelah implementasi</li>
+        <li>Membuat template inventory tracking di Excel (Pivot Table + conditional formatting) yang dipakai tim PPIC untuk <strong>monitor stok 200+ SKU</strong></li>
+    </ul>
+</div>
+
+<h2>Contoh #2: Tugas Akhir</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <p>"Analisis Penerapan Metode Lean Manufacturing untuk Mengurangi Waste pada Proses Produksi di PT XYZ"</p>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <p>"Mengaplikasikan Value Stream Mapping dan 5 Whys Analysis pada line produksi PT XYZ — mengidentifikasi <strong>3 sumber waste utama</strong>, mengusulkan perbaikan layout yang <strong>mengurangi waktu material handling 22%</strong> — setara penghematan Rp85 juta/tahun."</p>
+</div>
+
+<h2>Contoh #3: Organisasi Kampus (Kalau Nggak Punya Internship)</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <ul class="cv-bullets"><li>Ketua Divisi Acara HMTI 2023 — bertanggung jawab mengkoordinasi event kampus</li></ul>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <ul class="cv-bullets"><li>Memimpin tim 12 orang menyelenggarakan Industrial Engineering Competition nasional — peserta 150+ mahasiswa dari 20 universitas, <strong>mengelola budget Rp45 juta</strong>, selesai tepat waktu dengan <strong>biaya 8% di bawah anggaran.</strong></li></ul>
+</div>
+
+<div class="highlight">
+    <strong>💡 Nggak punya angka? Lo belum ngorek cukup dalam.</strong><br>
+    Semua kerjaan punya angka. Lo bantu ngurangin sesuatu → berapa persen? Lo bikin laporan → berapa lama lo hemat? Lo handle acara → berapa orang? berapa budget?<br>
+    Angka itu ada. Lo yang belum nyari.
+</div>
+</section>
+
+<!-- 04 -->
+<section id="04-linkedin" class="chapter" style="border-left: 8px solid var(--purple);">
+<h1>04. LinkedIn yang Bikin Recruiter DM Lo Duluan</h1>
+
+<p>LinkedIn bukan cuma "CV online." LinkedIn adalah <strong>search engine untuk recruiter.</strong> Mereka search kandidat pake keyword. Kalau profil lo nggak mengandung keyword yang mereka cari — lo invisible.</p>
+
+<h2>Checklist Optimasi LinkedIn (30 Menit)</h2>
+
+<ol class="step-list">
+    <li><strong>Headline: jangan cuma "Fresh Graduate Teknik Industri."</strong> Tapi: <em>"Industrial Engineering Graduate | PPIC & Supply Chain Enthusiast | Excel, Lean Six Sigma, Data Analysis"</em></li>
+    <li><strong>Foto profil profesional.</strong> Bukan selfie. Bukan foto wisuda. Latar polos, muka keliatan jelas, pake kemeja. <em>Ini first impression.</em></li>
+    <li><strong>Banner: kasih value proposition.</strong> Bikin di Canva: "Industrial Engineer | Process Improvement | Supply Chain."</li>
+    <li><strong>About section: jangan kosong.</strong> Tulis 3-4 paragraf pendek: siapa lo, skills lo, apa yang lo cari, value lo. Pake kata kunci industri.</li>
+    <li><strong>Experience: copy dari CV lo.</strong> Tapi tambahin deskripsi perusahaan, dan attach dokumen/link kalau ada project.</li>
+    <li><strong>Skills: isi 15-20 skills.</strong> Prioritaskan: yang sering muncul di job description IE. Endorse temen lo biar skills lo verified.</li>
+    <li><strong>Open to Work: nyalakan.</strong> Setting ke "Recruiters only" biar nggak keliatan desperate tapi recruiter tetep bisa nemu lo.</li>
+</ol>
+
+<h2>Yang Bikin LinkedIn Lo Standout</h2>
+
+<div class="info-card">
+    <h3>📝 Posting 1-2x seminggu</h3>
+    <p>Nggak perlu jadi influencer. Cukup share:</p>
+    <ul>
+        <li>Apa yang lo pelajarin minggu ini (tentang Excel, Lean, supply chain)</li>
+        <li>Insight dari internship / proyek kampus (tanpa bocorin data rahasia)</li>
+        <li>Share artikel + pendapat lo 1-2 kalimat</li>
+    </ul>
+    <p>Ini nunjukin lo <strong>aktif belajar</strong> dan <strong>bisa komunikasi.</strong> Recruiter suka liat ini.</p>
+</div>
+
+<h2>Networking yang Beneran Berguna</h2>
+<p>Jangan cuma kirim connect request kosong ke HR. Tambahin pesan: <em>"Halo Pak/Bu, saya fresh grad TI yang tertarik di bidang supply chain. Saya lihat Bapak/Ibu punya pengalaman menarik di [perusahaan]. Boleh saya belajar dari pengalaman Bapak/Ibu?"</em></p>
+<p>Ini bukan minta kerja. Ini minta insight. Dan kadang, insight itu berujung direferensikan.</p>
+</section>
+
+<!-- 05 -->
+<section id="05-keywords" class="chapter" style="border-left: 8px solid var(--teal);">
+<h1>05. Keywords ATS yang Wajib Ada di CV IE</h1>
+
+<p>ATS scanning CV lo buat keyword spesifik. Kalau lo lamar posisi PPIC tapi nggak ada kata "PPIC", "MPS", atau "inventory" — lo auto-reject.</p>
+
+<h2>Keyword List per Posisi Target</h2>
+
+<table class="kw-table">
+    <thead><tr><th>Posisi</th><th>Keywords Wajib</th><th>Keywords Bonus</th></tr></thead>
+    <tbody>
+        <tr>
+            <td><strong>PPIC</strong></td>
+            <td>PPIC, Production Planning, Inventory Control, MPS, MRP, Forecasting, Safety Stock, Material Planning, BOM, Schedule Adherence</td>
+            <td>SAP PP Module, OTIF, Days of Supply, Rolling Forecast, Capacity Planning</td>
+        </tr>
+        <tr>
+            <td><strong>Production Supervisor</strong></td>
+            <td>Production Supervisor, Line Management, OEE, Daily Production, Target Output, Operator, Shift, GMP, 5S</td>
+            <td>K3, Continuous Improvement, TPM, Kaizen, Line Balancing</td>
+        </tr>
+        <tr>
+            <td><strong>Process Engineer</strong></td>
+            <td>Process Improvement, Lean Manufacturing, Six Sigma, DMAIC, Value Stream Mapping, Waste Reduction, Root Cause Analysis, Cycle Time</td>
+            <td>Kaizen, SMED, FMEA, Statistical Process Control, Minitab</td>
+        </tr>
+        <tr>
+            <td><strong>Supply Chain</strong></td>
+            <td>Supply Chain, Logistics, Demand Planning, Inventory Management, Distribution, Warehouse, Lead Time, Supplier</td>
+            <td>SAP MM/SD, Network Optimization, S&OP, 3PL</td>
+        </tr>
+        <tr>
+            <td><strong>Quality Engineer</strong></td>
+            <td>Quality Control, SPC, ISO 9001, CAPA, Root Cause, Fishbone, Pareto, Control Chart, Defect Rate</td>
+            <td>FMEA, Gage R&R, Six Sigma, Internal Audit</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="highlight">
+    <strong>🎯 Cara pake keyword list ini:</strong><br><br>
+    1. Baca job description lowongan yang lo incar<br>
+    2. Catet kata-kata yang muncul berulang<br>
+    3. Pastiin kata-kata itu ADA di CV lo — di summary, experience, dan skills<br>
+    4. Jangan cuma copy-paste keyword tanpa konteks. Harus NAMPAK di kalimat. "Menggunakan <strong>Value Stream Mapping</strong> untuk mengidentifikasi <strong>waste</strong>..."
+</div>
+</section>
+
+<!-- 06 -->
+<section id="06-search" class="chapter" style="border-left: 8px solid var(--fg);">
+<h1>06. Strategi Nyari Kerja yang Beneran Jalan</h1>
+
+<h2>Platform yang Wajib Lo Pakai</h2>
+
+<table class="kw-table">
+    <thead><tr><th>Platform</th><th>Kenapa</th><th>Tips</th></tr></thead>
+    <tbody>
+        <tr><td><strong>LinkedIn Jobs</strong></td><td>Paling banyak lowongan IE. Bisa liat siapa yang posting.</td><td>Set up job alert untuk 3-4 keyword. Cek setiap pagi.</td></tr>
+        <tr><td><strong>Jobstreet</strong></td><td>Platform Indonesia #1. Banyak manufaktur.</td><td>Isi profil lengkap. Recruiter sering search kandidat, bukan nunggu lamaran.</td></tr>
+        <tr><td><strong>Glints / Kalibrr</strong></td><td>Startup & perusahaan tech-friendly.</td><td>Cocok buat IE yang incar tech/logistics/e-commerce.</td></tr>
+        <tr><td><strong>Website Karir Perusahaan</strong></td><td>Unilever, Nestle, Astra, Toyota punya career page sendiri.</td><td>List 20 perusahaan target. Bookmark career page-nya. Cek 2 minggu sekali.</td></tr>
+    </tbody>
+</table>
+
+<h2>LinkedIn Search Boolean (Copy-Paste Ini)</h2>
+
+<div class="info-card">
+    <h3>🔍 Search String untuk Fresh Grad IE</h3>
+    <p>Copy ini ke search bar LinkedIn Jobs:</p>
+    <p style="background: #1A1A1A; color: #3DDC84; padding: 1rem; font-family: monospace; font-size: 0.8rem; word-break: break-all;">
+        ("Industrial Engineering" OR "Teknik Industri") AND (PPIC OR "Production Planner" OR "Production Supervisor" OR "Process Engineer" OR "Supply Chain" OR "Quality Engineer" OR "Continuous Improvement" OR "Management Trainee" OR "Material Planner" OR "Demand Planner")
+    </p>
+    <p>Filter: Entry Level / Fresh Graduate. Hasil: 50-200 lowongan yang lo mungkin kelewat.</p>
+</div>
+
+<h2>Mindset: Ini Bukan Soal "Lo Ditolak"</h2>
+
+<div class="highlight">
+    <strong>🧠 Lo kirim 50 lamaran. 5 yang bales. 2 interview. 1 offering.</strong><br>
+    Itu normal. Itu bukan "lo jelek." Itu statistik.<br><br>
+    Yang penting: <strong>setiap kali lo ditolak atau nggak dibales, lo perbaiki CV lo.</strong><br>
+    Cek: keyword-nya ada? Angka-nya ada? Template-nya ATS-friendly?<br>
+    Iterasi. Terus sampe tembus.
+</div>
+
+<p style="text-align: center; margin-top: 3rem; font-weight: 700;">
+    — End of CV & LinkedIn untuk IE —
+</p>
+<p style="text-align: center; color: var(--cv-green); font-weight: 800;">
+    📄 Sekarang lo tau cara bikin CV yang bener. Gas perbaiki, gas lamar.
+</p>
+</section>
+
+</div>
+
+<a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+</body>
+</html>

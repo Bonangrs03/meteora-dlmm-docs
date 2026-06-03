@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPIC dari Nol — Panduan Buat Fresh Grad Teknik Industri</title>
+    <meta name="description" content="PPIC adalah first job paling umum buat lulusan Teknik Industri di Indonesia. Ini panduan dari nol — bukan textbook, tapi realita harian di lapangan.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --yellow: #FFD700; --red: #FF5E5B; --blue: #5B8CFF; --green: #3DDC84;
+    --purple: #A855F7; --orange: #FF8C42; --teal: #2DD4BF; --pink: #FF6FB5;
+    --bg: #F0EDE0; --fg: #1A1A1A; --card-bg: #FFFDF7;
+    --ie-navy: #1B2A4A; --ie-orange: #F48120; --ie-teal: #0D9488;
+    --ppic-blue: #2563EB;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg); background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+    background-size: 24px 24px; color: var(--fg); line-height: 1.8;
+    font-size: 11pt; font-weight: 500;
+}
+.site-nav {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.5rem; padding: 1rem 1.5rem; margin: 0 auto 0.5rem; max-width: 1100px;
+}
+.site-nav .nav-link {
+    display: inline-block; padding: 0.5em 1em;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;
+    text-decoration: none; color: var(--fg); background: var(--card-bg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer;
+}
+.site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+
+/* TI Sub-nav */
+.ti-subnav {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
+    padding: 0.6rem 1rem; margin: 0 auto 2rem; max-width: 900px;
+}
+.ti-subnav .ti-link {
+    display: inline-block; padding: 0.45em 1em;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.02em;
+    text-decoration: none; color: var(--fg); background: #E8ECF2;
+    border: 3px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer;
+}
+.ti-subnav .ti-link:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px var(--fg); background: var(--yellow); }
+.ti-subnav .ti-link.active { background: var(--ppic-blue); color: #fff; cursor: default; border-color: var(--ppic-blue); }
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.hero {
+    background: var(--ppic-blue); color: var(--card-bg);
+    border: 4px solid var(--fg); box-shadow: 8px 8px 0px var(--fg);
+    padding: 3rem 2.5rem; margin-bottom: 3rem; text-align: center;
+}
+.hero h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.3; }
+.hero .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.3rem; }
+.hero .chapter-count {
+    display: inline-block; background: var(--yellow); color: var(--fg);
+    font-weight: 800; font-size: 0.75rem; padding: 0.3em 1.2em;
+    border: 2px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.toc-section { max-width: 900px; margin: 0 auto 3rem; }
+.toc-section h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1rem; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+.toc-card {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.7rem 1rem; text-decoration: none; color: var(--fg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    font-weight: 700; font-size: 0.85rem; transition: transform 0.12s, box-shadow 0.12s;
+}
+.toc-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.toc-num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.5rem; min-width: 42px; text-align: center; }
+.chapter {
+    background: var(--card-bg); border: 3px solid var(--fg);
+    box-shadow: 5px 5px 0px var(--fg); padding: 2rem 2.2rem; margin-bottom: 2.5rem;
+}
+.chapter h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1.2rem; padding-bottom: 0.4em; border-bottom: 3px solid var(--fg); display: inline-block; }
+.chapter h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 1.15rem; margin: 1.8em 0 0.6em; }
+.chapter h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 1rem; margin: 1.5em 0 0.5em; }
+.chapter p { margin-bottom: 0.9em; }
+.chapter ul, .chapter ol { margin: 0.5em 0 1em 1.5em; }
+.chapter li { margin-bottom: 0.4em; }
+.chapter strong { color: var(--ppic-blue); }
+.chapter em { color: var(--ie-orange); font-style: normal; font-weight: 700; }
+.info-card {
+    background: #FDFCF7; border: 3px solid var(--fg);
+    box-shadow: 4px 4px 0px var(--fg); padding: 1.2rem 1.5rem; margin: 1.5em 0;
+}
+.info-card h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.95rem; margin: 0 0 0.5em; }
+.highlight {
+    background: #FFF8E1; border: 3px solid var(--ie-orange);
+    padding: 1.2rem 1.5rem; margin: 1.5em 0; box-shadow: 4px 4px 0px var(--ie-orange);
+}
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5em 0; }
+.compare-box { padding: 1.2rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.compare-box.bad { background: #FFF0F0; border-left: 6px solid var(--red); }
+.compare-box.good { background: #F0FFF4; border-left: 6px solid var(--green); }
+.compare-box h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.9rem; margin-bottom: 0.5em; }
+.kw-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.85rem; }
+.kw-table th { background: var(--fg); color: var(--yellow); padding: 0.7em 1em; font-weight: 800; text-align: left; border: 2px solid var(--fg); }
+.kw-table td { padding: 0.6em 1em; border: 2px solid var(--fg); }
+.kw-table tr:nth-child(even) { background: #FDFCF7; }
+.kw-table tr:nth-child(odd) { background: var(--card-bg); }
+.step-list { list-style: none; margin-left: 0; }
+.step-list li { counter-increment: step; padding: 0.8rem 1rem 0.8rem 3.5rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); margin-bottom: 0.8rem; position: relative; background: var(--card-bg); }
+.step-list li::before { content: counter(step); font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.2rem; position: absolute; left: 1rem; top: 0.7rem; background: var(--fg); color: var(--yellow); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--fg); }
+.flow-steps { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1.5em 0; justify-content: center; font-size: 0.85rem; }
+.flow-step { padding: 0.6em 1em; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); font-weight: 700; background: var(--card-bg); }
+.flow-arrow { font-size: 1.5rem; font-weight: 900; }
+.daily-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5em 0; }
+.daily-card { padding: 1rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.daily-card h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.85rem; margin-bottom: 0.3em; }
+.daily-card .time { font-size: 0.7rem; font-weight: 700; color: var(--ppic-blue); text-transform: uppercase; }
+.back-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--yellow); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); padding: 0.5em 0.8em; font-weight: 900; cursor: pointer; text-decoration: none; color: var(--fg); font-size: 0.9rem; transition: transform 0.12s; }
+.back-top:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+@media (max-width: 768px) {
+    .hero { padding: 2rem 1.2rem; } .hero h1 { font-size: 1.3rem; }
+    .chapter { padding: 1.2rem 1rem; } .chapter h1 { font-size: 1.15rem; }
+    .toc-grid { grid-template-columns: 1fr; } .compare-grid, .daily-grid { grid-template-columns: 1fr; }
+    .flow-steps { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .site-nav { gap: 0.3rem; padding: 0.4rem; } .site-nav .nav-link { font-size: 0.6rem; padding: 0.35em 0.5em; border-width: 2px; }
+    .ti-subnav { gap: 0.3rem; } .ti-subnav .ti-link { font-size: 0.65rem; padding: 0.35em 0.6em; border-width: 2px; }
+    body { font-size: 10pt; }
+}
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="../index.html" class="nav-link">🏠 Guide</a>
+    <a href="../extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="../extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+    <a href="../extras/quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="../extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="../extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    <a href="../seo-guide.html" class="nav-link">🔍 SEO Playbook</a>
+    <a href="../teknik-industri.html" class="nav-link">🏭 Teknik Industri</a>
+</nav>
+
+<nav class="ti-subnav">
+    <a href="../teknik-industri.html" class="ti-link">📚 Panduan Utama</a>
+    <a href="ppic-dari-nol.html" class="ti-link active">📦 PPIC dari Nol</a>
+    <a href="cv-linkedin-ie.html" class="ti-link">📄 CV & LinkedIn</a>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+    <h1>PPIC dari Nol:<br>Panduan Buat Fresh Grad yang Masuk Dunia Production Planning</h1>
+    <p class="subtitle">PPIC = first job paling umum buat lulusan Teknik Industri Indonesia.</p>
+    <p class="subtitle">Ini yang lo bakal kerjain. Bukan yang ada di textbook.</p>
+    <span class="chapter-count">7 Chapter · Storytelling · Hari Pertama Dinda di PPIC</span>
+</div>
+
+<div class="toc-section">
+    <h2>📚 Daftar Isi</h2>
+    <div class="toc-grid">
+        <a href="#00-prologue" class="toc-card" style="background: var(--yellow);"><span class="toc-num">00</span> Prolog: Hari Pertama Dinda Masuk PPIC</a>
+        <a href="#01-apa-itu" class="toc-card" style="background: var(--ppic-blue); color: #fff;"><span class="toc-num">01</span> Apa Itu PPIC Sebenarnya?</a>
+        <a href="#02-production-planning" class="toc-card" style="background: var(--green);"><span class="toc-num">02</span> Production Planning — Ngatur Jadwal</a>
+        <a href="#03-inventory" class="toc-card" style="background: var(--orange);"><span class="toc-num">03</span> Inventory Control — Ngestok Biar Pas</a>
+        <a href="#04-forecasting" class="toc-card" style="background: var(--purple); color: #fff;"><span class="toc-num">04</span> Forecasting — Nembak Permintaan</a>
+        <a href="#05-relations" class="toc-card" style="background: var(--teal);"><span class="toc-num">05</span> Hubungan dengan Departemen Lain</a>
+        <a href="#06-tools" class="toc-card" style="background: var(--pink);"><span class="toc-num">06</span> Tools & Software</a>
+        <a href="#07-sukses" class="toc-card" style="background: var(--fg); color: var(--yellow);"><span class="toc-num">07</span> Cara Sukses di PPIC</a>
+    </div>
+</div>
+
+<!-- PROLOGUE -->
+<section id="00-prologue" class="chapter" style="border-left: 8px solid var(--yellow);">
+<h1>00. Prolog: Hari Pertama Dinda Masuk PPIC</h1>
+
+<p>Dinda lulus Teknik Industri. IPK 3.5. Dia dapet panggilan dari perusahaan FMCG — PT Sentosa Makmur, produsen sabun, sampo, dan deterjen yang lo liat tiap hari di supermarket.</p>
+
+<p>Posisinya: <strong>PPIC Staff.</strong></p>
+
+<p>Dinda excited. Tapi jujur, dia nggak terlalu yakin PPIC itu ngapain. Di kampus dia belajar MRP, forecasting, inventory management — tapi semua dalam bentuk soal ujian. Hitung-hitung EOQ. Gambar pohon BOM (Bill of Materials). Semua di atas kertas.</p>
+
+<p>Sekarang dia berdiri di depan pintu kantor pabrik. Suara mesin filling dari kejauhan. Bau kimia ringan dari area produksi. Dan yang paling bikin deg-degan: dia nggak tau tools apa yang dipake. SAP? Excel? Software lain?</p>
+
+<div class="info-card">
+    <h3>😰 Yang Ada di Kepala Dinda</h3>
+    <p>"Gue ngapain ya nanti?"<br>
+    "MRP yang gue pelajarin di kampus — itu beneran dipake?"<br>
+    "Kenapa PPIC dipisah? Nggak sekalian aja sama produksi?"<br>
+    "Apa gue bakal disuruh itung-itungan seharian di Excel?"</p>
+</div>
+
+<p>Kepala PPIC-nya, <strong>Pak Hendra</strong> — seorang pria 38 tahun dengan 10 tahun pengalaman PPIC di 3 perusahaan berbeda — nyamperin Dinda.</p>
+
+<p>"Tenang, Din. Gue tau lo bingung. Dulu gue juga. Nih, gue jelasin dari awal, pelan-pelan."</p>
+
+<p>Ini catatan dari hari-hari pertama Dinda di PPIC. Buat lo yang (mungkin) juga bakal masuk PPIC.</p>
+</section>
+
+<!-- CHAPTER 1 -->
+<section id="01-apa-itu" class="chapter" style="border-left: 8px solid var(--ppic-blue);">
+<h1>01. Apa Itu PPIC Sebenarnya?</h1>
+
+<p>PPIC = <strong>Production Planning and Inventory Control.</strong></p>
+
+<p>Tapi definisi itu nggak bantu. Gini cara ngertinya:</p>
+
+<div class="highlight">
+    <strong>🎯 PPIC = Otak yang ngatur DUA pertanyaan setiap hari:</strong><br><br>
+    <strong>1. Production Planning:</strong> "Besok kita produksi APA, BERAPA banyak, di LINE mana, pake BAHAN apa?"<br>
+    <strong>2. Inventory Control:</strong> "Stok bahan baku CUKUP nggak? Stok barang jadi KELEBIHAN nggak? Kapan harus beli lagi?"
+</div>
+
+<h2>PPIC Itu Kayak "Chef Planner" di Dapur Restoran</h2>
+
+<p>Bayangin restoran besar. Setiap hari:</p>
+<ul>
+    <li>Ada tamu pesen nasi goreng, mie goreng, soto — menu beda-beda, jumlah beda-beda</li>
+    <li>Chef harus tau: besok kira-kira berapa tamu yang dateng? (FORECASTING)</li>
+    <li>Berdasarkan itu: belanja bahan apa aja? Berapa kilo? (INVENTORY)</li>
+    <li>Pas jam makan siang: masak menu apa dulu? Nasi goreng atau soto? (SCHEDULING)</li>
+    <li>Jangan sampe ayam habis pas lagi rame, atau telur kebanyakan sampe busuk</li>
+</ul>
+
+<p>Nah, PPIC itu chef planner-nya pabrik. Bedanya: bukan nasi goreng, tapi sabun, mie instan, komponen mobil. Dan tamunya bukan orang, tapi <strong>customer + distributor yang pesen ribuan unit.</strong></p>
+
+<h2>PPIC vs Produksi: Bedanya Apa?</h2>
+
+<div class="compare-grid">
+    <div class="compare-box good">
+        <h4>🏭 PRODUKSI = Eksekutor</h4>
+        <p>"Ini jadwalnya. Lo jalankan."</p>
+        <p>Tanggung jawab: mesin nyala, operator hadir, target output tercapai, kualitas oke.</p>
+        <p>Produksi mikirin: <strong>HARI INI.</strong></p>
+    </div>
+    <div class="compare-box good" style="border-left: 6px solid var(--ppic-blue);">
+        <h4>📋 PPIC = Perencana</h4>
+        <p>"Besok kita bikin apa? Lusa? Minggu depan? Bahannya dari mana?"</p>
+        <p>Tanggung jawab: jadwal produksi optimal, stok pas, nggak kurang nggak lebih.</p>
+        <p>PPIC mikirin: <strong>BESOK sampai 1-3 BULAN ke depan.</strong></p>
+    </div>
+</div>
+
+<p>PPIC dan Produksi itu partner. Bukan musuh. Tapi sering berantem: PPIC bikin jadwal ambisius, Produksi bilang nggak sanggup. Negosiasi tiap hari.</p>
+
+<h2>Kenapa PPIC Penting Banget?</h2>
+
+<p>Coba bayangin pabrik tanpa PPIC:</p>
+<ul>
+    <li>Stok bahan baku habis → produksi berhenti → customer marah → sales hilang</li>
+    <li>Stok barang jadi numpuk → uang ketahan di gudang → gudang penuh → biaya naik</li>
+    <li>Line produksi kosong → mesin nganggur → operator dianggurin → duit kebakar</li>
+</ul>
+
+<p>PPIC mencegah 3 bencana ini. Itu kenapa PPIC department <strong>selalu ada</strong> di perusahaan manufaktur. Lo susah banget nemu pabrik tanpa PPIC.</p>
+</section>
+
+<!-- CHAPTER 2 -->
+<section id="02-production-planning" class="chapter" style="border-left: 8px solid var(--green);">
+<h1>02. Production Planning — Ngatur Jadwal Produksi</h1>
+
+<p><strong>Production Planning = "Besok kita bikin APA, BERAPA, di MANA."</strong></p>
+
+<h2>3 Level Planning</h2>
+
+<table class="kw-table">
+    <thead><tr><th>Level</th><th>Horizon</th><th>Pertanyaan</th><th>Contoh</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Long-Range</strong></td><td>6-18 bulan</td><td>"Kita butuh pabrik baru? Tambah line? Tambah shift?"</td><td>Manager ke atas yang urus</td></tr>
+        <tr><td><strong>MPS (Master Production Schedule)</strong></td><td>1-3 bulan</td><td>"Bulan depan produksi produk A berapa, B berapa?"</td><td>Ini kerjaan LO sebagai PPIC staff</td></tr>
+        <tr><td><strong>Detailed Scheduling</strong></td><td>1-7 hari</td><td>"Besok line 1 bikin apa jam 8-12, line 2 bikin apa?"</td><td>Ini juga kerjaan LO — daily grind</td></tr>
+    </tbody>
+</table>
+
+<h2>Sehari-hari Production Planning: The Daily Loop</h2>
+
+<div class="daily-grid">
+    <div class="daily-card" style="background: #FFF8E1;">
+        <span class="time">📅 08:00</span>
+        <h4>Cek Laporan Kemarin</h4>
+        <p>Target produksi kemarin tercapai? Ada barang reject berapa? Mesin A downtime berapa jam? Output-nya masuk akal nggak dibanding rencana?</p>
+    </div>
+    <div class="daily-card" style="background: #F0FFF4;">
+        <span class="time">📅 08:30</span>
+        <h4>Update Jadwal Hari Ini</h4>
+        <p>Karena kemarin output kurang 5%, jadwal hari ini disesuaiin. Line 3 yang tadinya bikin Produk B sore ini, dimajuin ke siang. Negosiasi sama supervisor produksi.</p>
+    </div>
+    <div class="daily-card" style="background: #FFF0F0;">
+        <span class="time">📅 10:00</span>
+        <h4>Cek Stok Bahan Baku</h4>
+        <p>Buat jadwal minggu depan, bahan X cukup? Ternyata stok di gudang cuma 3 hari lagi. Harus kontak purchasing: "Tolong PO dipercepat."</p>
+    </div>
+    <div class="daily-card" style="background: #E3F2FD;">
+        <span class="time">📅 14:00</span>
+        <h4>Nerima Pesanan Sales</h4>
+        <p>"Customer A nambah 500 karton, kirim Jumat." Cek: kapasitas produksi cukup? Stok bahan cukup? Kalau nggak, negosiasi ulang delivery date.</p>
+    </div>
+</div>
+
+<h2>Tools KPIs yang Lo Pantau</h2>
+
+<table class="kw-table">
+    <thead><tr><th>KPI</th><th>Artinya</th><th>Target</th></tr></thead>
+    <tbody>
+        <tr><td><strong>OTIF</strong> (On Time In Full)</td><td>Berapa % order yang dikirim tepat waktu &amp; jumlah lengkap</td><td>&gt;95%</td></tr>
+        <tr><td><strong>Production Attainment</strong></td><td>Actual output vs Planned output</td><td>&gt;95%</td></tr>
+        <tr><td><strong>Schedule Adherence</strong></td><td>Seberapa akurat jadwal diikuti (tanpa perubahan mendadak)</td><td>&gt;90%</td></tr>
+        <tr><td><strong>Line Utilization</strong></td><td>Berapa % waktu mesin beneran dipake produksi</td><td>Target tergantung industri</td></tr>
+    </tbody>
+</table>
+
+<div class="highlight">
+    <strong>💡 Selalu tanya ini pas lo liat angka KPI jelek:</strong><br>
+    "Kenapa target nggak tercapai?" — bukan buat nyalahin, tapi buat <strong>nyari akar masalah.</strong><br>
+    Mesin rusak? Bahan telat? Operator kurang? Permintaan tiba-tiba berubah?<br>
+    Tugas lo bukan cuma NGATUR jadwal, tapi <strong>NGERTI kenapa jadwal meleset.</strong>
+</div>
+</section>
+
+<!-- CHAPTER 3 -->
+<section id="03-inventory" class="chapter" style="border-left: 8px solid var(--orange);">
+<h1>03. Inventory Control — Ngestok Biar Pas</h1>
+
+<p><strong>Inventory Control = "Stok kita JANGAN SAMPE habis, JANGAN SAMPE kebanyakan."</strong></p>
+
+<p>Kedengerannya gampang. Prakteknya? Neraka.</p>
+
+<h2>Kenapa Inventory itu Susah?</h2>
+
+<p>Karena lo berhadapan dengan dua arah tekanan:</p>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>📉 Stok KURANG → STOCKOUT</h4>
+        <p>Produksi berhenti. Customer nggak dapet barang. Sales marah. Revenue hilang. Kepercayaan customer hancur.</p>
+        <p><strong>Yang teriak:</strong> Sales, Produksi, Customer</p>
+    </div>
+    <div class="compare-box bad">
+        <h4>📈 Stok KELEBIHAN → OVERSTOCK</h4>
+        <p>Uang ketahan di gudang. Barang expired/kadaluwarsa. Biaya gudang naik. Cash flow perusahaan terganggu.</p>
+        <p><strong>Yang teriak:</strong> Finance, Warehouse, Direksi</p>
+    </div>
+</div>
+
+<p>Lo di tengah-tengah. Dua-duanya marah ke lo. <em>Welcome to PPIC.</em></p>
+
+<h2>Yang Lo Urus di Inventory</h2>
+
+<table class="kw-table">
+    <thead><tr><th>Jenis Inventory</th><th>Contoh</th><th>Yang Lo Tanyain Setiap Hari</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Raw Material</strong></td><td>Tepung, minyak sawit, plastik kemasan</td><td>Stok cukup buat berapa hari produksi?</td></tr>
+        <tr><td><strong>WIP</strong> (Work in Progress)</td><td>Adonan yang lagi difermentasi</td><td>Berapa yang lagi di tengah proses? Kapan jadi?</td></tr>
+        <tr><td><strong>Finished Goods</strong></td><td>Mie instan siap kirim</td><td>Stok gudang berapa? Numpuk nggak? Ada yg mendekati expired?</td></tr>
+        <tr><td><strong>MRO</strong> (Maintenance, Repair, Operations)</td><td>Spare part mesin, oli, tools</td><td>Ini biasanya diurus Maintenance, tapi PPIC kadang ikut monitor</td></tr>
+    </tbody>
+</table>
+
+<h2>Safety Stock — "Stok Pengaman"</h2>
+
+<p>Ini stok minimum yang lo simpen buat jaga-jaga. Misalnya lead time supplier 3 hari — lo simpen stok untuk 5 hari. Dua hari extra itu <strong>safety stock</strong>.</p>
+
+<div class="info-card">
+    <h3>🧠 Gimana Nentuin Safety Stock?</h3>
+    <p>Nggak pake rumus EOQ kayak di kampus. Realitanya: lo liat data historis.</p>
+    <ul>
+        <li>Supplier A: lead time rata-rata 3 hari, tapi PERNAH telat sampe 10 hari</li>
+        <li>Supplier B: lead time konsisten 3 hari, nggak pernah telat</li>
+    </ul>
+    <p>Safety stock Supplier A > Supplier B. Simpel. Data-driven, bukan rumus textbook.</p>
+</div>
+
+<h2>Yang Lo Pantau: Inventory Days of Supply</h2>
+
+<div class="highlight">
+    <strong>📊 Rumus simpel yang lo pake terus:</strong><br><br>
+    <strong>Days of Supply = Stok Saat Ini ÷ Rata-rata Pemakaian per Hari</strong><br><br>
+    Contoh: Stok tepung 10.000 kg, pemakaian 2.000 kg/hari = 5 hari.<br>
+    Kalau supplier butuh 3 hari buat kirim, lo masih aman (ada buffer 2 hari).<br>
+    Kalau supplier butuh 7 hari, lo harus pesen SEKARANG.<br><br>
+    Ini yang lo cek setiap hari. Bukan EOQ. Bukan rumus Wilson. Tapi Days of Supply.
+</div>
+</section>
+
+<!-- CHAPTER 4 -->
+<section id="04-forecasting" class="chapter" style="border-left: 8px solid var(--purple);">
+<h1>04. Forecasting — Nembak Permintaan Masa Depan</h1>
+
+<p><strong>Forecasting = "Bulan depan customer bakal minta berapa?"</strong></p>
+
+<p>Ini bagian PPIC yang paling banyak <em>nembak</em>-nya. Lo nggak bisa baca masa depan. Tapi lo bisa deketin dengan data.</p>
+
+<h2>3 Sumber Data Forecasting</h2>
+
+<ol class="step-list">
+    <li><strong>Data Historis (lo yang olah).</strong> Bulan lalu jualan 5.000 karton. 3 bulan terakhir rata-rata 4.800. Tahun lalu di bulan yang sama: 5.200. Dari sini lo bikin baseline forecast.</li>
+    <li><strong>Input dari Sales/Marketing (mereka yang kasih).</strong> "Bulan depan ada promo lebaran, ekspektasi naik 30%." "Customer A kontrak barunya jadi 2x lipat." Ini qualitative adjustment dari tim yang ngadepin customer langsung.</li>
+    <li><strong>Market intelligence (lo + sales bareng-bareng).</strong> Kompetitor lagi promo? Musim hujan ekstrim (ngaruh ke distribusi)? Ada regulasi baru? Faktor eksternal.</li>
+</ol>
+
+<h2>Forecasting itu Iteratif, Bukan Sekali Jadi</h2>
+
+<div class="flow-steps">
+    <div class="flow-step" style="background: var(--yellow);">Lo bikin forecast awal (data historis)</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--blue); color: #fff;">Sales kasih adjustment (promo, kontrak baru)</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--green);">Hasil akhir = agreed forecast</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background: var(--orange);">Seminggu kemudian: actual vs forecast dicek</div>
+    <span class="flow-arrow" style="font-size:1rem;">⟲</span>
+</div>
+
+<p>Ada selisih? Revisi forecast. Terus-terusan. Ini namanya <strong>rolling forecast.</strong></p>
+
+<h2>Mistake #1 Fresh Grad di Forecasting</h2>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Forecasting terlalu rendah</h4>
+        <p>Biar aman, lo forecast rendah. "Kan lebih baik underestimate daripada overestimate."</p>
+        <p><strong>Akibat:</strong> Stok kurang, stockout, customer marah, sales hilang.</p>
+    </div>
+    <div class="compare-box bad">
+        <h4>❌ Forecasting terlalu tinggi</h4>
+        <p>Agar target terpenuhi, lo forecast tinggi. "Sales minta 5.000, gue forecast 6.000 biar aman."</p>
+        <p><strong>Akibat:</strong> Overstock, expired, biaya gudang membengkak, uang ketahan.</p>
+    </div>
+</div>
+
+<div class="highlight">
+    <strong>🎯 Yang bener: forecast akurat, bukan aman.</strong><br>
+    Akurasi forecast diukur pake <strong>MAPE</strong> (Mean Absolute Percentage Error). Target: &lt;20% error.<br>
+    Lo bukan dinilai dari "seberapa aman forecast lo." Lo dinilai dari "seberapa tepat forecast lo."
+</div>
+</section>
+
+<!-- CHAPTER 5 -->
+<section id="05-relations" class="chapter" style="border-left: 8px solid var(--teal);">
+<h1>05. Hubungan PPIC dengan Departemen Lain</h1>
+
+<p>PPIC adalah <strong>departemen paling silang.</strong> Lo ngomong sama hampir semua orang.</p>
+
+<table class="kw-table">
+    <thead><tr><th>Departemen</th><th>Hubungan</th><th>Yang Sering Diomongin</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Produksi</strong></td><td>🤝 Partner utama</td><td>Jadwal, kapasitas, output, downtime, changeover</td></tr>
+        <tr><td><strong>Sales / Marketing</strong></td><td>⚡ Sering berantem</td><td>"Customer minta tambahan 500 karton besok!" — Lo: "Nggak bisa, produksi penuh."</td></tr>
+        <tr><td><strong>Purchasing / Procurement</strong></td><td>🤝 Partner strategis</td><td>PO bahan baku, lead time supplier, harga, alternatif supplier</td></tr>
+        <tr><td><strong>Warehouse / Gudang</strong></td><td>🤝 Sehari-hari</td><td>FIFO, stok aktual vs sistem, expired, kapasitas gudang</td></tr>
+        <tr><td><strong>Quality / QA</strong></td><td>⚡ Kadang tegang</td><td>"Bahan ini reject, jangan dipake." → Lo: "Jadwal gimana? Kita nggak punya alternatif."</td></tr>
+        <tr><td><strong>Finance / Accounting</strong></td><td>📊 Bulanan</td><td>Nilai inventory (Rp), slow moving, obsolescence, cost</td></tr>
+        <tr><td><strong>NPD / R&amp;D</strong></td><td>🔬 Pas ada produk baru</td><td>Produk baru butuh bahan baru? Supplier baru? Jadwal trial produksi</td></tr>
+    </tbody>
+</table>
+
+<h2>Konflik Paling Umum: PPIC vs Sales</h2>
+
+<div class="info-card">
+    <h3>⚔️ Skenario yang Lo Hadepin Terus</h3>
+    <p><strong>Sales:</strong> "Din, customer A minta tambahan 1.000 karton. Harus kirim Jumat."</p>
+    <p><strong>Lo (PPIC):</strong> "Pak, line udah penuh sampe minggu depan. Stok bahan cuma cukup buat 700. Nggak bisa."</p>
+    <p><strong>Sales:</strong> "Tapi ini customer gede! Lo mau kita kehilangan kontrak?"</p>
+    <p><strong>Lo:</strong> 🫠</p>
+    <p><strong>Cara ngatasin:</strong> Jangan cuma bilang "nggak bisa." Tawarin alternatif. "Pak, 1.000 nggak bisa, tapi 700 bisa Jumat, sisanya 300 Senin pagi. Atau kita bisa percepat kalau Purchasing bisa rush order bahan dari supplier."</p>
+    <p><strong>Rule:</strong> <em>Come with solutions, not just problems.</em></p>
+</div>
+</section>
+
+<!-- CHAPTER 6 -->
+<section id="06-tools" class="chapter" style="border-left: 8px solid var(--pink);">
+<h1>06. Tools & Software yang Dipake di PPIC</h1>
+
+<p>Spoiler: yang lo pelajarin di kampus (MRP manual, hitung EOQ pake kalkulator) — <strong>nggak ada yang pake.</strong></p>
+
+<h2>Tool #1: Excel — Raja Segala Tools</h2>
+
+<p>80% kerjaan PPIC ada di Excel. Bukan Excel basic. Tapi:</p>
+
+<div class="info-card">
+    <h3>📊 Excel Skills yang Wajib Lo Kuasai Sebelum Masuk PPIC</h3>
+    <ul>
+        <li><strong>Pivot Table</strong> — buat liat stok per kategori, per supplier, per gudang. One click summarize.</li>
+        <li><strong>VLOOKUP / XLOOKUP</strong> — nyambungin data dari sheet A ke sheet B. "Kode barang ini punya supplier siapa?"</li>
+        <li><strong>IF bertingkat</strong> — "IF stok < safety_stock THEN 'Order' ELSE 'Aman'"</li>
+        <li><strong>SUMIFS / COUNTIFS</strong> — jumlahin stok dengan kondisi tertentu</li>
+        <li><strong>Conditional Formatting</strong> — auto-merahin sel yang stoknya di bawah safety stock</li>
+        <li><strong>Data Validation</strong> — bikin dropdown, batasi input biar nggak salah entry</li>
+    </ul>
+</div>
+
+<h2>Tool #2: ERP (SAP, Oracle, Microsoft Dynamics)</h2>
+
+<p>Perusahaan menengah-besar pake ERP. Modul yang relevan buat PPIC:</p>
+
+<table class="kw-table">
+    <thead><tr><th>Modul SAP</th><th>Fungsi</th><th>Pertanyaan yang Bisa Lo Jawab</th></tr></thead>
+    <tbody>
+        <tr><td><strong>PP</strong> (Production Planning)</td><td>BOM, routing, work center, production orders</td><td>"Produk A butuh bahan apa aja?"</td></tr>
+        <tr><td><strong>MM</strong> (Material Management)</td><td>Inventory, goods receipt, goods issue, material master</td><td>"Stok bahan X di gudang berapa? Kapan terakhir masuk?"</td></tr>
+        <tr><td><strong>SD</strong> (Sales & Distribution)</td><td>Sales order, delivery, billing</td><td>"Customer A pesen apa aja minggu ini?"</td></tr>
+    </tbody>
+</table>
+
+<div class="highlight">
+    <strong>⚠️ Jangan panik kalo nggak bisa SAP.</strong> Nggak ada fresh grad yang bisa SAP. Lo belajar di tempat kerja. Yang penting lo ngerti KONSEP-nya: apa itu BOM, apa itu production order, apa itu goods receipt. Tools-nya belakangan.<br><br>
+    Yang perlu lo siapin: <strong>mental model "lo nggak takut software baru."</strong> SAP, Oracle, JDE, Navision — semua cuma tools. Konsep PPIC-nya sama.
+</div>
+
+<h2>Tool #3: Power BI / Tableau (Bonus)</h2>
+
+<p>Buat nampilin data inventory & produksi dalam dashboard visual. Manager lo suka liat grafik. Bukan tabel 1000 baris. Kalau lo bisa bikin dashboard simple — lo standout dari fresh grad lain.</p>
+</section>
+
+<!-- CHAPTER 7 -->
+<section id="07-sukses" class="chapter" style="border-left: 8px solid var(--fg);">
+<h1>07. Cara Sukses di PPIC — Action Plan & Mistakes</h1>
+
+<h2>First 30 Days: Apa yang Lo Lakuin</h2>
+
+<ol class="step-list">
+    <li><strong>Minggu 1: Observe.</strong> Jangan usulin improvement. Pelajarin flow: sales order → production order → scheduling → goods receipt → delivery. Tanya ke semua orang: "Ini datanya dari mana? Next step-nya ke mana?"</li>
+    <li><strong>Minggu 2: Kuasai Data Sources.</strong> Di mana lo ngeliat stok? Di mana lo ngeliat jadwal? Sistem apa? Excel mana yang jadi sumber kebenaran? Siapa yang update?</li>
+    <li><strong>Minggu 3: Shadow senior lo.</strong> Liat gimana mereka handle konflik sama Sales. Gimana mereka negosiasi jadwal sama Produksi. Gimana mereka mutusin "ini waktunya PO."</li>
+    <li><strong>Minggu 4: Pegang 1 tanggung jawab kecil.</strong> Misalnya: update stok harian satu kategori bahan baku. Atau bikin report OTIF mingguan. Satu hal yang lo bisa deliver sendiri.</li>
+</ol>
+
+<h2>Mistakes Fresh Grad PPIC yang Harus Lo Hindarin</h2>
+
+<table class="kw-table">
+    <thead><tr><th>Mistake</th><th>Kenapa Fatal</th></tr></thead>
+    <tbody>
+        <tr><td>❌ Cuma di belakang meja, nggak pernah ke gudang/produksi</td><td>Data di sistem ≠ realita. Lo harus liat fisik. Stok di sistem 100, di gudang cuma 80? Itu masalah.</td></tr>
+        <tr><td>❌ Terlalu patuh ke jadwal tanpa fleksibilitas</td><td>Jadwal itu hidup. Berubah setiap hari. Lo harus adaptable, bukan rigid.</td></tr>
+        <tr><td>❌ Takut konflik sama Sales/Produksi</td><td>Lo harus bisa bilang "tidak" dengan data. "Nggak bisa, karena stok cuma 3 hari, supplier 5 hari."</td></tr>
+        <tr><td>❌ Nggak update data</td><td>Keputusan PPIC seakurat data-nya. Kalau lo pake data minggu lalu buat mutusin hari ini — lo salah.</td></tr>
+        <tr><td>❌ Sendirian</td><td>PPIC adalah olahraga tim. Lo nggak bisa kerja sendiri. Bangun hubungan sama supervisor produksi, purchasing, gudang. Mereka partner lo.</td></tr>
+    </tbody>
+</table>
+
+<h2>Skill yang Bikin Lo Naik Cepet di PPIC</h2>
+
+<div class="highlight">
+    <strong>🚀 3 hal yang manager PPIC pengen liat dari fresh grad:</strong><br><br>
+    1. <strong>Problem-solving pake data.</strong> Bukan "kayaknya stoknya kurang deh." Tapi: "Data menunjukkan stok bahan X cuma 3.2 hari, sedangkan lead time supplier 5 hari. Saya usul PO sekarang."<br><br>
+    2. <strong>Komunikasi yang jelas.</strong> Lo ngomong ke operator pabrik dan ke direktur. Dua-duanya butuh bahasa yang berbeda. Kuasai dua-duanya.<br><br>
+    3. <strong>Ownership.</strong> Lo dikasih tanggung jawab inventory kategori A. Kalau stoknya habis — lo yang jawab. Kalau stoknya numpuk — lo yang jelasin kenapa. Jangan lempar ke orang lain.
+</div>
+
+<p style="text-align: center; margin-top: 3rem; font-weight: 700;">
+    — End of PPIC dari Nol —
+</p>
+<p style="text-align: center; color: var(--ppic-blue); font-weight: 800;">
+    📦 Sekarang lo tau apa yang lo hadepin di PPIC. Gas belajar Excel.
+</p>
+</section>
+
+</div>
+
+<a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+</body>
+</html>

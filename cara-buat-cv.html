@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Buat CV yang Dilirik HR — Panduan Lengkap 2026</title>
+    <meta name="description" content="CV lo cuma punya 6 detik. Ini cara bikin CV yang lolos ATS, bikin HR berhenti scroll, dan dapet interview. Lengkap dengan before/after, checklist, dan template.">
+    <meta name="keywords" content="cara buat CV, contoh CV, CV yang baik, CV ATS-friendly, cara bikin CV, template CV, CV fresh grad, resume Indonesia">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --yellow: #FFD700; --red: #FF5E5B; --blue: #5B8CFF; --green: #3DDC84;
+    --purple: #A855F7; --orange: #FF8C42; --teal: #2DD4BF; --pink: #FF6FB5;
+    --bg: #F0EDE0; --fg: #1A1A1A; --card-bg: #FFFDF7;
+    --coral: #E85D75;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg); background-image: radial-gradient(circle, #1A1A1A 0.5px, transparent 0.5px);
+    background-size: 24px 24px; color: var(--fg); line-height: 1.8;
+    font-size: 11pt; font-weight: 500;
+}
+.site-nav {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.5rem; padding: 1rem 1.5rem; margin: 0 auto 0.5rem; max-width: 1100px;
+}
+.site-nav .nav-link {
+    display: inline-block; padding: 0.5em 1em; font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;
+    text-decoration: none; color: var(--fg); background: var(--card-bg);
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s; cursor: pointer;
+}
+.site-nav .nav-link:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); background: var(--yellow); }
+.site-nav .nav-link.active { background: var(--fg); color: var(--yellow); cursor: default; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.hero {
+    background: var(--coral); color: var(--card-bg);
+    border: 4px solid var(--fg); box-shadow: 8px 8px 0px var(--fg);
+    padding: 3rem 2.5rem; margin-bottom: 3rem; text-align: center;
+}
+.hero h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 2.2rem; margin-bottom: 0.5rem; line-height: 1.3; }
+.hero .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.3rem; }
+.hero .chapter-count {
+    display: inline-block; background: var(--yellow); color: var(--fg);
+    font-weight: 800; font-size: 0.75rem; padding: 0.3em 1.2em;
+    border: 2px solid var(--fg); box-shadow: 2px 2px 0px var(--fg);
+    margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.toc-section { max-width: 900px; margin: 0 auto 3rem; }
+.toc-section h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1rem; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+.toc-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 1rem; text-decoration: none; color: var(--fg); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); font-weight: 700; font-size: 0.85rem; transition: transform 0.12s, box-shadow 0.12s; }
+.toc-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.toc-num { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.5rem; min-width: 42px; text-align: center; }
+.chapter { background: var(--card-bg); border: 3px solid var(--fg); box-shadow: 5px 5px 0px var(--fg); padding: 2rem 2.2rem; margin-bottom: 2.5rem; }
+.chapter h1 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 1.2rem; padding-bottom: 0.4em; border-bottom: 3px solid var(--fg); display: inline-block; }
+.chapter h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 1.15rem; margin: 1.8em 0 0.6em; }
+.chapter h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 1rem; margin: 1.5em 0 0.5em; }
+.chapter p { margin-bottom: 0.9em; }
+.chapter ul, .chapter ol { margin: 0.5em 0 1em 1.5em; }
+.chapter li { margin-bottom: 0.4em; }
+.chapter strong { color: var(--coral); }
+.chapter em { color: var(--orange); font-style: normal; font-weight: 700; }
+.info-card { background: #FDFCF7; border: 3px solid var(--fg); box-shadow: 4px 4px 0px var(--fg); padding: 1.2rem 1.5rem; margin: 1.5em 0; }
+.info-card h3 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.95rem; margin: 0 0 0.5em; }
+.highlight { background: #FFF8E1; border: 3px solid var(--orange); padding: 1.2rem 1.5rem; margin: 1.5em 0; box-shadow: 4px 4px 0px var(--orange); }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5em 0; }
+.compare-box { padding: 1.2rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); }
+.compare-box.bad { background: #FFF0F0; border-left: 6px solid var(--red); }
+.compare-box.good { background: #F0FFF4; border-left: 6px solid var(--green); }
+.compare-box h4 { font-family: 'Red Hat Display', sans-serif; font-weight: 800; font-size: 0.9rem; margin-bottom: 0.5em; }
+.kw-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.85rem; }
+.kw-table th { background: var(--fg); color: var(--yellow); padding: 0.7em 1em; font-weight: 800; text-align: left; border: 2px solid var(--fg); }
+.kw-table td { padding: 0.6em 1em; border: 2px solid var(--fg); }
+.kw-table tr:nth-child(even) { background: #FDFCF7; }
+.kw-table tr:nth-child(odd) { background: var(--card-bg); }
+.step-list { list-style: none; margin-left: 0; counter-reset: step; }
+.step-list li { counter-increment: step; padding: 0.8rem 1rem 0.8rem 3.5rem; border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); margin-bottom: 0.8rem; position: relative; background: var(--card-bg); }
+.step-list li::before { content: counter(step); font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.2rem; position: absolute; left: 1rem; top: 0.7rem; background: var(--fg); color: var(--yellow); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--fg); }
+.cv-template {
+    background: #fff; border: 3px solid var(--fg); box-shadow: 4px 4px 0px var(--fg);
+    padding: 2rem; margin: 1.5em 0; font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
+}
+.cv-template .cv-name { font-family: 'Red Hat Display', sans-serif; font-size: 1.4rem; font-weight: 900; border-bottom: 3px solid var(--fg); padding-bottom: 0.3em; margin-bottom: 0.8em; }
+.cv-template .cv-section { font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin: 1.2em 0 0.5em; padding-bottom: 0.2em; border-bottom: 2px solid var(--fg); letter-spacing: 0.04em; }
+.cv-template .cv-bullets { margin: 0.3em 0; padding-left: 1.2em; }
+.cv-template .cv-bullets li { margin-bottom: 0.5em; line-height: 1.6; }
+.cv-before { background: #FFF5F5; }
+.cv-after { background: #F0FFF4; }
+.cta-card {
+    background: var(--coral); color: #fff; text-align: center;
+    border: 4px solid var(--fg); box-shadow: 6px 6px 0px var(--fg);
+    padding: 2.5rem 2rem; margin: 2rem 0;
+}
+.cta-card h2 { font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: 1.6rem; margin-bottom: 0.8rem; }
+.cta-card p { font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem; }
+.cta-card a {
+    display: inline-block; background: var(--yellow); color: var(--fg);
+    font-weight: 800; font-size: 1rem; padding: 0.8em 2em;
+    border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em;
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+.cta-card a:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+.back-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--yellow); border: 3px solid var(--fg); box-shadow: 3px 3px 0px var(--fg); padding: 0.5em 0.8em; font-weight: 900; cursor: pointer; text-decoration: none; color: var(--fg); font-size: 0.9rem; transition: transform 0.12s; }
+.back-top:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--fg); }
+@media (max-width: 768px) {
+    .hero { padding: 2rem 1.2rem; } .hero h1 { font-size: 1.3rem; }
+    .chapter { padding: 1.2rem 1rem; } .chapter h1 { font-size: 1.15rem; }
+    .toc-grid { grid-template-columns: 1fr; } .compare-grid { grid-template-columns: 1fr; }
+    .site-nav { gap: 0.3rem; padding: 0.4rem; } .site-nav .nav-link { font-size: 0.6rem; padding: 0.35em 0.5em; border-width: 2px; }
+    body { font-size: 10pt; }
+    .cta-card { padding: 1.5rem 1rem; }
+}
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="index.html" class="nav-link">🏠 Guide</a>
+    <a href="extras/glossary-card.html" class="nav-link">📖 Glossary</a>
+    <a href="extras/cheat-sheet.html" class="nav-link">📋 Cheat Sheet</a>
+    <a href="extras/quiz.html" class="nav-link">🧠 Quiz</a>
+    <a href="extras/strategy-comparison.html" class="nav-link">🎨 Strategies</a>
+    <a href="extras/quick-ref.html" class="nav-link">⚡ Quick Ref</a>
+    <a href="seo-guide.html" class="nav-link">🔍 SEO Playbook</a>
+    <a href="teknik-industri.html" class="nav-link">🏭 Teknik Industri</a>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+    <h1>Cara Buat CV yang<br>Dilirik HR</h1>
+    <p class="subtitle">CV lo cuma punya 6 detik buat bikin HR berhenti scroll.<br>Ini cara make 6 detik itu sebaik mungkin.</p>
+    <span class="chapter-count">7 Chapter · Before/After · Checklist · Template</span>
+</div>
+
+<div class="toc-section">
+    <h2>📚 Daftar Isi</h2>
+    <div class="toc-grid">
+        <a href="#01-ditolak" class="toc-card" style="background: var(--coral); color: #fff;"><span class="toc-num">01</span> Kenapa CV Lo Ditolak Sebelum Dibaca</a>
+        <a href="#02-anatomy" class="toc-card" style="background: var(--blue); color: #fff;"><span class="toc-num">02</span> Anatomy CV yang Sempurna</a>
+        <a href="#03-summary" class="toc-card" style="background: var(--purple); color: #fff;"><span class="toc-num">03</span> Cara Nulis Summary yang Bikin HR Lanjut Baca</a>
+        <a href="#04-experience" class="toc-card" style="background: var(--orange);"><span class="toc-num">04</span> Experience: From Boring to Impact</a>
+        <a href="#05-keywords" class="toc-card" style="background: var(--teal);"><span class="toc-num">05</span> Skills & ATS Keywords</a>
+        <a href="#06-design" class="toc-card" style="background: var(--green);"><span class="toc-num">06</span> Design & Format</a>
+        <a href="#07-checklist" class="toc-card" style="background: var(--fg); color: var(--yellow);"><span class="toc-num">07</span> CV Audit Checklist</a>
+    </div>
+</div>
+
+<!-- 01 -->
+<section id="01-ditolak" class="chapter" style="border-left: 8px solid var(--coral);">
+<h1>01. Kenapa CV Lo Ditolak Sebelum Dibaca</h1>
+
+<p>Lo kirim 50 lamaran. Lo nunggu. Seminggu. Dua minggu. <strong>Nggak ada yang bales.</strong></p>
+
+<p>Lo pikir: "Mungkin gue kurang qualified." Atau: "Mungkin lagi nggak buka lowongan." Atau yang paling menyakitkan: "Mungkin emang belum rejeki."</p>
+
+<p>Bukan. CV lo <em>ditolak sebelum sempat dibaca manusia.</em></p>
+
+<p>Di 2026, hampir semua perusahaan — dari startup sampai multinational — pake software yang namanya <strong>ATS (Applicant Tracking System).</strong> Software ini nge-scan CV lo SEBELUM HR lihat. Kalau CV lo nggak lolos scan ini, langsung masuk tong sampah digital. Nggak ada yang pernah tau lo ngirim lamaran.</p>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>🤖 ATS — Penjaga Pintu</h4>
+        <p>ATS nge-scan CV lo dalam <strong>kurang dari 3 detik.</strong> Dia nyari keyword spesifik yang sesuai sama job description. Nggak nemu? Auto-reject.</p>
+        <p>Yang bikin ATS bingung: template Canva 2 kolom, text box, tabel, grafik, ikon. Semua itu <strong>invisible</strong> buat ATS.</p>
+    </div>
+    <div class="compare-box good">
+        <h4>👤 HR Manager — Kalau Lo Lolos</h4>
+        <p>Setelah lolos ATS, CV lo dibaca manusia. Tapi bukan dibaca — <em>di-scan.</em> Rata-rata: <strong>6-7 detik.</strong></p>
+        <p>Yang HR cari dalam 6 detik: nama, posisi terakhir, angka/impact, tools yang lo pake, relevansi sama lowongan.</p>
+    </div>
+</div>
+
+<h2>5 Kesalahan Fatal yang Bikin CV Lo Langsung Ditolak</h2>
+
+<div class="info-card">
+    <h3>❌ Ini yang harus lo buang SEKARANG</h3>
+    <ul>
+        <li><strong>Template Canva aesthetic 2 kolom.</strong> Cantik? Iya. ATS-friendly? Nggak. Kolom, text box, dan tabel di Canva sering nggak kebaca ATS. CV lo keliatan kosong di sistem mereka.</li>
+        <li><strong>"Bertanggung jawab terhadap pengelolaan data."</strong> Kalimat ini zero impact. Semua orang bisa nulis ini. HR nggak tau lo sebenernya ngapain dan seberapa bagus hasilnya.</li>
+        <li><strong>Skill bar chart: "Excel 90%, Photoshop 80%."</strong> Siapa yang nentuin 90%? Lo sendiri? Nggak ada artinya. ATS nggak bisa baca grafik. HR juga nggak peduli.</li>
+        <li><strong>Foto, agama, golongan darah, status nikah.</strong> Ini bukan CV — ini biodata. Di 2026, perusahaan profesional nggak butuh info ini. Malah bisa bikin bias.</li>
+        <li><strong>CV 3 halaman untuk fresh grad.</strong> Lo baru lulus. Pengalaman lo belum segitu banyak. CV 1 halaman itu lebih kuat dari 3 halaman yang isinya filler.</li>
+    </ul>
+</div>
+
+<div class="highlight">
+    <strong>🎯 Rumusnya sederhana:</strong><br><br>
+    CV yang bagus = <strong>lolos ATS</strong> + bikin HR <strong>berhenti scroll dalam 3 detik.</strong><br><br>
+    Caranya bukan template cantik. Caranya: <strong>keyword yang tepat, struktur yang bersih, dan ANGKA di mana-mana.</strong> Bukan "mengelola data." Tapi: "Mengelola database 5.000+ pelanggan, mengurangi error input 40%, hemat waktu tim admin 3 jam/hari."<br><br>
+    Ini yang nggak diajarin di kampus. Dan ini yang bikin perbedaan antara CV yang masuk tong sampah vs CV yang dipanggil interview.
+</div>
+</section>
+
+<!-- 02 -->
+<section id="02-anatomy" class="chapter" style="border-left: 8px solid var(--blue);">
+<h1>02. Anatomy CV yang Sempurna</h1>
+
+<p>CV itu bukan cerita hidup lo. CV itu <strong>iklan satu halaman</strong> yangjual lo ke perusahaan. Dan seperti semua iklan yang bagus — struktur matters.</p>
+
+<p>HR nggak baca CV lo dari atas ke bawah. Dia <em>scan</em> — dan dia scan di urutan yang bisa lo manfaatkan.</p>
+
+<h2>6 Bagian CV (Urutan yang Bener)</h2>
+
+<ol class="step-list">
+    <li><strong>Header.</strong> Nama lo (gede, bold), email profesional (bukan <code>yudhipunkrock99@gmail.com</code>), nomor HP, kota domisili, LinkedIn URL. <em>Jangan</em> kasih foto kecuali diminta. <em>Jangan</em> kasih alamat lengkap — kota aja cukup.</li>
+    <li><strong>Professional Summary.</strong> 2-3 kalimat yang jelasin siapa lo, skill utama lo, dan value lo. Ini yang <strong>DIBACA PERTAMA.</strong> Kalau ini lemah, HR nggak lanjut ke bawah. (Detailnya di Chapter 3.)</li>
+    <li><strong>Experience / Projects.</strong> Ini <strong>jantung CV lo.</strong> Internship, kerjaan, tugas akhir, proyek kampus, freelance, organisasi. Format: <em>Action verb + tugas + IMPACT dalam angka.</em> (Detailnya di Chapter 4.)</li>
+    <li><strong>Skills.</strong> Hard skills: tools, software, bahasa, teknik. Soft skills: cuma tulis yang relevan dan bisa dibuktikan. <strong>Jangan nulis "teamwork" tanpa bukti.</strong> (Detailnya di Chapter 5.)</li>
+    <li><strong>Education.</strong> Universitas, jurusan, tahun lulus. IPK cuma kalau di atas 3.0. Tambahin mata kuliah relevan 3-5 biji — pilih yang nyambung ke lowongan.</li>
+    <li><strong>Certifications / Training (opsional).</strong> Google Analytics, BNSP, K3, Six Sigma, Coursera — apapun yang relevan dan bisa diverifikasi.</li>
+</ol>
+
+<h2>Contoh Layout CV</h2>
+
+<div class="cv-template">
+    <div class="cv-name">RIZKY PRATAMA</div>
+    <p>rizky.prtm@gmail.com · 0812-3456-7890 · Jakarta Selatan · linkedin.com/in/rizkypratama</p>
+
+    <div class="cv-section">Professional Summary</div>
+    <p>Marketing graduate dengan pengalaman 6 bulan internship di startup e-commerce. Meningkatkan engagement Instagram 45% dalam 3 bulan melalui strategi konten berbasis data. Terampil di Google Analytics, Meta Ads Manager, dan Canva.</p>
+
+    <div class="cv-section">Experience</div>
+    <p><strong>Marketing Intern — TokoKita (Jan–Jun 2025)</strong></p>
+    <ul class="cv-bullets">
+        <li>Mengelola 3 akun social media (Instagram, TikTok, Shopee) dengan total <strong>25.000 followers</strong></li>
+        <li>Membuat konten kalender 30 hari yang <strong>meningkatkan engagement rate dari 2.1% menjadi 4.8%</strong></li>
+        <li>Menganalisis performa kampanye menggunakan Google Analytics — mengidentifikasi 3 channel dengan <strong>ROI tertinggi</strong></li>
+    </ul>
+
+    <div class="cv-section">Skills</div>
+    <p>Google Analytics · Meta Ads Manager · Canva · Figma · Copywriting · SEO Basics · Excel (Pivot Table, VLOOKUP) · Bahasa Indonesia (native) · Bahasa Inggris (fluent)</p>
+
+    <div class="cv-section">Education</div>
+    <p><strong>Universitas Indonesia — S1 Manajemen</strong> (2021–2025) · IPK: 3.47<br>
+    Mata kuliah relevan: Digital Marketing, Consumer Behavior, Marketing Research, Business Statistics</p>
+</div>
+
+<div class="info-card">
+    <h3>⚠️ Yang HARUS Lo Buang dari CV</h3>
+    <ul>
+        <li>❌ "Hobi: membaca, traveling, fotografi" — nggak relevan kecuali lo lamar jadi travel blogger</li>
+        <li>❌ "Saya orang yang pekerja keras, disiplin, dan mampu bekerja dalam tim" — semua orang nulis ini</li>
+        <li>❌ Referensi tersedia bila diminta — HR nggak akan nanya di tahap screening</li>
+        <li>❌ Riwayat SMA — lo udah kulius, SMA udah nggak relevan</li>
+    </ul>
+</div>
+</section>
+
+<!-- 03 -->
+<section id="03-summary" class="chapter" style="border-left: 8px solid var(--purple);">
+<h1>03. Cara Nulis Summary yang Bikin HR Lanjut Baca</h1>
+
+<p>Professional summary itu <strong>first impression lo di atas kertas.</strong> Ini 2-3 kalimat pertama yang HR baca. Kalau ini lemah — dia nggak lanjut ke bawah. Kalau ini kuat — dia lanjut scan experience lo.</p>
+
+<p>Lo punya waktu <strong>3 detik</strong> di summary. Jangan buang itu buat nulis: <em>"Saya adalah lulusan S1 yang bersemangat dan mencari kesempatan untuk mengembangkan diri."</em></p>
+
+<p>Kalimat itu nggak bilang apa-apa. Setiap fresh grad bisa nulis itu. Dan nggak ada satu pun kata kunci yang ATS cari.</p>
+
+<h2>Rumus Summary yang Kuat</h2>
+
+<div class="highlight">
+    <strong>🎯 [Siapa lo + pengalaman] + [Skill utama 2-3] + [Impact/value lo]</strong><br><br>
+    Ringkas. Padat. Penuh keyword. Dan yang paling penting — bikin HR mikir: "Oke, ini orang bisa gue panggil."
+</div>
+
+<h2>Contoh #1: Fresh Grad Akuntansi</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM — Generic, Zero Value</div>
+    <p>"Lulusan S1 Akuntansi dengan IPK 3.5 yang bersemangat dan mencari kesempatan untuk berkembang di dunia profesional. Mampu bekerja dalam tim dan individu."</p>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH — Spesifik + Keyword + Impact</div>
+    <p>"Fresh graduate Akuntansi (IPK 3.5) dengan pengalaman magang 4 bulan di divisi Finance. Membantu proses rekonsiliasi bank 150+ transaksi/bulan dengan akurasi 99.7%. Terampil di Excel (Pivot Table, VLOOKUP), Accurate, dan SAP FI."</p>
+</div>
+
+<h2>Contoh #2: 2 Tahun Pengalaman Marketing</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <p>"Marketing professional dengan pengalaman 2 tahun di bidang digital marketing. Passionate tentang social media dan content creation."</p>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <p>"Digital marketer dengan 2 tahun pengalaman mengelola kampanye Meta Ads senilai Rp50 juta/bulan — mencapai CPA 30% di bawah target. Meningkatkan organic traffic 120% melalui strategi SEO dan content marketing. Terampil di Google Analytics, SEMrush, dan A/B testing."</p>
+</div>
+
+<h2>Contoh #3: Career Switcher</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <p>"Admin dengan pengalaman 3 tahun yang ingin beralih ke bidang data analyst. Motivated dan cepat belajar."</p>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <p>"Admin professional (3 tahun) dengan track record mengelola database 5.000+ entri dan membangun dashboard Excel yang dipakai 3 divisi. Sedang mengembangkan skill data analysis melalui Google Data Analytics Certificate. Terampil di Excel (Pivot, Power Query), SQL dasar, dan Google Sheets."</p>
+</div>
+
+<div class="highlight">
+    <strong>💡 Summary bukan tempat curhat. Tempat jual value.</strong><br><br>
+    Jangan nulis apa yang lo <em>ingin.</em> Nulis apa yang lo <em>bisa</em> dan <em>udah buktikan.</em><br><br>
+    Dan selalu — SELALU — masukin minimal 2-3 keyword yang ada di job description. ATS nge-scan summary pertama.
+</div>
+</section>
+
+<!-- 04 -->
+<section id="04-experience" class="chapter" style="border-left: 8px solid var(--orange);">
+<h1>04. Experience Section: From Boring to Impact</h1>
+
+<p>Ini bagian paling penting dari CV lo. Dan ini bagian yang paling sering fresh grad salah tulis.</p>
+
+<p>90% CV fresh grad nulis experience kayak gini: <em>"Bertanggung jawab terhadap pengelolaan data penjualan."</em></p>
+
+<p>Kalimat itu bilang <strong>nol.</strong> Lo ngapain sebenernya? Berapa banyak data? Hasilnya apa? Tools apa yang lo pake? Nggak ada yang tau.</p>
+
+<h2>Rumus: Action + Task + Angka</h2>
+
+<div class="highlight">
+    <strong>🎯 [Action verb] + [apa yang lo lakuin] + [IMPACT dalam ANGKA]</strong><br><br>
+    Nggak perlu panjang. Satu bullet point yang kuat lebih bernilai dari 5 bullet point yang lemah.
+</div>
+
+<h2>Contoh #1: Admin / Staff</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <ul class="cv-bullets">
+        <li>Bertanggung jawab terhadap pengarsipan dokumen</li>
+        <li>Membantu kegiatan administrasi kantor</li>
+        <li>Melakukan input data penjualan</li>
+    </ul>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <ul class="cv-bullets">
+        <li>Merapikan sistem arsip fisik dan digital untuk <strong>2.000+ dokumen</strong> — mengurangi waktu pencarian dari 15 menit menjadi <strong>2 menit</strong></li>
+        <li>Membuat template laporan harian di Google Sheets yang dipakai <strong>4 divisi</strong>, menghemat <strong>5 jam/minggu</strong> untuk manajer</li>
+        <li>Input dan verifikasi <strong>150+ transaksi/hari</strong> dengan error rate <strong>di bawah 0.5%</strong></li>
+    </ul>
+</div>
+
+<h2>Contoh #2: Marketing / Social Media</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <ul class="cv-bullets">
+        <li>Manage Instagram perusahaan</li>
+        <li>Buat konten untuk social media</li>
+        <li>Bantu event perusahaan</li>
+    </ul>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <ul class="cv-bullets">
+        <li>Mengelola Instagram dari <strong>8.000 ke 22.000 followers</strong> dalam 6 bulan melalui strategi Reels + kolaborasi KOL</li>
+        <li>Membuat dan menjadwalkan <strong>60+ konten/bulan</strong> (feed, story, Reels) dengan engagement rate rata-rata <strong>5.2%</strong></li>
+        <li>Mengkoordinasi 3 event offline dengan total peserta <strong>500+ orang</strong> — mengelola budget <strong>Rp30 juta</strong> dengan biaya 10% di bawah anggaran</li>
+    </ul>
+</div>
+
+<h2>Contoh #3: IT / Tech Support</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <ul class="cv-bullets">
+        <li>Bantu troubleshooting masalah komputer</li>
+        <li>Install software di komputer kantor</li>
+    </ul>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <ul class="cv-bullets">
+        <li>Menangani <strong>40+ tiket support/bulan</strong> (hardware, software, jaringan) dengan resolusi first-call <strong>85%</strong></li>
+        <li>Migrasi <strong>30 workstation</strong> dari Windows 10 ke Windows 11 dalam 2 minggu — zero downtime untuk user</li>
+        <li>Membuat dokumentasi troubleshooting internal yang mengurangi eskalasi ke vendor <strong>40%</strong></li>
+    </ul>
+</div>
+
+<h2>Contoh #4: Mahasiswa Tanpa Pengalaman Kerja</h2>
+
+<div class="cv-template cv-before">
+    <div class="cv-section" style="color: var(--red);">❌ SEBELUM</div>
+    <ul class="cv-bullets">
+        <li>Ketua Himpunan Mahasiswa 2023</li>
+        <li>Tugas akhir: analisis kepuasan pelanggan</li>
+    </ul>
+</div>
+
+<div class="cv-template cv-after">
+    <div class="cv-section" style="color: var(--green);">✅ SESUDAH</div>
+    <ul class="cv-bullets">
+        <li>Memimpin tim <strong>15 orang</strong> menyelenggarakan 4 event kampus — peserta total <strong>800+ mahasiswa</strong>, mengelola budget <strong>Rp25 juta</strong></li>
+        <li>Tugas akhir: menganalisis kepuasan pelanggan <strong>200+ responden</strong> menggunakan SPSS — mengidentifikasi 3 area prioritas yang rekomendasinya diadopsi oleh mitra perusahaan</li>
+        <li>Freelance: membuat laporan keuangan bulanan untuk <strong>2 UMKM</strong> menggunakan Excel — membantu pemilik usaha track profit/loss untuk pertama kalinya</li>
+    </ul>
+</div>
+
+<div class="highlight">
+    <strong>🧠 "Tapi gue nggak punya angka."</strong><br><br>
+    Lo belum ngorek cukup dalam. Semua kerjaan punya angka.<br><br>
+    Lo bantu ngurangin sesuatu → berapa persen? Lo bikin laporan → berapa lama lo hemat? Lo handle acara → berapa orang? berapa budget? Lo manage data → berapa entry?<br><br>
+    Angka itu ada. Lo yang belum nyari. Dan kalau emang nggak ada angka pasti, tulis skala-nya: "mengelola", "menangani", "membuat" — tapi tetap kasih konteks ukuran.
+</div>
+</section>
+
+<!-- 05 -->
+<section id="05-keywords" class="chapter" style="border-left: 8px solid var(--teal);">
+<h1>05. Skills & ATS Keywords</h1>
+
+<p>ATS itu robot. Dia nggak "membaca" CV lo — dia <strong>nge-scan</strong> buat keyword spesifik. Kalau lo lamar posisi "Digital Marketing" tapi nggak ada kata "digital marketing", "SEO", atau "social media" di CV lo — lo auto-reject. Nggak peduli seberapa bagus pengalaman lo.</p>
+
+<p>Ini bukan soal "lo jelek." Ini soal lo nggak ngomong pake bahasa yang ATS cari.</p>
+
+<h2>Cara ATS Nge-Scan CV Lo</h2>
+
+<div class="info-card">
+    <h3>🤖 Proses ATS dalam 3 Detik</h3>
+    <ol>
+        <li>ATS baca file CV lo (PDF atau DOCX)</li>
+        <li>Ekstrak teks — bukan gambar, bukan grafik, bukan text box</li>
+        <li>Match keyword dari CV lo sama keyword dari job description</li>
+        <li>Hitung match rate. Di atas threshold? Lolos. Di bawah? Reject.</li>
+    </ol>
+    <p style="margin-top: 0.8em;"><strong>Artinya:</strong> CV lo harus pake kata yang SAMA persis dengan yang ada di lowongan. Bukan sinonim. Bukan singkatan. SAMA.</p>
+</div>
+
+<h2>Keyword List per Bidang</h2>
+
+<table class="kw-table">
+    <thead><tr><th>Bidang</th><th>Keywords Wajib</th><th>Keywords Bonus</th></tr></thead>
+    <tbody>
+        <tr>
+            <td><strong>Marketing</strong></td>
+            <td>Digital Marketing, Social Media, Content Marketing, SEO, SEM, Google Analytics, Campaign, Copywriting, Brand Awareness</td>
+            <td>Meta Ads, Google Ads, A/B Testing, Marketing Automation, CRM, KOL Management</td>
+        </tr>
+        <tr>
+            <td><strong>Admin / GA</strong></td>
+            <td>Administrasi, Data Entry, Pengarsipan, Microsoft Office, Google Sheets, Laporan, Koordinasi, Dokumen</td>
+            <td>ERP, SAP, Accurate, Notion, Trello, ISO Documentation</td>
+        </tr>
+        <tr>
+            <td><strong>IT / Tech</strong></td>
+            <td>Technical Support, Troubleshooting, Networking, Hardware, Software, Helpdesk, Ticketing, Windows, Linux</td>
+            <td>Active Directory, VPN, Cloud, AWS, Azure, Jira, ITIL, CompTIA</td>
+        </tr>
+        <tr>
+            <td><strong>Finance / Akuntansi</strong></td>
+            <td>Akuntansi, Keuangan, Rekonsiliasi, Laporan Keuangan, Pajak, AP/AR, General Ledger, Audit, Budget</td>
+            <td>SAP FI, Accurate, Xero, Excel Pivot, PSAK, Brevet A/B</td>
+        </tr>
+        <tr>
+            <td><strong>Sales / BD</strong></td>
+            <td>Sales, Business Development, Revenue, Pipeline, CRM, Lead Generation, Closing, Target, KPI, Relationship Management</td>
+            <td>Salesforce, HubSpot, Cold Calling, Negotiation, Market Penetration, Upselling</td>
+        </tr>
+        <tr>
+            <td><strong>HR / People</strong></td>
+            <td>Recruitment, Onboarding, Training, Payroll, Employee Relations, Performance Management, HRIS, Compliance</td>
+            <td>Talent Acquisition, Employer Branding, OD, Job Evaluation, People Analytics</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Cara Pake Keyword List Ini</h2>
+
+<ol class="step-list">
+    <li><strong>Baca job description</strong> yang lo incar. Print atau copy ke notes. Underline setiap kata yang muncul 2+ kali.</li>
+    <li><strong>Cocokan</strong> sama keyword list di atas. Mana yang udah ada di CV lo? Mana yang belum?</li>
+    <li><strong>Masukin yang belum ada</strong> ke CV lo — tapi di konteks yang bener. Jangan copy-paste keyword tanpa kalimat. ATS tau bedanya.</li>
+    <li><strong>Letakkan keyword di 3 tempat:</strong> summary, experience bullets, dan skills section. Triple coverage = higher match rate.</li>
+</ol>
+
+<h2>Tools Gratis buat Cek CV Lo</h2>
+
+<div class="info-card">
+    <h3>🔧 Cek CV lo sebelum kirim</h3>
+    <ul>
+        <li><strong>Jobscan.co</strong> — paste CV + job description → kasih match rate + suggestion</li>
+        <li><strong>Resume Worded</strong> — scan CV lo kasih score 0-100 + improvement tips</li>
+        <li><strong>Jalur Samping CV Audit</strong> — audit CV gratis khusus untuk Indonesia → <a href="https://jalursamping.com" style="color: var(--coral); font-weight: 700;">jalursamping.com</a></li>
+    </ul>
+</div>
+
+<div class="highlight">
+    <strong>🎯 Hard skills vs Soft skills — mana yang diprioritaskan?</strong><br><br>
+    <strong>Hard skills dulu.</strong> ATS dan HR sama-sama nyari: tools, software, teknik, sertifikasi.<br><br>
+    Soft skills? Cuma tulis kalau lo bisa buktiin di experience. "Problem-solving" tanpa contoh itu noise. Tapi kalau lo nulis "Mengidentifikasi dan menyelesaikan bottleneck produksi yang mengurangi downtime 30%" — itu problem-solving yang terbukti.
+</div>
+</section>
+
+<!-- 06 -->
+<section id="06-design" class="chapter" style="border-left: 8px solid var(--green);">
+<h1>06. Design & Format</h1>
+
+<p>Ini bagian yang paling sering disepelekan — dan paling sering bikin CV lo ditolak.</p>
+
+<p>Lo udah nulis konten yang bagus. Summary kuat, experience penuh angka, keyword lengkap. Tapi lo masukin ke template Canva 2 kolom dengan ikon warna-warni dan ATS nggak bisa baca. <strong>Semua effort lo sia-sia.</strong></p>
+
+<h2>Prinsip #1: Less is More</h2>
+
+<div class="compare-grid">
+    <div class="compare-box bad">
+        <h4>❌ Template Aesthetic</h4>
+        <p>2 kolom, sidebar abu-abu, foto bulat gede, ikon skill (⭐⭐⭐⭐), progress bar, watermark background.</p>
+        <p>Hasil: Cantik di mata lo. <strong>Sampah di mata ATS.</strong> Kolom kedua hilang. Ikon nggak kebaca. Progress bar = teks random.</p>
+    </div>
+    <div class="compare-box good">
+        <h4>✅ Clean & Simple</h4>
+        <p>1 kolom, hitam-putih, font standar, margin rapi, spacing konsisten, heading jelas.</p>
+        <p>Hasil: Nggak aesthetic? Mungkin. Tapi <strong>ATS baca 100%. HR scan mudah. Lo dipanggil interview.</strong></p>
+    </div>
+</div>
+
+<h2>Aturan Format yang Aman</h2>
+
+<ol class="step-list">
+    <li><strong>1 kolom.</strong> Selalu. Dua kolom bikin ATS baca berantakan. Kolom kiri dibaca duluan, kolom kanan ilang.</li>
+    <li><strong>Font standar:</strong> Arial, Calibri, Helvetica, atau Space Grotesk. Ukuran 10-11pt untuk body, 13-14pt untuk heading. Jangan pake font dekoratif.</li>
+    <li><strong>Warna: hitam-putih.</strong> Kalau mau kasih aksen, maksimal 1 warna di heading. Jangan lebih. ATS nggak peduli warna. HR juga lebih suka bersih.</li>
+    <li><strong>Simpan sebagai PDF</strong> dengan nama: <code>CV_RizkyPramana_DigitalMarketing.pdf</code>. Bukan <code>CV_FINAL_REVISI3_beneran_final.pdf</code>. Nama file = first impression sebelum CV dibuka.</li>
+    <li><strong>1 halaman untuk fresh grad.</strong> Lo belum punya pengalaman segitu banyak. 2 halaman maksimal untuk yang udah 3+ tahun pengalaman. HR nggak mau scroll.</li>
+    <li><strong>Margin 1-1.5 cm.</strong> Cukup whitespace biar nggak sesak, tapi tetap muat semua konten di 1 halaman.</li>
+</ol>
+
+<h2>Tools yang Aman untuk Bikin CV</h2>
+
+<div class="info-card">
+    <h3>📝 Rekomendasi Tools</h3>
+    <ul>
+        <li><strong>Google Docs</strong> — gratis, ATS-friendly, ada template dasar. Export PDF langsung.</li>
+        <li><strong>Microsoft Word</strong> — standar industri. Template bawaan Word udah cukup. Export ke PDF.</li>
+        <li><strong>Overleaf (LaTeX)</strong> — untuk yang mau CV super clean. Banyak template gratis. ATS-friendly banget.</li>
+        <li><strong>Jalur Samping CV Builder</strong> — bikin CV langsung dari HP, audit otomatis → <a href="https://jalursamping.com" style="color: var(--coral); font-weight: 700;">jalursamping.com</a></li>
+    </ul>
+    <p style="margin-top: 0.8em;"><strong>Hindari:</strong> Canva (ATS nggak bisa baca text box), Novoresume (beberapa template nggak ATS-friendly), CV builder random yang export sebagai image bukan text.</p>
+</div>
+
+<div class="highlight">
+    <strong>💡 Pro tip: Cek CV lo sebelum kirim.</strong><br><br>
+    Buka PDF CV lo. Select All (Ctrl+A). Copy. Paste ke Notepad.<br><br>
+    Kalau yang muncul teks yang rapi dan baca → ATS juga bisa baca.<br>
+    Kalau yang muncul teks berantakan, ada missing section, atau kosong → ATS juga nggak bisa baca. Ganti template.
+</div>
+</section>
+
+<!-- 07 -->
+<section id="07-checklist" class="chapter" style="border-left: 8px solid var(--fg);">
+<h1>07. CV Audit Checklist</h1>
+
+<p>Lo udah nulis CV. Lo udah pake rumus yang bener. Sekarang: <strong>audit sebelum kirim.</strong></p>
+
+<p>Checklist ini adalah 15 pertanyaan yang harus lo jawab "ya" semua sebelum lo klik "apply." Kalau ada yang "no" — perbaiki dulu.</p>
+
+<h2>15-Point CV Audit Checklist</h2>
+
+<ol class="step-list">
+    <li><strong>CV lo 1 halaman?</strong> (fresh grad) atau maksimal 2 halaman? (3+ tahun pengalaman)</li>
+    <li><strong>Format PDF?</strong> Bukan DOCX, bukan Google Docs link, bukan gambar?</li>
+    <li><strong>File name profesional?</strong> <code>CV_Nama_Posisi.pdf</code> — bukan <code>CV_final_beneran.pdf</code></li>
+    <li><strong>1 kolom, tanpa sidebar?</strong> Bukan template 2 kolom Canva?</li>
+    <li><strong>Email profesional?</strong> <code>nama.lo@gmail.com</code> — bukan <code>xXx_darkangel_xXx@yahoo.com</code></li>
+    <li><strong>Ada professional summary?</strong> 2-3 kalimat dengan keyword yang relevan?</li>
+    <li><strong>Experience pakai angka?</strong> Setiap bullet point punya impact yang terukur?</li>
+    <li><strong>Action verbs?</strong> Dimulai dengan kata kerja aktif (mengelola, meningkatkan, menganalisis)?</li>
+    <li><strong>Keyword match?</strong> Ada keyword dari job description di summary + experience + skills?</li>
+    <li><strong>Skills section relevan?</strong> Hard skills yang dicari perusahaan, bukan "microsoft word"?</li>
+    <li><strong>Tidak ada info irrelevant?</strong> Foto, agama, golongan darah, status nikah, hobi?</li>
+    <li><strong>Tidak ada typo?</strong> Minta temen lo baca. Sekali. Dari atas ke bawah.</li>
+    <li><strong>Spacing konsisten?</strong> Margin rapi, line spacing seragam, heading terstruktur?</li>
+    <li><strong>ATS test lolos?</strong> Select All → Copy → Paste ke Notepad → teks rapi dan lengkap?</li>
+    <li><strong>Sudah di-scan tools?</strong> Jobscan / Resume Worded / Jalur Samping CV Audit?</li>
+</ol>
+
+<div class="highlight">
+    <strong>🧠 Lo kirim 50 lamaran. 5 yang bales. 2 interview. 1 offering.</strong><br><br>
+    Itu normal. Itu bukan "lo jelek." Itu statistik.<br><br>
+    Yang penting: <strong>setiap kali lo ditolak atau nggak dibales, lo perbaiki CV lo.</strong><br>
+    Cek: keyword-nya ada? Angka-nya ada? Template-nya ATS-friendly?<br>
+    Iterasi. Terus sampe tembus.
+</div>
+
+<div class="cta-card">
+    <h2>🔍 Audit CV Lo Gratis</h2>
+    <p>Udah selesai bikin CV? Jangan langsung kirim. Audit dulu di Jalur Samping — CV checker gratis yang tau persis apa yang HR Indonesia cari.</p>
+    <a href="https://jalursamping.com">Audit CV Gue Sekarang →</a>
+</div>
+
+<p style="text-align: center; margin-top: 3rem; font-weight: 700;">
+    — End of Cara Buat CV yang Dilirik HR —
+</p>
+<p style="text-align: center; color: var(--coral); font-weight: 800;">
+    📄 Sekarang lo tau cara bikin CV yang bener. Gas perbaiki, gas lamar.
+</p>
+</section>
+
+</div>
+
+<a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+
+</body>
+</html>
